@@ -1,0 +1,578 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{963D04E6-320B-4F78-A48C-639FFEB92039}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StarzInfiniteWeb</RootNamespace>
+    <AssemblyName>StarzInfiniteWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44355</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\..\SmartInfinite\appSmartzAdmin\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\SmartInfinite\appSmartzAdmin\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder">
+      <HintPath>..\..\SmartInfinite\appSmartzAdmin\bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SmartInfinite\appSmartzAdmin\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\SmartInfinite\appSmartzAdmin\bin\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\atomic.css" />
+    <Content Include="css\blue-violet.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\brown.css" />
+    <Content Include="css\caribbean-green.css" />
+    <Content Include="css\datepicker.css" />
+    <Content Include="css\egg-blue.css" />
+    <Content Include="css\flexslider.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\green.css" />
+    <Content Include="css\jquery-ui.min.css" />
+    <Content Include="css\jquery.colorpanel.css" />
+    <Content Include="css\lightblue.css" />
+    <Content Include="css\magnific-popup.css" />
+    <Content Include="css\orange.css" />
+    <Content Include="css\owl.carousel.css" />
+    <Content Include="css\owl.theme.css" />
+    <Content Include="css\pigment-green.css" />
+    <Content Include="css\pink.css" />
+    <Content Include="css\preview.css" />
+    <Content Include="css\purple.css" />
+    <Content Include="css\red.css" />
+    <Content Include="css\responsive.css" />
+    <Content Include="css\slick-theme.css" />
+    <Content Include="css\slick.css" />
+    <Content Include="css\style.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="home.aspx" />
+    <Content Include="images\about-us.jpg" />
+    <Content Include="images\available-room-1.jpg" />
+    <Content Include="images\available-room-2.jpg" />
+    <Content Include="images\available-room-3.jpg" />
+    <Content Include="images\available-room-4.jpg" />
+    <Content Include="images\available-seat-1.jpg" />
+    <Content Include="images\available-seat-2.jpg" />
+    <Content Include="images\available-seat-3.jpg" />
+    <Content Include="images\available-seat-4.jpg" />
+    <Content Include="images\best-offer-cruise.jpg" />
+    <Content Include="images\blog-listing-1.jpg" />
+    <Content Include="images\blog-listing-2.jpg" />
+    <Content Include="images\blog-listing-3.jpg" />
+    <Content Include="images\byf-airport-info.jpg" />
+    <Content Include="images\byf-baggage-info.jpg" />
+    <Content Include="images\byf-check-in.jpg" />
+    <Content Include="images\byf-visa-passport.jpg" />
+    <Content Include="images\car-1.jpg" />
+    <Content Include="images\car-2.jpg" />
+    <Content Include="images\car-3.jpg" />
+    <Content Include="images\car-4.jpg" />
+    <Content Include="images\car-ad.jpg" />
+    <Content Include="images\car-detail-tab-1.jpg" />
+    <Content Include="images\car-detail-tab-2.jpg" />
+    <Content Include="images\car-detail-tab-3.jpg" />
+    <Content Include="images\car-feature-1.jpg" />
+    <Content Include="images\car-feature-2.jpg" />
+    <Content Include="images\car-feature-3.jpg" />
+    <Content Include="images\car-feature-4.jpg" />
+    <Content Include="images\car-feature-5.jpg" />
+    <Content Include="images\car-feature-thumb-1.jpg" />
+    <Content Include="images\car-feature-thumb-2.jpg" />
+    <Content Include="images\car-feature-thumb-3.jpg" />
+    <Content Include="images\car-feature-thumb-4.jpg" />
+    <Content Include="images\car-feature-thumb-5.jpg" />
+    <Content Include="images\car-grid-1.jpg" />
+    <Content Include="images\car-grid-2.jpg" />
+    <Content Include="images\car-grid-3.jpg" />
+    <Content Include="images\car-grid-4.jpg" />
+    <Content Include="images\car-grid-5.jpg" />
+    <Content Include="images\car-grid-6.jpg" />
+    <Content Include="images\car-list-1.jpg" />
+    <Content Include="images\car-list-2.jpg" />
+    <Content Include="images\car-list-3.jpg" />
+    <Content Include="images\car-list-4.jpg" />
+    <Content Include="images\car-list-5.jpg" />
+    <Content Include="images\car-list-6.jpg" />
+    <Content Include="images\car-packages.jpg" />
+    <Content Include="images\car-slider-1.jpg" />
+    <Content Include="images\car-slider-2.jpg" />
+    <Content Include="images\client-1.jpg" />
+    <Content Include="images\client-2.jpg" />
+    <Content Include="images\client-3.jpg" />
+    <Content Include="images\color.png" />
+    <Content Include="images\coming-soon-page.jpg" />
+    <Content Include="images\commenter-1.jpg" />
+    <Content Include="images\commenter-2.jpg" />
+    <Content Include="images\commenter-3.jpg" />
+    <Content Include="images\commenter-4.jpg" />
+    <Content Include="images\contact-form.jpg" />
+    <Content Include="images\cover-about-us.jpg" />
+    <Content Include="images\cover-blog-details.jpg" />
+    <Content Include="images\cover-blog-listing.jpg" />
+    <Content Include="images\cover-byf-info.jpg" />
+    <Content Include="images\cover-car-detail.jpg" />
+    <Content Include="images\cover-car-grid-list.jpg" />
+    <Content Include="images\cover-contact-us.jpg" />
+    <Content Include="images\cover-cruise-detail.jpg" />
+    <Content Include="images\cover-cruise-grid-list.jpg" />
+    <Content Include="images\cover-flight-detail.jpg" />
+    <Content Include="images\cover-flight-grid-list.jpg" />
+    <Content Include="images\cover-forgot-password.jpg" />
+    <Content Include="images\cover-holiday.jpg" />
+    <Content Include="images\cover-hotel-detail.jpg" />
+    <Content Include="images\cover-hotel-grid-list.jpg" />
+    <Content Include="images\cover-login.jpg" />
+    <Content Include="images\cover-registration.jpg" />
+    <Content Include="images\cover-thank-you.jpg" />
+    <Content Include="images\cover-tour-detail.jpg" />
+    <Content Include="images\cover-tour-grid-list.jpg" />
+    <Content Include="images\cover-travel-insurance.jpg" />
+    <Content Include="images\crs-feature-1.jpg" />
+    <Content Include="images\crs-feature-2.jpg" />
+    <Content Include="images\crs-feature-3.jpg" />
+    <Content Include="images\crs-feature-4.jpg" />
+    <Content Include="images\crs-feature-5.jpg" />
+    <Content Include="images\crs-feature-thumb-1.jpg" />
+    <Content Include="images\crs-feature-thumb-2.jpg" />
+    <Content Include="images\crs-feature-thumb-3.jpg" />
+    <Content Include="images\crs-feature-thumb-4.jpg" />
+    <Content Include="images\crs-feature-thumb-5.jpg" />
+    <Content Include="images\cruise-1.jpg" />
+    <Content Include="images\cruise-2.jpg" />
+    <Content Include="images\cruise-3.jpg" />
+    <Content Include="images\cruise-4.jpg" />
+    <Content Include="images\cruise-5.jpg" />
+    <Content Include="images\cruise-6.jpg" />
+    <Content Include="images\cruise-detail-tab-1.jpg" />
+    <Content Include="images\cruise-detail-tab-2.jpg" />
+    <Content Include="images\cruise-detail-tab-3.jpg" />
+    <Content Include="images\cruise-detail-tab-4.jpg" />
+    <Content Include="images\cruise-grid-1.jpg" />
+    <Content Include="images\cruise-grid-2.jpg" />
+    <Content Include="images\cruise-grid-3.jpg" />
+    <Content Include="images\cruise-grid-4.jpg" />
+    <Content Include="images\cruise-grid-5.jpg" />
+    <Content Include="images\cruise-grid-6.jpg" />
+    <Content Include="images\cruise-list-1.jpg" />
+    <Content Include="images\cruise-list-2.jpg" />
+    <Content Include="images\cruise-list-3.jpg" />
+    <Content Include="images\cruise-list-4.jpg" />
+    <Content Include="images\cruise-list-5.jpg" />
+    <Content Include="images\cruise-list-6.jpg" />
+    <Content Include="images\cruise-slider-1.jpg" />
+    <Content Include="images\cruise-slider-2.jpg" />
+    <Content Include="images\destination-1.jpg" />
+    <Content Include="images\destination-2.jpg" />
+    <Content Include="images\destination-3.jpg" />
+    <Content Include="images\destination-4.jpg" />
+    <Content Include="images\error-page.jpg" />
+    <Content Include="images\f-feature-1.jpg" />
+    <Content Include="images\f-feature-2.jpg" />
+    <Content Include="images\f-feature-3.jpg" />
+    <Content Include="images\f-feature-4.jpg" />
+    <Content Include="images\f-feature-5.jpg" />
+    <Content Include="images\f-feature-thumb-1.jpg" />
+    <Content Include="images\f-feature-thumb-2.jpg" />
+    <Content Include="images\f-feature-thumb-3.jpg" />
+    <Content Include="images\f-feature-thumb-4.jpg" />
+    <Content Include="images\f-feature-thumb-5.jpg" />
+    <Content Include="images\favicon.png" />
+    <Content Include="images\flight-1.jpg" />
+    <Content Include="images\flight-2.jpg" />
+    <Content Include="images\flight-3.jpg" />
+    <Content Include="images\flight-4.jpg" />
+    <Content Include="images\flight-5.jpg" />
+    <Content Include="images\flight-6.jpg" />
+    <Content Include="images\flight-detail-tab-1.jpg" />
+    <Content Include="images\flight-detail-tab-2.jpg" />
+    <Content Include="images\flight-detail-tab-3.jpg" />
+    <Content Include="images\flight-detail-tab-4.jpg" />
+    <Content Include="images\flight-detail-tab-5.jpg" />
+    <Content Include="images\flight-slider-1.jpg" />
+    <Content Include="images\flight-slider-2.jpg" />
+    <Content Include="images\flight-testimonials.jpg" />
+    <Content Include="images\forgot-password.jpg" />
+    <Content Include="images\ftr-instagram-1.jpg" />
+    <Content Include="images\ftr-instagram-2.jpg" />
+    <Content Include="images\ftr-instagram-3.jpg" />
+    <Content Include="images\ftr-instagram-4.jpg" />
+    <Content Include="images\ftr-instagram-5.jpg" />
+    <Content Include="images\ftr-instagram-6.jpg" />
+    <Content Include="images\h-feature-1.jpg" />
+    <Content Include="images\h-feature-2.jpg" />
+    <Content Include="images\h-feature-3.jpg" />
+    <Content Include="images\h-feature-4.jpg" />
+    <Content Include="images\h-feature-5.jpg" />
+    <Content Include="images\h-feature-thumb-1.jpg" />
+    <Content Include="images\h-feature-thumb-2.jpg" />
+    <Content Include="images\h-feature-thumb-3.jpg" />
+    <Content Include="images\h-feature-thumb-4.jpg" />
+    <Content Include="images\h-feature-thumb-5.jpg" />
+    <Content Include="images\highlights.jpg" />
+    <Content Include="images\holiday-deal-1.jpg" />
+    <Content Include="images\holiday-deal-2.jpg" />
+    <Content Include="images\holiday-deal-3.jpg" />
+    <Content Include="images\homepage-slider-1.jpg" />
+    <Content Include="images\homepage-slider-2.jpg" />
+    <Content Include="images\hot-tour-1.jpg" />
+    <Content Include="images\hot-tour-2.jpg" />
+    <Content Include="images\hotel-1.jpg" />
+    <Content Include="images\hotel-2.jpg" />
+    <Content Include="images\hotel-3.jpg" />
+    <Content Include="images\hotel-4.jpg" />
+    <Content Include="images\hotel-5.jpg" />
+    <Content Include="images\hotel-6.jpg" />
+    <Content Include="images\hotel-detail-tab-1.jpg" />
+    <Content Include="images\hotel-detail-tab-2.jpg" />
+    <Content Include="images\hotel-detail-tab-3.jpg" />
+    <Content Include="images\hotel-detail-tab-4.jpg" />
+    <Content Include="images\hotel-detail-tab-5.jpg" />
+    <Content Include="images\hotel-grid-1.jpg" />
+    <Content Include="images\hotel-grid-2.jpg" />
+    <Content Include="images\hotel-grid-3.jpg" />
+    <Content Include="images\hotel-grid-4.jpg" />
+    <Content Include="images\hotel-grid-5.jpg" />
+    <Content Include="images\hotel-grid-6.jpg" />
+    <Content Include="images\hotel-offers.jpg" />
+    <Content Include="images\hotel-slider-1.jpg" />
+    <Content Include="images\hotel-slider-2.jpg" />
+    <Content Include="images\landing-slider-1.jpg" />
+    <Content Include="images\landing-slider-2.jpg" />
+    <Content Include="images\latest-blog-1.jpg" />
+    <Content Include="images\latest-blog-2.jpg" />
+    <Content Include="images\latest-blog-3.jpg" />
+    <Content Include="images\loader-atomic.gif" />
+    <Content Include="images\loader-caribbean-green.gif" />
+    <Content Include="images\loader-eggblue.gif" />
+    <Content Include="images\loader-green.gif" />
+    <Content Include="images\loader-lightblue.gif" />
+    <Content Include="images\loader-orange.gif" />
+    <Content Include="images\loader-purple.gif" />
+    <Content Include="images\loader-red.gif" />
+    <Content Include="images\login.jpg" />
+    <Content Include="images\luxury-car.jpg" />
+    <Content Include="images\luxury-room-1.jpg" />
+    <Content Include="images\luxury-room-2.jpg" />
+    <Content Include="images\luxury-room-3.jpg" />
+    <Content Include="images\luxury-room-4.jpg" />
+    <Content Include="images\master-card.png" />
+    <Content Include="images\megamenu.jpg" />
+    <Content Include="images\message-banner.jpg" />
+    <Content Include="images\new.jpg" />
+    <Content Include="images\newsletter.jpg" />
+    <Content Include="images\payment-1.jpg" />
+    <Content Include="images\payment-1.png" />
+    <Content Include="images\payment-2.png" />
+    <Content Include="images\payment-3.png" />
+    <Content Include="images\payment-4.png" />
+    <Content Include="images\PORTADA-STARZ-INFINITE.png" />
+    <Content Include="images\recent-post-1.jpg" />
+    <Content Include="images\recent-post-2.jpg" />
+    <Content Include="images\recent-post-3.jpg" />
+    <Content Include="images\registration.jpg" />
+    <Content Include="images\reviewer-1.jpg" />
+    <Content Include="images\reviewer-2.jpg" />
+    <Content Include="images\reviewer-3.jpg" />
+    <Content Include="images\sidebar-insta-1.jpg" />
+    <Content Include="images\sidebar-insta-2.jpg" />
+    <Content Include="images\sidebar-insta-3.jpg" />
+    <Content Include="images\sidebar-insta-4.jpg" />
+    <Content Include="images\sidebar-insta-5.jpg" />
+    <Content Include="images\sidebar-insta-6.jpg" />
+    <Content Include="images\sidebar-insta-7.jpg" />
+    <Content Include="images\sidebar-insta-8.jpg" />
+    <Content Include="images\sidebar-insta-9.jpg" />
+    <Content Include="images\skills.jpg" />
+    <Content Include="images\t-feature-1.jpg" />
+    <Content Include="images\t-feature-2.jpg" />
+    <Content Include="images\t-feature-3.jpg" />
+    <Content Include="images\t-feature-4.jpg" />
+    <Content Include="images\t-feature-5.jpg" />
+    <Content Include="images\t-feature-thumb-1.jpg" />
+    <Content Include="images\t-feature-thumb-2.jpg" />
+    <Content Include="images\t-feature-thumb-3.jpg" />
+    <Content Include="images\t-feature-thumb-4.jpg" />
+    <Content Include="images\t-feature-thumb-5.jpg" />
+    <Content Include="images\team-member-1.jpg" />
+    <Content Include="images\team-member-2.jpg" />
+    <Content Include="images\team-member-3.jpg" />
+    <Content Include="images\team-member-4.jpg" />
+    <Content Include="images\team-member-5.jpg" />
+    <Content Include="images\testimonials.jpg" />
+    <Content Include="images\tour-1.jpg" />
+    <Content Include="images\tour-2.jpg" />
+    <Content Include="images\tour-3.jpg" />
+    <Content Include="images\tour-4.jpg" />
+    <Content Include="images\tour-detail-tab-1.jpg" />
+    <Content Include="images\tour-detail-tab-2.jpg" />
+    <Content Include="images\tour-detail-tab-3.jpg" />
+    <Content Include="images\tour-grid-1.jpg" />
+    <Content Include="images\tour-grid-2.jpg" />
+    <Content Include="images\tour-grid-3.jpg" />
+    <Content Include="images\tour-grid-4.jpg" />
+    <Content Include="images\tour-grid-5.jpg" />
+    <Content Include="images\tour-grid-6.jpg" />
+    <Content Include="images\tour-list-1.jpg" />
+    <Content Include="images\tour-list-2.jpg" />
+    <Content Include="images\tour-list-3.jpg" />
+    <Content Include="images\tour-list-4.jpg" />
+    <Content Include="images\tour-list-5.jpg" />
+    <Content Include="images\tour-list-6.jpg" />
+    <Content Include="images\tour-offers.jpg" />
+    <Content Include="images\tour-slider-1.jpg" />
+    <Content Include="images\tour-slider-2.jpg" />
+    <Content Include="images\tour-testimonials.jpg" />
+    <Content Include="images\travel-insurance.jpg" />
+    <Content Include="images\trip-africa-1.jpg" />
+    <Content Include="images\trip-africa-2.jpg" />
+    <Content Include="images\trip-africa-3.jpg" />
+    <Content Include="images\trip-africa-4.jpg" />
+    <Content Include="images\trip-malaysia-1.jpg" />
+    <Content Include="images\trip-malaysia-2.jpg" />
+    <Content Include="images\trip-malaysia-3.jpg" />
+    <Content Include="images\trip-malaysia-4.jpg" />
+    <Content Include="images\user-profile.jpg" />
+    <Content Include="images\vehicle-1.jpg" />
+    <Content Include="images\vehicle-2.jpg" />
+    <Content Include="images\vehicle-3.jpg" />
+    <Content Include="images\video-banner.jpg" />
+    <Content Include="images\wishlist.jpg" />
+    <Content Include="index.html" />
+    <Content Include="ingreso.aspx" />
+    <Content Include="js\bootstrap-datepicker.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\custom-date-picker.js" />
+    <Content Include="js\custom-flex.js" />
+    <Content Include="js\custom-gallery.js" />
+    <Content Include="js\custom-navigation.js" />
+    <Content Include="js\custom-owl.js" />
+    <Content Include="js\custom-price-slider.js" />
+    <Content Include="js\custom-slick.js" />
+    <Content Include="js\custom-video.js" />
+    <Content Include="js\jquery-ui.min.js" />
+    <Content Include="js\jquery.colorpanel.js" />
+    <Content Include="js\jquery.flexslider.js" />
+    <Content Include="js\jquery.magnific-popup.min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\owl.carousel.min.js" />
+    <Content Include="js\slick.min.js" />
+    <Content Include="Logos\2D.png" />
+    <Content Include="Logos\8J.png" />
+    <Content Include="Logos\AA.png" />
+    <Content Include="Logos\AF.png" />
+    <Content Include="Logos\AM.png" />
+    <Content Include="Logos\AR.png" />
+    <Content Include="Logos\AT.png" />
+    <Content Include="Logos\AV.png" />
+    <Content Include="Logos\CM.png" />
+    <Content Include="Logos\encabezado_logo.png" />
+    <Content Include="Logos\G3.png" />
+    <Content Include="Logos\GP.png" />
+    <Content Include="Logos\HR.png" />
+    <Content Include="Logos\IB.png" />
+    <Content Include="Logos\LA.png" />
+    <Content Include="Logos\Lh.png" />
+    <Content Include="Logos\logo_starz.png" />
+    <Content Include="Logos\OB.png" />
+    <Content Include="Logos\UX.png" />
+    <Content Include="Logos\Z8.png" />
+    <Content Include="Logos\ZP.png" />
+    <Content Include="Scripts\js\chosen.jquery.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clases\Dominios.cs" />
+    <Compile Include="Clases\Usuarios.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="home.aspx.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="home.aspx.designer.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ingreso.aspx.cs">
+      <DependentUpon>ingreso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ingreso.aspx.designer.cs">
+      <DependentUpon>ingreso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.Master.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Principal.Master.designer.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\PlayfairDisplay-Black.ttf" />
+    <Content Include="fonts\PlayfairDisplay-BlackItalic.ttf" />
+    <Content Include="fonts\PlayfairDisplay-Bold.ttf" />
+    <Content Include="fonts\PlayfairDisplay-BoldItalic.ttf" />
+    <Content Include="fonts\PlayfairDisplay-Italic.ttf" />
+    <Content Include="fonts\PlayfairDisplay-Regular.ttf" />
+    <Content Include="images\Thumbs.db" />
+    <None Include="packages.config" />
+    <Content Include="PSDs\01_startravel_home_page.psd" />
+    <Content Include="PSDs\02_startravel_home_page.psd" />
+    <Content Include="PSDs\03_startravel_home_page.psd" />
+    <Content Include="PSDs\04_startravel_home_page.psd" />
+    <Content Include="PSDs\05_startravel_home_page.psd" />
+    <Content Include="PSDs\06_startravel_home-page.psd" />
+    <Content Include="PSDs\07_startravel_flight-listing_page.psd" />
+    <Content Include="PSDs\08_startravel_flights_grid_view.psd" />
+    <Content Include="PSDs\09_startravel_flight-detail_page.psd" />
+    <Content Include="PSDs\10_startravel_hotel_listing_page.psd" />
+    <Content Include="PSDs\11_startravel_hotel grid_view.psd" />
+    <Content Include="PSDs\12_startravel_hotel_detail_page.psd" />
+    <Content Include="PSDs\13_startravel_tour listing_page.psd" />
+    <Content Include="PSDs\14_startravel_tour_grid_view.psd" />
+    <Content Include="PSDs\15_startravel_tour_detail_page.psd" />
+    <Content Include="PSDs\16_startravel_cruise-listing_page.psd" />
+    <Content Include="PSDs\17_startravel_cruise_grid_view_page.psd" />
+    <Content Include="PSDs\18_startravel_cruise_detail_page.psd" />
+    <Content Include="PSDs\19_startravel_car_listing_page.psd" />
+    <Content Include="PSDs\20_startravel_car_grid_view_page.psd" />
+    <Content Include="PSDs\21_startravel_car_detail_page.psd" />
+    <Content Include="PSDs\22_startravel_about_us_Page.psd" />
+    <Content Include="PSDs\23_startravel_404_page.psd" />
+    <Content Include="PSDs\24_startravel_blog_Listing_page.psd" />
+    <Content Include="PSDs\25_startravel_blog_detail_page.psd" />
+    <Content Include="PSDs\26_startravel_comming_soon_page.psd" />
+    <Content Include="PSDs\27_startravel_registration_page.psd" />
+    <Content Include="PSDs\28_startravel_login_page.psd" />
+    <Content Include="PSDs\29_startravel_forgot_password_page.psd" />
+    <Content Include="PSDs\30_startravel_contact_us_page.psd" />
+    <Content Include="PSDs\Documentation.pdf" />
+    <Content Include="Principal.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>41241</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44355/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
