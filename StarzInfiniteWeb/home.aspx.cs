@@ -19,7 +19,12 @@ namespace StarzInfiniteWeb
 
         protected void ddlOrigen_DataBound(object sender, EventArgs e)
         {
+            ddlOrigen.Items.Insert(0, "ORIGEN");
+        }
 
+        protected void ddlDestino_DataBound(object sender, EventArgs e)
+        {
+            ddlDestino.Items.Insert(0, "DESTINO");
         }
     }
 }

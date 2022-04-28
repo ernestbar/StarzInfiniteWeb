@@ -83,6 +83,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="chosen-sprite%402x.png" />
+    <Content Include="chosen-sprite.png" />
+    <Content Include="chosen.css" />
+    <Content Include="chosen.jquery.js" />
+    <Content Include="chosen.jquery.min.js" />
+    <Content Include="chosen.min.css" />
+    <Content Include="chosen.proto.js" />
+    <Content Include="chosen.proto.min.js" />
     <Content Include="css\atomic.css" />
     <Content Include="css\blue-violet.css" />
     <Content Include="css\bootstrap.min.css" />
@@ -110,6 +118,16 @@
     <Content Include="css\slick.css" />
     <Content Include="css\style.css" />
     <Content Include="Default.aspx" />
+    <Content Include="docsupport\chosen.png" />
+    <Content Include="docsupport\init.js" />
+    <Content Include="docsupport\init.proto.js" />
+    <Content Include="docsupport\jquery-1.12.4.min.js" />
+    <Content Include="docsupport\jquery-3.2.1.min.js" />
+    <Content Include="docsupport\oss-credit.png" />
+    <Content Include="docsupport\prism.css" />
+    <Content Include="docsupport\prism.js" />
+    <Content Include="docsupport\prototype-1.7.0.0.js" />
+    <Content Include="docsupport\style.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="home.aspx" />
@@ -497,6 +515,7 @@
     <Content Include="fonts\PlayfairDisplay-Italic.ttf" />
     <Content Include="fonts\PlayfairDisplay-Regular.ttf" />
     <Content Include="images\Thumbs.db" />
+    <Content Include="composer.json" />
     <None Include="packages.config" />
     <Content Include="PSDs\01_startravel_home_page.psd" />
     <Content Include="PSDs\02_startravel_home_page.psd" />
