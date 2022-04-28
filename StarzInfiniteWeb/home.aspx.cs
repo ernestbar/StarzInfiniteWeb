@@ -26,5 +26,15 @@ namespace StarzInfiniteWeb
         {
             ddlDestino.Items.Insert(0, "DESTINO");
         }
+
+        protected void ddlLineArea_DataBound(object sender, EventArgs e)
+        {
+            ddlLineArea.Items.Insert(0, "TODAS");
+        }
+
+        protected void btnVuelos_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
