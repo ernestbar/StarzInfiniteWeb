@@ -60,7 +60,7 @@
                         <div class="tab-content">
                             <div id="flights" class="tab-pane in active">
                                         <div class="row">
-                                            <div class="col-12 col-md-12">
+                                        <div class="col-12 col-md-12">
                                         <div class="row">
                                         <div class="col-12 col-md-6">
                                             <div class="form-group left-icon">
