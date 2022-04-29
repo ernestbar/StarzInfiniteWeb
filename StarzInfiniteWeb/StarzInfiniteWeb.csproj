@@ -83,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="booking.html" />
     <Content Include="chosen-sprite%402x.png" />
     <Content Include="chosen-sprite.png" />
     <Content Include="chosen.css" />
@@ -464,10 +465,14 @@
     <Content Include="Logos\Z8.png" />
     <Content Include="Logos\ZP.png" />
     <Content Include="Scripts\js\chosen.jquery.min.js" />
+    <Content Include="vuelos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\DBApi.cs" />
     <Compile Include="Clases\Dominios.cs" />
+    <Compile Include="Clases\DsiponabilidadIda.cs" />
+    <Compile Include="Clases\LocalBD.cs" />
     <Compile Include="Clases\Usuarios.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -498,6 +503,13 @@
       <DependentUpon>Principal.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="vuelos.aspx.cs">
+      <DependentUpon>vuelos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vuelos.aspx.designer.cs">
+      <DependentUpon>vuelos.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\fontawesome-webfont.eot" />

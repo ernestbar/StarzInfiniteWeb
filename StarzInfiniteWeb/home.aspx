@@ -21,8 +21,8 @@
                     <ul class="slides"><li class="item-1" style="background:			linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(images/homepage-slider-1.jpg) 50% 0%;	background-size:cover;	height:100%;">
                         <div class=" meta">
                         <div class="container">
-                            <h2>Discover</h2><h1>Australia</h1>
-                            <a href="#" class="btn btn-default">View More</a>
+                            
+                            
                         </div><!-- end container -->
                         </div><!-- end meta -->
                          </li><!-- end item-1 -->
@@ -30,9 +30,7 @@
             
                         <div class=" meta">
                         <div class="container">
-                            <h2>Discover</h2>
-                            <h1>Australia</h1>
-                            <a href="#" class="btn btn-default">View More</a>
+                            
                             </div><!-- end container -->
                             </div><!-- end meta -->
                         </li><!-- end item-2 -->
@@ -71,7 +69,7 @@
                                              </div><!-- end columns -->
                                             <div class="col-12 col-md-6">
                                             <div class="form-group left-icon">
-                                                     <input id="cbSoloIda2" class="checkbox"  onclick="TipoVuelo()" type="checkbox" />Ida y vuelta
+                                                     <input id="cbSoloIda2" class="checkbox" checked="checked"  onclick="TipoVuelo2()" type="checkbox" />Ida y vuelta
                                                 </div>
                                                 </div><!-- end columns --><asp:HiddenField ID="HiddenField1" runat="server" />
                                            
@@ -92,7 +90,7 @@
                                                 <asp:DropDownList ID="ddlDestino" class="chosen-select" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlDestino_DataBound" DataSourceID="odsRutaInd" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
 					                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddlDestino" InitialValue="DESTINO"  Font-Bold="True"></asp:RequiredFieldValidator>
                                                 </div>
-                                                </div><!-- end columns --><asp:HiddenField ID="hfTipoRuta" runat="server" />
+                                                </div><!-- end columns --><asp:HiddenField ID="hfTipoRuta" Value="RT" runat="server" />
                                            
                                             </div><!-- end row -->
                                             </div><!-- end columns -->
@@ -261,14 +259,14 @@
                                                
                                             </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 search-btn">
-                                        <asp:Button ID="btnVuelos" class="btn btn-danger" OnClientClick="recuperarFechaSalida()" OnClick="btnVuelos_Click"  runat="server" Text="Buscar vuelos" />
+                                        <asp:Button ID="btnVuelos" class="btn button-blue" OnClientClick="recuperarFechaSalida()" OnClick="btnVuelos_Click"  runat="server" Text="Buscar vuelos" />
                                             </div><!-- end columns --> 
 
                                         </div><!-- end row -->
                                             <div class="row">
                                                  <div class="col-12 col-md-12">
-                                                      Tipo Venta
-                                                <div class="col-12 col-md-12">
+                                                  <strong>Tipo Venta</strong>
+                                                    <div class="col-12 col-md-12">
                                                     <asp:RadioButtonList ID="rblTipoVenta" RepeatDirection="Horizontal" runat="server">
 					                                                        <asp:ListItem Text="NORMAL" Value="0" Selected="True"></asp:ListItem>
 					                                                        <asp:ListItem Text="CORPORATIVO" Value="1"></asp:ListItem>
@@ -286,7 +284,7 @@
                         </div>
                     </div>
                     </div>
-
+                    </div>
                      </section>
         </asp:View>
         <asp:View ID="View2" runat="server">
@@ -444,15 +442,39 @@
                 if (document.getElementById("cbSoloIda").checked == true) {
                     document.getElementById('<%=hfTipoRuta.ClientID%>').value = "OW";
                     document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'hidden';
+                    var cbIV = document.getElementById("cbSoloIda2");
+                    cbIV.checked = false;
                     //window.alert("sirve");
                 }
-                else
+                <%--else
                 {
                     document.getElementById('<%=hfTipoRuta.ClientID%>').valuee ="RT";
                     document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'visible';
-                }
+                    var cbIV = document.getElementById("cbSoloIda2");
+                    cbIV.checked = true;
+                }--%>
                 
-             }
+            }
+
+            function TipoVuelo2() {
+
+
+                if (document.getElementById("cbSoloIda2").checked == true) {
+                    document.getElementById('<%=hfTipoRuta.ClientID%>').value = "RT";
+                    document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'visible';
+                    var cbIV = document.getElementById("cbSoloIda");
+                    cbIV.checked = false;
+                    //window.alert("sirve");
+                }
+                <%--else
+                {
+                    document.getElementById('<%=hfTipoRuta.ClientID%>').valuee ="OW";
+                    document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'hidden';
+                    var cbIV = document.getElementById("cbSoloIda2");
+                    cbIV.checked = true;
+                }--%>
+
+            }
         </script>
     <script type="text/javascript">
 
