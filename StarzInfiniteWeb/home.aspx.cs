@@ -14,6 +14,8 @@ namespace StarzInfiniteWeb
             if (!Page.IsPostBack)
             {
                 MultiView1.ActiveViewIndex = 0;
+                
+
             }
         }
 

@@ -209,7 +209,7 @@
                             
                             <div class="list-block main-block t-list-block">
                                 <div class="list-content">
-                                       <ul class="list-unstyled list-inline offer-price-1">
+                                       <ul class="list-unstyled list-inline offer-price-1" style="background-color:white">
                                            <li>
                                               <asp:Label ID="ldlOrigen" runat="server" ForeColor="Black"  Font-Bold="true" Text='<%# Eval("ORIGEN") %>' ></asp:Label>-
                                                <asp:Label ID="lblDestino"  Font-Bold="true" ForeColor="Black" runat="server" Text='<%# Eval("DESTINO") %>'></asp:Label>
@@ -238,7 +238,7 @@
 			                                        <div class="card" style="font-size:smaller;">
                                                         <ul class="list-unstyled list-inline offer-price-1" style="background-color:lightgray">
                                                                 <li>
-                                                                    <input id="cbSoloIda" class="checkbox"  onclick="TipoVuelo()" type="checkbox" />
+                                                                    <input id="cbSoloIda" class="checkbox" type="checkbox" />
                                                                 </li>
                                                             <li>
                                                                 Seleccionar ida

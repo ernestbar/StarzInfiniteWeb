@@ -18,11 +18,11 @@ namespace StarzInfiniteWeb
         {
             if (!Page.IsPostBack)
             {
-                //////////////////////////TRAE LOS VUELOS DISPONIBLES OW////////////////////////////////
-                //   0         1        2      3          4         5       6    7       8      9    10     11     12       13       14          15        16
+                //   0         1        2      3          4         5       6    7       8      9    10     11     12       13       14          15         16
                 //TIPO RUTA|ORIGEN|DESSTINO|FECHAIDA|FECHAVUELTA|ADULTOS|NINOS|INFANTE|SENIOR|LINEA|TURNO|CABINA|EQUIPAJE|DIRECTO|NOMBORIGEN|NOMBDESTINO|TIPOVENTA
                 string[] datos = Session["DATOSINI"].ToString().Split('|');
 
+                
                 //lblTipoRuta.Text = hfTipoRuta.Value;
                 //if (rblTipoVenta.SelectedValue == "1")
                 //    panel_rango.Visible = false;
@@ -31,6 +31,14 @@ namespace StarzInfiniteWeb
                 //    panel_rango.Visible = true;
                 //}
                 //panel_seccion_vuelos.Visible = true;
+
+                ddlDestino.SelectedValue = datos[2];
+                ddlOrigen.SelectedValue = datos[1];
+                txtAdultos.Text = datos[5];
+                txtNinos.Text = datos[6];
+                txtInfante.Text = datos[7];
+                txtSenior.Text = datos[8];
+
                 lblDtSegmentos.Text = "";
                 lblDtDatosRTAll.Text = "";
                 lblDtOpciones.Text = "";
