@@ -238,7 +238,7 @@
 			                                        <div class="card" style="font-size:smaller;">
                                                         <ul class="list-unstyled list-inline offer-price-1" style="background-color:lightgray">
                                                                 <li>
-                                                                    <input id="cbSoloIda" class="checkbox" type="checkbox" />
+                                                                    <input id="cbElijeIda" class="checkbox" type="checkbox" OnClick="checkAll(this)" />
                                                                 </li>
                                                             <li>
                                                                 Seleccionar ida
@@ -781,6 +781,34 @@
             //window.print();
 
             document.body.innerHTML = originalContents;
+        }
+    </script>
+    <script type="text/javascript">
+        function checkAll(cb) {
+
+            var elemArray = document.getElementsByClassName('Repeater1');
+            for (var i = 0; i < elemArray.length; i++) {
+                window.alert(cb);
+                var elem = elemArray[i].value;
+            }
+
+
+<%--            var ctrls = document.getElementsByName('<%=Repeater1.NamingContainer %>');
+            for (var i = 0; i < ctrls.length; i++) {
+                window.alert(cb);
+                var cbox = ctrls[i];
+                if (cbox.type == "Repeater") {
+                    var ctrls2 = document.getElementsByTagName('Repeater2');
+                   
+                    for (var x = 0; x < ctrls2.length; x++) {
+                        var cbox2 = ctrls[x];
+                        if (cbox2.type == "checkbox") {
+                            cbox2.checked = cb.checked;
+                        }
+                    }
+                }
+                
+            }--%>
         }
     </script>
 </asp:Content>
