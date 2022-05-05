@@ -238,11 +238,10 @@
 			                                        <div class="card" style="font-size:smaller;">
                                                         <ul class="list-unstyled list-inline offer-price-1" style="background-color:lightgray">
                                                                 <li>
-                                                                    <input id="cbElijeIda" class="checkbox" type="checkbox" OnClick="checkAll(this)" />
+                                                                    <asp:CheckBox ID="cbElegirIda" OnClientClick="" Text="Elegir ida" runat="server" />
+                                                                    <%--<input id="cbElijeIda" class="checkbox" type="checkbox" OnClick="checkAll(this)" />--%>
                                                                 </li>
-                                                            <li>
-                                                                Seleccionar ida
-                                                            </li>
+                                                           
                                                             </ul>
 				                                        <div class="card-header text-black pointer-cursor" style="background-color:lightgoldenrodyellow" data-toggle="collapse" data-target='<%# "#collapseOneIda" + Eval("id_datos") + Eval("id_opcion")+ Eval("AEROLINEA").ToString().Replace(" ","") %>'>
                                                             
@@ -370,6 +369,13 @@
                                                     <div id="accordionRT" class="card-accordion">
 			                                        <!-- begin card -->
 			                                        <div class="card" style="font-size:smaller;">
+                                                         <ul class="list-unstyled list-inline offer-price-1" style="background-color:lightgray">
+                                                                <li>
+                                                                    <asp:CheckBox ID="cbElegirVuelta" OnClientClick="" Text="Elegir Retorno" runat="server" />
+                                                                    <%--<input id="cbElijeIda" class="checkbox" type="checkbox" OnClick="checkAll(this)" />--%>
+                                                                </li>
+                                                           
+                                                            </ul>
 				                                        <div class="card-header text-black pointer-cursor" style="background-color:#309fd9" data-toggle="collapse" data-target='<%# "#collapseOneVuelta" + Eval("id_datos") + Eval("id_opcion")+  Eval("AEROLINEA").ToString().Replace(" ","") %>'>
                                                             <div class="row">
                                                         <div class="col">
@@ -380,7 +386,6 @@
                                                     </div>
                                                            
                                                      <ul class="list-unstyled list-inline offer-price-1">
-                                                          <h3>VUELO DE VUELTA</h3> 
                                                         <li>
                                                             <asp:Label ID="lblOrigenI" Font-Bold="true" runat="server" Text=""></asp:Label>
                                                         </li>
@@ -809,6 +814,31 @@
                 }
                 
             }--%>
+        }
+        function ChkSelected() {
+            var theone = '';
+            var count = 0;
+
+            var Repeater1 = document.getElementById('<%=Repeater1.ClientID %>');
+            var Repeater2 = Repeater1.getElementsByTagName('Repeater2');
+            var ChkBx2s = Repeater2.getElementsByTagName('cbElegirIda');
+            var i=0;
+            for (i=0; i < ChkBx2s.length; i++){
+                if(ChkBx2s[i].type == 'checkbox' && ChkBx2s[i].id.indexOf("ChkBx2")!=-1 && ChkBx2s[i].checked==true){
+                    count = (count + 1);
+                    var lbl = ChkBx2s[i].parentElement.getElementsByTagName('label');
+                    theone += "," + lbl[0].innerHTML + ';';
+                    //========Or=============
+                    //theone += "," +  ChkBx2s[i].parentElement.children[1].innerHTML + ";" ;
+                    //========Or=============
+                    //theone += "," +  ChkBx2s[i].nextSibling.innerHTML + ";" ; 
+                }
+            }
+            if (count == 0){
+                theone = '';
+            }
+            window.alert(theone + " Count=" + count);
+           
         }
     </script>
 </asp:Content>

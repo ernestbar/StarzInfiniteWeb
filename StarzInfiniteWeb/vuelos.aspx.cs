@@ -131,7 +131,7 @@ namespace StarzInfiniteWeb
                         tipo_busqueda = lblTipoRuta.Text,
                         fechaFlexible = fecha_flex,
                         vuelos_directos = vuelos_directos,
-                        vuelos_incluyeequipaje = vuelos_incluyenequipaje,
+                        vuelos_incluyenequipaje = vuelos_incluyenequipaje,
                         tipo_cabina = cabina,
                         aerolinea = linea_aerea,
                         hora_salida = turno,
@@ -453,6 +453,7 @@ namespace StarzInfiniteWeb
                 {
                     Label id = (Label)e.Item.FindControl("lblIdDato");
                     Label lblAero = (Label)e.Item.FindControl("lblAreolineaNomb");
+                   
                     //Button elegir = (Button)e.Item.FindControl("btnElegir");
                     if (id != null)
                     {
@@ -536,6 +537,7 @@ namespace StarzInfiniteWeb
                 e.Item.ItemType == ListItemType.AlternatingItem)
                 {
                     string aux = "";
+                    CheckBox cbIda = (CheckBox)e.Item.FindControl("cbElegirIda");
                     Label id = (Label)e.Item.FindControl("lblIdopcion");
                     Label id2 = (Label)e.Item.FindControl("lblIdDatos");
                     //Label resumen = (Label)e.Item.FindControl("lblResumenCab");
@@ -717,6 +719,7 @@ namespace StarzInfiniteWeb
                             escalaslbl.Text = " - Nro Escalas: " + (escalas - 1).ToString();
                             elegir.ToolTip = aux;
                             elegir.CommandArgument = aux;
+                            cbIda.ToolTip = aux;
                             aux = "";
                         }
 
@@ -817,7 +820,7 @@ namespace StarzInfiniteWeb
                     string aux = "";
                     Label id = (Label)e.Item.FindControl("lblIdopcion");
                     Label id2 = (Label)e.Item.FindControl("lblIdDatos");
-                    //Label resumen = (Label)e.Item.FindControl("lblResumenCab");
+                    CheckBox cbVuelta = (CheckBox)e.Item.FindControl("cbElegirVuelta");
                     Label escalaslbl = (Label)e.Item.FindControl("lblEscalas");
                     Button elegir = (Button)e.Item.FindControl("btnElegirRT");
                     if (id != null)
@@ -980,7 +983,7 @@ namespace StarzInfiniteWeb
                             //resumen.Text = "Origen: " + origen_ida + " Nro.Vuelo: " + vuelo_salida + " Clase: " + clase_salida + " Fecha: " + fecha_salida + " Hora: " + hora_salida +
                             //    "----------->" + "Destino: " + destino_ida + " Nro.Vuelo: " + vuelo_llegada + " Clase: " + clase_llegada + " Fecha: " + fecha_llegada + " Hora: " + hora_llegada;
                             escalaslbl.Text = " - Nro Escalas: " + (escalas - 1).ToString();
-                            elegir.ToolTip = aux;
+                            cbVuelta.ToolTip = aux;
                             elegir.CommandArgument = aux;
                             elegir.Enabled = false;
                             aux = "";
@@ -1024,7 +1027,7 @@ namespace StarzInfiniteWeb
             public string tipo_busqueda { get; set; }
             public string fechaFlexible { get; set; }
             public string vuelos_directos { get; set; }
-            public string vuelos_incluyeequipaje { get; set; }
+            public string vuelos_incluyenequipaje { get; set; }
             public string tipo_cabina { get; set; }
             public string aerolinea { get; set; }
             public string hora_salida { get; set; }
