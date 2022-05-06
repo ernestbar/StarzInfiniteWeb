@@ -223,7 +223,8 @@
                                                 <asp:Image ID="Image3" ImageUrl='<%# "~/Logos/" + Eval("marketCompany") +".png" %>' runat="server" />
                                            </li>
                                            <li>
-                                               <a href="tour-detail-left-sidebar.html" class="btn btn-orange btn-lg">COMPRAR</a>
+                                               <asp:Button ID="btnComprar" class="btn btn-orange btn-lg" runat="server" Text="COMPRAR" />
+                                               <%--<a href="tour-detail-left-sidebar.html" class="btn btn-orange btn-lg">COMPRAR</a>--%>
                                            </li>
                                        </ul>
                                    
