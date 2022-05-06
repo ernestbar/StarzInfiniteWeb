@@ -522,6 +522,8 @@
     <Content Include="Logos\UX.png" />
     <Content Include="Logos\Z8.png" />
     <Content Include="Logos\ZP.png" />
+    <Content Include="pagar_reserva.aspx" />
+    <Content Include="reserva_admin.aspx" />
     <Content Include="Scripts\js\chosen.jquery.min.js" />
     <Content Include="vuelos.aspx" />
     <Content Include="Web.config" />
@@ -531,6 +533,9 @@
     <Compile Include="Clases\Dominios.cs" />
     <Compile Include="Clases\DsiponabilidadIda.cs" />
     <Compile Include="Clases\LocalBD.cs" />
+    <Compile Include="Clases\precio_sin_pnr.cs" />
+    <Compile Include="Clases\Reservas.cs" />
+    <Compile Include="Clases\Reservas_kiu.cs" />
     <Compile Include="Clases\Usuarios.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -553,6 +558,13 @@
     <Compile Include="ingreso.aspx.designer.cs">
       <DependentUpon>ingreso.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pagar_reserva.aspx.cs">
+      <DependentUpon>pagar_reserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pagar_reserva.aspx.designer.cs">
+      <DependentUpon>pagar_reserva.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -561,6 +573,13 @@
       <DependentUpon>Principal.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reserva_admin.aspx.cs">
+      <DependentUpon>reserva_admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reserva_admin.aspx.designer.cs">
+      <DependentUpon>reserva_admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="vuelos.aspx.cs">
       <DependentUpon>vuelos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -626,6 +645,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logs\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

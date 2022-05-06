@@ -604,6 +604,40 @@ namespace StarzInfiniteWeb
 
         }
 
+        public static DataTable PR_OBTIENE_TICKETS_WEB_FILTRO(string pv_usuario, string pv_pnr, string pv_cliente, string pd_fdesde, string pd_fhasta)
+        {
+            try
+            {
+                DbCommand cmd = db1.GetStoredProcCommand("PR_OBTIENE_TICKETS_WEB_FILTRO");
+                db1.AddInParameter(cmd, "pv_usuario", DbType.String, pv_usuario);
+                if (String.IsNullOrEmpty(pv_pnr))
+                    db1.AddInParameter(cmd, "pv_pnr", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_pnr", DbType.String, pv_pnr);
+                if (String.IsNullOrEmpty(pv_cliente))
+                    db1.AddInParameter(cmd, "pv_cliente", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_cliente", DbType.String, pv_cliente);
+                if (String.IsNullOrEmpty(pd_fdesde))
+                    db1.AddInParameter(cmd, "pd_fdesde", DbType.DateTime, null);
+                else
+                    db1.AddInParameter(cmd, "pd_fdesde", DbType.DateTime, DateTime.Parse(pd_fdesde));
+                if (String.IsNullOrEmpty(pd_fhasta))
+                    db1.AddInParameter(cmd, "pd_fhasta", DbType.DateTime, null);
+                else
+                    db1.AddInParameter(cmd, "pd_fhasta", DbType.DateTime,DateTime.Parse(pd_fhasta));
+                cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
+                return db1.ExecuteDataSet(cmd).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                DataTable dt = new DataTable();
+                return dt;
+            }
+
+        }
+
         public static DataTable PR_OBTIENE_REPORTE_GANANCIAS(string pv_usuario)
         {
             try

@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="docsupport/prism.css">
     <link rel="stylesheet" href="chosen.css">
 
+    
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -90,13 +92,13 @@
         <div class="collapse navbar-collapse" id="myNavbar1">
         <ul class="nav navbar-nav navbar-right navbar-search-link">
             <li class="dropdown active">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home<span></span></a>
+                <a href="home.aspx" class="dropdown-toggle" data-toggle="dropdown">Home<span></span></a>
             </li>
              <li class="dropdown active">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Vuelos<span></span></a>
+                <a href="reserva_admin.aspx">Reservas<span></span></a>
             </li>
             <li class="dropdown active">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hoteles<span></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<span></span></a>
             </li>
             <li class="dropdown active">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Autos<span></span></a>
@@ -168,6 +170,8 @@
     <script src="chosen.jquery.js" type="text/javascript"></script>
     <script src="docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
     <script src="docsupport/init.js" type="text/javascript" charset="utf-8"></script>
+
+   
 </body>
     
 </html>
