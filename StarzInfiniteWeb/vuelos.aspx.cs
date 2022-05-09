@@ -39,6 +39,11 @@ namespace StarzInfiniteWeb
                 txtInfante.Text = datos[7];
                 txtSenior.Text = datos[8];
 
+                lblNroAdultos.Text = txtAdultos.Text;
+                lblNroNinos.Text = txtNinos.Text;
+                lblNroInfante.Text = txtInfante.Text;
+                lblNroSeniors.Text = txtSenior.Text;
+
                 lblDtSegmentos.Text = "";
                 lblDtDatosRTAll.Text = "";
                 lblDtOpciones.Text = "";
@@ -1520,7 +1525,367 @@ namespace StarzInfiniteWeb
 
         protected void btnComprar_Click(object sender, EventArgs e)
         {
-            MultiView1.ActiveViewIndex = 1;
+            //MultiView1.ActiveViewIndex = 1;
+
+
+            lblNroAdultos.Text=txtAdultos.Text;
+            lblNroNinos.Text = txtNinos.Text;
+            lblNroInfante.Text = txtInfante.Text;
+            lblNroSeniors.Text = txtSenior.Text;
+            lblAviso.Text = "";
+            int checkIda = 0;
+            string toolTipIda = "";
+            int checkVuelta = 0;
+            string toolTipVuelta = "";
+
+            foreach (RepeaterItem ri1 in Repeater1.Items)
+            {
+                Repeater rep2 = (Repeater)ri1.FindControl("Repeater2");
+                foreach (RepeaterItem ri2 in rep2.Items)
+                {
+                    CheckBox cbIda = (CheckBox)ri2.FindControl("cbElegirIda");
+                    if (cbIda.Checked)
+                    {
+                        toolTipIda = cbIda.ToolTip;
+                        checkIda += 1;
+                    }
+                }
+            }
+
+            if (lblTipoRuta.Text == "RT")
+            {
+                foreach (RepeaterItem ri1 in Repeater1.Items)
+                {
+                    Repeater rep5 = (Repeater)ri1.FindControl("Repeater5");
+                    foreach (RepeaterItem ri5 in rep5.Items)
+                    {
+                        CheckBox cbVuelta = (CheckBox)ri5.FindControl("cbElegirVuelta");
+                        if (cbVuelta.Checked)
+                        {
+                            toolTipVuelta = cbVuelta.ToolTip;
+                            checkVuelta += 1;
+                        }
+                    }
+                }
+            }
+
+            if (lblTipoRuta.Text == "OW")
+            {
+                if (checkIda > 0 && checkVuelta > 0)
+                {
+                    lblItiVuelta.Text = "";
+                    lblItiIda.Text = "";
+                    Button obj = (Button)sender;
+                    string[] datos1 = toolTipIda.Split('&');
+                    lblItiIda.Text = toolTipIda;
+
+
+
+                    //aux + "&" +
+                    //0 dr["boardAirport"].ToString() + "|" +
+                    //1 dr["offAirport"].ToString() + "|" +
+                    //2 dr["depTime"].ToString() + "|" +
+                    //3 dr["depDate"].ToString()  + "|" +
+                    //4 dr["bookClass"].ToString() + "|" +
+                    //5 dr["operCompany"].ToString() + "|" +
+                    //6 dr["flightNumber"].ToString() + "|" +
+                    //7 "ida"     + "|" +
+                    //8 dr["leg"].ToString() + "|" +
+                    //9 dr["ld"].ToString() + "|" +
+                    //10 dr["gds1"].ToString() + "|" +
+                    //11 dr["moneda"].ToString() + "|" +
+                    //12 dr["precio"].ToString()   + "|" +
+                    //13 dr["id_opcion"].ToString() + "|" +
+                    //14 dr["id_datos"].ToString() + "|" +
+                    //15 dr["duracion"].ToString() + "|" +
+                    //16 dr["hora_llegada"].ToString() + "|" +
+                    //17 dr["ArrivalDate"].ToString() + "|" +
+                    //18 dr["lugres_disponibles"].ToString();
+                    DataTable dt_ida = new DataTable();
+                    dt_ida.Columns.Add("boardAirport", typeof(string));
+                    dt_ida.Columns.Add("offAirport", typeof(string));
+                    dt_ida.Columns.Add("depTime", typeof(string));
+                    dt_ida.Columns.Add("depDate", typeof(string));
+                    dt_ida.Columns.Add("bookClass", typeof(string));
+                    dt_ida.Columns.Add("operCompany", typeof(string));
+                    dt_ida.Columns.Add("flightNumber", typeof(string));
+                    dt_ida.Columns.Add("ida", typeof(string));
+                    dt_ida.Columns.Add("leg", typeof(string));
+                    dt_ida.Columns.Add("ld", typeof(string));
+                    dt_ida.Columns.Add("gds1", typeof(string));
+                    dt_ida.Columns.Add("moneda", typeof(string));
+                    dt_ida.Columns.Add("precio", typeof(string));
+                    dt_ida.Columns.Add("id_opcion", typeof(string));
+                    dt_ida.Columns.Add("id_datos", typeof(string));
+                    dt_ida.Columns.Add("duracion", typeof(string));
+                    dt_ida.Columns.Add("hora_llegada", typeof(string));
+                    dt_ida.Columns.Add("ArrivalDate", typeof(string));
+                    dt_ida.Columns.Add("lugres_disponibles", typeof(string));
+                    string[] datos = datos1[1].Split('|');
+
+                    int ida = 0;
+                    for (ida = 1; ida < datos1.Length; ida++)
+                    {
+
+                        string[] datosIda = datos1[ida].Split('|');
+                        lblGds.Text = datosIda[10];
+                        DataTable DT_dom = new DataTable();
+                        DT_dom = Dominios.Lista("AEROLINEA");
+                        if (DT_dom.Rows.Count > 0)
+                        {
+                            foreach (DataRow dr in DT_dom.Rows)
+                            {
+                                if (dr["codigo"].ToString() == datosIda[5])
+                                    lblAreolineaNombResIda.Text = dr["descripcion"].ToString() + " (" + datos[5] + ")";
+                            }
+                        }
+                        //if (ida == 1)
+                        //{
+                        //    lblOrigenIResIda.Text = datosIda[0];
+                        //    lblNroVueloIResIda.Text = datosIda[6];
+                        //    lblClaseIResIda.Text = datosIda[4];
+                        //    lblFechaSalidaIResIda.Text = datosIda[3];
+                        //    lblHoraSalidaIResIda.Text = datosIda[2];
+                        //}
+                        //lblDestinoVResIda.Text = datosIda[1];
+                        //lblNroVueloVResIda.Text = datosIda[6];
+                        //lblClaseVResIda.Text = datosIda[4];
+                        //lblFechaLlegadaVResIda.Text = datosIda[3];
+                        //lblHoraLlegadaVResIda.Text = datosIda[2];
+                        dt_ida.Rows.Add(new string[18] { datosIda[0], datosIda[1], datosIda[2], datosIda[3], datosIda[4],
+                    datosIda[5], datosIda[6], datosIda[7], datosIda[8], datosIda[9],datosIda[10],datosIda[11],
+                    datosIda[12],datosIda[13],datosIda[14],datosIda[15],datosIda[16],datosIda[17] });//lblFechaSalidaTab.Text
+                    }
+
+                    Repeater9.DataSource = dt_ida;
+                    Repeater9.DataBind();
+
+
+                    string cadena = "";
+                    lblDatosVueloIda.Text = datos[0] + "|" + datos[1] + "|" + datos[2] + "|" + datos[3] + "|" + datos[4] + "|" + datos[5] + "|" + datos[6] + "|" + datos[7] + "|" + datos[8] + "|" + datos[9] + "|" + datos[10] + "|" + datos[11] + "|" + datos[12] + "|" + datos[13] + "|" + datos[14];
+                    cadena = datos[0] + "|" + datos[1] + "|" + datos[2] + "|" + datos[3] + "|" + datos[4] + "|" + datos[5] + "|" + datos[6] + "|" + datos[7] + "|" + datos[8] + "|" + datos[9] + "|" + datos[10] + "|" + datos[11] + "|" + datos[12] + "|" + datos[12] + "|" + datos[13] + "|" + datos[14];
+                    //lblOrgDestIdaRes.Text = lblOrigen.Text + " - " + lblDestino.Text;
+                    //lblHorarioIdaRes.Text = datos[2] + " - " + datos[3];
+                    //lblVueloIdaRes.Text = "Vuelo " + datos[6] + " - " + datos[4] + " - " + datos[5];
+                    lblMonedaIda.Text = datos[11];
+
+
+                    lblTotalImpuestosRes.Text = "0";
+                    lblTarifaBaseRes.Text = "0";
+                    panel_ida.Visible = true;
+                    panel_total_res.Visible = true;
+                    panel_ida.Visible = true;
+                    panel_total_res.Visible = true;
+
+                    GenerarGanancias(cadena);
+                    panel_continuar.Visible = true;
+                    btnContinuar.Text = "Continuar";
+
+                    MultiView1.ActiveViewIndex = 1;
+                }
+                else
+                {
+                    lblAviso.Text = "Debe seleccionar una ida y una vuelta";
+                }
+            }
+            else
+            {
+                if (checkIda > 0)
+                {
+                    lblItiVuelta.Text = "";
+                    lblItiIda.Text = "";
+                    Button obj = (Button)sender;
+                    string[] datos1 = toolTipIda.Split('&');
+                    lblItiIda.Text = toolTipIda;
+
+
+
+                    //aux + "&" +
+                    //0 dr["boardAirport"].ToString() + "|" +
+                    //1 dr["offAirport"].ToString() + "|" +
+                    //2 dr["depTime"].ToString() + "|" +
+                    //3 dr["depDate"].ToString()  + "|" +
+                    //4 dr["bookClass"].ToString() + "|" +
+                    //5 dr["operCompany"].ToString() + "|" +
+                    //6 dr["flightNumber"].ToString() + "|" +
+                    //7 "ida"     + "|" +
+                    //8 dr["leg"].ToString() + "|" +
+                    //9 dr["ld"].ToString() + "|" +
+                    //10 dr["gds1"].ToString() + "|" +
+                    //11 dr["moneda"].ToString() + "|" +
+                    //12 dr["precio"].ToString()   + "|" +
+                    //13 dr["id_opcion"].ToString() + "|" +
+                    //14 dr["id_datos"].ToString() + "|" +
+                    //15 dr["duracion"].ToString() + "|" +
+                    //16 dr["hora_llegada"].ToString() + "|" +
+                    //17 dr["ArrivalDate"].ToString() + "|" +
+                    //18 dr["lugres_disponibles"].ToString();
+                    DataTable dt_ida = new DataTable();
+                    dt_ida.Columns.Add("boardAirport", typeof(string));
+                    dt_ida.Columns.Add("offAirport", typeof(string));
+                    dt_ida.Columns.Add("depTime", typeof(string));
+                    dt_ida.Columns.Add("depDate", typeof(string));
+                    dt_ida.Columns.Add("bookClass", typeof(string));
+                    dt_ida.Columns.Add("operCompany", typeof(string));
+                    dt_ida.Columns.Add("flightNumber", typeof(string));
+                    dt_ida.Columns.Add("ida", typeof(string));
+                    dt_ida.Columns.Add("leg", typeof(string));
+                    dt_ida.Columns.Add("ld", typeof(string));
+                    dt_ida.Columns.Add("gds1", typeof(string));
+                    dt_ida.Columns.Add("moneda", typeof(string));
+                    dt_ida.Columns.Add("precio", typeof(string));
+                    dt_ida.Columns.Add("id_opcion", typeof(string));
+                    dt_ida.Columns.Add("id_datos", typeof(string));
+                    dt_ida.Columns.Add("duracion", typeof(string));
+                    dt_ida.Columns.Add("hora_llegada", typeof(string));
+                    dt_ida.Columns.Add("ArrivalDate", typeof(string));
+                    dt_ida.Columns.Add("lugres_disponibles", typeof(string));
+                    string[] datos = datos1[1].Split('|');
+
+                    int ida = 0;
+                    for (ida = 1; ida < datos1.Length; ida++)
+                    {
+
+                        string[] datosIda = datos1[ida].Split('|');
+                        lblGds.Text = datosIda[10];
+                        DataTable DT_dom1 = new DataTable();
+                        DT_dom1 = Dominios.Lista("AEROLINEA");
+                        if (DT_dom1.Rows.Count > 0)
+                        {
+                            foreach (DataRow dr in DT_dom1.Rows)
+                            {
+                                if (dr["codigo"].ToString() == datosIda[5])
+                                    lblAreolineaNombResIda.Text = dr["descripcion"].ToString() + " (" + datos[5] + ")";
+                            }
+                        }
+                        //if (ida == 1)
+                        //{
+                        //    lblOrigenIResIda.Text = datosIda[0];
+                        //    lblNroVueloIResIda.Text = datosIda[6];
+                        //    lblClaseIResIda.Text = datosIda[4];
+                        //    lblFechaSalidaIResIda.Text = datosIda[3];
+                        //    lblHoraSalidaIResIda.Text = datosIda[2];
+                        //}
+                        //lblDestinoVResIda.Text = datosIda[1];
+                        //lblNroVueloVResIda.Text = datosIda[6];
+                        //lblClaseVResIda.Text = datosIda[4];
+                        //lblFechaLlegadaVResIda.Text = datosIda[3];
+                        //lblHoraLlegadaVResIda.Text = datosIda[2];
+                        dt_ida.Rows.Add(new string[18] { datosIda[0], datosIda[1], datosIda[2], datosIda[3], datosIda[4],
+                    datosIda[5], datosIda[6], datosIda[7], datosIda[8], datosIda[9],datosIda[10],datosIda[11],
+                    datosIda[12],datosIda[13],datosIda[14],datosIda[15],datosIda[16],datosIda[17] });//lblFechaSalidaTab.Text
+                    }
+
+                    Repeater9.DataSource = dt_ida;
+                    Repeater9.DataBind();
+
+
+                    string cadena = "";
+                    lblDatosVueloIda.Text = datos[0] + "|" + datos[1] + "|" + datos[2] + "|" + datos[3] + "|" + datos[4] + "|" + datos[5] + "|" + datos[6] + "|" + datos[7] + "|" + datos[8] + "|" + datos[9] + "|" + datos[10] + "|" + datos[11] + "|" + datos[12] + "|" + datos[13] + "|" + datos[14];
+                    cadena = datos[0] + "|" + datos[1] + "|" + datos[2] + "|" + datos[3] + "|" + datos[4] + "|" + datos[5] + "|" + datos[6] + "|" + datos[7] + "|" + datos[8] + "|" + datos[9] + "|" + datos[10] + "|" + datos[11] + "|" + datos[12] + "|" + datos[12] + "|" + datos[13] + "|" + datos[14];
+                    //lblOrgDestIdaRes.Text = lblOrigen.Text + " - " + lblDestino.Text;
+                    //lblHorarioIdaRes.Text = datos[2] + " - " + datos[3];
+                    //lblVueloIdaRes.Text = "Vuelo " + datos[6] + " - " + datos[4] + " - " + datos[5];
+                    lblMonedaIda.Text = datos[11];
+
+
+                    lblTotalImpuestosRes.Text = "0";
+                    lblTarifaBaseRes.Text = "0";
+                    panel_ida.Visible = true;
+                    panel_total_res.Visible = true;
+                    panel_ida.Visible = true;
+                    panel_total_res.Visible = true;
+
+                    lblItiVuelta.Text = toolTipVuelta;
+                    string[] datos2 = toolTipVuelta.Split('&');
+
+
+                    
+
+                    
+                    //aux + "&" +
+                    //0 dr["boardAirport"].ToString() + "|" +
+                    //1 dr["offAirport"].ToString() + "|" +
+                    //2 dr["depTime"].ToString() + "|" +
+                    //3 dr["depDate"].ToString()  + "|" +
+                    //4 dr["bookClass"].ToString() + "|" +
+                    //5 dr["operCompany"].ToString() + "|" +
+                    //6 dr["flightNumber"].ToString() + "|" +
+                    //7 "ida"     + "|" +
+                    //8 dr["leg"].ToString() + "|" +
+                    //9 dr["ld"].ToString() + "|" +
+                    //10 dr["gds1"].ToString() + "|" +
+                    //11 dr["moneda"].ToString() + "|" +
+                    //12 dr["precio"].ToString()   + "|" +
+                    //13 dr["id_opcion"].ToString() + "|" +
+                    //14 dr["id_datos"].ToString() + "|" +
+                    //15 dr["duracion"].ToString() + "|" +
+                    //16 dr["hora_llegada"].ToString() + "|" +
+                    //17 dr["ArrivalDate"].ToString() + "|" +
+                    //18 dr["lugres_disponibles"].ToString();
+                    DataTable dt_vuelta = new DataTable();
+                    dt_vuelta.Columns.Add("boardAirport", typeof(string));
+                    dt_vuelta.Columns.Add("offAirport", typeof(string));
+                    dt_vuelta.Columns.Add("depTime", typeof(string));
+                    dt_vuelta.Columns.Add("depDate", typeof(string));
+                    dt_vuelta.Columns.Add("bookClass", typeof(string));
+                    dt_vuelta.Columns.Add("operCompany", typeof(string));
+                    dt_vuelta.Columns.Add("flightNumber", typeof(string));
+                    dt_vuelta.Columns.Add("ida", typeof(string));
+                    dt_vuelta.Columns.Add("leg", typeof(string));
+                    dt_vuelta.Columns.Add("ld", typeof(string));
+                    dt_vuelta.Columns.Add("gds1", typeof(string));
+                    dt_vuelta.Columns.Add("moneda", typeof(string));
+                    dt_vuelta.Columns.Add("precio", typeof(string));
+                    dt_vuelta.Columns.Add("id_opcion", typeof(string));
+                    dt_vuelta.Columns.Add("id_datos", typeof(string));
+                    dt_vuelta.Columns.Add("duracion", typeof(string));
+                    dt_vuelta.Columns.Add("hora_llegada", typeof(string));
+                    dt_vuelta.Columns.Add("ArrivalDate", typeof(string));
+                    dt_vuelta.Columns.Add("lugres_disponibles", typeof(string));
+
+                    string[] datos3 = datos2[1].Split('|');
+
+                    int vuelta = 0;
+                    for (vuelta = 1; vuelta < datos2.Length; vuelta++)
+                    {
+                        string[] datosIda = datos2[vuelta].Split('|');
+                        dt_vuelta.Rows.Add(new string[18] { datosIda[0], datosIda[1], datosIda[2], datosIda[3], datosIda[4],
+                    datosIda[5], datosIda[6], datosIda[7], datosIda[8], datosIda[9],datosIda[10],datosIda[11],
+                    datosIda[12],datosIda[13],datosIda[14],datosIda[15],datosIda[16],datosIda[17] });//lblFechaSalidaTab.Text
+                    }
+                    Repeater10.DataSource = dt_vuelta;
+                    Repeater10.DataBind();
+                    DataTable DT_dom = new DataTable();
+                    DT_dom = Dominios.Lista("AEROLINEA");
+                    if (DT_dom.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in DT_dom.Rows)
+                        {
+                            if (dr["codigo"].ToString() == datos[5])
+                                lblAreolineaNombResVuelta.Text = dr["descripcion"].ToString() + " (" + datos[5] + ")";
+                        }
+                    }
+                    lblTotalRes.Text = datos[12];
+                    lblTotalImpuestosRes.Text = "0";
+                    lblTarifaBaseRes.Text = "0";
+                    panel_vuelta.Visible = true;
+                    panel_ida.Visible = true;
+                    panel_total_res.Visible = true;
+
+                    GenerarGanancias(cadena);
+                    panel_continuar.Visible = true;
+                    btnContinuar.Text = "Continuar";
+
+                    MultiView1.ActiveViewIndex = 1;
+                }
+                else
+                {
+                    lblAviso.Text = "Debe seleccionar una ida";
+                }
+            }
+
+            
         }
 
         protected void btnVerVuelos_Click(object sender, EventArgs e)

@@ -2,7 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <asp:Label ID="lblTipoRuta" runat="server" Visible="false" Text=""></asp:Label>
     <asp:Label ID="lblDtSegmentos" runat="server" Text="" Visible="false"></asp:Label>
         <asp:Label ID="lblDtSegmentosRT" runat="server" Text="" Visible="false"></asp:Label>
@@ -211,7 +210,7 @@
 					    <asp:ListItem Text="CORPORATIVO" Value="1"></asp:ListItem>
 				    </asp:RadioButtonList>
                     </div>
-                <asp:Button ID="btnVuelos" class="btn btn-orange" OnClientClick="recuperarFechaSalida()" OnClick="btnVuelos_Click"  runat="server" Text="Buscar vuelos" />
+                <asp:Button ID="btnVuelos" class="btn btn-orange" OnClientClick="recuperarFechaSalida()" OnClick="btnVuelos_Click"  BackColor="#309fd9" runat="server" Text="Buscar vuelos" />
                 </div><!-- end booking-form -->
                 </div><!-- end side-bar-block -->
             
@@ -258,7 +257,8 @@
 			                                                <div class="card" style="font-size:smaller;">
                                                                 <ul class="list-unstyled list-inline offer-price-1" style="background-color:lightgray">
                                                                         <li>
-                                                                            <asp:CheckBox ID="cbElegirIda" OnClientClick="" Text="Elegir ida" runat="server" />
+                                                                            <asp:CheckBox ID="cbElegirIda" runat="server" Text="Elegir ida" CssClass="ClaseIda"/>
+                                                                            <asp:Image ID="Image1" runat="server" Height="30" ImageUrl="~/iconos/icono-avion-ticket.png" />
                                                                             <%--<input id="cbElijeIda" class="checkbox" type="checkbox" OnClick="checkAll(this)" />--%>
                                                                         </li>
                                                            
@@ -391,12 +391,13 @@
 			                                                <div class="card" style="font-size:smaller;">
                                                                  <ul class="list-unstyled list-inline offer-price-1" style="background-color:lightgray">
                                                                         <li>
-                                                                            <asp:CheckBox ID="cbElegirVuelta" OnClientClick="" Text="Elegir Retorno" runat="server" />
+                                                                            <asp:CheckBox ID="cbElegirVuelta" runat="server" Text="Elegir Retorno" CssClass="ClaseVuelta"/>
+                                                                            <asp:Image ID="Image1" runat="server" Height="30" ImageUrl="~/iconos/icono-avion-ticket-reverse.png" />
                                                                             <%--<input id="cbElijeIda" class="checkbox" type="checkbox" OnClick="checkAll(this)" />--%>
                                                                         </li>
                                                            
                                                                     </ul>
-				                                                <div class="card-header text-black pointer-cursor" style="background-color:#309fd9" data-toggle="collapse" data-target='<%# "#collapseOneVuelta" + Eval("id_datos") + Eval("id_opcion")+  Eval("AEROLINEA").ToString().Replace(" ","") %>'>
+				                                                <div class="card-header text-black pointer-cursor" style="background-color:lightgoldenrodyellow" data-toggle="collapse" data-target='<%# "#collapseOneVuelta" + Eval("id_datos") + Eval("id_opcion")+  Eval("AEROLINEA").ToString().Replace(" ","") %>'>
                                                                     <div class="row">
                                                                 <div class="col">
                                                                     <asp:Button ID="btnElegirRT" class="btn btn-success" ToolTip="" Visible="false" runat="server" Text="Seleccionar Retorno" />
@@ -537,7 +538,7 @@
                                      <%--<div class="col"><asp:Button ID="btnNuevaBusqueda" OnClick="btnNuevaBusqueda_Click" class="btn btn-default rounded" CausesValidation="false" Visible="false"  runat="server" Text="Nueva busqueda" /></div>   --%>     
                                      <asp:Panel ID="panel_continuar" Visible="false" runat="server">
                                         <div class="col"><asp:Button ID="btnContinuar" OnClick="btnContinuar_Click" class="btn btn-primary rounded" CausesValidation="false"  runat="server" Text="Continuar Pasajeros" /></div>
-                                        <div class="col"><asp:Button ID="btnVolver"  OnClientClick="exportPDF()" class="btn btn-default rounded" CausesValidation="false" Visible="true"  runat="server" Text="Expotar a PDF" /></div>
+                                        <div class="col"><asp:Button ID="btnVolver"  OnClientClick="exportPDF()" class="btn btn-default rounded" CausesValidation="false" Visible="true"  runat="server" Text="Exportar a PDF" /></div>
                                         <div class="col"><asp:Button ID="btnVerVuelos" OnClick="btnVerVuelos_Click" class="btn btn-success rounded" CausesValidation="false" Visible="true"  runat="server" Text="Elegir otro vuelo" /></div>
                                     </asp:Panel> 
                                         
@@ -547,7 +548,7 @@
 			             <asp:Panel ID="Panel_resumen" runat="server">
                              <asp:Label ID="lblMsgGetPrecioSinPNR" runat="server" ForeColor="Red" Text=""></asp:Label>
                            <div class="rounded shadow">
-                               <div id="invoice" class="col-lg-12">
+                               <div id="invoice">
                                     <div class="row" style="vertical-align:central">
                                    <asp:Image ID="Image25" Height="50" ImageUrl="~/Logos/encabezado_logo.png" runat="server" /> 
                                </div>
@@ -610,42 +611,42 @@
 												<ItemTemplate>
                                                                                  
                                                                                         
-                                                    <div class="row">
-                                                        <div class="col">
+                                                  <ul class="list-unstyled list-inline offer-price-1">
+                                                        <li>
                                                                 Salida
-                                                        </div>
-                                                        <div class="col">
+                                                        </li>
+                                                        <li>
                                                                 Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'>:</asp:Label> Airline:<asp:Label ID="Label23" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>
-                                                        </div>
-                                                        <div class="col">
+                                                        </li>
+                                                        <li>
                                                                 Llegada
-                                                        </div>
+                                                        </li>
                                                                                         
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
+                                                   </ul>
+                                                    <ul class="list-unstyled list-inline offer-price-1">
+                                                        <li>
                                                                 <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'>:</asp:Label>
-                                                        </div>
-                                                        <div class="col">
+                                                        </li>
+                                                        <li>
                                                             <asp:Image ID="Image6" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> <%--<i class="fa fa-plane-departure fa-fw"></i><hr />--%>
-                                                        </div>
-                                                        <div class="col">
+                                                        </li>
+                                                        <li>
                                                                 <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'>:</asp:Label>
-                                                        </div>
+                                                        </li>
                                                                                         
-                                                    </div>
-                                                        <div class="row">
-                                                        <div class="col">
+                                                    </ul>
+                                                       <ul class="list-unstyled list-inline offer-price-1">
+                                                        <li>
                                                                 <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
-                                                        </div>
-                                                        <div class="col">
+                                                        </li>
+                                                        <li>
                                                             <asp:Label ID="Label5" runat="server" Text='<%# "Vuelo " + Eval("flightNumber") + " Clase "  +Eval("bookClass")+ " Disponibles "  +Eval("lugres_disponibles")%>'></asp:Label><br />
-                                                        </div>
-                                                        <div class="col">
+                                                        </li>
+                                                        <li>
                                                                 <asp:Label ID="Label6" runat="server" Text='<%# Eval("offAirport") %>'>:</asp:Label>
-                                                        </div>
+                                                        </li>
                                                                                          
-                                                    </div>
+                                                    </ul>
 
 																	               
 												</ItemTemplate>
@@ -669,42 +670,42 @@
 												<ItemTemplate>
                                                                                  
                                                                                         
-                                                    <div class="row">
-                                                        <div class="col">
+                                                    <ul class="list-unstyled list-inline offer-price-1">
+                                                        <li>
                                                                 Salida
-                                                        </div>
-                                                        <div class="col">
+                                                        </li>
+                                                        <li>
                                                                 Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'></asp:Label>  Airline:<asp:Label ID="Label24" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>
-                                                        </div>
-                                                        <div class="col">
+                                                        </li>
+                                                        <li>
                                                                 Llegada
-                                                        </div>
+                                                        </li>
                                                                                         
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
+                                                    </ul>
+                                                     <ul class="list-unstyled list-inline offer-price-1">
+                                                        <li>
                                                                 <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'>:</asp:Label>
-                                                        </div>
-                                                        <div class="col">
+                                                        </li>
+                                                        <li>
                                                             <asp:Image ID="Image6" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> 
-                                                        </div>
-                                                        <div class="col">
+                                                        </li>
+                                                        <li>
                                                                 <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'>:</asp:Label>
-                                                        </div>
+                                                        </li>
                                                                                         
-                                                    </div>
-                                                        <div class="row">
-                                                        <div class="col">
+                                                    </ul>
+                                                         <ul class="list-unstyled list-inline offer-price-1">
+                                                        <li>
                                                                 <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
-                                                        </div>
-                                                        <div class="col">
+                                                        </li>
+                                                        <li>
                                                             <asp:Label ID="Label5" runat="server" Text='<%# "Vuelo " + Eval("flightNumber") + " Clase "  +Eval("bookClass")+ " Disponibles "  +Eval("lugres_disponibles")%>'></asp:Label><br />
-                                                        </div>
-                                                        <div class="col">
+                                                        </li>
+                                                        <li>
                                                                 <asp:Label ID="Label6" runat="server" Text='<%# Eval("offAirport") %>'>:</asp:Label>
-                                                        </div>
+                                                        </li>
                                                                                          
-                                                    </div>
+                                                    </ul>
 
 																	               
 												</ItemTemplate>
@@ -765,18 +766,19 @@
                                     </div>  
                                 <asp:Panel ID="panel_rango" Font-Size="XX-Small" runat="server">
                                         <div class="row">
-						                    <div class="col"><asp:TextBox ID="txtComision" CssClass="form-control col-12 col-md-3" Text="0" runat="server"></asp:TextBox>
+						                    <div class="col-12 col-md-3"><asp:TextBox ID="txtComision" CssClass="form-control col-12 col-md-3" Text="0" runat="server"></asp:TextBox>
                                                 <asp:Label ID="lblAvisoRango" runat="server" ForeColor="Red" Font-Size="XX-Small" Text=""></asp:Label>
                                                 <asp:RangeValidator runat="server" id="RangeValidator4" ControlToValidate="txtComision"    Type="Integer"    MinimumValue="0"    MaximumValue="99"    CssClass="input-error"    ErrorMessage="Solo numeros enteros" Font-Size="XX-Small"    Display="Dynamic"></asp:RangeValidator>
 						                    </div>
                                             <div class="col">
                                                 <asp:ImageButton ID="imgCambiarFee" ImageUrl="~/iconos/heart.png" Height="30" OnClick="imgCambiarFee_Click" runat="server" />
                                             </div>
-                                            </div>
+                                            
+                                        </div>
                                             <div class="row">
-						                    <div class="col"><asp:Label ID="Label5" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text="Rango de comision entre:"></asp:Label></div>
-						                    <div class="col"><asp:Label ID="lblComisionDesde"  runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text="0"></asp:Label></div>
-						                    <div class="col"><asp:Label ID="lblComisionHasta"  runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text="0"></asp:Label></div>
+						                    <div class="col-12 col-md-2"><asp:Label ID="Label5" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text="Rango de comision entre:"></asp:Label></div>
+						                    <div class="col-12 col-md-2"><asp:Label ID="lblComisionDesde"  runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text="0"></asp:Label></div>
+						                    <div class="col-12 col-md-2"><asp:Label ID="lblComisionHasta"  runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text="0"></asp:Label></div>
                                            </div>
 				                    </asp:Panel>
                                  
@@ -794,6 +796,7 @@
                 </asp:View>
 
                 <asp:View ID="View3" runat="server">
+                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side">
                     <asp:Label ID="lblPasajerosAux" runat="server" Text="" Visible="false"></asp:Label>
                 
                                      <div class="row">
@@ -882,7 +885,7 @@
 									                    <asp:Panel ID="Panel_adl" runat="server">
 									                    <!-- begin card -->
 									                    <div class="card">
-										                    <div class="card-header text-white pointer-cursor" style="background-color:silver" data-toggle="collapse" data-target="#collapseSeven">
+										                    <div class="card-header text-white pointer-cursor" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseSeven">
 											                    PASAJEROS ADULTOS      <i class="fa fa-arrow-circle-down"></i>
                                                             <asp:Label ID="lblCountAdl" runat="server" Text="0"></asp:Label>
 										                    </div>
@@ -949,7 +952,7 @@
 									                    <asp:Panel ID="Panel_chl" runat="server">
 								                    <!-- begin card -->
 									                    <div class="card">
-										                    <div class="card-header text-white pointer-cursor" style="background-color:silver" data-toggle="collapse" data-target="#collapseFive">
+										                    <div class="card-header text-white pointer-cursor" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseFive">
 											                    PASAJEROS NIÑOS      <i class="fa fa-arrow-circle-down"></i>
                                                             <asp:Label ID="lblNinosCount" runat="server" Text="0"></asp:Label>
 										                    </div>
@@ -1009,7 +1012,7 @@
 									                    <asp:Panel ID="Panel_inf" runat="server">
 									                    <!-- begin card -->
 									                    <div class="card">
-										                    <div class="card-header text-white pointer-cursor" style="background-color:silver" data-toggle="collapse" data-target="#collapseSix">
+										                    <div class="card-header text-white pointer-cursor" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseSix">
 											                    PASAJEROS INFANTES      <i class="fa fa-arrow-circle-down"></i>
                                                             <asp:Label ID="lblInfaneCount" runat="server" Text="0"></asp:Label>
 										                    </div>
@@ -1068,7 +1071,7 @@
 										                    </asp:Panel>
 									                    <!-- begin card -->
 									                    <div class="card">
-										                    <div class="card-header text-white pointer-cursor" style="background-color:silver" data-toggle="collapse" data-target="#collapseTre">
+										                    <div class="card-header text-white pointer-cursor" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseTre">
 											                    <asp:Image ID="Image15" ImageUrl="~/iconos/icono-facturacion.png" Height="30px" runat="server" />
 											                    DATOS DE FACTURACION      <i class="fa fa-arrow-circle-down"></i>
 											                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ForeColor="Yellow" ControlToValidate="txtRazonSocial" ErrorMessage="*"></asp:RequiredFieldValidator>
@@ -1101,7 +1104,7 @@
 								                    <!-- end card -->
 									                    <!-- begin card -->
 									                    <div class="card">
-										                    <div class="card-header text-white pointer-cursor" style="background-color:silver" data-toggle="collapse" data-target="#collapseFour">
+										                    <div class="card-header text-white pointer-cursor" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseFour">
 											                    <asp:Image ID="Image8" ImageUrl="~/iconos/icono-datos-de-contacto.png" Height="30px" runat="server" />
 											                    DATOS DE CONTACTO      <i class="fa fa-arrow-circle-down"></i>
 											                    <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ForeColor="Yellow" ControlToValidate="txtEmailTit" ErrorMessage="*"></asp:RequiredFieldValidator>
@@ -1136,7 +1139,7 @@
 								                    <div class="row">
 									                    <%--<asp:GridView ID="gvPasajeros" AutoGenerateColumns="false" runat="server"></asp:GridView>--%>
 										                    <div class="table-responsive">
-											                    <table class="col-12 col-md-6">
+											                    <table class="table-condensed">
 												                    <thead>
 													                    <tr>
 														                    <%--<th class="text">NRO</th>--%>
@@ -1193,9 +1196,10 @@
 								
 									                    </div>
 		                    </div>
+                        </div>
                 </asp:View>
                 <asp:View ID="View4" runat="server">
-                    <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side">
 		                    <div class="shadow rounded col-12 col-md-6" >
                                  <div class="row" style="text-align:center;">
                                            <asp:Image ID="Image16" ImageUrl="~/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label16" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Reserva creada"></asp:Label>
@@ -1395,7 +1399,9 @@
 
             
             
-        </div>
+
+    <script src="<%=ResolveClientUrl("~/js/jquery.min.js")%>"></script>
+
     <script type="text/javascript">
     function getVScroll() {
         document.getElementById('scroll').value = document.getElementById('scrollVuelos').scrollTop;
@@ -1423,16 +1429,7 @@
             inp.defaultValue = inp.min;
             d.setFullYear(d.getFullYear() + 1);
             inp.max = formatISOLocal(d);
-            // Debug
             console.log(inp.outerHTML);
-            //let inp1 = document.querySelector('#fecha_retorno');
-            //let d1 = new Date();
-            //inp1.min = formatISOLocal(d1);
-            //inp1.defaultValue = inp1.min;
-            //d1.setFullYear(d1.getFullYear() + 1);
-            //inp1.max = formatISOLocal(d1);
-            //// Debug
-            //console.log(inp1.outerHTML);
         };
         function bloquearNino() {
             let inp3 = document.querySelector('#fecha_nac_nino');
@@ -1444,16 +1441,7 @@
             d2.setFullYear(d2.getFullYear() - 2);
             inp3.max = formatISOLocal(d2);
             inp3.defaultValue = inp3.max;
-            // Debug
             console.log(inp3.outerHTML);
-            //let inp1 = document.querySelector('#fecha_retorno');
-            //let d1 = new Date();
-            //inp1.min = formatISOLocal(d1);
-            //inp1.defaultValue = inp1.min;
-            //d1.setFullYear(d1.getFullYear() + 1);
-            //inp1.max = formatISOLocal(d1);
-            //// Debug
-            //console.log(inp1.outerHTML);
         };
         function verificaSalida() {
 
@@ -1463,13 +1451,11 @@
             inp1.defaultValue = inp1.min;
             d1.setFullYear(d1.getFullYear() + 1);
             inp1.max = formatISOLocal2(d1);
-            // Debug
             console.log(inp1.outerHTML);
         };
     </script>
         <script type="text/javascript">
             function incrementar_adt() {
-
                 var tx = document.getElementById('<%=txtAdultos.ClientID%>');
                 if (parseInt(tx.value) < 9)
                     tx.value = parseInt(tx.value) + 1;
@@ -1477,17 +1463,14 @@
                 document.getElementById('<%=txtSenior.ClientID%>').value = 0;
                 document.getElementById('<%=txtInfante.ClientID%>').value = 0;
                 document.getElementById('<%=txtNinos.ClientID%>').value = 0;
-
             }
             function decrementar_adt() {
-
                 var tx = document.getElementById('<%=txtAdultos.ClientID%>');
                 if (parseInt(tx.value) > 0)
                     tx.value = parseInt(tx.value) - 1;
                 document.getElementById('<%=txtAdultos.ClientID%>').value = tx.value;
             }
             function incrementar_nin() {
-
                 var tx = document.getElementById('<%=txtNinos.ClientID%>');
                 var txAdt = document.getElementById('<%=txtAdultos.ClientID%>');
                 if (parseInt(tx.value) < (9 - (parseInt(txAdt.value))))
@@ -1495,15 +1478,12 @@
                 document.getElementById('<%=txtNinos.ClientID%>').value = tx.value;
             }
             function decrementar_nin() {
-
                 var tx = document.getElementById('<%=txtNinos.ClientID%>');
-
                 if (parseInt(tx.value) > 0)
                     tx.value = parseInt(tx.value) - 1;
                 document.getElementById('<%=txtNinos.ClientID%>').value = tx.value;
             }
             function incrementar_inf() {
-
                 var tx = document.getElementById('<%=txtInfante.ClientID%>');
                 var txAdt = document.getElementById('<%=txtAdultos.ClientID%>');
                 if (parseInt(tx.value) < parseInt(txAdt.value))
@@ -1548,15 +1528,8 @@
                     document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'hidden';
                     var cbIV = document.getElementById("cbSoloIda2");
                     cbIV.checked = false;
-                    //window.alert("sirve");
                 }
-                <%--else
-                {
-                    document.getElementById('<%=hfTipoRuta.ClientID%>').valuee ="RT";
-                    document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'visible';
-                    var cbIV = document.getElementById("cbSoloIda2");
-                    cbIV.checked = true;
-                }--%>
+                
                 
             }
 
@@ -1568,29 +1541,22 @@
                     document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'visible';
                     var cbIV = document.getElementById("cbSoloIda");
                     cbIV.checked = false;
-                    //window.alert("sirve");
                 }
-                <%--else
-                {
-                    document.getElementById('<%=hfTipoRuta.ClientID%>').valuee ="OW";
-                    document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'hidden';
-                    var cbIV = document.getElementById("cbSoloIda2");
-                    cbIV.checked = true;
-                }--%>
+               
 
             }
         </script>
     <script type="text/javascript">
 
-   <%--     function recuperarFechaNino() {
+        function recuperarFechaNino() {
 
             document.getElementById('<%=hfFechaNino.ClientID%>').value = document.getElementById('fecha_nac_nino').value;
 		}
 
-    function recuperarFechaInf() {
+        function recuperarFechaInf() {
 
             document.getElementById('<%=hfFechaNacInf.ClientID%>').value = document.getElementById('fecha_nac_inf').value;
-        }--%>
+        }
     </script>
 
     
@@ -1647,24 +1613,6 @@
                 window.alert(cb);
                 var elem = elemArray[i].value;
             }
-
-
-<%--            var ctrls = document.getElementsByName('<%=Repeater1.NamingContainer %>');
-            for (var i = 0; i < ctrls.length; i++) {
-                window.alert(cb);
-                var cbox = ctrls[i];
-                if (cbox.type == "Repeater") {
-                    var ctrls2 = document.getElementsByTagName('Repeater2');
-                   
-                    for (var x = 0; x < ctrls2.length; x++) {
-                        var cbox2 = ctrls[x];
-                        if (cbox2.type == "checkbox") {
-                            cbox2.checked = cb.checked;
-                        }
-                    }
-                }
-                
-            }--%>
         }
         function ChkSelected() {
             var theone = '';
@@ -1673,23 +1621,35 @@
             var Repeater1 = document.getElementById('<%=Repeater1.ClientID %>');
             var Repeater2 = Repeater1.getElementsByTagName('Repeater2');
             var ChkBx2s = Repeater2.getElementsByTagName('cbElegirIda');
-            var i=0;
-            for (i=0; i < ChkBx2s.length; i++){
-                if(ChkBx2s[i].type == 'checkbox' && ChkBx2s[i].id.indexOf("ChkBx2")!=-1 && ChkBx2s[i].checked==true){
+            var i = 0;
+            for (i = 0; i < ChkBx2s.length; i++) {
+                if (ChkBx2s[i].type == 'checkbox' && ChkBx2s[i].id.indexOf("ChkBx2") != -1 && ChkBx2s[i].checked == true) {
                     count = (count + 1);
                     var lbl = ChkBx2s[i].parentElement.getElementsByTagName('label');
                     theone += "," + lbl[0].innerHTML + ';';
-                    //========Or=============
-                    //theone += "," +  ChkBx2s[i].parentElement.children[1].innerHTML + ";" ;
-                    //========Or=============
-                    //theone += "," +  ChkBx2s[i].nextSibling.innerHTML + ";" ; 
                 }
             }
-            if (count == 0){
+            if (count == 0) {
                 theone = '';
             }
             window.alert(theone + " Count=" + count);
-           
+
         }
+
+        $(document).ready(function () {
+            $('[id*=cbElegirIda]').on('change', function () {
+                $(".ClaseIda input[type='checkbox']").each(function () {
+                    this.checked = false;
+                });
+                this.checked = true;
+            });
+
+            $('[id*=cbElegirVuelta]').on('change', function () {
+                $(".ClaseVuelta input[type='checkbox']").each(function () {
+                    this.checked = false;
+                });
+                this.checked = true;
+            });
+        });
     </script>
 </asp:Content>

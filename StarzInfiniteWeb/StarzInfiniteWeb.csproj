@@ -494,11 +494,14 @@
     <Content Include="js\custom-price-slider.js" />
     <Content Include="js\custom-slick.js" />
     <Content Include="js\custom-video.js" />
+    <Content Include="js\html2canvas.min.js" />
+    <Content Include="js\html2pdf.min.js" />
     <Content Include="js\jquery-ui.min.js" />
     <Content Include="js\jquery.colorpanel.js" />
     <Content Include="js\jquery.flexslider.js" />
     <Content Include="js\jquery.magnific-popup.min.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="js\jspdf.debug.js" />
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\slick.min.js" />
     <Content Include="Logos\2D.png" />
