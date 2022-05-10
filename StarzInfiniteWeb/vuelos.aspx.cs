@@ -38,6 +38,10 @@ namespace StarzInfiniteWeb
                 txtNinos.Text = datos[6];
                 txtInfante.Text = datos[7];
                 txtSenior.Text = datos[8];
+                hfFechaSalida.Value = datos[3];
+                hfFechaRetorno.Value = datos[4];
+
+                ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionAlerta", "setearFechaSalida();", true);
 
                 lblNroAdultos.Text = txtAdultos.Text;
                 lblNroNinos.Text = txtNinos.Text;
@@ -1571,7 +1575,7 @@ namespace StarzInfiniteWeb
 
             if (lblTipoRuta.Text == "OW")
             {
-                if (checkIda > 0 && checkVuelta > 0)
+                if (checkIda > 0 )
                 {
                     lblItiVuelta.Text = "";
                     lblItiIda.Text = "";
@@ -1685,12 +1689,12 @@ namespace StarzInfiniteWeb
                 }
                 else
                 {
-                    lblAviso.Text = "Debe seleccionar una ida y una vuelta";
+                    lblAviso.Text = "Debe seleccionar una ida.";
                 }
             }
             else
             {
-                if (checkIda > 0)
+                if (checkIda > 0 && checkVuelta > 0)
                 {
                     lblItiVuelta.Text = "";
                     lblItiIda.Text = "";
@@ -1881,7 +1885,7 @@ namespace StarzInfiniteWeb
                 }
                 else
                 {
-                    lblAviso.Text = "Debe seleccionar una ida";
+                    lblAviso.Text = "Debe seleccionar una ida y un retorno.";
                 }
             }
 

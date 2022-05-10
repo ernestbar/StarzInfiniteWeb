@@ -481,6 +481,97 @@ namespace StarzInfiniteWeb
 
         }
 
+        public static DataTable PR_OBTIENE_BOLETOS_VENDIDOS_MANUAL_IND(string pv_COD_CLIENTE_TICKET)
+        {
+            try
+            {
+                DbCommand cmd = db1.GetStoredProcCommand("PR_OBTIENE_BOLETOS_VENDIDOS_MANUAL_IND");
+                db1.AddInParameter(cmd, "pv_COD_CLIENTE_TICKET", DbType.String, pv_COD_CLIENTE_TICKET);
+                cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
+                DataTable dt = new DataTable();
+                dt = db1.ExecuteDataSet(cmd).Tables[0];
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                DataTable dt = new DataTable();
+                return dt;
+            }
+
+        }
+        public static string PUT_INGRESA_TICKETS_MANUAL(string pv_tipo_operacion, string pv_usuario, string pv_producto, string pv_proveedor,
+            string pv_nro_pnr, string pv_tourcode, string pv_datosfacturacion, string pv_emailfact,
+            string pv_telefonofact, string pv_origenida, string pv_destinoida, string ps_fechaida,
+            string pv_claseida, string pv_carrierida, string pv_numerovueloida, string pv_origenvuelta,
+            string pv_desitinovuelta, string pd_fechavuelta, string pv_clasevuelta, string pv_carriervuelta,
+            string pv_numerovuelovuelta, string pd_fechalimiteemision, string pd_fecha_regitro, string pv_broker,
+            decimal pd_totalcobrar, string pv_moneda, decimal pd_totalimpuestos, decimal pd_montosinimpuestos,
+            string pv_tipo_venta, decimal pd_comisionbroker, string pv_detalle, string pv_tipo_vuelo, string PV_COD_CLIENTE_TICKET)
+        {
+            try
+            {
+                string resultado = "";
+                DbCommand cmd = db1.GetStoredProcCommand("PUT_INGRESA_TICKETS_MANUAL");
+                db1.AddInParameter(cmd, "pv_tipo_operacion", DbType.String, pv_tipo_operacion);
+                db1.AddInParameter(cmd, "pv_usuario", DbType.String, pv_usuario);
+                db1.AddInParameter(cmd, "pv_producto", DbType.String, pv_producto);
+                db1.AddInParameter(cmd, "pv_proveedor", DbType.String, pv_proveedor);
+                db1.AddInParameter(cmd, "pv_nro_pnr", DbType.String, pv_nro_pnr);
+                db1.AddInParameter(cmd, "pv_tourcode", DbType.String, pv_tourcode);
+                db1.AddInParameter(cmd, "pv_datosfacturacion", DbType.String, pv_datosfacturacion);
+                db1.AddInParameter(cmd, "pv_emailfact", DbType.String, pv_emailfact);
+                db1.AddInParameter(cmd, "pv_telefonofact", DbType.String, pv_telefonofact);
+                db1.AddInParameter(cmd, "pv_origenida", DbType.String, pv_origenida);
+                db1.AddInParameter(cmd, "pv_destinoida", DbType.String, pv_destinoida);
+                db1.AddInParameter(cmd, "ps_fechaida", DbType.DateTime, ps_fechaida);
+                db1.AddInParameter(cmd, "pv_claseida", DbType.String, pv_claseida);
+                db1.AddInParameter(cmd, "pv_carrierida", DbType.String, pv_carrierida);
+                db1.AddInParameter(cmd, "pv_numerovueloida", DbType.String, pv_numerovueloida);
+                db1.AddInParameter(cmd, "pv_origenvuelta", DbType.String, pv_origenvuelta);
+                db1.AddInParameter(cmd, "pv_desitinovuelta", DbType.String, pv_desitinovuelta);
+                db1.AddInParameter(cmd, "pd_fechavuelta", DbType.DateTime, pd_fechavuelta);
+                db1.AddInParameter(cmd, "pv_carriervuelta", DbType.String, pv_carriervuelta);
+                db1.AddInParameter(cmd, "pv_numerovuelovuelta", DbType.String, pv_numerovuelovuelta);
+                db1.AddInParameter(cmd, "pd_fechalimiteemision", DbType.DateTime, pd_fechalimiteemision);
+                db1.AddInParameter(cmd, "pd_fecha_regitro", DbType.String, pd_fecha_regitro);
+                db1.AddInParameter(cmd, "pv_broker", DbType.String, pv_broker);
+                db1.AddInParameter(cmd, "pd_totalcobrar", DbType.Decimal, pd_totalcobrar);
+                db1.AddInParameter(cmd, "pv_moneda", DbType.String, pv_moneda);
+                db1.AddInParameter(cmd, "pd_totalimpuestos", DbType.Decimal, pd_totalimpuestos);
+                db1.AddInParameter(cmd, "pd_montosinimpuestos", DbType.Decimal, pd_montosinimpuestos);
+                db1.AddInParameter(cmd, "pv_tipo_venta", DbType.String, pv_tipo_venta);
+                db1.AddInParameter(cmd, "pv_detalle", DbType.Decimal, pv_detalle);
+                db1.AddInParameter(cmd, "pv_tipo_vuelo", DbType.String, pv_tipo_vuelo);
+                db1.AddInParameter(cmd, "PV_COD_CLIENTE_TICKET", DbType.String, PV_COD_CLIENTE_TICKET);
+                db1.AddOutParameter(cmd, "PV_ESTADOPR", DbType.String, 30);
+                db1.AddOutParameter(cmd, "PV_DESCRIPCIONPR", DbType.String, 250);
+                cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
+                db1.ExecuteNonQuery(cmd);
+                string PV_ESTADOPR = "";
+                string PV_DESCRIPCIONPR = "";
+
+                if (String.IsNullOrEmpty(db1.GetParameterValue(cmd, "PV_ESTADOPR").ToString()))
+                    PV_ESTADOPR = "";
+                else
+                    PV_ESTADOPR = (string)db1.GetParameterValue(cmd, "PV_ESTADOPR");
+                if (String.IsNullOrEmpty(db1.GetParameterValue(cmd, "PV_DESCRIPCIONPR").ToString()))
+                    PV_DESCRIPCIONPR = "";
+                else
+                    PV_DESCRIPCIONPR = (string)db1.GetParameterValue(cmd, "PV_DESCRIPCIONPR");
+
+
+
+                resultado = PV_ESTADOPR + "|" + PV_DESCRIPCIONPR;
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                return "|" + ex.ToString();
+            }
+
+        }
+
         public static string PR_OBTIENE_HOME_VENTAS(string pv_usuario)
         {
             try
@@ -625,7 +716,60 @@ namespace StarzInfiniteWeb
                 if (String.IsNullOrEmpty(pd_fhasta))
                     db1.AddInParameter(cmd, "pd_fhasta", DbType.DateTime, null);
                 else
-                    db1.AddInParameter(cmd, "pd_fhasta", DbType.DateTime,DateTime.Parse(pd_fhasta));
+                    db1.AddInParameter(cmd, "pd_fhasta", DbType.Date, DateTime.Parse(pd_fhasta));
+                cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
+                return db1.ExecuteDataSet(cmd).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                DataTable dt = new DataTable();
+                return dt;
+            }
+
+        }
+
+        public static DataTable PR_OBTIENE_BOLETOS_VENDIDOS_MANUAL(string pd_fdesde, string pd_fhasta, string pv_pnr, string pv_usuario)
+        {
+            try
+            {
+                DbCommand cmd = db1.GetStoredProcCommand("PR_OBTIENE_BOLETOS_VENDIDOS_MANUAL");
+                db1.AddInParameter(cmd, "pv_usuario", DbType.String, pv_usuario);
+                if (String.IsNullOrEmpty(pv_pnr))
+                    db1.AddInParameter(cmd, "pv_NRO_PNR", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_NRO_PNR", DbType.String, pv_pnr);
+
+                if (String.IsNullOrEmpty(pd_fdesde))
+                    db1.AddInParameter(cmd, "pd_fechadesde", DbType.DateTime, null);
+                else
+                    db1.AddInParameter(cmd, "pd_fechadesde", DbType.DateTime, DateTime.Parse(pd_fdesde));
+                if (String.IsNullOrEmpty(pd_fhasta))
+                    db1.AddInParameter(cmd, "pd_fechahasta", DbType.DateTime, null);
+                else
+                    db1.AddInParameter(cmd, "pd_fechahasta", DbType.Date, DateTime.Parse(pd_fhasta));
+                cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
+                return db1.ExecuteDataSet(cmd).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                DataTable dt = new DataTable();
+                return dt;
+            }
+
+        }
+
+        public static DataTable PR_OBTIENE_DETALLE_MANUAL(string pv_pnr)
+        {
+            try
+            {
+                DbCommand cmd = db1.GetStoredProcCommand("PR_OBTIENE_DETALLE_MANUAL");
+                if (String.IsNullOrEmpty(pv_pnr))
+                    db1.AddInParameter(cmd, "pv_pnr", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_pnr", DbType.String, pv_pnr);
+
                 cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
                 return db1.ExecuteDataSet(cmd).Tables[0];
             }
@@ -675,12 +819,14 @@ namespace StarzInfiniteWeb
             }
 
         }
-        public static DataTable PR_OBTIENE_BOLETOS_VENDIDOS_WEB(string pv_usuario)
+        public static DataTable PR_OBTIENE_BOLETOS_VENDIDOS_WEB(string pv_usuario, string pd_fechadesde, string pd_fechahasta)
         {
             try
             {
                 DbCommand cmd = db1.GetStoredProcCommand("PR_OBTIENE_BOLETOS_VENDIDOS_WEB");
                 db1.AddInParameter(cmd, "pv_usuario", DbType.String, pv_usuario);
+                db1.AddInParameter(cmd, "pd_fechadesde", DbType.DateTime, pd_fechadesde);
+                db1.AddInParameter(cmd, "pd_fechahasta", DbType.DateTime, pd_fechahasta);
                 db1.AddOutParameter(cmd, "pd_ganancia_mes", DbType.Decimal, 18);
                 cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
                 return db1.ExecuteDataSet(cmd).Tables[0];

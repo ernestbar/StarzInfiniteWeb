@@ -116,10 +116,11 @@ namespace StarzInfiniteWeb
                             Session["datos_facturacion"] = datosfac[0] + "|" + datosfac[1];
                             Session["datos_iframe"] = id[0] + "|" + dr["TOTALCOBRAR"].ToString() + "|" + dr["MONEDA"].ToString() + "|" + dr["EMAILFACT"].ToString() + "|" + id[1] + "|" + gds[1] + "|" + id[7];
                             //Session["datos_iframe"] = txtPNR.Text + "|" + lblTotalRes.Text + "|" + lblMoneda.Text + "|" + lblEmail.Text + "|" + lblCodTiket.Text + "|" + lblGds.Text;
-                            Response.Redirect("pagar_reserva.aspx?admin=SI");
+                            
                         }
                     }
                 }
+                Response.Redirect("pagar_reserva.aspx?admin=SI", false);
             }
             catch (Exception ex)
             {

@@ -92,7 +92,7 @@
         <div class="collapse navbar-collapse" id="myNavbar1">
         <ul class="nav navbar-nav navbar-right navbar-search-link">
             <li class="dropdown active">
-                <a href="home.aspx" class="dropdown-toggle" data-toggle="dropdown">Home<span></span></a>
+                <a href="home.aspx">Home<span></span></a>
             </li>
              <li class="dropdown active">
                 <a href="reserva_admin.aspx">Reservas<span></span></a>
@@ -100,12 +100,12 @@
             <li class="dropdown active">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<span></span></a>
             </li>
-            <li class="dropdown active">
+          <%--  <li class="dropdown active">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Autos<span></span></a>
             </li>
             <li class="dropdown active">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Seguro<span></span></a>
-            </li>
+            </li>--%>
            <li><a href="javascript:void(0)" class="search-button"><span><i class="fa fa-search"></i></span></a></li>
 
         </ul>

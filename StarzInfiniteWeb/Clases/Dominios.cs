@@ -30,5 +30,24 @@ namespace StarzInfiniteWeb
             }
 
         }
+
+        public static DataTable Lista2(string PV_DOMINIO, string PV_PRODUCTO)
+        {
+            try
+            {
+                DbCommand cmd = db1.GetStoredProcCommand("PR_GET_DOMINIO_LISTAS");
+                db1.AddInParameter(cmd, "PV_DOMINIO", DbType.String, PV_DOMINIO);
+                db1.AddInParameter(cmd, "PV_PRODUCTO", DbType.String, PV_PRODUCTO);
+                cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
+                return db1.ExecuteDataSet(cmd).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                DataTable dt = new DataTable();
+                return dt;
+            }
+
+        }
     }
 }

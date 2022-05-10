@@ -43,19 +43,20 @@
                             <div class="col-12">
                                 <ul class="nav nav-tabs center-tabs">
                                     <li class="active"><a href="#flights" data-toggle="tab"><span><i class="fa fa-plane"></i></span>
-                                        <span class="st-text">Flights</span></a>
+                                        <span class="st-text">Vuelos</span></a>
                                     </li>
                                     <li><a href="#hotels" data-toggle="tab"><span><i class="fa fa-building"></i></span>
-                                            <span class="st-text">Hotels</span>
+                                            <span class="st-text">Hoteles</span>
                                         </a>
                                     </li>
                                     <li>
                                     <a href="#tours" data-toggle="tab"><span><i class="fa fa-suitcase"></i></span>
-                                        <span class="st-text">Tours</span></a></li><li>
+                                        <span class="st-text">Auto</span></a></li><li>
                                     <a href="#cruise" data-toggle="tab"><span><i class="fa fa-ship"></i></span>
-                                        <span class="st-text">Cruise</span></a></li><li>
+                                        <span class="st-text">Seguros</span></a></li><li>
                                     <a href="#cars" data-toggle="tab"><span><i class="fa fa-car"></i></span>
-                                        <span class="st-text">Cars</span></a></li></ul>
+                                        <span class="st-text">Autos</span></a></li>
+                                </ul>
 
                         <div class="tab-content">
                             <div id="flights" class="tab-pane in active">
@@ -434,6 +435,12 @@
 
                 document.getElementById('<%=hfFechaSalida.ClientID%>').value = document.getElementById('fecha_salida').value;
                 document.getElementById('<%=hfFechaRetorno.ClientID%>').value = document.getElementById('fecha_retorno').value;
+            }
+
+            function setearFechaSalida() {
+
+                document.getElementById('fecha_salida').value = document.getElementById('<%=hfFechaSalida.ClientID%>').value;
+                document.getElementById('fecha_retorno').value = document.getElementById('<%=hfFechaRetorno.ClientID%>').value;
             }
 
             function TipoVuelo() {

@@ -41,7 +41,7 @@
 		</SelectParameters>
 	 </asp:ObjectDataSource>
         <div class="container">
-            
+            <asp:Panel ID="Panel_flitros" runat="server">
         <div class="col-xs-12 col-sm-12 col-md-3 side-bar left-side-bar">
             <div class="side-bar-block booking-form-block">
             <h2 class="selected-price"><span>BUSQUEDAS</span></h2>
@@ -215,7 +215,9 @@
                 </div><!-- end side-bar-block -->
             
             </div>
+            
 
+            </asp:Panel>
             <asp:MultiView ID="MultiView1" runat="server">
                 <asp:View ID="View1" runat="server">
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side" style="height:700px; overflow: scroll;">
@@ -559,35 +561,35 @@
                                  <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
                                    <asp:Image ID="Image2" Height="20" ImageUrl="~/iconos/icono-pasajero--resumen-reserva.png" runat="server" />  <asp:Label ID="Label10" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Pasajeros"></asp:Label>
                                </div>
-                             <div class="row" style="vertical-align:central">
+                             <div class="row" style="vertical-align:central;text-align:center">
                                  <div class="col">
-                                     <asp:Label ID="lblSeniorsResumen" CssClass="col-4" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
+                                     <asp:Label ID="lblSeniorsResumen" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
                                  </div>
                                  <div class="col">
-                                     <asp:Label ID="lblSeniorPrecios" CssClass="col-4" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
+                                     <asp:Label ID="lblSeniorPrecios" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
                                  </div>
                                    
                                  
                                </div>
-                                <div class="row" style="vertical-align:central">
+                                <div class="row" style="vertical-align:central;text-align:center">
                                     <div class="col">
-                                          <asp:Label ID="lblAdultosResumen" CssClass="col-4" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
-                                        <asp:Label ID="lblAdultosPrecios" CssClass="col-4" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
+                                          <asp:Label ID="lblAdultosResumen" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                        <asp:Label ID="lblAdultosPrecios" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
                                  </div>
                                  
                                  
                                </div>
-                                 <div class="row" style="vertical-align:central">
+                                 <div class="row" style="vertical-align:central;text-align:center">
                                      <div class="col">
-                                         <asp:Label ID="lblNinosResumen" CssClass="col-4" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
-                                         <asp:Label ID="lblNinosPrecios" CssClass="col-4" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
+                                         <asp:Label ID="lblNinosResumen" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                         <asp:Label ID="lblNinosPrecios" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
                                  </div>
                                        
                                    </div>
-                                <div class="row" style="vertical-align:central">
+                                <div class="row" style="vertical-align:central;text-align:center">
                                     <div class="col">
-                                        <asp:Label ID="lblInfanteResumen" CssClass="col-4" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
-                                        <asp:Label ID="lblInfantePrecios" CssClass="col-4" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
+                                        <asp:Label ID="lblInfanteResumen" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                        <asp:Label ID="lblInfantePrecios" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
                                  </div>
                                  
                                        
@@ -600,8 +602,8 @@
 				                    <div class="row">
                                         <div class="col">
                                         </div>
-                                        <div class="col">
-                                            <strong>AEROLINEA - <asp:Label ID="lblAreolineaNombResIda" runat="server" Text="">:</asp:Label></strong>
+                                        <div class="col" style="font-size:medium;text-align:center">
+                                            <strong>AEROLINEA - <asp:Label ID="lblAreolineaNombResIda" Font-Size="Medium" runat="server" Text="">:</asp:Label></strong>
                                         </div>
                                             <div class="col">
                                             <asp:Label ID="lblEscalasResIda" runat="server" Text=""></asp:Label>
@@ -611,7 +613,7 @@
 												<ItemTemplate>
                                                                                  
                                                                                         
-                                                  <ul class="list-unstyled list-inline offer-price-1">
+                                                  <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
                                                         <li>
                                                                 Salida
                                                         </li>
@@ -623,7 +625,7 @@
                                                         </li>
                                                                                         
                                                    </ul>
-                                                    <ul class="list-unstyled list-inline offer-price-1">
+                                                    <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
                                                         <li>
                                                                 <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'>:</asp:Label>
                                                         </li>
@@ -635,7 +637,7 @@
                                                         </li>
                                                                                         
                                                     </ul>
-                                                       <ul class="list-unstyled list-inline offer-price-1">
+                                                       <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
                                                         <li>
                                                                 <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
                                                         </li>
@@ -659,7 +661,7 @@
                                 <div class="row">
                                         <div class="col">
                                         </div>
-                                        <div class="col">
+                                      <div class="col" style="font-size:medium;text-align:center">
                                             <strong>AEROLINEA - <asp:Label ID="lblAreolineaNombResVuelta" runat="server" Text="">:</asp:Label></strong>
                                         </div>
                                             <div class="col">
@@ -670,7 +672,7 @@
 												<ItemTemplate>
                                                                                  
                                                                                         
-                                                    <ul class="list-unstyled list-inline offer-price-1">
+                                                    <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
                                                         <li>
                                                                 Salida
                                                         </li>
@@ -682,7 +684,7 @@
                                                         </li>
                                                                                         
                                                     </ul>
-                                                     <ul class="list-unstyled list-inline offer-price-1">
+                                                     <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
                                                         <li>
                                                                 <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'>:</asp:Label>
                                                         </li>
@@ -694,7 +696,7 @@
                                                         </li>
                                                                                         
                                                     </ul>
-                                                         <ul class="list-unstyled list-inline offer-price-1">
+                                                         <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
                                                         <li>
                                                                 <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
                                                         </li>
@@ -718,44 +720,44 @@
 
 				            <asp:Panel ID="panel_total_res" Visible="false" Font-Size="XX-Small" runat="server">
 					             <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
-                                   <asp:Image ID="Image7" ImageUrl="~/iconos/icono-carrita-resumen-reserva.png" Height="20" runat="server" /><asp:Label ID="Label12" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="lblMonedaIda" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true" Text=""></asp:Label><asp:Label ID="lblTotalRes" CssClass="col-4" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label>
+                                   <asp:Image ID="Image7" ImageUrl="~/iconos/icono-carrita-resumen-reserva.png" Height="20" runat="server" /><asp:Label ID="Label12" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="lblMonedaIda" CssClass="col-3" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true" Text=""></asp:Label><asp:Label ID="lblTotalRes" CssClass="col-5" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label>
                                </div>
                                 <asp:Panel ID="Panel_total_desglose" Visible="false" runat="server">
-                                        <div class="row" style="vertical-align:central">
-                                   <asp:Label ID="Label13" CssClass="col-6" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text="Tarifa base     "></asp:Label><asp:Label ID="lblTarifaBaseRes" CssClass="col-6" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
+                                        <div class="row" style="vertical-align:central;text-align:center">
+                                   <asp:Label ID="Label13" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text="Tarifa base     "></asp:Label><asp:Label ID="lblTarifaBaseRes" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
                                </div>
-                                 <div class="row" style="vertical-align:central">
-                                       <asp:Label ID="Label14" CssClass="col-6" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text="Total impuestos    "></asp:Label><asp:Label ID="lblTotalImpuestosRes" CssClass="col-6" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
+                                 <div class="row" style="vertical-align:central;text-align:center">
+                                       <asp:Label ID="Label14" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text="Total impuestos    "></asp:Label><asp:Label ID="lblTotalImpuestosRes" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
                                    </div>
-                               <div class="row" style="vertical-align:central">
-                                       <asp:Label ID="Label28" CssClass="col-6" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text="Fee emision    "></asp:Label><asp:Label ID="lblFeeEmisionRes" CssClass="col-6" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
+                               <div class="row" style="vertical-align:central;text-align:center">
+                                       <asp:Label ID="Label28" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text="Fee emision    "></asp:Label><asp:Label ID="lblFeeEmisionRes" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
                                    </div>
-                                <div class="row" style="vertical-align:central">
-                                       <asp:Label ID="Label32" CssClass="col-6" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text="Otros cargos    "></asp:Label><asp:Label ID="lblOtrosCargos" CssClass="col-6" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
+                                <div class="row" style="vertical-align:central;text-align:center">
+                                       <asp:Label ID="Label32" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text="Otros cargos    "></asp:Label><asp:Label ID="lblOtrosCargos" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
                                    </div>
                                  </asp:Panel>
                                 </asp:Panel>
                                    <hr />
 
-                                   <div class="row" style="vertical-align:central;font-size:xx-small">
+                                   <div class="row" style="vertical-align:central;font-size:xx-small;text-align:center">
                                        <asp:Label ID="Label40" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text="Informacion Adicional"></asp:Label>
                                    </div>
-                                   <div class="row" style="vertical-align:central;font-size:xx-small">
+                                   <div class="row" style="vertical-align:central;font-size:xx-small;text-align:center">
                                        <asp:Label ID="lblInfoAddFecha" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
                                    </div>
-                                   <div class="row" style="vertical-align:central;font-size:xx-small">
+                                   <div class="row" style="vertical-align:central;font-size:xx-small;text-align:center">
                                        <asp:Label ID="Label41" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text="* Las opciones se encuentran sujetas a la disponibilidad y el precio puede variar sin aviso previo."></asp:Label>
                                    </div>
                                    <div class="row">
                                        <div class="col">
-                                           <div class="row" style="vertical-align:central;font-size:xx-small">
+                                           <div class="row" style="vertical-align:central;font-size:xx-small;text-align:center">
                                        <asp:Label ID="Label42" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text="Para cualquier pregunta, contáctenos por correo electronico. "></asp:Label>
                                    </div>
-                                           <div class="row" style="vertical-align:central;font-size:xx-small">
+                                           <div class="row" style="vertical-align:central;font-size:xx-small;text-align:center">
                                        <asp:Label ID="lblInfoAddMail" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
                                    </div>
                                    <hr />
-                                   <div class="row" style="vertical-align:central;font-size:xx-small">
+                                   <div class="row" style="vertical-align:central;font-size:xx-small;text-align:center">
                                        <asp:Label ID="lblInfoAddFechaGeneracion" runat="server" Font-Size="XX-Small"   Font-Bold="false"  Text=""></asp:Label>
                                    </div>
                                    
@@ -819,7 +821,7 @@
 									                    <asp:Panel ID="panel_seniors" runat="server">
 									                    <!-- begin card -->
 									                    <div class="card">
-										                    <div class="card-header text-white pointer-cursor" style="background-color:silver" data-toggle="collapse" data-target="#collapseTwo">
+										                    <div class="card-header text-white pointer-cursor  btn-g-border" style="background-color:silver" data-toggle="collapse" data-target="#collapseTwo">
 											                    PASAJEROS TERECERA EDAD      <i class="fa fa-arrow-circle-down"></i>
                                                             <asp:Label ID="lblCountSen" runat="server" Text="0"></asp:Label>
 										                    </div>
@@ -885,7 +887,7 @@
 									                    <asp:Panel ID="Panel_adl" runat="server">
 									                    <!-- begin card -->
 									                    <div class="card">
-										                    <div class="card-header text-white pointer-cursor" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseSeven">
+										                    <div class="card-header text-white pointer-cursor btn-g-border" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseSeven">
 											                    PASAJEROS ADULTOS      <i class="fa fa-arrow-circle-down"></i>
                                                             <asp:Label ID="lblCountAdl" runat="server" Text="0"></asp:Label>
 										                    </div>
@@ -952,7 +954,7 @@
 									                    <asp:Panel ID="Panel_chl" runat="server">
 								                    <!-- begin card -->
 									                    <div class="card">
-										                    <div class="card-header text-white pointer-cursor" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseFive">
+										                    <div class="card-header text-white pointer-cursor  btn-g-border" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseFive">
 											                    PASAJEROS NIÑOS      <i class="fa fa-arrow-circle-down"></i>
                                                             <asp:Label ID="lblNinosCount" runat="server" Text="0"></asp:Label>
 										                    </div>
@@ -1012,7 +1014,7 @@
 									                    <asp:Panel ID="Panel_inf" runat="server">
 									                    <!-- begin card -->
 									                    <div class="card">
-										                    <div class="card-header text-white pointer-cursor" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseSix">
+										                    <div class="card-header text-white pointer-cursor  btn-g-border" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseSix">
 											                    PASAJEROS INFANTES      <i class="fa fa-arrow-circle-down"></i>
                                                             <asp:Label ID="lblInfaneCount" runat="server" Text="0"></asp:Label>
 										                    </div>
@@ -1071,7 +1073,7 @@
 										                    </asp:Panel>
 									                    <!-- begin card -->
 									                    <div class="card">
-										                    <div class="card-header text-white pointer-cursor" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseTre">
+										                    <div class="card-header text-white pointer-cursor  btn-g-border" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseTre">
 											                    <asp:Image ID="Image15" ImageUrl="~/iconos/icono-facturacion.png" Height="30px" runat="server" />
 											                    DATOS DE FACTURACION      <i class="fa fa-arrow-circle-down"></i>
 											                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ForeColor="Yellow" ControlToValidate="txtRazonSocial" ErrorMessage="*"></asp:RequiredFieldValidator>
@@ -1104,7 +1106,7 @@
 								                    <!-- end card -->
 									                    <!-- begin card -->
 									                    <div class="card">
-										                    <div class="card-header text-white pointer-cursor" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseFour">
+										                    <div class="card-header text-white pointer-cursor  btn-g-border" style="background-color:#309fd9" data-toggle="collapse" data-target="#collapseFour">
 											                    <asp:Image ID="Image8" ImageUrl="~/iconos/icono-datos-de-contacto.png" Height="30px" runat="server" />
 											                    DATOS DE CONTACTO      <i class="fa fa-arrow-circle-down"></i>
 											                    <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ForeColor="Yellow" ControlToValidate="txtEmailTit" ErrorMessage="*"></asp:RequiredFieldValidator>
@@ -1201,7 +1203,7 @@
                 <asp:View ID="View4" runat="server">
                   <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side">
 		                    <div class="shadow rounded col-12 col-md-6" >
-                                 <div class="row" style="text-align:center;">
+                                 <div class="row">
                                            <asp:Image ID="Image16" ImageUrl="~/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label16" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Reserva creada"></asp:Label>
                         
                                        </div>
@@ -1223,8 +1225,8 @@
                                        </div>
             
                                 <div class="row">
-					                    <div class="col"><asp:Button ID="btnGuardarReserva" OnClick="btnGuardarReserva_Click"  class="btn btn-success rounded"  runat="server" Text="Pagar Luego" /></div>
-					                    <div class="col"><asp:Button ID="btnComprarReserva" OnClick="btnComprarReserva_Click"  class="btn btn-primary rounded"  runat="server" Text="Pagar Ahora" /></div>	
+					                    <div class="col-12 col-md-5"><asp:Button ID="btnGuardarReserva" OnClick="btnGuardarReserva_Click"  class="btn btn-success rounded"  runat="server" Text="Pagar Luego" /></div>
+					                    <div class="col-12 col-md-5"><asp:Button ID="btnComprarReserva" OnClick="btnComprarReserva_Click"  class="btn btn-primary rounded"  runat="server" Text="Pagar Ahora" /></div>	
                                         <%--<div class="col"><asp:Button ID="btnNuevaBusquedaReserva" OnClick="btnNuevaBusquedaReserva_Click"  class="btn btn-default rounded"  runat="server" Text="Nueva busqueda" /></div>	--%>
 						
 				                    </div>
@@ -1232,12 +1234,12 @@
                                <br />
                                 <hr />
                                 <div class="row">
-                                       <div class="row" style="text-align:center">
+                                       <div class="row">
                                            <asp:Image ID="Image18" ImageUrl="~/iconos/icono-datos-de-pasajero.png" runat="server" />  <asp:Label ID="Label19" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Lista de pasajeros"></asp:Label>
                                             <br /><br />
                                        </div>
                                     <div class="table-responsive offset-1">
-											                    <table class="col-8 table-borderless">
+											                    <table class="col-12 col-md-9 table-borderless">
 												                    <thead>
 													                    <tr>
 														                    <%--<th class="text">NRO</th>--%>
@@ -1282,13 +1284,13 @@
                                            <asp:Image ID="Image20" ImageUrl="~/iconos/icono-pasajero--resumen-reserva.png" Visible="false" runat="server" />  <asp:Label ID="Label21" Visible="false" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Pasajeros"></asp:Label>
                                        </div>
                                         <div class="row" style="vertical-align:central">
-                                           <asp:Label ID="lblReservaADT" CssClass="col-12" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                           <asp:Label ID="lblReservaADT" CssClass="col-12" runat="server" Font-Size="Large"   Font-Bold="false"  Text=""></asp:Label>
                                        </div>
                                          <div class="row" style="vertical-align:central">
-                                               <asp:Label ID="lblReservaNinos" CssClass="col-12" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                               <asp:Label ID="lblReservaNinos" CssClass="col-12" runat="server" Font-Size="Large"   Font-Bold="false"  Text=""></asp:Label>
                                            </div>
                                         <div class="row" style="vertical-align:central">
-                                               <asp:Label ID="lblRservaInfantes" CssClass="col-12" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                               <asp:Label ID="lblRservaInfantes" CssClass="col-12" runat="server" Font-Size="Large"   Font-Bold="false"  Text=""></asp:Label>
                                            </div>
 
 				                    <asp:Panel ID="panel1" Visible="false" runat="server">
@@ -1520,6 +1522,12 @@
                 document.getElementById('<%=hfFechaRetorno.ClientID%>').value = document.getElementById('fecha_retorno').value;
             }
 
+            function setearFechaSalida() {
+
+                document.getElementById('fecha_salida').value = document.getElementById('<%=hfFechaSalida.ClientID%>').value;
+                 document.getElementById('fecha_retorno').value = document.getElementById('<%=hfFechaRetorno.ClientID%>').value;
+             }
+
             function TipoVuelo() {
 
                 
@@ -1565,15 +1573,14 @@
     <script>
 
         const options = {
+            pagebreak: { after: ['.Card'] },
             margin: 0.5,
-            filename: 'invoice.pdf',
+            filename: 'reserva.pdf',
             image: {
                 type: 'jpeg',
                 quality: 500
             },
-            html2canvas: {
-                scale: 1
-            },
+            html2canvas: { scale: 3, y: 0, scrollY: 0 },
             jsPDF: {
                 unit: 'in',
                 format: 'letter',
@@ -1597,11 +1604,8 @@
         function printDiv(divName) {
             var printContents = document.getElementById(divName).innerHTML;
             var originalContents = document.body.innerHTML;
-
             document.body.innerHTML = printContents;
-
             //window.print();
-
             document.body.innerHTML = originalContents;
         }
     </script>

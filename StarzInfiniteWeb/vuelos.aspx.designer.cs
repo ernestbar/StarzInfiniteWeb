@@ -267,6 +267,15 @@ namespace StarzInfiniteWeb
         protected global::System.Web.UI.WebControls.ObjectDataSource odsLineaAerea;
 
         /// <summary>
+        /// Panel_flitros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_flitros;
+
+        /// <summary>
         /// hfTipoRuta control.
         /// </summary>
         /// <remarks>
