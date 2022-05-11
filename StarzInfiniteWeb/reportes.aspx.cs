@@ -23,7 +23,7 @@ namespace StarzInfiniteWeb
                     hfFecha1.Value = DateTime.Now.ToShortDateString();
                     hfFecha2.Value = DateTime.Now.ToShortDateString();
 
-                    lblUsuario.Text = "adrianavera_d@hotmail.com"; //Session["usuario"].ToString();
+                    lblUsuario.Text = Session["usuario"].ToString();
                     MultiView1.ActiveViewIndex = 0;
                     //DataTable dt = new DataTable();
                     //dt = clases.LocalBD.PR_OBTIENE_BOLETOS_VENDIDOS_WEB(lblUsuario.Text,hfFecha1.Value,hfFecha2.Value);

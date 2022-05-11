@@ -19,7 +19,8 @@ namespace StarzInfiniteWeb
                 }
                 else
                 {
-
+                    hfFecha1.Value = DateTime.Now.ToShortDateString();
+                    hfFecha2.Value = DateTime.Now.ToShortDateString();
                     lblUsuario.Text = Session["usuario"].ToString();
                     MultiView1.ActiveViewIndex = 0;
                 }

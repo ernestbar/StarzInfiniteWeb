@@ -233,13 +233,13 @@ namespace StarzInfiniteWeb
 
                 RespuestaSP resp = new RespuestaSP();
                 resp = JsonConvert.DeserializeObject<RespuestaSP>(respuestaJson);
-                //MultiView1.ActiveViewIndex = 3;
+                MultiView1.ActiveViewIndex = 3;
                 string url = "https://psp.starzinfinite.com/psp/?IdTransaccion=" + resp.IdTransaccion;
-                Response.Redirect(url,false);
+                //Response.Redirect(url,false);
                 //Response.Write("<script> window.open('" + url + "','_blank'); </script>");
-                //myIframe.ResolveUrl(url);
-                //myIframe.Src = url;
-                //myIframe.DataBind();
+                myIframe.ResolveUrl(url);
+                myIframe.Src = url;
+                myIframe.DataBind();
             }
             catch (Exception ex)
             {
@@ -355,7 +355,7 @@ namespace StarzInfiniteWeb
 
         protected void btnCanelarIframe_Click(object sender, EventArgs e)
         {
-            MultiView1.ActiveViewIndex = 0;
+            Response.Redirect("reserva_admin.aspx", false);
         }
 
         protected void ibtnCompartir_Click(object sender, ImageClickEventArgs e)

@@ -242,11 +242,11 @@
                   </asp:Panel>
 		</asp:View>
 		<asp:View ID="View4" runat="server">
-			<iframe name="myIframe" id="myIframe" width="100%" height="100%" runat="server"></iframe>
+			<iframe name="myIframe" id="myIframe" width="800px" height="600px" runat="server"></iframe>
 			<div class="btn-group col-md-12">
 									<div class="col-md-6">
 									<div class="form-btn">
-										<asp:Button ID="btnCanelarIframe" OnClick="btnCanelarIframe_Click"  class="btn btn-primary rounded shadow-sm"  runat="server" Text="Volver" />
+										<asp:Button ID="btnCanelarIframe" OnClick="btnCanelarIframe_Click"  class="btn btn-primary rounded shadow-sm"  runat="server" Text="Volver a reservas" />
 									</div>
 								</div>
 								

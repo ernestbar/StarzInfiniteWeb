@@ -114,7 +114,7 @@
             <asp:View ID="View1" runat="server">
 				<h3>REPORTE GENERAL DE VENTAS</h3>
 				<asp:Button ID="btnOtraConsulta" runat="server" CssClass="btn btn-primary" OnClick="btnOtraConsulta_Click" Text="Otra consulta" />
-               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:600px; overflow-x:scroll;overflow-y:scroll">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
 						<table id="data-table-buttons" class="table table-striped table-bordered">
 									<thead>
@@ -184,7 +184,7 @@
 						<asp:Button ID="btnVolver1" runat="server" CssClass="btn btn-primary" OnClick="btnVolver1_Click" Text="Volver" />
 			    </div>
 				</div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:600px; overflow-x:scroll;overflow-y:scroll">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
 						<table id="data-table-buttons" class="table table-striped table-bordered">
 									<thead>
@@ -361,7 +361,7 @@
 						<asp:Button ID="btnVolver2" runat="server" CssClass="btn btn-primary" OnClick="btnVolver2_Click" Text="Volver" />
 			    </div>
 				</div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:600px; overflow-x:scroll;overflow-y:scroll">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
 						<table id="data-table-buttons" class="table table-striped table-bordered">
 									<thead>
@@ -442,7 +442,7 @@
 						<asp:Button ID="btnVolverEstado" runat="server" CssClass="btn btn-primary" OnClick="btnVolverEstado_Click" Text="Otra consulta" />
 			    </div>
 				</div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:600px; overflow-x:scroll;overflow-y:scroll">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
 						<table id="data-table" class="table table-striped table-bordered">
 									<thead>

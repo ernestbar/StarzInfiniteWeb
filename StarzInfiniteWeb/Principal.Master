@@ -36,7 +36,7 @@
     <!--====== LOADER =====-->
     <div class="loader"></div>
     <!--======== SEARCH-OVERLAY =========-->
-    <div class="overlay">
+    <%--<div class="overlay">
     <a href="javascript:void(0)" id="close-button" class="closebtn">&times;</a>
     <div class="overlay-content">
         <div class="form-center">
@@ -51,7 +51,7 @@
             </form>
             </div><!-- end form-center -->
         </div><!-- end overlay-content -->
-        </div><!-- end overlay -->
+        </div><!-- end overlay -->--%>
     <form id="form1" runat="server">
         <div style="background-color:white">
      <!--============= TOP-BAR ===========-->
@@ -87,8 +87,9 @@
         <button type="button" class="navbar-toggle" id="menu-button"><span class="icon-bar"></span>
             <span class="icon-bar"></span><span class="icon-bar"></span>
             </button>
-        <div class="header-search hidden-lg"><a href="javascript:void(0)" class="search-button"><span><i class="fa fa-search"></i></span></a>
-            </div><a href="#" class="navbar-brand"><asp:Image ID="imgLogoCab" ImageUrl="~/Logos/encabezado_logo.png" Height="50" runat="server" />
+        <%--<div class="header-search hidden-lg"><a href="javascript:void(0)" class="search-button"><span><i class="fa fa-search"></i></span></a>
+            </div>--%>
+            <a href="#" class="navbar-brand"><asp:Image ID="imgLogoCab" ImageUrl="~/Logos/encabezado_logo.png" Height="50" runat="server" />
                 </a></div>
     <!-- end navbar-header -->
         <div class="collapse navbar-collapse" id="myNavbar1">
@@ -102,19 +103,29 @@
                <li class="dropdown active">
                 <a href="emision_offline.aspx">Emision Offline<span></span></a>
             </li>
-            <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<span><i class="fa fa-angle-down"></i></span></a>
-            <ul class="dropdown-menu"><li>
-            <a href="reportes.aspx">Reporte ganancias</a></li><li>
-            <a href="reporte_admin.aspx">Reporte administrativo</a></li>
-            </ul></li>
-          <%--  <li class="dropdown active">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Autos<span></span></a>
+            <li class="dropdown active">
+               <%-- <a href="productos_offline.aspx">Productos Offline<span></span></a>--%>
             </li>
             <li class="dropdown active">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Seguro<span></span></a>
-            </li>--%>
-           <li><a href="javascript:void(0)" class="search-button"><span><i class="fa fa-search"></i></span></a></li>
+                <a href="ofertas.aspx">Ofertas<span></span></a>
+            </li>
+            <li class="dropdown active">
+                <a href="notificaciones.aspx">Notificaciones<span></span></a>
+            </li>
+             <li class="dropdown active">
+                <a href="soporte.aspx">Tutoriales<span></span></a>
+            </li>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<span><i class="fa fa-angle-down"></i></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="reportes.aspx">Reporte ganancias</a></li>
+                    <li><a href="reporte_admin.aspx">Reporte administrativo</a></li>
+                </ul>
+            </li>
+           <li>
+               <%--<a href="javascript:void(0)" class="search-button"><span><i class="fa fa-search"></i></span></a>--%>
+
+           </li>
 
         </ul>
         </div>
@@ -130,10 +141,15 @@
                         <div class="closebtn"><button class="btn btn-default" id="closebtn">&times;</button></div>
                     <!-- end close-btn -->
                         <div class="list-group panel">
-                            <a href="#home-links" class="list-group-item" data-toggle="collapse" data-parent="#main-menu"><span>
-                            <i class="fa fa-home link-icon"></i></span>Home<span></span></a>
-                              <a href="#home-links" class="list-group-item" data-toggle="collapse" data-parent="#main-menu"><span>
-                            <i class="fa fa-plane link-icon"></i></span>Vuelos<span></span></a>
+                             <a href="home.aspx" class="list-group-item">Home<span></span></a>
+                           <a href="reserva_admin.aspx" class="list-group-item">Reservas<span></span></a>
+                            <a href="emision_offline.aspx" class="list-group-item">Emision Offline<span></span></a>
+                          <%--  <a href="productos_offline.aspx" class="list-group-item">Productos Offline<span></span></a>--%>
+                            <a href="ofertas.aspx" class="list-group-item">Ofertas<span></span></a>
+                            <a href="notificaciones.aspx" class="list-group-item">Notificaciones<span></span></a>
+                            <a href="soporte.aspx" class="list-group-item">Tutoriales<span></span></a>
+                            <a href="reportes.aspx" class="list-group-item">Reporte ganancias<span></span></a>
+                            <a href="reporte_admin.aspx" class="list-group-item">Reporte administrativo<span></span></a>
                     <!-- end sub-menu -->
                         </div>
             <!-- end list-group -->
@@ -145,19 +161,7 @@
             <!-- end sidenav-content -->
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
-            <div id="footer-bottom" class="ftr-bot-black">
-            <div class="container">
-                <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="copyright"><p>© 2022 <a href="http://www.starzinfinite.com/">StarzInfinite</a>. All rights reserved.</p>
-                    </div>
-            <!-- end columns -->
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="terms">
-                    <ul class="list-unstyled list-inline"><li><a href="#">Terms & Condition</a></li><li><a href="#">Privacy Policy</a></li>
-                        </ul>
-                    </div><!-- end columns -->
-                    </div><!-- end row -->
-                </div><!-- end container -->
-                </div><!-- end footer-bottom -->
+            
         </div>
     </form>
 

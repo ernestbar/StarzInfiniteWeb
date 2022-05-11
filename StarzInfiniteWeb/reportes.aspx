@@ -139,7 +139,7 @@
 
                     </div>--%>
 			
-           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:600px; overflow-x:scroll;overflow-y:scroll">
+           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
 										<table id="data-table-buttons" class="table table-striped table-bordered">
 													<thead>

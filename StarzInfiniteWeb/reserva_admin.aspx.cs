@@ -23,6 +23,8 @@ namespace StarzInfiniteWeb
                 }
                 else
                 {
+                    hfFecha1.Value = DateTime.Now.ToShortDateString();
+                    hfFecha2.Value = DateTime.Now.ToShortDateString();
                     Session.Remove("datos_iniciales");
                     Session.Remove("datos_vuelo_ida");
                     Session.Remove("datos_reserva");

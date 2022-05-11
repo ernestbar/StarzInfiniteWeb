@@ -50,12 +50,20 @@
                                         </a>
                                     </li>
                                     <li>
-                                    <a href="#tours" data-toggle="tab"><span><i class="fa fa-suitcase"></i></span>
-                                        <span class="st-text">Auto</span></a></li><li>
+                                    <a href="#tours" data-toggle="tab"><span><i class="fa fa-car"></i></span>
+                                        <span class="st-text">Auto</span></a>
+
+                                    </li>
+                                    <li>
                                     <a href="#cruise" data-toggle="tab"><span><i class="fa fa-ship"></i></span>
-                                        <span class="st-text">Seguros</span></a></li><li>
-                                    <a href="#cars" data-toggle="tab"><span><i class="fa fa-car"></i></span>
-                                        <span class="st-text">Autos</span></a></li>
+                                        <span class="st-text">Seguros</span></a>
+
+                                    </li>
+                                    <li>
+                                   <%-- <a href="#cars" data-toggle="tab"><span><i class="fa fa-car"></i></span>
+                                        <span class="st-text">Autos</span></a>--%>
+
+                                    </li>
                                 </ul>
 
                         <div class="tab-content">
