@@ -1439,6 +1439,81 @@ namespace StarzInfiniteWeb
         }
         #endregion
 
+        protected void cbElegirIda_CheckedChanged(object sender, EventArgs e)
+        {
+            int checkVuelta = 0;
+            CheckBox cbIda = (CheckBox)sender;
+            RepeaterItem rItem1 = (RepeaterItem)cbIda.NamingContainer.Parent.Parent;
+            Button btnComprar = (Button)rItem1.FindControl("btnComprar");
+
+            foreach (RepeaterItem r1 in Repeater1.Items)
+            {
+                Repeater rep2 = (Repeater)r1.FindControl("Repeater2");
+                foreach (RepeaterItem ri2 in rep2.Items)
+                {
+                    CheckBox cbIdaItem = (CheckBox)ri2.FindControl("cbElegirIda");
+                    cbIdaItem.Checked = false;
+
+                }
+
+                Repeater rep5 = (Repeater)r1.FindControl("Repeater5");
+                foreach (RepeaterItem ri5 in rep5.Items)
+                {
+                    CheckBox cbVueltaItem = (CheckBox)ri5.FindControl("cbElegirVuelta");
+                    if (cbVueltaItem.Checked)
+                    {
+                        checkVuelta += 1;
+                    }
+                }
+
+                Button btnComprarItem = (Button)r1.FindControl("btnComprar");
+                if (checkVuelta == 0)
+                {
+                    btnComprarItem.Enabled = false;
+                }
+            }
+            cbIda.Checked = true;
+            btnComprar.Enabled = true;
+            hfToolTipIda.Value = cbIda.ToolTip;
+        }
+
+        protected void cbElegirVuelta_CheckedChanged(object sender, EventArgs e)
+        {
+            int checkIda = 0;
+            CheckBox cbVuelta = (CheckBox)sender;
+            RepeaterItem rItem1 = (RepeaterItem)cbVuelta.NamingContainer.Parent.Parent;
+            Button btnComprar = (Button)rItem1.FindControl("btnComprar");
+
+            foreach (RepeaterItem r1 in Repeater1.Items)
+            {
+                Repeater rep2 = (Repeater)r1.FindControl("Repeater2");
+                foreach (RepeaterItem ri2 in rep2.Items)
+                {
+                    CheckBox cbIdaItem = (CheckBox)ri2.FindControl("cbElegirIda");
+                    if (cbIdaItem.Checked)
+                    {
+                        checkIda += 1;
+                    }
+                }
+
+                Repeater rep5 = (Repeater)r1.FindControl("Repeater5");
+                foreach (RepeaterItem ri5 in rep5.Items)
+                {
+                    CheckBox cbVueltaItem = (CheckBox)ri5.FindControl("cbElegirVuelta");
+                    cbVueltaItem.Checked = false;
+
+                }
+
+                Button btnComprarItem = (Button)r1.FindControl("btnComprar");
+                if (checkIda == 0)
+                {
+                    btnComprarItem.Enabled = false;
+                }
+            }
+            cbVuelta.Checked = true;
+            btnComprar.Enabled = true;
+            hfToolTipVuelta.Value = cbVuelta.ToolTip;
+        }
         protected void btnContinuar_Click(object sender, EventArgs e)
         {
             try
@@ -1542,51 +1617,51 @@ namespace StarzInfiniteWeb
             lblNroInfante.Text = txtInfante.Text;
             lblNroSeniors.Text = txtSenior.Text;
             lblAviso.Text = "";
-            int checkIda = 0;
-            string toolTipIda = "";
-            int checkVuelta = 0;
-            string toolTipVuelta = "";
+            //int checkIda = 0;
+            //string toolTipIda = "";
+            //int checkVuelta = 0;
+            //string toolTipVuelta = "";
 
-            foreach (RepeaterItem ri1 in Repeater1.Items)
-            {
-                Repeater rep2 = (Repeater)ri1.FindControl("Repeater2");
-                foreach (RepeaterItem ri2 in rep2.Items)
-                {
-                    CheckBox cbIda = (CheckBox)ri2.FindControl("cbElegirIda");
-                    if (cbIda.Checked)
-                    {
-                        toolTipIda = cbIda.ToolTip;
-                        checkIda += 1;
-                    }
-                }
-            }
+            //foreach (RepeaterItem ri1 in Repeater1.Items)
+            //{
+            //    Repeater rep2 = (Repeater)ri1.FindControl("Repeater2");
+            //    foreach (RepeaterItem ri2 in rep2.Items)
+            //    {
+            //        CheckBox cbIda = (CheckBox)ri2.FindControl("cbElegirIda");
+            //        if (cbIda.Checked)
+            //        {
+            //            toolTipIda = cbIda.ToolTip;
+            //            checkIda += 1;
+            //        }
+            //    }
+            //}
 
-            if (lblTipoRuta.Text == "RT")
-            {
-                foreach (RepeaterItem ri1 in Repeater1.Items)
-                {
-                    Repeater rep5 = (Repeater)ri1.FindControl("Repeater5");
-                    foreach (RepeaterItem ri5 in rep5.Items)
-                    {
-                        CheckBox cbVuelta = (CheckBox)ri5.FindControl("cbElegirVuelta");
-                        if (cbVuelta.Checked)
-                        {
-                            toolTipVuelta = cbVuelta.ToolTip;
-                            checkVuelta += 1;
-                        }
-                    }
-                }
-            }
+            //if (lblTipoRuta.Text == "RT")
+            //{
+            //    foreach (RepeaterItem ri1 in Repeater1.Items)
+            //    {
+            //        Repeater rep5 = (Repeater)ri1.FindControl("Repeater5");
+            //        foreach (RepeaterItem ri5 in rep5.Items)
+            //        {
+            //            CheckBox cbVuelta = (CheckBox)ri5.FindControl("cbElegirVuelta");
+            //            if (cbVuelta.Checked)
+            //            {
+            //                toolTipVuelta = cbVuelta.ToolTip;
+            //                checkVuelta += 1;
+            //            }
+            //        }
+            //    }
+            //}
 
             if (lblTipoRuta.Text == "OW")
             {
-                if (checkIda > 0 )
+                if (hfToolTipVuelta.Value != "")
                 {
                     lblItiVuelta.Text = "";
                     lblItiIda.Text = "";
                     Button obj = (Button)sender;
-                    string[] datos1 = toolTipIda.Split('&');
-                    lblItiIda.Text = toolTipIda;
+                    string[] datos1 = hfToolTipVuelta.Value.Split('&');
+                    lblItiIda.Text = hfToolTipVuelta.Value; 
 
 
 
@@ -1699,13 +1774,13 @@ namespace StarzInfiniteWeb
             }
             else
             {
-                if (checkIda > 0 && checkVuelta > 0)
+                if (hfToolTipIda.Value != "" && hfToolTipVuelta.Value != "")
                 {
                     lblItiVuelta.Text = "";
                     lblItiIda.Text = "";
                     Button obj = (Button)sender;
-                    string[] datos1 = toolTipIda.Split('&');
-                    lblItiIda.Text = toolTipIda;
+                    string[] datos1 = hfToolTipIda.Value.Split('&');
+                    lblItiIda.Text = hfToolTipIda.Value;
 
 
 
@@ -1805,13 +1880,13 @@ namespace StarzInfiniteWeb
                     panel_ida.Visible = true;
                     panel_total_res.Visible = true;
 
-                    lblItiVuelta.Text = toolTipVuelta;
-                    string[] datos2 = toolTipVuelta.Split('&');
+                    lblItiVuelta.Text = hfToolTipVuelta.Value;
+                    string[] datos2 = hfToolTipVuelta.Value.Split('&');
 
 
-                    
 
-                    
+
+
                     //aux + "&" +
                     //0 dr["boardAirport"].ToString() + "|" +
                     //1 dr["offAirport"].ToString() + "|" +
