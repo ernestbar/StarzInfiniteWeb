@@ -550,6 +550,7 @@ namespace StarzInfiniteWeb
                     Label id = (Label)e.Item.FindControl("lblIdopcion");
                     Label id2 = (Label)e.Item.FindControl("lblIdDatos");
                     //Label resumen = (Label)e.Item.FindControl("lblResumenCab");
+                    Image imLogo=(Image)e.Item.FindControl("imgIda");
                     Label escalaslbl = (Label)e.Item.FindControl("lblEscalas");
                     Button elegir = (Button)e.Item.FindControl("btnElegir");
                     if (id != null)
@@ -593,8 +594,8 @@ namespace StarzInfiniteWeb
                             dt_segmentos.Rows.Add(new string[23] { datosRT[0], datosRT[1], datosRT[2], datosRT[3], datosRT[4], datosRT[5],
                      datosRT[6], datosRT[7], datosRT[8], datosRT[9], datosRT[10], datosRT[11], datosRT[12], datosRT[13], datosRT[14],
                      datosRT[15], datosRT[16], datosRT[17], datosRT[18], datosRT[19], datosRT[20], datosRT[21], datosRT[22]});
-                            // }
                         }
+
 
                         DataTable dt1 = dt_segmentos.Select(consulta).CopyToDataTable();
                         rSegmentos.DataSource = dt1;
@@ -652,6 +653,7 @@ namespace StarzInfiniteWeb
                                     fecha_salida = dr["depDate"].ToString();
                                     disponibles_I = dr["lugres_disponibles"].ToString();
                                     equipaje_I = dr["equipaje"].ToString();
+                                    imLogo.ImageUrl = "~/Logos/" + dr["operCompany"].ToString() + ".png";
                                 }
                                 //else
                                 //{
@@ -832,6 +834,7 @@ namespace StarzInfiniteWeb
                     CheckBox cbVuelta = (CheckBox)e.Item.FindControl("cbElegirVuelta");
                     Label escalaslbl = (Label)e.Item.FindControl("lblEscalas");
                     Button elegir = (Button)e.Item.FindControl("btnElegirRT");
+                    Image imLogo = (Image)e.Item.FindControl("imgVuelta");
                     if (id != null)
                     {
                         string consulta = "id_opcion='" + id.Text + "' AND id_datos='" + id2.Text + "'";
@@ -873,6 +876,7 @@ namespace StarzInfiniteWeb
                             dt_segmentosRT.Rows.Add(new string[23] { datosRT[0], datosRT[1], datosRT[2], datosRT[3], datosRT[4], datosRT[5],
                      datosRT[6], datosRT[7], datosRT[8], datosRT[9], datosRT[10], datosRT[11], datosRT[12], datosRT[13], datosRT[14],
                      datosRT[15], datosRT[16], datosRT[17], datosRT[18], datosRT[19], datosRT[20], datosRT[21], datosRT[22]});
+                            
                             // }
                         }
 
@@ -911,6 +915,7 @@ namespace StarzInfiniteWeb
                                     fecha_salida = dr["depDate"].ToString();
                                     disponibles_I = dr["lugres_disponibles"].ToString();
                                     equipaje_I = dr["equipaje"].ToString();
+                                    imLogo.ImageUrl = "~/Logos/" + dr["operCompany"].ToString() + ".png";
                                 }
                                 //else
                                 //{

@@ -53,7 +53,7 @@
         </div><!-- end overlay-content -->
         </div><!-- end overlay -->
     <form id="form1" runat="server">
-        <div>
+        <div style="background-color:white">
      <!--============= TOP-BAR ===========-->
     <div id="top-bar" class="tb-text-white">
     <div class="container">

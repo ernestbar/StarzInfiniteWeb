@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <asp:MultiView ID="MultiView1" runat="server">
         <asp:View ID="View1" runat="server">
             <!-- end page-cover --><!--===== INNERPAGE-WRAPPER ====-->
@@ -27,7 +28,7 @@
                             <span><i class="fa fa-lock"></i></span>
                                 </div>
                             
-                            <asp:Button ID="btnLogin" ValidationGroup="login1" OnClick="btnLogin_Click" class="btn btn-orange btn-block" runat="server" Text="Ingresar" />
+                            <asp:Button ID="btnLogin" TabIndex="0" ValidationGroup="login1" OnClick="btnLogin_Click" class="btn btn-orange btn-block" runat="server" Text="Ingresar" />
                         <div class="other-links">
                             <asp:LinkButton ID="lbtnReset" class="btn btn-grey btn-block rounded-lg shadow-lg" ValidationGroup="login2" OnClick="lbtnReset_Click" runat="server">Olvidaste tu contraseña?</asp:LinkButton>
                             </div><!-- end other-links --></div>
