@@ -60,8 +60,8 @@
                                         </asp:RadioButtonList>
 								</div>
 									</div>
-								 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side" style="height:700px; overflow: scroll;">
-									<div class="table-responsive-xl" style="scro">
+								 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:600px; overflow-x:scroll;overflow-y:scroll">
+									<div>
 											<table id="data-table-buttons" class="table table-striped table-bordered align-middle">
 												<thead>
 																<tr>
@@ -123,10 +123,10 @@
                                                                                     <asp:Label ID="lblFechaLim2" runat="server" Visible="false" Text='<%#Eval("FECHA_LIMITE")%>'></asp:Label>
 																			</td>
 																			<td>
-                                                                                <asp:LinkButton ID="lbtnVer" CommandArgument='<%# Eval("NRO_PNR") %>' runat="server" CssClass="btn-sm btn-primary rounded shadow" OnClick="lbtnVer_Click" ToolTip="Ver detalles reserva"><asp:Image ID="Image4" Height="20px" ImageUrl="~/iconos/icono-ver-detalles.png" runat="server" /> Ver detalles</asp:LinkButton><br />
-																				<asp:LinkButton ID="lbtnCambiarFecha" Visible='<%# Eval("ESTADO").ToString().Equals("EMITIDO".ToString()) ? Convert.ToBoolean(1) : Convert.ToBoolean(0) %>' CssClass="btn-sm btn-secondary rounded shadow" CommandArgument='<%# Eval("NRO_PNR") %>' runat="server" OnClick="lbtnCambiarFecha_Click" ToolTip="Cambiar la fecha"><asp:Image ID="Image3" Height="20px" ImageUrl="~/iconos/icono-cambiar-fecha.png" runat="server" /> Cambiar fecha</asp:LinkButton><br />
-																				<asp:LinkButton ID="btnPagar" Visible='<%# Eval("ESTADO").ToString().Equals("PENDIENTE".ToString()) ? Convert.ToBoolean(1) : Convert.ToBoolean(0) %>' CssClass="btn-sm btn-default rounded shadow"  CommandArgument='<%# Eval("NRO_PNR") +"|"+ Eval("COD_CLIENTE_TICKET") +"|"+ Eval("SECURITYTOGEN")+"|"+ Eval("DATOSFACTURACION")+"|"+ Eval("FECHA_LIMITE") %>' runat="server" OnClick="btnPagar_Click" ToolTip="Pagar reserva"><asp:Image ID="Image2" Height="20px" ImageUrl="~/iconos/icono-pagar.png" runat="server" /> Pagar</asp:LinkButton><br />
-                                                                                <asp:LinkButton ID="btnCancelar" Visible='<%# Eval("ESTADO").ToString().Equals("PENDIENTE".ToString()) ? Convert.ToBoolean(1) : Convert.ToBoolean(0) %>' CssClass="btn-sm btn-default rounded shadow" CommandArgument='<%# Eval("NRO_PNR") %>' runat="server" OnClick="btnCancelar_Click" ToolTip="Pagar reserva"><asp:Image ID="Image8" ImageUrl="~/iconos/estado-cancelado.png" runat="server" /> Cancelar</asp:LinkButton>
+                                                                                <asp:LinkButton ID="lbtnVer" CommandArgument='<%# Eval("NRO_PNR") %>' runat="server" CssClass="btn-sm btn-orange" OnClick="lbtnVer_Click" ToolTip="Ver detalles reserva">Detalles</asp:LinkButton><br />
+																				<asp:LinkButton ID="lbtnCambiarFecha" Visible='<%# Eval("ESTADO").ToString().Equals("EMITIDO".ToString()) ? Convert.ToBoolean(1) : Convert.ToBoolean(0) %>' CssClass="btn-sm btn-default" CommandArgument='<%# Eval("NRO_PNR") %>' runat="server" OnClick="lbtnCambiarFecha_Click" ToolTip="Cambiar la fecha">Cambiar fecha</asp:LinkButton><br />
+																				<asp:LinkButton ID="btnPagar" Visible='<%# Eval("ESTADO").ToString().Equals("PENDIENTE".ToString()) ? Convert.ToBoolean(1) : Convert.ToBoolean(0) %>' CssClass="btn-sm btn-success"  CommandArgument='<%# Eval("NRO_PNR") +"|"+ Eval("COD_CLIENTE_TICKET") +"|"+ Eval("SECURITYTOGEN")+"|"+ Eval("DATOSFACTURACION")+"|"+ Eval("FECHA_LIMITE") %>' runat="server" OnClick="btnPagar_Click" ToolTip="Pagar reserva">Pagar</asp:LinkButton><br />
+                                                                                <asp:LinkButton ID="btnCancelar" Visible='<%# Eval("ESTADO").ToString().Equals("PENDIENTE".ToString()) ? Convert.ToBoolean(1) : Convert.ToBoolean(0) %>' CssClass="btn-sm btn-danger" CommandArgument='<%# Eval("NRO_PNR") %>' runat="server" OnClick="btnCancelar_Click" ToolTip="Cancelar reserva">Cancelar</asp:LinkButton>
 																			</td>
 																		</tr>
 																	</ItemTemplate>
@@ -151,6 +151,7 @@
 									</asp:View>
                                     <%--VER                   RESERVA--%>
                                     <asp:View ID="View3" runat="server">
+										<asp:Button ID="btnVolverReserva" CssClass="btn btn-orange" OnClick="btnVolverReserva_Click" runat="server" Text="Volver" />
                                         <div class="row">
 		                                    <div class="col-12 col-md-6 shadow rounded">
                                                  <div class="row" style="text-align:center;">

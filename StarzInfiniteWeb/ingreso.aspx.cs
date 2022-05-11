@@ -15,6 +15,7 @@ namespace StarzInfiniteWeb
             {
                 txtUsuario.Focus();
                 MultiView1.ActiveViewIndex = 0;
+                Page.Form.DefaultButton = btnLogin.UniqueID;
             }
         }
 

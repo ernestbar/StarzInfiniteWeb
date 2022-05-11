@@ -19,7 +19,7 @@ namespace StarzInfiniteWeb
             {
                 if (Session["usuario"] == null)
                 {
-                    Response.Redirect("ingreso.aspx");
+                    Response.Redirect("ingreso.aspx",false);
                 }
                 else
                 {
@@ -467,5 +467,9 @@ namespace StarzInfiniteWeb
             public string datos { get; set; }
         }
 
+        protected void btnVolverReserva_Click(object sender, EventArgs e)
+        {
+            MultiView1.ActiveViewIndex = 0;
+        }
     }
 }

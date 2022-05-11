@@ -19,7 +19,7 @@ namespace StarzInfiniteWeb
             {
                 if (Session["usuario"] == null)
                 {
-                    Response.Redirect("login.aspx");
+                    Response.Redirect("login.aspx",false);
                 }
                 else
                 {
@@ -187,10 +187,10 @@ namespace StarzInfiniteWeb
 
                 }
                 //string monto_pagar = PmontoPago.Replace(",", ".");
-                decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(",", "."));
-                decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(",", "."));
-                //decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(".", ","));
-                //decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(".", ","));
+                //decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(",", "."));
+                //decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(",", "."));
+                decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(".", ","));
+                decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(".", ","));
                 if (Pmoneda == "USD")
                 {
                     monto_pagar_t = monto_pagar_i * decimal.Parse("6.97");
@@ -223,7 +223,8 @@ namespace StarzInfiniteWeb
                     urlRespuesta = url_aux[0],
                     PNR = lblPNR.Text,
                     gds = Pusuario,
-                    montoPagoDos = ((decimal.Parse(monto_pagar_t.ToString().Replace(",", ".")) * (decimal.Parse(porcentaje) / 100)) + decimal.Parse(monto_pagar_t.ToString().Replace(",", "."))).ToString()
+                    montoPagoDos = ((decimal.Parse(monto_pagar_t.ToString().Replace(",", ".")) * (decimal.Parse(porcentaje) / 100)) + decimal.Parse(monto_pagar_t.ToString().Replace(",", "."))).ToString().Replace(",",".")
+                    //montoPagoDos = ((decimal.Parse(monto_pagar_t.ToString().Replace(".", ",")) * (decimal.Parse(porcentaje) / 100)) + decimal.Parse(monto_pagar_t.ToString().Replace(".", ","))).ToString().Replace(",",".")
                 };
                 DBApi obj = new DBApi();
                 string json = JsonConvert.SerializeObject(obj_sp);
@@ -234,7 +235,7 @@ namespace StarzInfiniteWeb
                 resp = JsonConvert.DeserializeObject<RespuestaSP>(respuestaJson);
                 //MultiView1.ActiveViewIndex = 3;
                 string url = "https://psp.starzinfinite.com/psp/?IdTransaccion=" + resp.IdTransaccion;
-                Response.Redirect(url);
+                Response.Redirect(url,false);
                 //Response.Write("<script> window.open('" + url + "','_blank'); </script>");
                 //myIframe.ResolveUrl(url);
                 //myIframe.Src = url;
@@ -344,12 +345,12 @@ namespace StarzInfiniteWeb
 
         protected void btnNuevaVenta_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ventas.aspx");
+            Response.Redirect("ventas.aspx",false);
         }
 
         protected void btnIrReservas_Click(object sender, EventArgs e)
         {
-            Response.Redirect("reserva_admin.aspx");
+            Response.Redirect("reserva_admin.aspx",false);
         }
 
         protected void btnCanelarIframe_Click(object sender, EventArgs e)

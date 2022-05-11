@@ -592,7 +592,7 @@
 			             <asp:Panel ID="Panel_resumen" runat="server">
                              <asp:Label ID="lblMsgGetPrecioSinPNR" runat="server" ForeColor="Red" Text=""></asp:Label>
                            <div class="rounded shadow">
-                               <div id="invoice">
+                               <div id="invoice" style="font-size:small">
                                     <div class="row" style="vertical-align:central">
                                    <asp:Image ID="Image25" Height="50" ImageUrl="~/Logos/encabezado_logo.png" runat="server" /> 
                                </div>
@@ -1181,6 +1181,7 @@
 								                    <!-- end card -->
 									                    </div>
 								                    <div class="row">
+                                                        <h3>Listado de clientes agregados</h3>
 									                    <%--<asp:GridView ID="gvPasajeros" AutoGenerateColumns="false" runat="server"></asp:GridView>--%>
 										                    <div class="table-responsive">
 											                    <table class="table-condensed">
@@ -1622,7 +1623,7 @@
                 type: 'jpeg',
                 quality: 500
             },
-            html2canvas: { scale: 3, y: 0, scrollY: 0 },
+            html2canvas: { scale: 1, y: 0, scrollY: 0 },
             jsPDF: {
                 unit: 'in',
                 format: 'letter',

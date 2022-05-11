@@ -13,7 +13,13 @@ namespace StarzInfiniteWeb
         {
             if (!Page.IsPostBack)
             {
-                MultiView1.ActiveViewIndex = 0;
+                if (Session["usuario"] == null)
+                {
+                    Response.Redirect("ingreso.aspx");
+                }
+                else
+                { MultiView1.ActiveViewIndex = 0; }
+                   
                 
 
             }

@@ -448,7 +448,7 @@ namespace StarzInfiniteWeb
                   + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                   + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
 
-            Response.Redirect("vuelos.aspx");
+            Response.Redirect("vuelos.aspx",false);
         }
         #endregion
 
@@ -2891,13 +2891,13 @@ namespace StarzInfiniteWeb
         protected void btnGuardarReserva_Click(object sender, EventArgs e)
         {
 
-            Response.Redirect("reserva_admin.aspx");
+            Response.Redirect("reserva_admin.aspx",false);
         }
 
         protected void btnComprarReserva_Click(object sender, EventArgs e)
         {
             Session["datos_iframe"] = txtPNR.Text + "|" + lblMontoTotalReserva.Text + "|" + lblMonedaIda.Text + "|" + txtEmailTit.Text + "|" + lblCodTiket.Text + "|" + lblGds.Text + "|" + lblFechaLimite.Text;
-            Response.Redirect("pagar_reserva.aspx?admin=SI");
+            Response.Redirect("pagar_reserva.aspx?admin=SI",false);
         }
     }
 }

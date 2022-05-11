@@ -129,6 +129,7 @@
     <Content Include="docsupport\prism.js" />
     <Content Include="docsupport\prototype-1.7.0.0.js" />
     <Content Include="docsupport\style.css" />
+    <Content Include="emision_offline.aspx" />
     <Content Include="flight-detail-left-sidebar.html" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -526,6 +527,8 @@
     <Content Include="Logos\Z8.png" />
     <Content Include="Logos\ZP.png" />
     <Content Include="pagar_reserva.aspx" />
+    <Content Include="reportes.aspx" />
+    <Content Include="reporte_admin.aspx" />
     <Content Include="reserva_admin.aspx" />
     <Content Include="Scripts\js\chosen.jquery.min.js" />
     <Content Include="vuelos.aspx" />
@@ -546,6 +549,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="emision_offline.aspx.cs">
+      <DependentUpon>emision_offline.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="emision_offline.aspx.designer.cs">
+      <DependentUpon>emision_offline.aspx</DependentUpon>
     </Compile>
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
@@ -576,6 +586,20 @@
       <DependentUpon>Principal.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reportes.aspx.cs">
+      <DependentUpon>reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reportes.aspx.designer.cs">
+      <DependentUpon>reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reporte_admin.aspx.cs">
+      <DependentUpon>reporte_admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reporte_admin.aspx.designer.cs">
+      <DependentUpon>reporte_admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="reserva_admin.aspx.cs">
       <DependentUpon>reserva_admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
