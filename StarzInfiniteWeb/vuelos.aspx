@@ -1,8 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="vuelos.aspx.cs" Inherits="StarzInfiniteWeb.vuelos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="vuelos.aspx.cs" Inherits="StarzInfiniteWeb.vuelos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:Label ID="lblTipoRuta" runat="server" Visible="false" Text=""></asp:Label>
     <asp:Label ID="lblDtSegmentos" runat="server" Text="" Visible="false"></asp:Label>
         <asp:Label ID="lblDtSegmentosRT" runat="server" Text="" Visible="false"></asp:Label>
@@ -223,10 +222,6 @@
                 <asp:View ID="View1" runat="server">
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side" style="height:700px; overflow: scroll;">
                         <asp:Label ID="lblVueloIdaNoDisponible" runat="server" Text=""></asp:Label>
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
-                            <asp:HiddenField ID="hfToolTipIda" runat="server" />
-                            <asp:HiddenField ID="hfToolTipVuelta" runat="server" />
 					        <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
 					         <ItemTemplate>
                                  <%--NUEVA FICHA DE VIAJES--%>
@@ -247,7 +242,7 @@
 			                                                <div class="card" style="font-size:smaller;">
                                                                 <ul class="list-unstyled list-inline offer-price-1" style="background-color:lightgray">
                                                                         <li>
-                                                                             <asp:CheckBox ID="cbElegirIda" runat="server" Text="Elegir ida" CssClass="ClaseIda" OnCheckedChanged="cbElegirIda_CheckedChanged" AutoPostBack="True"/>
+                                                                            <asp:CheckBox ID="cbElegirIda" runat="server" Text="Elegir ida" CssClass="ClaseIda"/>
                                                                             <asp:Image ID="Image1" runat="server" Height="30" ImageUrl="~/iconos/icono-avion-ticket.png" />
                                                                             <%--<input id="cbElijeIda" class="checkbox" type="checkbox" OnClick="checkAll(this)" />--%>
                                                                         </li>
@@ -394,7 +389,7 @@
 			                                                <div class="card" style="font-size:smaller;">
                                                                  <ul class="list-unstyled list-inline offer-price-1" style="background-color:lightgray">
                                                                         <li>
-                                                                             <asp:CheckBox ID="cbElegirVuelta" runat="server" Text="Elegir Retorno" CssClass="ClaseVuelta" OnCheckedChanged="cbElegirVuelta_CheckedChanged" AutoPostBack="True"/>
+                                                                            <asp:CheckBox ID="cbElegirVuelta" runat="server" Text="Elegir Retorno" CssClass="ClaseVuelta"/>
                                                                             <asp:Image ID="Image1" runat="server" Height="30" ImageUrl="~/iconos/icono-avion-ticket-reverse.png" />
                                                                             <%--<input id="cbElijeIda" class="checkbox" type="checkbox" OnClick="checkAll(this)" />--%>
                                                                         </li>
@@ -574,8 +569,7 @@
 				
 							        </ItemTemplate>
 					        </asp:Repeater>
-					  </ContentTemplate>
-                            </asp:UpdatePanel>
+					
 				
                     </div>
                 </asp:View>
@@ -1689,20 +1683,20 @@
 
         }
 
-        //$(document).ready(function () {
-        //    $('[id*=cbElegirIda]').on('change', function () {
-        //        $(".ClaseIda input[type='checkbox']").each(function () {
-        //            this.checked = false;
-        //        });
-        //        this.checked = true;
-        //    });
+        $(document).ready(function () {
+            $('[id*=cbElegirIda]').on('change', function () {
+                $(".ClaseIda input[type='checkbox']").each(function () {
+                    this.checked = false;
+                });
+                this.checked = true;
+            });
 
-        //    $('[id*=cbElegirVuelta]').on('change', function () {
-        //        $(".ClaseVuelta input[type='checkbox']").each(function () {
-        //            this.checked = false;
-        //        });
-        //        this.checked = true;
-        //    });
-        //});
+            $('[id*=cbElegirVuelta]').on('change', function () {
+                $(".ClaseVuelta input[type='checkbox']").each(function () {
+                    this.checked = false;
+                });
+                this.checked = true;
+            });
+        });
     </script>
 </asp:Content>
