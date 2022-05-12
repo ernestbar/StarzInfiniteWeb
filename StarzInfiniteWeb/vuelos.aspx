@@ -52,7 +52,7 @@
                     <input id="cbSoloIda2" class="checkbox" checked="checked"  onclick="TipoVuelo2()" type="checkbox" />Ida y vuelta
                     </div>
                     <div class="form-group">
-                        <asp:DropDownList ID="ddlOrigen" Width="230px" class="chosen-select" tabindex="2" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlOrigen_DataBound" DataSourceID="odsRutaInd" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlOrigen" Width="230px" class="form-select" onchange="searchFilter()" tabindex="2" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlOrigen_DataBound" DataSourceID="odsRutaInd" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
                         </div>
                 <div class="form-group">
                     <asp:DropDownList ID="ddlDestino" Width="230px" class="chosen-select" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlDestino_DataBound" DataSourceID="odsRutaInd" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
@@ -1699,4 +1699,22 @@
             });
         });
     </script>
+     <script>
+         var searchFilter = () => {
+             let selectedColor = document.getElementById('<%=ddlOrigen.ClientID %>').value;
+             console.log(selectedColor);
+             const input = document.querySelector(".form-control");
+             const cards = document.getElementsByClassName("col");
+             console.log(cards[1])
+             let textBox = input.value;
+             for (let i = 0; i < cards.length; i++) {
+                 let title = cards[i].querySelector(".card-body");
+                 if ((cards[i].classList.contains(selectedColor) || selectedColor == "") && title.innerText.toLowerCase().indexOf(textBox.toLowerCase()) > -1) {
+                     cards[i].classList.remove("d-none");
+                 } else {
+                     cards[i].classList.add("d-none");
+                 }
+             }
+         }
+     </script>
 </asp:Content>

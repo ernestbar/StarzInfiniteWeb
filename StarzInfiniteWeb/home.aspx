@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="StarzInfiniteWeb.home" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -90,7 +91,11 @@
                                         <div class="row">
                                         <div class="col-12 col-md-6">
                                             <div class="form-group left-icon">
-                                            <asp:DropDownList ID="ddlOrigen" class="chosen-select" tabindex="2" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlOrigen_DataBound" DataSourceID="odsRutaInd" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
+                                                <asp:ScriptManager runat="server">
+                                            </asp:ScriptManager>
+                                            <ajaxToolkit:ComboBox ID="ddlOrigen" CssClass="dropdown" Width="300" Height="30" runat="server" OnDataBound="ddlOrigen_DataBound" DataSourceID="odsRutaInd" DataValueField="codigo" DataTextField="descripcion" AutoCompleteMode="Append">
+                                            </ajaxToolkit:ComboBox>
+                                            <%--<asp:DropDownList ID="ddlOrigen" class="form-select" onchange="searchFilter()"  tabindex="2" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlOrigen_DataBound" DataSourceID="odsRutaInd" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>--%>
 					                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddlOrigen" InitialValue="ORIGEN"  Font-Bold="True"></asp:RequiredFieldValidator>
                                                 </div>
                                              </div><!-- end columns -->
@@ -550,4 +555,22 @@
             document.body.innerHTML = originalContents;
         }
     </script>
+     <script>
+         var searchFilter = () => {
+             let selectedColor = document.getElementById('<%=ddlOrigen.ClientID %>').value;
+             console.log(selectedColor);
+             const input = document.querySelector(".form-control");
+             const cards = document.getElementsByClassName("col");
+             console.log(cards[1])
+             let textBox = input.value;
+             for (let i = 0; i < cards.length; i++) {
+                 let title = cards[i].querySelector(".card-body");
+                 if ((cards[i].classList.contains(selectedColor) || selectedColor == "") && title.innerText.toLowerCase().indexOf(textBox.toLowerCase()) > -1) {
+                     cards[i].classList.remove("d-none");
+                 } else {
+                     cards[i].classList.add("d-none");
+                 }
+             }
+         }
+     </script>
 </asp:Content>

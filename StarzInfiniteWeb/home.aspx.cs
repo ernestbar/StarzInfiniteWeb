@@ -56,7 +56,7 @@ namespace StarzInfiniteWeb
                 vuelos_incluyenequipaje = "1";
             //   0         1        2      3          4         5       6    7       8      9    10     11     12       13       14          15         16
             //TIPO RUTA|ORIGEN|DESSTINO|FECHAIDA|FECHAVUELTA|ADULTOS|NINOS|INFANTE|SENIOR|LINEA|TURNO|CABINA|EQUIPAJE|DIRECTO|NOMBORIGEN|NOMBDESTINO|TIPOVENTA
-            Session["DATOSINI"] = hfTipoRuta.Value+"|"+ddlOrigen.SelectedValue + "|" +ddlDestino.SelectedValue + "|" +hfFechaSalida.Value + "|" +hfFechaRetorno.Value
+            Session["DATOSINI"] = hfTipoRuta.Value+"|"+ddlOrigen.SelectedItem.Value + "|" +ddlDestino.SelectedValue + "|" +hfFechaSalida.Value + "|" +hfFechaRetorno.Value
                  + "|" + txtAdultos.Text + "|" +txtNinos.Text + "|" +txtInfante.Text + "|" +txtSenior.Text + "|" +ddlLineArea.SelectedValue + "|" +ddlTurnos.SelectedValue
                   + "|" +ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" +ddlOrigen.SelectedItem.Text 
                   + "|" +ddlDestino.SelectedItem.Text + "|" +rblTipoVenta.SelectedValue;
