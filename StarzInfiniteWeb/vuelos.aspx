@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+      <div class="container">
     <asp:Label ID="lblTipoRuta" runat="server" Visible="false" Text=""></asp:Label>
     <asp:Label ID="lblDtSegmentos" runat="server" Text="" Visible="false"></asp:Label>
         <asp:Label ID="lblDtSegmentosRT" runat="server" Text="" Visible="false"></asp:Label>
@@ -40,7 +41,7 @@
 			 <asp:Parameter DefaultValue="AEROLINEA" Name="PV_DOMINIO" Type="String" />
 		</SelectParameters>
 	 </asp:ObjectDataSource>
-        <div class="container">
+      
             <asp:Panel ID="Panel_flitros" runat="server">
         <div class="col-xs-12 col-sm-12 col-md-3 side-bar left-side-bar">
 
@@ -63,7 +64,7 @@
               <asp:HiddenField ID="hfTipoRuta" Value="RT" runat="server" />
                 <div class="form-inline">
                      <input id="cbSoloIda" class="checkbox"  onclick="TipoVuelo()" type="checkbox" />Solo Ida
-                    <input id="cbSoloIda2" class="checkbox" checked="checked"  onclick="TipoVuelo2()" type="checkbox" />Ida y vuelta
+                    <input id="cbSoloIda2" class="checkbox"  onclick="TipoVuelo2()" type="checkbox" />Ida y vuelta
                     </div>
                     <div class="form-group">
                         <asp:DropDownList ID="ddlOrigen" Width="230px" class="chosen-select" tabindex="2" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlOrigen_DataBound" DataSourceID="odsRutaInd" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
@@ -220,7 +221,7 @@
                
                 <div class="form-group">
                     <asp:RadioButtonList ID="rblTipoVenta" RepeatDirection="Horizontal" runat="server">
-					    <asp:ListItem Text="NORMAL" Value="0" Selected="True"></asp:ListItem>
+					    <asp:ListItem Text="NORMAL" Value="0"></asp:ListItem>
 					    <asp:ListItem Text="CORPORATIVO" Value="1"></asp:ListItem>
 				    </asp:RadioButtonList>
                     </div>
@@ -245,7 +246,7 @@
             </asp:Panel>
             <asp:MultiView ID="MultiView1" runat="server">
                 <asp:View ID="View1" runat="server">
-                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side" style="height:700px; overflow: scroll;">
+                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side" style="height:500px; overflow: scroll;">
                         <asp:Label ID="lblVueloIdaNoDisponible" runat="server" Text=""></asp:Label>
 					        <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
 					         <ItemTemplate>
@@ -1608,45 +1609,37 @@
                  document.getElementById('fecha_retorno').value = document.getElementById('<%=hfFechaRetorno.ClientID%>').value;
              }
 
-            function TipoVuelo() {
-
-                
-                if (document.getElementById("cbSoloIda").checked == true) {
-                    document.getElementById('<%=hfTipoRuta.ClientID%>').value = "OW";
+            function TipoVueloOW() {
+                if (document.getElementById('<%=hfTipoRuta.ClientID%>').value = "OW") {
+                    document.getElementById("cbSoloIda").checked == true;
                     document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'hidden';
                     var cbIV = document.getElementById("cbSoloIda2");
                     cbIV.checked = false;
                 }
-                
-                
             }
 
-            function TipoVuelo2() {
-
-
-                if (document.getElementById("cbSoloIda2").checked == true) {
-                    document.getElementById('<%=hfTipoRuta.ClientID%>').value = "RT";
+            function TipoVueloRT() {
+                if (document.getElementById('<%=hfTipoRuta.ClientID%>').value = "RT") {
+                    document.getElementById("cbSoloIda2").checked == true;
                     document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'visible';
                     var cbIV = document.getElementById("cbSoloIda");
                     cbIV.checked = false;
                 }
-               
-
             }
 
-            function TipoVueloOW() {
-                var cbIV = document.getElementById("cbSoloIda");
-                cbIV.checked = true;
-                var cbIV = document.getElementById("cbSoloIda2");
-                cbIV.checked = false;
-            }
+            //function TipoVueloOW() {
+            //    var cbIV = document.getElementById("cbSoloIda");
+            //    cbIV.checked = true;
+            //    //var cbIV2 = document.getElementById("cbSoloIda2");
+            //    //cbIV2.checked = false;
+            //}
 
-            function TipoVueloRT() {
-                var cbIV = document.getElementById("cbSoloIda2");
-                cbIV.checked = true;
-                var cbIV = document.getElementById("cbSoloIda");
-                cbIV.checked = false;
-            }
+            //function TipoVueloRT() {
+            //    var cbIV = document.getElementById("cbSoloIda2");
+            //    cbIV.checked = true;
+            //    //var cbIV2 = document.getElementById("cbSoloIda");
+            //    //cbIV2.checked = false;
+            //}
         </script>
     <script type="text/javascript">
 

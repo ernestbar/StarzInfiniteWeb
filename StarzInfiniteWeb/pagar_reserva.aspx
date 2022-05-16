@@ -242,7 +242,7 @@
                   </asp:Panel>
 		</asp:View>
 		<asp:View ID="View4" runat="server">
-			<iframe name="myIframe" id="myIframe" width="800px" height="600px" runat="server"></iframe>
+			<iframe name="myIframe" id="myIframe" width="800" height="600" runat="server" scrolling="yes"></iframe>
 			<div class="btn-group col-md-12">
 									<div class="col-md-6">
 									<div class="form-btn">

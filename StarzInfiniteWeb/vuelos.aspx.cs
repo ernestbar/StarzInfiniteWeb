@@ -29,7 +29,8 @@ namespace StarzInfiniteWeb
                     string[] datos = Session["DATOSINI"].ToString().Split('|');
                     MultiView1.ActiveViewIndex = 0;
                     lblTipoRuta.Text = datos[0];
-                        
+                    rblTipoVenta.SelectedValue = datos[16];
+                      
                     hfTipoRuta.Value= datos[0];
                     
                     if (lblTipoRuta.Text == "OW")
@@ -40,7 +41,7 @@ namespace StarzInfiniteWeb
                     else 
                     {
                         Panel_fecha_regreso.Visible = true;
-                        ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionTipoOW", "TipoVueloRT();", true);
+                        ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionTipoRT", "TipoVueloRT();", true);
                     }
 
                     //lblTipoRuta.Text = hfTipoRuta.Value;
@@ -1677,12 +1678,14 @@ namespace StarzInfiniteWeb
                         if (ida == 1)
                         {
                             lblOrigenDes.Text = datosIda[0];
+                            lblOrigen.Text = datosIda[0];
                             //lblNroVueloIResIda.Text = datosIda[6];
                             //lblClaseIResIda.Text = datosIda[4];
                             //lblFechaSalidaIResIda.Text = datosIda[3];
                             //lblHoraSalidaIResIda.Text = datosIda[2];
                         }
                         lblDestinoDes.Text = datosIda[1];
+                        lblDestino.Text = datosIda[1];
                         //lblNroVueloVResIda.Text = datosIda[6];
                         //lblClaseVResIda.Text = datosIda[4];
                         //lblFechaLlegadaVResIda.Text = datosIda[3];
@@ -1798,12 +1801,14 @@ namespace StarzInfiniteWeb
                         if (ida == 1)
                         {
                             lblOrigenDes.Text = datosIda[0];
+                            lblOrigen.Text = datosIda[0];
                             //lblNroVueloIResIda.Text = datosIda[6];
                             //lblClaseIResIda.Text = datosIda[4];
                             //lblFechaSalidaIResIda.Text = datosIda[3];
                             //lblHoraSalidaIResIda.Text = datosIda[2];
                         }
                         lblDestinoDes.Text = datosIda[1];
+                        lblDestino.Text = datosIda[1];
                         //lblNroVueloVResIda.Text = datosIda[6];
                         //lblClaseVResIda.Text = datosIda[4];
                         //lblFechaLlegadaVResIda.Text = datosIda[3];

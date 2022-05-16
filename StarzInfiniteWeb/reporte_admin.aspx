@@ -86,7 +86,7 @@
             <asp:LinkButton ID="lbtnMovBilletera" OnClick="lbtnMovBilletera_Click" class="shadow rounded btn-block" runat="server"><asp:Image ID="Image2" Width="51px" ImageUrl="~/iconos/icono-saldo-en-cuenta.png" runat="server" />Movimiento Billetara</asp:LinkButton>
         </div>--%>
                       
-                   
+                  
                
         <asp:MultiView ID="MultiView1" runat="server">
 			<asp:View ID="View6" runat="server">
@@ -110,13 +110,21 @@
 						<asp:Button ID="btnCambiarEstados" runat="server" CssClass="btn btn-primary shadow rounded" OnClick="btnCambiarEstados_Click" OnClientClick="recuperarFechaSalida()" Text="Cambiar Estados" />
 			    </div>
                 </div>
+				
 			</asp:View>
             <asp:View ID="View1" runat="server">
 				<h3>REPORTE GENERAL DE VENTAS</h3>
+				
 				<asp:Button ID="btnOtraConsulta" runat="server" CssClass="btn btn-primary" OnClick="btnOtraConsulta_Click" Text="Otra consulta" />
+				<button onclick="exportTableToExcel('tblData')" class="btn btn-orange">Exportar a Excel</button>
+				<div class="row">
+											<div class="col-12 col-md-3">
+											<input class="form-control light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+												</div>
+										</div>
                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
-						<table id="data-table-buttons" class="table table-striped table-bordered">
+						<table id="tblData" class="table table-bordered order-table ">
 									<thead>
 												<tr>
 													<td>
@@ -179,14 +187,24 @@
                </div>
             </asp:View>
             <asp:View ID="View2" runat="server">
+				
 				<div class="row">
 					<div class="col">
 						<asp:Button ID="btnVolver1" runat="server" CssClass="btn btn-primary" OnClick="btnVolver1_Click" Text="Volver" />
 			    </div>
+					<div class="col">
+						<button onclick="exportTableToExcel('tblData2')" class="btn btn-orange">Exportar a Excel</button>
+					</div>
 				</div>
+				
+				<div class="row">
+											<div class="col-12 col-md-3">
+											<input class="form-control light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+												</div>
+										</div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
-						<table id="data-table-buttons" class="table table-striped table-bordered">
+						<table id="tblData2" class="table table-bordered order-table ">
 									<thead>
 												<tr>
 													<td>
@@ -360,10 +378,19 @@
 					<div class="col">
 						<asp:Button ID="btnVolver2" runat="server" CssClass="btn btn-primary" OnClick="btnVolver2_Click" Text="Volver" />
 			    </div>
+					<div class="col">
+						<button onclick="exportTableToExcel('tblData3')" class="btn btn-orange">Exportar a Excel</button>
+					</div>
 				</div>
+				
+				<div class="row">
+											<div class="col-12 col-md-3">
+											<input class="form-control light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+												</div>
+										</div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
-						<table id="data-table-buttons" class="table table-striped table-bordered">
+						<table id="tblData3" class="table table-bordered order-table ">
 									<thead>
 												<tr>
 													<td>
@@ -437,14 +464,24 @@
             </asp:View>
 			<asp:View ID="View4" runat="server">
 				<h4>REPORTE PARA CAMBIO DE ESTADOS</h4>
+				
 				<div class="row">
 					<div class="col">
 						<asp:Button ID="btnVolverEstado" runat="server" CssClass="btn btn-primary" OnClick="btnVolverEstado_Click" Text="Otra consulta" />
 			    </div>
+					<div class="col">
+						<button onclick="exportTableToExcel('tblData4')" class="btn btn-orange">Exportar a Excel</button>
+					</div>
 				</div>
+				
+				 <div class="row">
+											<div class="col-12 col-md-3">
+											<input class="form-control light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+												</div>
+										</div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
-						<table id="data-table" class="table table-striped table-bordered">
+						<table id="tblData4" class="table table-bordered order-table ">
 									<thead>
 												<tr>
 													<td>
@@ -647,6 +684,76 @@
             document.getElementById('<%=hfFecha2.ClientID%>').value = document.getElementById('fecha_retorno1').value;
 		}
 
-      
+        function exportTableToExcel(tableID, filename = '') {
+            var downloadLink;
+            var dataType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById(tableID);
+            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+            // Specify file name
+            filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+            // Create download link element
+            downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+            if (navigator.msSaveOrOpenBlob) {
+                var blob = new Blob(['ufeff', tableHTML], {
+                    type: dataType
+                });
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                // Setting the file name
+                downloadLink.download = filename;
+
+                //triggering the function
+                downloadLink.click();
+            }
+        }
+    </script>
+	<script type="text/javascript">
+        (function (document) {
+            'use strict';
+
+            var LightTableFilter = (function (Arr) {
+
+                var _input;
+
+                function _onInputEvent(e) {
+                    _input = e.target;
+                    var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                    Arr.forEach.call(tables, function (table) {
+                        Arr.forEach.call(table.tBodies, function (tbody) {
+                            Arr.forEach.call(tbody.rows, _filter);
+                        });
+                    });
+                }
+
+                function _filter(row) {
+                    var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                    row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                }
+
+                return {
+                    init: function () {
+                        var inputs = document.getElementsByClassName('light-table-filter');
+                        Arr.forEach.call(inputs, function (input) {
+                            input.oninput = _onInputEvent;
+                        });
+                    }
+                };
+            })(Array.prototype);
+
+            document.addEventListener('readystatechange', function () {
+                if (document.readyState === 'complete') {
+                    LightTableFilter.init();
+                }
+            });
+
+        })(document);
     </script>
 </asp:Content>

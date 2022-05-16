@@ -137,7 +137,7 @@
             <!-- end navbar -->
             <div class="sidenav-content">
                 <div id="mySidenav" class="sidenav" >
-                    <h2 id="web-name"><span><i class="fa fa-plane"></i></span>Star Travel</h2>
+                    <h2 id="web-name"><span><i class="fa fa-plane"></i></span>StarzInfinite</h2>
                     <div id="main-menu">
                         <div class="closebtn"><button class="btn btn-default" id="closebtn">&times;</button></div>
                     <!-- end close-btn -->

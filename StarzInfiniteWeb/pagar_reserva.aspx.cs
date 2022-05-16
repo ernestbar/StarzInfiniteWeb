@@ -187,10 +187,10 @@ namespace StarzInfiniteWeb
 
                 }
                 //string monto_pagar = PmontoPago.Replace(",", ".");
-                //decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(",", "."));
-                //decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(",", "."));
-                decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(".", ","));
-                decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(".", ","));
+                decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(",", "."));
+                decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(",", "."));
+                //decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(".", ","));
+                //decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(".", ","));
                 if (Pmoneda == "USD")
                 {
                     monto_pagar_t = monto_pagar_i * decimal.Parse("6.97");

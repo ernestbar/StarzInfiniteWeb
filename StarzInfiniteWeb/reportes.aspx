@@ -138,10 +138,14 @@
                             
 
                     </div>--%>
-			
+					<div class="row">
+											<div class="col-12 col-md-3">
+											<input class="form-control light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+												</div>
+										</div>
            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
-										<table id="data-table-buttons" class="table table-striped table-bordered">
+										<table class="table table-bordered order-table ">
 													<thead>
 																<tr>
 																	<td>
@@ -283,7 +287,7 @@
                     </div>
 			<br /><br /><br />
             <div class="table-responsive col-12">
-														<table id="data-table-default" class="table table-condensed table-bordered">
+														<table class="table table-bordered order-table ">
 													<thead>
 																<tr>
 																	
@@ -331,7 +335,7 @@
             </div>
 			<br /><br /><br />
             <div class="table-responsive col-12">
-				<table id="data-table-default" class="table table-condensed table-bordered">
+				<table class="table table-bordered order-table ">
 			        <thead>
 						        <tr>
 																	
@@ -373,8 +377,13 @@
 					<asp:Button ID="btnVolverReporte" CssClass="btn btn-primary" OnClick="btnVolverReporte_Click" runat="server" Text="Volver" />
 				</div>
 			</div>
+			<div class="row">
+											<div class="col-12 col-md-3">
+											<input class="form-control light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+												</div>
+										</div>
           <div class="table-responsive col-12">
-				<table id="data-table-default1" class="table table-condensed table-bordered">
+				<table class="table table-bordered order-table ">
 			        <thead>
 						        <tr>
 																	
@@ -424,4 +433,45 @@
 
 
      </script>
+	<script type="text/javascript">
+        (function (document) {
+            'use strict';
+
+            var LightTableFilter = (function (Arr) {
+
+                var _input;
+
+                function _onInputEvent(e) {
+                    _input = e.target;
+                    var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                    Arr.forEach.call(tables, function (table) {
+                        Arr.forEach.call(table.tBodies, function (tbody) {
+                            Arr.forEach.call(tbody.rows, _filter);
+                        });
+                    });
+                }
+
+                function _filter(row) {
+                    var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                    row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                }
+
+                return {
+                    init: function () {
+                        var inputs = document.getElementsByClassName('light-table-filter');
+                        Arr.forEach.call(inputs, function (input) {
+                            input.oninput = _onInputEvent;
+                        });
+                    }
+                };
+            })(Array.prototype);
+
+            document.addEventListener('readystatechange', function () {
+                if (document.readyState === 'complete') {
+                    LightTableFilter.init();
+                }
+            });
+
+        })(document);
+    </script>
 </asp:Content>
