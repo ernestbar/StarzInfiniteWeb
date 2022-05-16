@@ -18,151 +18,171 @@ namespace StarzInfiniteWeb
         {
             if (!Page.IsPostBack)
             {
-                //   0         1        2      3          4         5       6    7       8      9    10     11     12       13       14          15         16
-                //TIPO RUTA|ORIGEN|DESSTINO|FECHAIDA|FECHAVUELTA|ADULTOS|NINOS|INFANTE|SENIOR|LINEA|TURNO|CABINA|EQUIPAJE|DIRECTO|NOMBORIGEN|NOMBDESTINO|TIPOVENTA
-                string[] datos = Session["DATOSINI"].ToString().Split('|');
-                MultiView1.ActiveViewIndex = 0;
-                
-                //lblTipoRuta.Text = hfTipoRuta.Value;
-                //if (rblTipoVenta.SelectedValue == "1")
-                //    panel_rango.Visible = false;
-                //else
-                //{
-                //    panel_rango.Visible = true;
-                //}
-                //panel_seccion_vuelos.Visible = true;
-
-                ddlDestino.SelectedValue = datos[2];
-                ddlOrigen.SelectedValue = datos[1];
-                txtAdultos.Text = datos[5];
-                txtNinos.Text = datos[6];
-                txtInfante.Text = datos[7];
-                txtSenior.Text = datos[8];
-                hfFechaSalida.Value = datos[3];
-                hfFechaRetorno.Value = datos[4];
-
-                ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionAlerta", "setearFechaSalida();", true);
-
-                lblNroAdultos.Text = txtAdultos.Text;
-                lblNroNinos.Text = txtNinos.Text;
-                lblNroInfante.Text = txtInfante.Text;
-                lblNroSeniors.Text = txtSenior.Text;
-
-                lblDtSegmentos.Text = "";
-                lblDtDatosRTAll.Text = "";
-                lblDtOpciones.Text = "";
-                lblDtOpcionesRT.Text = "";
-                lblDtSegmentosRT.Text = "";
-                lblTipoRuta.Text = datos[0];
-                int adultos = 0;
-                int senior = 0;
-                int ninos = 0;
-
-                int infantes = 0;
-                adultos = int.Parse(datos[5]);
-                ninos = int.Parse(datos[6]);
-                infantes = int.Parse(datos[7]);
-                senior = int.Parse(datos[8]);
-                int total_pasajeros = adultos + ninos + senior + infantes;
-                //lblNroAdultos.Text = txtAdultos.Text;
-                //lblNroNinos.Text = txtNinos.Text;
-                //lblNroInfante.Text = txtInfante.Text;
-                //lblNroSeniors.Text = txtSenior.Text;
-                //lblOrigen.Text = ddlOrigen.SelectedValue;
-                //lblDestino.Text = ddlDestino.SelectedValue;
-                //if (adultos > 0)
-                //    lblAdultosResumen.Text = adultos + " adulto(s) ";
-                //if (ninos > 0)
-                //    lblNinosResumen.Text = ninos + " niño(s) ";
-                //if (infantes > 0)
-                //    lblInfanteResumen.Text = infantes + " infante(s) ";
-                //if (senior > 0)
-                //    lblSeniorsResumen.Text = senior + " adulto(s) mayor(es) ";
-
-                if (infantes + ninos + adultos + senior > 9)
+                if (Session["usuario"] == null)
                 {
-                    lblAviso.Text = "El numero maximo de pasajeros es 9.";
+                    Response.Redirect("ingreso.aspx");
                 }
                 else
                 {
-                    string vuelos_directos = datos[13];
+                    //   0         1        2      3          4         5       6    7       8      9    10     11     12       13       14          15         16
+                    //TIPO RUTA|ORIGEN|DESSTINO|FECHAIDA|FECHAVUELTA|ADULTOS|NINOS|INFANTE|SENIOR|LINEA|TURNO|CABINA|EQUIPAJE|DIRECTO|NOMBORIGEN|NOMBDESTINO|TIPOVENTA
+                    string[] datos = Session["DATOSINI"].ToString().Split('|');
+                    MultiView1.ActiveViewIndex = 0;
+                    lblTipoRuta.Text = datos[0];
+                        
+                    hfTipoRuta.Value= datos[0];
                     
-                    string vuelos_incluyenequipaje = datos[12];
-                    string gds1 = "A1";
-                    string linea_aerea = "";// datos[9];
-                    string convenio_adt = "";
-                    string convenio_menor = "";
-                    string convenio_inf = "";
-                    string turno = "";// datos[10];
-
-                    string[] fecha_inf_desde, fecha_inf_hasta;
-
-                    string cabina = "";// datos[11];
-                    string fecha_flex = "0";
-                    string fecha_sal = datos[3];
-                    string fecha_reg = datos[4];
-                    string id_session = "111111";
                     if (lblTipoRuta.Text == "OW")
-                        fecha_reg = fecha_sal;
+                    {
+                        Panel_fecha_regreso.Visible = false;
+                        ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionTipoOW", "TipoVueloOW();", true);
+                    }
+                    else 
+                    {
+                        Panel_fecha_regreso.Visible = true;
+                        ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionTipoOW", "TipoVueloRT();", true);
+                    }
+
+                    //lblTipoRuta.Text = hfTipoRuta.Value;
+                    //if (rblTipoVenta.SelectedValue == "1")
+                    //    panel_rango.Visible = false;
+                    //else
+                    //{
+                    //    panel_rango.Visible = true;
+                    //}
+                    //panel_seccion_vuelos.Visible = true;
+
+                    ddlDestino.SelectedValue = datos[2];
+                    ddlOrigen.SelectedValue = datos[1];
+                    txtAdultos.Text = datos[5];
+                    txtNinos.Text = datos[6];
+                    txtInfante.Text = datos[7];
+                    txtSenior.Text = datos[8];
+                    hfFechaSalida.Value = datos[3];
+                    hfFechaRetorno.Value = datos[4];
+
+                    ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionAlerta", "setearFechaSalida();", true);
+
+                    lblNroAdultos.Text = txtAdultos.Text;
+                    lblNroNinos.Text = txtNinos.Text;
+                    lblNroInfante.Text = txtInfante.Text;
+                    lblNroSeniors.Text = txtSenior.Text;
+
+                    lblDtSegmentos.Text = "";
+                    lblDtDatosRTAll.Text = "";
+                    lblDtOpciones.Text = "";
+                    lblDtOpcionesRT.Text = "";
+                    lblDtSegmentosRT.Text = "";
+                    lblTipoRuta.Text = datos[0];
+                    int adultos = 0;
+                    int senior = 0;
+                    int ninos = 0;
+
+                    int infantes = 0;
+                    adultos = int.Parse(datos[5]);
+                    ninos = int.Parse(datos[6]);
+                    infantes = int.Parse(datos[7]);
+                    senior = int.Parse(datos[8]);
+                    int total_pasajeros = adultos + ninos + senior + infantes;
+                    //lblNroAdultos.Text = txtAdultos.Text;
+                    //lblNroNinos.Text = txtNinos.Text;
+                    //lblNroInfante.Text = txtInfante.Text;
+                    //lblNroSeniors.Text = txtSenior.Text;
                     //lblOrigen.Text = ddlOrigen.SelectedValue;
                     //lblDestino.Text = ddlDestino.SelectedValue;
-                    //lblOrigenDes.Text = ddlOrigen.SelectedItem.Text;
-                    //lblDestinoDes.Text = ddlDestino.SelectedItem.Text;
+                    //if (adultos > 0)
+                    //    lblAdultosResumen.Text = adultos + " adulto(s) ";
+                    //if (ninos > 0)
+                    //    lblNinosResumen.Text = ninos + " niño(s) ";
+                    //if (infantes > 0)
+                    //    lblInfanteResumen.Text = infantes + " infante(s) ";
+                    //if (senior > 0)
+                    //    lblSeniorsResumen.Text = senior + " adulto(s) mayor(es) ";
 
-                    string moneda1 = LocalBD.PR_GET_INTERNACIONAL_NACIONAL(datos[1], datos[2]);
-                    //lblMoneda.Text = moneda1;
-                    fecha_inf_desde = fecha_sal.Split('-');
-                    fecha_inf_hasta = fecha_reg.Split('-');
-                    //lblInfoAddFecha.Text = "* Cotización para viajar del " + fecha_inf_desde[2] + "-" + fecha_inf_desde[1] + "-" + fecha_inf_desde[0] + " al " + fecha_inf_hasta[2] + "-" + fecha_inf_hasta[1] + "-" + fecha_inf_hasta[0];
-                    //lblInfoAddFechaGeneracion.Text = "Cotización creada el " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();
-                    //lblInfoAddMail.Text = "Mail del agente/operador " + lblUsuario.Text;
-                    //////////////////////////TRAE LOS VUELOS DISPONIBLES OW////////////////////////////////
-                    DBApi obj = new DBApi();
-                    DsiponabilidadIda vuelos = new DsiponabilidadIda();
-                    string fechaIda, fechaVuelta;
-                    string[] auxfechaIda = fecha_sal.Split('-');
-                    string[] auxfechaVuelta = fecha_reg.Split('-');
-
-                    fechaIda = auxfechaIda[2] + auxfechaIda[1] + auxfechaIda[0].Remove(0, 2);
-                    fechaVuelta = auxfechaVuelta[2] + auxfechaVuelta[1] + auxfechaVuelta[0].Remove(0, 2);
-                    //lblTitTipoVuelo.Text = "Seleccionar viaje de Ida";
-                    Datos datos1 = new Datos
+                    if (infantes + ninos + adultos + senior > 9)
                     {
-                        gds = gds1,
-                        adultos = adultos.ToString(),
-                        senior = senior.ToString(),
-                        infante = infantes.ToString(),
-                        menor = ninos.ToString(),
-                        origen = datos[1],
-                        destino = datos[2],
-                        fecha_ida = fechaIda,
-                        fecha_vuelta = fechaVuelta,
-                        tipo_busqueda = lblTipoRuta.Text,
-                        fechaFlexible = fecha_flex,
-                        vuelos_directos = vuelos_directos,
-                        vuelos_incluyenequipaje = vuelos_incluyenequipaje,
-                        tipo_cabina = cabina,
-                        aerolinea = linea_aerea,
-                        hora_salida = turno,
-                        hora_regreso = turno,
-                        convenio_adt = convenio_adt,
-                        convenio_menor = convenio_menor,
-                        convenio_inf = convenio_inf,
-                        moneda = moneda1,
-                        id_session = id_session
-                    };
+                        lblAviso.Text = "El numero maximo de pasajeros es 9.";
+                    }
+                    else
+                    {
+                        string vuelos_directos = datos[13];
 
-                    string json = JsonConvert.SerializeObject(datos1);
-                    dynamic respuesta = obj.Post("http://20.39.32.111/api/GetDisponibilidad_v2.php", json, "Basic MDQ4NjQwNjY4c3R6cmVycjg2Y2Q3MGE4OTVjZDlmYTowNHdlcndld2V3NjhzdHpyZXJyODZjZDcwYTg5NWNkOWZh");
+                        string vuelos_incluyenequipaje = datos[12];
+                        string gds1 = "A1";
+                        string linea_aerea = "";// datos[9];
+                        string convenio_adt = "";
+                        string convenio_menor = "";
+                        string convenio_inf = "";
+                        string turno = "";// datos[10];
 
-                    string respuestaJson = respuesta.ToString();
+                        string[] fecha_inf_desde, fecha_inf_hasta;
+
+                        string cabina = "";// datos[11];
+                        string fecha_flex = "0";
+                        string fecha_sal = datos[3];
+                        string fecha_reg = datos[4];
+                        string id_session = "111111";
+                        if (lblTipoRuta.Text == "OW")
+                            fecha_reg = fecha_sal;
+                        //lblOrigen.Text = ddlOrigen.SelectedValue;
+                        //lblDestino.Text = ddlDestino.SelectedValue;
+                        //lblOrigenDes.Text = ddlOrigen.SelectedItem.Text;
+                        //lblDestinoDes.Text = ddlDestino.SelectedItem.Text;
+
+                        string moneda1 = LocalBD.PR_GET_INTERNACIONAL_NACIONAL(datos[1], datos[2]);
+                        //lblMoneda.Text = moneda1;
+                        fecha_inf_desde = fecha_sal.Split('-');
+                        fecha_inf_hasta = fecha_reg.Split('-');
+                        //lblInfoAddFecha.Text = "* Cotización para viajar del " + fecha_inf_desde[2] + "-" + fecha_inf_desde[1] + "-" + fecha_inf_desde[0] + " al " + fecha_inf_hasta[2] + "-" + fecha_inf_hasta[1] + "-" + fecha_inf_hasta[0];
+                        //lblInfoAddFechaGeneracion.Text = "Cotización creada el " + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();
+                        //lblInfoAddMail.Text = "Mail del agente/operador " + lblUsuario.Text;
+                        //////////////////////////TRAE LOS VUELOS DISPONIBLES OW////////////////////////////////
+                        DBApi obj = new DBApi();
+                        DsiponabilidadIda vuelos = new DsiponabilidadIda();
+                        string fechaIda, fechaVuelta;
+                        string[] auxfechaIda = fecha_sal.Split('-');
+                        string[] auxfechaVuelta = fecha_reg.Split('-');
+
+                        fechaIda = auxfechaIda[2] + auxfechaIda[1] + auxfechaIda[0].Remove(0, 2);
+                        fechaVuelta = auxfechaVuelta[2] + auxfechaVuelta[1] + auxfechaVuelta[0].Remove(0, 2);
+                        //lblTitTipoVuelo.Text = "Seleccionar viaje de Ida";
+                        Datos datos1 = new Datos
+                        {
+                            gds = gds1,
+                            adultos = adultos.ToString(),
+                            senior = senior.ToString(),
+                            infante = infantes.ToString(),
+                            menor = ninos.ToString(),
+                            origen = datos[1],
+                            destino = datos[2],
+                            fecha_ida = fechaIda,
+                            fecha_vuelta = fechaVuelta,
+                            tipo_busqueda = lblTipoRuta.Text,
+                            fechaFlexible = fecha_flex,
+                            vuelos_directos = vuelos_directos,
+                            vuelos_incluyenequipaje = vuelos_incluyenequipaje,
+                            tipo_cabina = cabina,
+                            aerolinea = linea_aerea,
+                            hora_salida = turno,
+                            hora_regreso = turno,
+                            convenio_adt = convenio_adt,
+                            convenio_menor = convenio_menor,
+                            convenio_inf = convenio_inf,
+                            moneda = moneda1,
+                            id_session = id_session
+                        };
+
+                        string json = JsonConvert.SerializeObject(datos1);
+                        dynamic respuesta = obj.Post("http://20.39.32.111/api/GetDisponibilidad_v2.php", json, "Basic MDQ4NjQwNjY4c3R6cmVycjg2Y2Q3MGE4OTVjZDlmYTowNHdlcndld2V3NjhzdHpyZXJyODZjZDcwYTg5NWNkOWZh");
+
+                        string respuestaJson = respuesta.ToString();
 
 
-                    vuelos = JsonConvert.DeserializeObject<DsiponabilidadIda>(respuestaJson);
+                        vuelos = JsonConvert.DeserializeObject<DsiponabilidadIda>(respuestaJson);
 
 
-                    DataTable dt_datos = new DataTable();
-                    dt_datos.Columns.AddRange(new DataColumn[19] {
+                        DataTable dt_datos = new DataTable();
+                        dt_datos.Columns.AddRange(new DataColumn[19] {
                             new DataColumn("id_datos", typeof(int)),
                             new DataColumn("precio", typeof(string)),
                             new DataColumn("moneda", typeof(string)),
@@ -184,8 +204,8 @@ namespace StarzInfiniteWeb
                                 new DataColumn("gds1",typeof(string))
 
                             });
-                    DataTable dt_datosRT = new DataTable();
-                    dt_datosRT.Columns.AddRange(new DataColumn[19] {
+                        DataTable dt_datosRT = new DataTable();
+                        dt_datosRT.Columns.AddRange(new DataColumn[19] {
                             new DataColumn("id_datos", typeof(int)),
                             new DataColumn("precio", typeof(string)),
                             new DataColumn("moneda", typeof(string)),
@@ -212,131 +232,42 @@ namespace StarzInfiniteWeb
 
 
 
-                    if (vuelos.error == "00")
-                    {
-                        List<ListItem> vuelosDisponibles = new List<ListItem>();
-                        for (int i = 0; i < vuelos.datos.Count; i++)
+                        if (vuelos.error == "00")
                         {
-                            decimal monto_total = 0;
-                            decimal monto_totalR = 0;
-                            //if (vuelos.datos[i].estado == 1)
-                            //{
-                            string monto, clase, moneda, lugares_disponibles, escalas, leg, origen, destino,
-                                fecha_partida, fecha_llegada, hora_salida, hora_llegada, duracion, numero_vuelo, carrier;
-                            string ORIGEN_NOM, DESTINO_NOM, AEROLINEA, gds, FeeTotal;
-                            AEROLINEA = "";
-                            ORIGEN_NOM = datos[14];
-                            DESTINO_NOM = datos[15];
-                            if (String.IsNullOrEmpty(vuelos.datos[i].precio))
-                                monto = "0";
-                            else
-                                monto = vuelos.datos[i].precio.ToString();
-
-                            clase = "";
-                            gds = vuelos.datos[i].gds;
-                            moneda = vuelos.datos[i].moneda;
-                            escalas = "1";
-                            leg = "";
-                            FeeTotal = "0";
-
-                            duracion = "0";
-                            hora_salida = ""; hora_llegada = ""; fecha_partida = ""; fecha_llegada = ""; origen = ""; destino = ""; numero_vuelo = ""; carrier = "";
-                            for (int x = 0; x < vuelos.datos[i].opciones.ida.Count; x++)
+                            List<ListItem> vuelosDisponibles = new List<ListItem>();
+                            for (int i = 0; i < vuelos.datos.Count; i++)
                             {
-                                //if (x == 0)
+                                decimal monto_total = 0;
+                                decimal monto_totalR = 0;
+                                //if (vuelos.datos[i].estado == 1)
                                 //{
-
-
-                                for (int y = 0; y < vuelos.datos[i].opciones.ida[x].Count; y++)
-                                {
-                                    DataTable DT_dom = new DataTable();
-                                    DT_dom = Dominios.Lista("AEROLINEA");
-                                    if (DT_dom.Rows.Count > 0)
-                                    {
-                                        foreach (DataRow dr in DT_dom.Rows)
-                                        {
-                                            if (dr["codigo"].ToString() == vuelos.datos[i].opciones.ida[x][y].operCompany)
-                                                AEROLINEA = dr["descripcion"].ToString();
-                                        }
-                                    }
-                                    escalas = vuelos.datos[i].opciones.ida[x][y].segment.ToString();
-                                    origen = vuelos.datos[i].opciones.ida[x][y].boardAirport;
-                                    fecha_partida = vuelos.datos[i].opciones.ida[x][y].depDate;
-                                    hora_salida = vuelos.datos[i].opciones.ida[x][y].depTime;
-                                    numero_vuelo = vuelos.datos[i].opciones.ida[x][y].flightNumber;
-                                    carrier = vuelos.datos[i].opciones.ida[x][y].marketCompany;
-                                    lugares_disponibles = vuelos.datos[i].opciones.ida[x][y].lugres_disponibles;
-                                    destino = vuelos.datos[i].opciones.ida[x][y].offAirport;
-                                    fecha_llegada = vuelos.datos[i].opciones.ida[x][y].ArrivalDate;
-                                    hora_llegada = vuelos.datos[i].opciones.ida[x][y].hora_llegada;
-                                    duracion = vuelos.datos[i].opciones.ida[x][y].duracion;
-                                    clase = vuelos.datos[i].opciones.ida[x][y].bookClass;
-                                    leg = vuelos.datos[i].opciones.ida[x][y].leg.ToString();
-
-                                    string feetotal_aux = LocalBD.PR_GET_FEE_WEB_ITINERARIO(carrier, moneda, datos[16], origen, destino, lblTipoRuta.Text, total_pasajeros);
-                                    if (decimal.Parse(feetotal_aux) > 0)
-                                        FeeTotal = feetotal_aux;
-
-                                    //SERVIDOR: monto_total = decimal.Parse(monto.Replace(",",".")) + decimal.Parse(FeeTotal.Replace(",", "."));
-                                    //monto_total = Math.Round(( decimal.Parse(monto.Replace(".",",")) + decimal.Parse(FeeTotal.Replace(".", ","))),2);
-                                    monto_total = decimal.Parse(monto.Replace(",", ".")) + decimal.Parse(FeeTotal.Replace(",", "."));
-                                    //duracion = dur_aux[0] + "h" + dur_aux[1] + "m";
-                                    lblDtSegmentos.Text = lblDtSegmentos.Text + y + "&" + i + "&" + vuelos.datos[i].opciones.ida[x][y].segment.ToString() + "&" + vuelos.datos[i].opciones.ida[x][y].leg + "&" +
-                                            vuelos.datos[i].opciones.ida[x][y].flightNumber + "&" + vuelos.datos[i].opciones.ida[x][y].boardAirport + "&" + vuelos.datos[i].opciones.ida[x][y].offAirport + "&" +
-                                            vuelos.datos[i].opciones.ida[x][y].depDate + "&" + vuelos.datos[i].opciones.ida[x][y].ArrivalDate + "&" + vuelos.datos[i].opciones.ida[x][y].depTime + "&" +
-                                            vuelos.datos[i].opciones.ida[x][y].hora_llegada + "&" + vuelos.datos[i].opciones.ida[x][y].marketCompany + "&" + vuelos.datos[i].opciones.ida[x][y].operCompany + "&" +
-                                            vuelos.datos[i].opciones.ida[x][y].bookClass + "&" + vuelos.datos[i].opciones.ida[x][y].lugres_disponibles + "&" + vuelos.datos[i].opciones.ida[x][y].duracion + "&" +
-                                            vuelos.datos[i].opciones.ida[x][y].equipaje + "&" + vuelos.datos[i].opciones.ida[x][y].ld + "&" + monto_total.ToString() + "&" + AEROLINEA + "&" + gds + "&" + x + "&" + moneda +
-                                        "|";
-
-                                    //dt_segmentos.Rows.Add(y, i, vuelos.datos[i].opciones.ida[x][y].segment.ToString(), vuelos.datos[i].opciones.ida[x][y].leg,
-                                    //        vuelos.datos[i].opciones.ida[x][y].flightNumber, vuelos.datos[i].opciones.ida[x][y].boardAirport, vuelos.datos[i].opciones.ida[x][y].offAirport,
-                                    //        vuelos.datos[i].opciones.ida[x][y].depDate, vuelos.datos[i].opciones.ida[x][y].ArrivalDate, vuelos.datos[i].opciones.ida[x][y].depTime,
-                                    //        vuelos.datos[i].opciones.ida[x][y].hora_llegada, vuelos.datos[i].opciones.ida[x][y].marketCompany, vuelos.datos[i].opciones.ida[x][y].operCompany,
-                                    //        vuelos.datos[i].opciones.ida[x][y].bookClass, vuelos.datos[i].opciones.ida[x][y].lugres_disponibles, vuelos.datos[i].opciones.ida[x][y].duracion,
-                                    //        vuelos.datos[i].opciones.ida[x][y].equipaje, vuelos.datos[i].opciones.ida[x][y].ld, monto, AEROLINEA, gds, x, moneda);
-
-                                }
-
-                                lblDtOpciones.Text = lblDtOpciones.Text + x + "&" + i + "&" + monto_total.ToString() + "&" + moneda + "&" + AEROLINEA + "|";
-                                //dt_opciones.Rows.Add(x, i, monto, moneda, AEROLINEA);
-
-                            }
-                            //monto_total = Math.Round((decimal.Parse(monto.Replace(".", ",")) + decimal.Parse(FeeTotal.Replace(".", ","))), 2);
-                            monto_total = Math.Round((decimal.Parse(monto.Replace(",", ".")) + decimal.Parse(FeeTotal.Replace(",", "."))), 2);
-                            lblDtDatosAll.Text = lblDtDatosAll.Text + i + "&" + monto_total.ToString() + "&" + vuelos.datos[i].moneda + "&" + vuelos.datos[i].gds + "&" + origen + "&" + destino + "&" + fecha_partida + "&" + fecha_llegada + "&" +
-                                    hora_salida + "&" + hora_llegada + "&" + duracion + "&" + numero_vuelo + "&" + clase + "&" + escalas + "&" + carrier + "&" + leg + "&" + ORIGEN_NOM + "&" + DESTINO_NOM + "&" + gds + "|";
-                            dt_datos.Rows.Add(i, monto_total, vuelos.datos[i].moneda, vuelos.datos[i].gds, origen, destino, fecha_partida, fecha_llegada,
-                                hora_salida, hora_llegada, duracion, numero_vuelo, clase, escalas, carrier, leg, ORIGEN_NOM, DESTINO_NOM, gds);
-
-                            if (lblTipoRuta.Text == "RT")
-                            {
-                                string montoR, claseR, monedaR, lugares_disponiblesR, escalasR, legR, origenR, destinoR,
-                                    fecha_partidaR, fecha_llegadaR, hora_salidaR, hora_llegadaR, duracionR, numero_vueloR, carrierR;
-                                string ORIGEN_NOMR, DESTINO_NOMR, AEROLINEAR, gdsR;
-                                AEROLINEAR = "";
-                                ORIGEN_NOMR = datos[15];
-                                DESTINO_NOMR = datos[14];
+                                string monto, clase, moneda, lugares_disponibles, escalas, leg, origen, destino,
+                                    fecha_partida, fecha_llegada, hora_salida, hora_llegada, duracion, numero_vuelo, carrier;
+                                string ORIGEN_NOM, DESTINO_NOM, AEROLINEA, gds, FeeTotal;
+                                AEROLINEA = "";
+                                ORIGEN_NOM = datos[14];
+                                DESTINO_NOM = datos[15];
                                 if (String.IsNullOrEmpty(vuelos.datos[i].precio))
-                                    montoR = "0";
+                                    monto = "0";
                                 else
-                                    montoR = vuelos.datos[i].precio.ToString();
-                                claseR = "";
-                                gdsR = vuelos.datos[i].gds;
-                                monedaR = vuelos.datos[i].moneda;
-                                escalasR = "1";
-                                legR = "";
+                                    monto = vuelos.datos[i].precio.ToString();
 
+                                clase = "";
+                                gds = vuelos.datos[i].gds;
+                                moneda = vuelos.datos[i].moneda;
+                                escalas = "1";
+                                leg = "";
+                                FeeTotal = "0";
 
-                                duracionR = "0";
-                                hora_salidaR = ""; hora_llegadaR = ""; fecha_partidaR = ""; fecha_llegadaR = ""; origenR = ""; destinoR = ""; numero_vueloR = ""; carrierR = "";
-                                for (int x = 0; x < vuelos.datos[i].opciones.vuelta.Count; x++)
+                                duracion = "0";
+                                hora_salida = ""; hora_llegada = ""; fecha_partida = ""; fecha_llegada = ""; origen = ""; destino = ""; numero_vuelo = ""; carrier = "";
+                                for (int x = 0; x < vuelos.datos[i].opciones.ida.Count; x++)
                                 {
                                     //if (x == 0)
                                     //{
 
 
-                                    for (int y = 0; y < vuelos.datos[i].opciones.vuelta[x].Count; y++)
+                                    for (int y = 0; y < vuelos.datos[i].opciones.ida[x].Count; y++)
                                     {
                                         DataTable DT_dom = new DataTable();
                                         DT_dom = Dominios.Lista("AEROLINEA");
@@ -344,66 +275,159 @@ namespace StarzInfiniteWeb
                                         {
                                             foreach (DataRow dr in DT_dom.Rows)
                                             {
-                                                if (dr["codigo"].ToString() == vuelos.datos[i].opciones.vuelta[x][y].operCompany)
-                                                    AEROLINEAR = dr["descripcion"].ToString();
+                                                if (dr["codigo"].ToString() == vuelos.datos[i].opciones.ida[x][y].operCompany)
+                                                    AEROLINEA = dr["descripcion"].ToString();
                                             }
                                         }
-                                        escalasR = vuelos.datos[i].opciones.vuelta[x][y].segment.ToString();
-                                        origenR = vuelos.datos[i].opciones.vuelta[x][y].boardAirport;
-                                        fecha_partidaR = vuelos.datos[i].opciones.vuelta[x][y].depDate;
-                                        hora_salidaR = vuelos.datos[i].opciones.vuelta[x][y].depTime;
-                                        numero_vueloR = vuelos.datos[i].opciones.vuelta[x][y].flightNumber;
-                                        carrierR = vuelos.datos[i].opciones.vuelta[x][y].marketCompany;
-                                        lugares_disponiblesR = vuelos.datos[i].opciones.vuelta[x][y].lugres_disponibles;
-                                        destinoR = vuelos.datos[i].opciones.vuelta[x][y].offAirport;
-                                        fecha_llegadaR = vuelos.datos[i].opciones.vuelta[x][y].ArrivalDate;
-                                        hora_llegadaR = vuelos.datos[i].opciones.vuelta[x][y].hora_llegada;
-                                        duracionR = vuelos.datos[i].opciones.vuelta[x][y].duracion;
-                                        claseR = vuelos.datos[i].opciones.vuelta[x][y].bookClass;
-                                        legR = vuelos.datos[i].opciones.vuelta[x][y].leg.ToString();
+                                        escalas = vuelos.datos[i].opciones.ida[x][y].segment.ToString();
+                                        origen = vuelos.datos[i].opciones.ida[x][y].boardAirport;
+                                        fecha_partida = vuelos.datos[i].opciones.ida[x][y].depDate;
+                                        hora_salida = vuelos.datos[i].opciones.ida[x][y].depTime;
+                                        numero_vuelo = vuelos.datos[i].opciones.ida[x][y].flightNumber;
+                                        carrier = vuelos.datos[i].opciones.ida[x][y].marketCompany;
+                                        lugares_disponibles = vuelos.datos[i].opciones.ida[x][y].lugres_disponibles;
+                                        destino = vuelos.datos[i].opciones.ida[x][y].offAirport;
+                                        fecha_llegada = vuelos.datos[i].opciones.ida[x][y].ArrivalDate;
+                                        hora_llegada = vuelos.datos[i].opciones.ida[x][y].hora_llegada;
+                                        duracion = vuelos.datos[i].opciones.ida[x][y].duracion;
+                                        clase = vuelos.datos[i].opciones.ida[x][y].bookClass;
+                                        leg = vuelos.datos[i].opciones.ida[x][y].leg.ToString();
 
+                                        string feetotal_aux = LocalBD.PR_GET_FEE_WEB_ITINERARIO(carrier, moneda, datos[16], origen, destino, lblTipoRuta.Text, total_pasajeros);
+                                        if (decimal.Parse(feetotal_aux) > 0)
+                                            FeeTotal = feetotal_aux;
 
+                                        //SERVIDOR: monto_total = decimal.Parse(monto.Replace(",",".")) + decimal.Parse(FeeTotal.Replace(",", "."));
+                                        //monto_total = Math.Round(( decimal.Parse(monto.Replace(".",",")) + decimal.Parse(FeeTotal.Replace(".", ","))),2);
+                                        monto_total = decimal.Parse(monto.Replace(",", ".")) + decimal.Parse(FeeTotal.Replace(",", "."));
+                                        //duracion = dur_aux[0] + "h" + dur_aux[1] + "m";
+                                        lblDtSegmentos.Text = lblDtSegmentos.Text + y + "&" + i + "&" + vuelos.datos[i].opciones.ida[x][y].segment.ToString() + "&" + vuelos.datos[i].opciones.ida[x][y].leg + "&" +
+                                                vuelos.datos[i].opciones.ida[x][y].flightNumber + "&" + vuelos.datos[i].opciones.ida[x][y].boardAirport + "&" + vuelos.datos[i].opciones.ida[x][y].offAirport + "&" +
+                                                vuelos.datos[i].opciones.ida[x][y].depDate + "&" + vuelos.datos[i].opciones.ida[x][y].ArrivalDate + "&" + vuelos.datos[i].opciones.ida[x][y].depTime + "&" +
+                                                vuelos.datos[i].opciones.ida[x][y].hora_llegada + "&" + vuelos.datos[i].opciones.ida[x][y].marketCompany + "&" + vuelos.datos[i].opciones.ida[x][y].operCompany + "&" +
+                                                vuelos.datos[i].opciones.ida[x][y].bookClass + "&" + vuelos.datos[i].opciones.ida[x][y].lugres_disponibles + "&" + vuelos.datos[i].opciones.ida[x][y].duracion + "&" +
+                                                vuelos.datos[i].opciones.ida[x][y].equipaje + "&" + vuelos.datos[i].opciones.ida[x][y].ld + "&" + monto_total.ToString() + "&" + AEROLINEA + "&" + gds + "&" + x + "&" + moneda +
+                                            "|";
 
-                                        lblDtSegmentosRT.Text = lblDtSegmentosRT.Text + y + "&" + i + "&" + vuelos.datos[i].opciones.vuelta[x][y].segment.ToString() + "&" + vuelos.datos[i].opciones.vuelta[x][y].leg + "&" +
-                                                vuelos.datos[i].opciones.vuelta[x][y].flightNumber + "&" + vuelos.datos[i].opciones.vuelta[x][y].boardAirport + "&" + vuelos.datos[i].opciones.vuelta[x][y].offAirport + "&" +
-                                                vuelos.datos[i].opciones.vuelta[x][y].depDate + "&" + vuelos.datos[i].opciones.vuelta[x][y].ArrivalDate + "&" + vuelos.datos[i].opciones.vuelta[x][y].depTime + "&" +
-                                                vuelos.datos[i].opciones.vuelta[x][y].hora_llegada + "&" + vuelos.datos[i].opciones.vuelta[x][y].marketCompany + "&" + vuelos.datos[i].opciones.vuelta[x][y].operCompany + "&" +
-                                                vuelos.datos[i].opciones.vuelta[x][y].bookClass + "&" + vuelos.datos[i].opciones.vuelta[x][y].lugres_disponibles + "&" + vuelos.datos[i].opciones.vuelta[x][y].duracion + "&" +
-                                                vuelos.datos[i].opciones.vuelta[x][y].equipaje + "&" + vuelos.datos[i].opciones.vuelta[x][y].ld + "&" + monto_total.ToString() + "&" + AEROLINEAR + "&" + gdsR + "&" + x + "&" + monedaR + "|";
-                                        //dt_segmentosRT.Rows.Add(y, i, vuelos.datos[i].opciones.vuelta[x][y].segment.ToString(), vuelos.datos[i].opciones.vuelta[x][y].leg,
-                                        //        vuelos.datos[i].opciones.vuelta[x][y].flightNumber, vuelos.datos[i].opciones.vuelta[x][y].boardAirport, vuelos.datos[i].opciones.vuelta[x][y].offAirport,
-                                        //        vuelos.datos[i].opciones.vuelta[x][y].depDate, vuelos.datos[i].opciones.vuelta[x][y].ArrivalDate, vuelos.datos[i].opciones.vuelta[x][y].depTime,
-                                        //        vuelos.datos[i].opciones.vuelta[x][y].hora_llegada, vuelos.datos[i].opciones.vuelta[x][y].marketCompany, vuelos.datos[i].opciones.vuelta[x][y].operCompany,
-                                        //        vuelos.datos[i].opciones.vuelta[x][y].bookClass, vuelos.datos[i].opciones.vuelta[x][y].lugres_disponibles, vuelos.datos[i].opciones.vuelta[x][y].duracion,
-                                        //        vuelos.datos[i].opciones.vuelta[x][y].equipaje, vuelos.datos[i].opciones.vuelta[x][y].ld, montoR, AEROLINEAR, gdsR, x, monedaR);
+                                        //dt_segmentos.Rows.Add(y, i, vuelos.datos[i].opciones.ida[x][y].segment.ToString(), vuelos.datos[i].opciones.ida[x][y].leg,
+                                        //        vuelos.datos[i].opciones.ida[x][y].flightNumber, vuelos.datos[i].opciones.ida[x][y].boardAirport, vuelos.datos[i].opciones.ida[x][y].offAirport,
+                                        //        vuelos.datos[i].opciones.ida[x][y].depDate, vuelos.datos[i].opciones.ida[x][y].ArrivalDate, vuelos.datos[i].opciones.ida[x][y].depTime,
+                                        //        vuelos.datos[i].opciones.ida[x][y].hora_llegada, vuelos.datos[i].opciones.ida[x][y].marketCompany, vuelos.datos[i].opciones.ida[x][y].operCompany,
+                                        //        vuelos.datos[i].opciones.ida[x][y].bookClass, vuelos.datos[i].opciones.ida[x][y].lugres_disponibles, vuelos.datos[i].opciones.ida[x][y].duracion,
+                                        //        vuelos.datos[i].opciones.ida[x][y].equipaje, vuelos.datos[i].opciones.ida[x][y].ld, monto, AEROLINEA, gds, x, moneda);
 
                                     }
-                                    lblDtOpcionesRT.Text = lblDtOpcionesRT.Text + x + "&" + i + "&" + monto_total.ToString() + "&" + monedaR + "&" + AEROLINEAR + "|";
-                                    //dt_opcionesRT.Rows.Add(x, i, montoR, monedaR, AEROLINEAR);
+
+                                    lblDtOpciones.Text = lblDtOpciones.Text + x + "&" + i + "&" + monto_total.ToString() + "&" + moneda + "&" + AEROLINEA + "|";
+                                    //dt_opciones.Rows.Add(x, i, monto, moneda, AEROLINEA);
 
                                 }
-                                lblDtDatosRTAll.Text = lblDtDatosRTAll.Text + i + "&" + monto_total.ToString() + "&" + vuelos.datos[i].moneda + "&" + vuelos.datos[i].gds + "&" + origenR + "&" + destinoR + "&" + fecha_partidaR + "&" + fecha_llegadaR + "&" +
-                                    hora_salidaR + "&" + hora_llegadaR + "&" + duracionR + "&" + numero_vueloR + "&" + claseR + "&" + escalasR + "&" + carrierR + "&" + legR + "&" + ORIGEN_NOMR + "&" + DESTINO_NOMR + "&" + gdsR + "|";
-                                dt_datosRT.Rows.Add(i, monto_total.ToString(), vuelos.datos[i].moneda, vuelos.datos[i].gds, origenR, destinoR, fecha_partidaR, fecha_llegadaR,
-                                    hora_salidaR, hora_llegadaR, duracionR, numero_vueloR, claseR, escalasR, carrierR, legR, ORIGEN_NOMR, DESTINO_NOMR, gdsR);
+                                //monto_total = Math.Round((decimal.Parse(monto.Replace(".", ",")) + decimal.Parse(FeeTotal.Replace(".", ","))), 2);
+                                monto_total = Math.Round((decimal.Parse(monto.Replace(",", ".")) + decimal.Parse(FeeTotal.Replace(",", "."))), 2);
+                                lblDtDatosAll.Text = lblDtDatosAll.Text + i + "&" + monto_total.ToString() + "&" + vuelos.datos[i].moneda + "&" + vuelos.datos[i].gds + "&" + origen + "&" + destino + "&" + fecha_partida + "&" + fecha_llegada + "&" +
+                                        hora_salida + "&" + hora_llegada + "&" + duracion + "&" + numero_vuelo + "&" + clase + "&" + escalas + "&" + carrier + "&" + leg + "&" + ORIGEN_NOM + "&" + DESTINO_NOM + "&" + gds + "|";
+                                dt_datos.Rows.Add(i, monto_total, vuelos.datos[i].moneda, vuelos.datos[i].gds, origen, destino, fecha_partida, fecha_llegada,
+                                    hora_salida, hora_llegada, duracion, numero_vuelo, clase, escalas, carrier, leg, ORIGEN_NOM, DESTINO_NOM, gds);
+
+                                if (lblTipoRuta.Text == "RT")
+                                {
+                                    string montoR, claseR, monedaR, lugares_disponiblesR, escalasR, legR, origenR, destinoR,
+                                        fecha_partidaR, fecha_llegadaR, hora_salidaR, hora_llegadaR, duracionR, numero_vueloR, carrierR;
+                                    string ORIGEN_NOMR, DESTINO_NOMR, AEROLINEAR, gdsR;
+                                    AEROLINEAR = "";
+                                    ORIGEN_NOMR = datos[15];
+                                    DESTINO_NOMR = datos[14];
+                                    if (String.IsNullOrEmpty(vuelos.datos[i].precio))
+                                        montoR = "0";
+                                    else
+                                        montoR = vuelos.datos[i].precio.ToString();
+                                    claseR = "";
+                                    gdsR = vuelos.datos[i].gds;
+                                    monedaR = vuelos.datos[i].moneda;
+                                    escalasR = "1";
+                                    legR = "";
+
+
+                                    duracionR = "0";
+                                    hora_salidaR = ""; hora_llegadaR = ""; fecha_partidaR = ""; fecha_llegadaR = ""; origenR = ""; destinoR = ""; numero_vueloR = ""; carrierR = "";
+                                    for (int x = 0; x < vuelos.datos[i].opciones.vuelta.Count; x++)
+                                    {
+                                        //if (x == 0)
+                                        //{
+
+
+                                        for (int y = 0; y < vuelos.datos[i].opciones.vuelta[x].Count; y++)
+                                        {
+                                            DataTable DT_dom = new DataTable();
+                                            DT_dom = Dominios.Lista("AEROLINEA");
+                                            if (DT_dom.Rows.Count > 0)
+                                            {
+                                                foreach (DataRow dr in DT_dom.Rows)
+                                                {
+                                                    if (dr["codigo"].ToString() == vuelos.datos[i].opciones.vuelta[x][y].operCompany)
+                                                        AEROLINEAR = dr["descripcion"].ToString();
+                                                }
+                                            }
+                                            escalasR = vuelos.datos[i].opciones.vuelta[x][y].segment.ToString();
+                                            origenR = vuelos.datos[i].opciones.vuelta[x][y].boardAirport;
+                                            fecha_partidaR = vuelos.datos[i].opciones.vuelta[x][y].depDate;
+                                            hora_salidaR = vuelos.datos[i].opciones.vuelta[x][y].depTime;
+                                            numero_vueloR = vuelos.datos[i].opciones.vuelta[x][y].flightNumber;
+                                            carrierR = vuelos.datos[i].opciones.vuelta[x][y].marketCompany;
+                                            lugares_disponiblesR = vuelos.datos[i].opciones.vuelta[x][y].lugres_disponibles;
+                                            destinoR = vuelos.datos[i].opciones.vuelta[x][y].offAirport;
+                                            fecha_llegadaR = vuelos.datos[i].opciones.vuelta[x][y].ArrivalDate;
+                                            hora_llegadaR = vuelos.datos[i].opciones.vuelta[x][y].hora_llegada;
+                                            duracionR = vuelos.datos[i].opciones.vuelta[x][y].duracion;
+                                            claseR = vuelos.datos[i].opciones.vuelta[x][y].bookClass;
+                                            legR = vuelos.datos[i].opciones.vuelta[x][y].leg.ToString();
+
+
+
+                                            lblDtSegmentosRT.Text = lblDtSegmentosRT.Text + y + "&" + i + "&" + vuelos.datos[i].opciones.vuelta[x][y].segment.ToString() + "&" + vuelos.datos[i].opciones.vuelta[x][y].leg + "&" +
+                                                    vuelos.datos[i].opciones.vuelta[x][y].flightNumber + "&" + vuelos.datos[i].opciones.vuelta[x][y].boardAirport + "&" + vuelos.datos[i].opciones.vuelta[x][y].offAirport + "&" +
+                                                    vuelos.datos[i].opciones.vuelta[x][y].depDate + "&" + vuelos.datos[i].opciones.vuelta[x][y].ArrivalDate + "&" + vuelos.datos[i].opciones.vuelta[x][y].depTime + "&" +
+                                                    vuelos.datos[i].opciones.vuelta[x][y].hora_llegada + "&" + vuelos.datos[i].opciones.vuelta[x][y].marketCompany + "&" + vuelos.datos[i].opciones.vuelta[x][y].operCompany + "&" +
+                                                    vuelos.datos[i].opciones.vuelta[x][y].bookClass + "&" + vuelos.datos[i].opciones.vuelta[x][y].lugres_disponibles + "&" + vuelos.datos[i].opciones.vuelta[x][y].duracion + "&" +
+                                                    vuelos.datos[i].opciones.vuelta[x][y].equipaje + "&" + vuelos.datos[i].opciones.vuelta[x][y].ld + "&" + monto_total.ToString() + "&" + AEROLINEAR + "&" + gdsR + "&" + x + "&" + monedaR + "|";
+                                            //dt_segmentosRT.Rows.Add(y, i, vuelos.datos[i].opciones.vuelta[x][y].segment.ToString(), vuelos.datos[i].opciones.vuelta[x][y].leg,
+                                            //        vuelos.datos[i].opciones.vuelta[x][y].flightNumber, vuelos.datos[i].opciones.vuelta[x][y].boardAirport, vuelos.datos[i].opciones.vuelta[x][y].offAirport,
+                                            //        vuelos.datos[i].opciones.vuelta[x][y].depDate, vuelos.datos[i].opciones.vuelta[x][y].ArrivalDate, vuelos.datos[i].opciones.vuelta[x][y].depTime,
+                                            //        vuelos.datos[i].opciones.vuelta[x][y].hora_llegada, vuelos.datos[i].opciones.vuelta[x][y].marketCompany, vuelos.datos[i].opciones.vuelta[x][y].operCompany,
+                                            //        vuelos.datos[i].opciones.vuelta[x][y].bookClass, vuelos.datos[i].opciones.vuelta[x][y].lugres_disponibles, vuelos.datos[i].opciones.vuelta[x][y].duracion,
+                                            //        vuelos.datos[i].opciones.vuelta[x][y].equipaje, vuelos.datos[i].opciones.vuelta[x][y].ld, montoR, AEROLINEAR, gdsR, x, monedaR);
+
+                                        }
+                                        lblDtOpcionesRT.Text = lblDtOpcionesRT.Text + x + "&" + i + "&" + monto_total.ToString() + "&" + monedaR + "&" + AEROLINEAR + "|";
+                                        //dt_opcionesRT.Rows.Add(x, i, montoR, monedaR, AEROLINEAR);
+
+                                    }
+                                    lblDtDatosRTAll.Text = lblDtDatosRTAll.Text + i + "&" + monto_total.ToString() + "&" + vuelos.datos[i].moneda + "&" + vuelos.datos[i].gds + "&" + origenR + "&" + destinoR + "&" + fecha_partidaR + "&" + fecha_llegadaR + "&" +
+                                        hora_salidaR + "&" + hora_llegadaR + "&" + duracionR + "&" + numero_vueloR + "&" + claseR + "&" + escalasR + "&" + carrierR + "&" + legR + "&" + ORIGEN_NOMR + "&" + DESTINO_NOMR + "&" + gdsR + "|";
+                                    dt_datosRT.Rows.Add(i, monto_total.ToString(), vuelos.datos[i].moneda, vuelos.datos[i].gds, origenR, destinoR, fecha_partidaR, fecha_llegadaR,
+                                        hora_salidaR, hora_llegadaR, duracionR, numero_vueloR, claseR, escalasR, carrierR, legR, ORIGEN_NOMR, DESTINO_NOMR, gdsR);
+
+                                }
+
 
                             }
-
-
+                            lblVueloIdaNoDisponible.Text = "";
                         }
-                        lblVueloIdaNoDisponible.Text = "";
-                    }
-                    else
-                    {
-                        lblVueloIdaNoDisponible.Text = "El servicio web no devuelve datos, consulte con el administrador.";
-                    }
-                    Repeater1.DataSource = dt_datos;
-                    Repeater1.DataBind();
+                        else
+                        {
+                            lblVueloIdaNoDisponible.Text = "El servicio web no devuelve datos, consulte con el administrador.";
+                        }
+                        Repeater1.DataSource = dt_datos;
+                        Repeater1.DataBind();
 
-                    
 
+
+
+                    }
 
                 }
+
+                
 
             }
 
@@ -671,7 +695,7 @@ namespace StarzInfiniteWeb
                                       + "|" + dr["bookClass"].ToString() + "|" + dr["operCompany"].ToString() + "|" + dr["flightNumber"].ToString() + "|" + "ida"
                                       + "|" + dr["leg"].ToString() + "|" + dr["ld"].ToString() + "|" + dr["gds1"].ToString() + "|" + dr["moneda"].ToString() + "|" + dr["precio"].ToString()
                                       + "|" + dr["id_opcion"].ToString() + "|" + dr["id_datos"].ToString() + "|" + dr["duracion"].ToString() + "|" + dr["hora_llegada"].ToString() + "|" +
-                                      dr["ArrivalDate"].ToString() + "|" + dr["lugres_disponibles"].ToString();
+                                      dr["ArrivalDate"].ToString() + "|" + dr["lugres_disponibles"].ToString() + "|" + dr["equipaje"].ToString();
 
 
                                 //resumen.Text = resumen.Text + " " + dr["boardAirport"].ToString() + "-" + dr["offAirport"].ToString() + "-" + dr["depTime"].ToString() + " " + dr["depDate"].ToString();
@@ -933,7 +957,7 @@ namespace StarzInfiniteWeb
                                       + "|" + dr["bookClass"].ToString() + "|" + dr["operCompany"].ToString() + "|" + dr["flightNumber"].ToString() + "|" + "vuelta"
                                       + "|" + dr["leg"].ToString() + "|" + dr["ld"].ToString() + "|" + dr["gds1"].ToString() + "|" + dr["moneda"].ToString() + "|" + dr["precio"].ToString()
                                       + "|" + dr["id_opcion"].ToString() + "|" + dr["id_datos"].ToString() + "|" + dr["duracion"].ToString() + "|" + dr["hora_llegada"].ToString() + "|" +
-                                      dr["ArrivalDate"].ToString() + "|" + dr["lugres_disponibles"].ToString();
+                                      dr["ArrivalDate"].ToString() + "|" + dr["lugres_disponibles"].ToString() + "|" + dr["equipaje"].ToString();
 
 
                                 //resumen.Text = resumen.Text + " " + dr["boardAirport"].ToString() + "-" + dr["offAirport"].ToString() + "-" + dr["depTime"].ToString() + " " + dr["depDate"].ToString();
@@ -1610,6 +1634,7 @@ namespace StarzInfiniteWeb
                     //16 dr["hora_llegada"].ToString() + "|" +
                     //17 dr["ArrivalDate"].ToString() + "|" +
                     //18 dr["lugres_disponibles"].ToString();
+                    //19 dr["equipaje"].ToString();
                     DataTable dt_ida = new DataTable();
                     dt_ida.Columns.Add("boardAirport", typeof(string));
                     dt_ida.Columns.Add("offAirport", typeof(string));
@@ -1630,6 +1655,7 @@ namespace StarzInfiniteWeb
                     dt_ida.Columns.Add("hora_llegada", typeof(string));
                     dt_ida.Columns.Add("ArrivalDate", typeof(string));
                     dt_ida.Columns.Add("lugres_disponibles", typeof(string));
+                    dt_ida.Columns.Add("equipaje", typeof(string));
                     string[] datos = datos1[1].Split('|');
 
                     int ida = 0;
@@ -1661,9 +1687,9 @@ namespace StarzInfiniteWeb
                         //lblClaseVResIda.Text = datosIda[4];
                         //lblFechaLlegadaVResIda.Text = datosIda[3];
                         //lblHoraLlegadaVResIda.Text = datosIda[2];
-                        dt_ida.Rows.Add(new string[18] { datosIda[0], datosIda[1], datosIda[2], datosIda[3], datosIda[4],
+                        dt_ida.Rows.Add(new string[19] { datosIda[0], datosIda[1], datosIda[2], datosIda[3], datosIda[4],
                     datosIda[5], datosIda[6], datosIda[7], datosIda[8], datosIda[9],datosIda[10],datosIda[11],
-                    datosIda[12],datosIda[13],datosIda[14],datosIda[15],datosIda[16],datosIda[17] });//lblFechaSalidaTab.Text
+                    datosIda[12],datosIda[13],datosIda[14],datosIda[15],datosIda[16],datosIda[17],datosIda[19] });//lblFechaSalidaTab.Text
                     }
 
                     Repeater9.DataSource = dt_ida;
@@ -1729,26 +1755,28 @@ namespace StarzInfiniteWeb
                     //16 dr["hora_llegada"].ToString() + "|" +
                     //17 dr["ArrivalDate"].ToString() + "|" +
                     //18 dr["lugres_disponibles"].ToString();
+                    //19 dr["equipaje"].ToString();
                     DataTable dt_ida = new DataTable();
-                    dt_ida.Columns.Add("boardAirport", typeof(string));
-                    dt_ida.Columns.Add("offAirport", typeof(string));
-                    dt_ida.Columns.Add("depTime", typeof(string));
-                    dt_ida.Columns.Add("depDate", typeof(string));
-                    dt_ida.Columns.Add("bookClass", typeof(string));
-                    dt_ida.Columns.Add("operCompany", typeof(string));
-                    dt_ida.Columns.Add("flightNumber", typeof(string));
-                    dt_ida.Columns.Add("ida", typeof(string));
-                    dt_ida.Columns.Add("leg", typeof(string));
-                    dt_ida.Columns.Add("ld", typeof(string));
-                    dt_ida.Columns.Add("gds1", typeof(string));
-                    dt_ida.Columns.Add("moneda", typeof(string));
-                    dt_ida.Columns.Add("precio", typeof(string));
-                    dt_ida.Columns.Add("id_opcion", typeof(string));
-                    dt_ida.Columns.Add("id_datos", typeof(string));
-                    dt_ida.Columns.Add("duracion", typeof(string));
-                    dt_ida.Columns.Add("hora_llegada", typeof(string));
-                    dt_ida.Columns.Add("ArrivalDate", typeof(string));
-                    dt_ida.Columns.Add("lugres_disponibles", typeof(string));
+                    dt_ida.Columns.Add("boardAirport", typeof(string));//0
+                    dt_ida.Columns.Add("offAirport", typeof(string));//1
+                    dt_ida.Columns.Add("depTime", typeof(string));//2
+                    dt_ida.Columns.Add("depDate", typeof(string));//3
+                    dt_ida.Columns.Add("bookClass", typeof(string));//4
+                    dt_ida.Columns.Add("operCompany", typeof(string));//5
+                    dt_ida.Columns.Add("flightNumber", typeof(string));//6
+                    dt_ida.Columns.Add("ida", typeof(string));//7
+                    dt_ida.Columns.Add("leg", typeof(string));//8
+                    dt_ida.Columns.Add("ld", typeof(string));//9
+                    dt_ida.Columns.Add("gds1", typeof(string));//10
+                    dt_ida.Columns.Add("moneda", typeof(string));//11
+                    dt_ida.Columns.Add("precio", typeof(string));//12
+                    dt_ida.Columns.Add("id_opcion", typeof(string));//13
+                    dt_ida.Columns.Add("id_datos", typeof(string));//14
+                    dt_ida.Columns.Add("duracion", typeof(string));//15
+                    dt_ida.Columns.Add("hora_llegada", typeof(string));//16
+                    dt_ida.Columns.Add("ArrivalDate", typeof(string));//17
+                    dt_ida.Columns.Add("lugres_disponibles", typeof(string));//18
+                    dt_ida.Columns.Add("equipaje", typeof(string));//19
                     string[] datos = datos1[1].Split('|');
 
                     int ida = 0;
@@ -1780,9 +1808,9 @@ namespace StarzInfiniteWeb
                         //lblClaseVResIda.Text = datosIda[4];
                         //lblFechaLlegadaVResIda.Text = datosIda[3];
                         //lblHoraLlegadaVResIda.Text = datosIda[2];
-                        dt_ida.Rows.Add(new string[18] { datosIda[0], datosIda[1], datosIda[2], datosIda[3], datosIda[4],
+                        dt_ida.Rows.Add(new string[20] { datosIda[0], datosIda[1], datosIda[2], datosIda[3], datosIda[4],
                     datosIda[5], datosIda[6], datosIda[7], datosIda[8], datosIda[9],datosIda[10],datosIda[11],
-                    datosIda[12],datosIda[13],datosIda[14],datosIda[15],datosIda[16],datosIda[17] });//lblFechaSalidaTab.Text
+                    datosIda[12],datosIda[13],datosIda[14],datosIda[15],datosIda[16],datosIda[17],datosIda[18],datosIda[19] });//lblFechaSalidaTab.Text
                     }
 
                     Repeater9.DataSource = dt_ida;
@@ -1809,9 +1837,9 @@ namespace StarzInfiniteWeb
                     string[] datos2 = toolTipVuelta.Split('&');
 
 
-                    
 
-                    
+
+
                     //aux + "&" +
                     //0 dr["boardAirport"].ToString() + "|" +
                     //1 dr["offAirport"].ToString() + "|" +
@@ -1832,6 +1860,7 @@ namespace StarzInfiniteWeb
                     //16 dr["hora_llegada"].ToString() + "|" +
                     //17 dr["ArrivalDate"].ToString() + "|" +
                     //18 dr["lugres_disponibles"].ToString();
+                    //19 dr["equipaje"].ToString();
                     DataTable dt_vuelta = new DataTable();
                     dt_vuelta.Columns.Add("boardAirport", typeof(string));
                     dt_vuelta.Columns.Add("offAirport", typeof(string));
@@ -1852,6 +1881,7 @@ namespace StarzInfiniteWeb
                     dt_vuelta.Columns.Add("hora_llegada", typeof(string));
                     dt_vuelta.Columns.Add("ArrivalDate", typeof(string));
                     dt_vuelta.Columns.Add("lugres_disponibles", typeof(string));
+                    dt_vuelta.Columns.Add("equipaje", typeof(string));
 
                     string[] datos3 = datos2[1].Split('|');
 
@@ -1859,9 +1889,9 @@ namespace StarzInfiniteWeb
                     for (vuelta = 1; vuelta < datos2.Length; vuelta++)
                     {
                         string[] datosIda = datos2[vuelta].Split('|');
-                        dt_vuelta.Rows.Add(new string[18] { datosIda[0], datosIda[1], datosIda[2], datosIda[3], datosIda[4],
+                        dt_vuelta.Rows.Add(new string[20] { datosIda[0], datosIda[1], datosIda[2], datosIda[3], datosIda[4],
                     datosIda[5], datosIda[6], datosIda[7], datosIda[8], datosIda[9],datosIda[10],datosIda[11],
-                    datosIda[12],datosIda[13],datosIda[14],datosIda[15],datosIda[16],datosIda[17] });//lblFechaSalidaTab.Text
+                    datosIda[12],datosIda[13],datosIda[14],datosIda[15],datosIda[16],datosIda[17],datosIda[18],datosIda[19] });//lblFechaSalidaTab.Text
                     }
                     Repeater10.DataSource = dt_vuelta;
                     Repeater10.DataBind();

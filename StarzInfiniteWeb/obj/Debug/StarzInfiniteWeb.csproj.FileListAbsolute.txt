@@ -130,4 +130,3 @@ C:\GITHUB\StarzInfiniteWeb\StarzInfiniteWeb\obj\Debug\StarzInfiniteWeb.csproj.Co
 C:\GITHUB\StarzInfiniteWeb\StarzInfiniteWeb\obj\Debug\StarzInfiniteWeb.csproj.CopyComplete
 C:\GITHUB\StarzInfiniteWeb\StarzInfiniteWeb\obj\Debug\StarzInfiniteWeb.dll
 C:\GITHUB\StarzInfiniteWeb\StarzInfiniteWeb\obj\Debug\StarzInfiniteWeb.pdb
-C:\GITHUB\StarzInfiniteWeb\StarzInfiniteWeb\bin\AjaxControlToolkit.dll

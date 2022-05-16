@@ -43,8 +43,22 @@
         <div class="container">
             <asp:Panel ID="Panel_flitros" runat="server">
         <div class="col-xs-12 col-sm-12 col-md-3 side-bar left-side-bar">
+
             <div class="side-bar-block booking-form-block">
-            <h2 class="selected-price"><span>BUSQUEDAS</span></h2>
+            
+                 <div id="accordionB" class="card-accordion">
+					<!-- begin card -->
+					<div>
+						<div class="card-header" data-toggle="collapse" data-target="#collapseB">
+                            <h2 class="selected-price"><span>BUSQUEDAS</span></h2>
+                          </div>
+
+                         <div id="collapseB"  data-parent="#accordionB">
+							
+                                  
+                
+                
+                
             <div class="booking-form">
               <asp:HiddenField ID="hfTipoRuta" Value="RT" runat="server" />
                 <div class="form-inline">
@@ -52,7 +66,7 @@
                     <input id="cbSoloIda2" class="checkbox" checked="checked"  onclick="TipoVuelo2()" type="checkbox" />Ida y vuelta
                     </div>
                     <div class="form-group">
-                        <asp:DropDownList ID="ddlOrigen" Width="230px" class="form-select" onchange="searchFilter()" tabindex="2" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlOrigen_DataBound" DataSourceID="odsRutaInd" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlOrigen" Width="230px" class="chosen-select" tabindex="2" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlOrigen_DataBound" DataSourceID="odsRutaInd" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
                         </div>
                 <div class="form-group">
                     <asp:DropDownList ID="ddlDestino" Width="230px" class="chosen-select" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlDestino_DataBound" DataSourceID="odsRutaInd" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
@@ -212,7 +226,18 @@
                     </div>
                 <asp:Button ID="btnVuelos" class="btn btn-orange" OnClientClick="recuperarFechaSalida()" OnClick="btnVuelos_Click"  BackColor="#309fd9" runat="server" Text="Buscar vuelos" />
                 </div><!-- end booking-form -->
-                </div><!-- end side-bar-block -->
+               
+
+
+                             
+                             </div>
+
+
+              </div>
+                </div>  
+            
+            
+            </div><!-- end side-bar-block -->
             
             </div>
             
@@ -225,7 +250,7 @@
 					        <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
 					         <ItemTemplate>
                                  <%--NUEVA FICHA DE VIAJES--%>
-                                  <div class="available-blocks" id="available-tours">
+                                  <div class="available-blocks" id="available-tours" style="border:solid 3px;">
                             
                                     <div class="list-block main-block t-list-block">
                                         <div class="list-content">
@@ -343,14 +368,14 @@
                                                                     </ul>
                                                                 <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
                                                                         <li>
-                                                                            <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'></asp:Label>
+                                                                            <asp:Label ID="Label47" runat="server" ForeColor="Black" Text='<%# Eval("depDate") %>'></asp:Label> - <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'></asp:Label>
                                                                         </li>
                                                                         <li>
                                                                             <asp:Image ID="Image6" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> <%--<i class="fa fa-plane-departure fa-fw"></i><hr />--%>
                                                                     <br />Duracion: <asp:Label ID="Label44" runat="server" ForeColor="Black" Text='<%# Eval("duracion") %>'></asp:Label>
                                                                         </li>
                                                                         <li>
-                                                                            <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'>:</asp:Label>
+                                                                            <asp:Label ID="Label48" runat="server" ForeColor="Black" Text='<%# Eval("ArrivalDate") %>'></asp:Label> - <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'></asp:Label>
                                                                         </li>
                                                                     </ul>
                                                                   <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
@@ -500,15 +525,15 @@
                                                       </ul> 
                                                        <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
                                                         <li>
-                                                            <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'>:</asp:Label>
-                                                        </li>
-                                                          <li>
-                                                               <asp:Image ID="Image6" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> <%--<i class="fa fa-plane-departure fa-fw"></i><hr />--%>
-                                                                <br />Duración:<asp:Label ID="Label44" runat="server" ForeColor="Black" Text='<%# Eval("duracion") %>'></asp:Label>
-                                                          </li>
-                                                          <li>
-                                                              <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'>:</asp:Label>
-                                                          </li>
+                                                                <asp:Label ID="Label47" runat="server" ForeColor="Black" Text='<%# Eval("depDate") %>'></asp:Label> - <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'></asp:Label>
+                                                            </li>
+                                                            <li>
+                                                                <asp:Image ID="Image6" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> <%--<i class="fa fa-plane-departure fa-fw"></i><hr />--%>
+                                                        <br />Duracion: <asp:Label ID="Label44" runat="server" ForeColor="Black" Text='<%# Eval("duracion") %>'></asp:Label>
+                                                            </li>
+                                                            <li>
+                                                                <asp:Label ID="Label48" runat="server" ForeColor="Black" Text='<%# Eval("ArrivalDate") %>'></asp:Label> - <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'></asp:Label>
+                                                            </li>
                                                       </ul>
                                                     <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
                                                         <li>
@@ -689,7 +714,13 @@
                                                         <li>
                                                                 <asp:Label ID="Label6" runat="server" Text='<%# Eval("offAirport") %>'>:</asp:Label>
                                                         </li>
-                                                                                         
+                                                             
+                                                           <li>
+                                                               Maletas: <asp:Label ID="Label9" runat="server" Text='<%# Eval("equipaje") %>'>:</asp:Label>
+                                                        </li>
+                                                           <li>
+                                                               Duracion: <asp:Label ID="Label49" runat="server" Text='<%# Eval("duracion") %>'>:</asp:Label>
+                                                        </li>
                                                     </ul>
 
 																	               
@@ -747,6 +778,12 @@
                                                         </li>
                                                         <li>
                                                                 <asp:Label ID="Label6" runat="server" Text='<%# Eval("offAirport") %>'>:</asp:Label>
+                                                        </li>
+                                                              <li>
+                                                               Maletas: <asp:Label ID="Label9" runat="server" Text='<%# Eval("equipaje") %>'>:</asp:Label>
+                                                        </li>
+                                                           <li>
+                                                               Duracion: <asp:Label ID="Label49" runat="server" Text='<%# Eval("duracion") %>'>:</asp:Label>
                                                         </li>
                                                                                          
                                                     </ul>
@@ -1596,6 +1633,20 @@
                
 
             }
+
+            function TipoVueloOW() {
+                var cbIV = document.getElementById("cbSoloIda");
+                cbIV.checked = true;
+                var cbIV = document.getElementById("cbSoloIda2");
+                cbIV.checked = false;
+            }
+
+            function TipoVueloRT() {
+                var cbIV = document.getElementById("cbSoloIda2");
+                cbIV.checked = true;
+                var cbIV = document.getElementById("cbSoloIda");
+                cbIV.checked = false;
+            }
         </script>
     <script type="text/javascript">
 
@@ -1699,22 +1750,4 @@
             });
         });
     </script>
-     <script>
-         var searchFilter = () => {
-             let selectedColor = document.getElementById('<%=ddlOrigen.ClientID %>').value;
-             console.log(selectedColor);
-             const input = document.querySelector(".form-control");
-             const cards = document.getElementsByClassName("col");
-             console.log(cards[1])
-             let textBox = input.value;
-             for (let i = 0; i < cards.length; i++) {
-                 let title = cards[i].querySelector(".card-body");
-                 if ((cards[i].classList.contains(selectedColor) || selectedColor == "") && title.innerText.toLowerCase().indexOf(textBox.toLowerCase()) > -1) {
-                     cards[i].classList.remove("d-none");
-                 } else {
-                     cards[i].classList.add("d-none");
-                 }
-             }
-         }
-     </script>
 </asp:Content>

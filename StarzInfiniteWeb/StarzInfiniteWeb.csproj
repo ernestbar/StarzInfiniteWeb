@@ -43,9 +43,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxControlToolkit">
-      <HintPath>..\..\..\Users\Administrador\Downloads\Ajax_ComboBox_ASP.Net\Bin\AjaxControlToolkit.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
       <HintPath>..\..\SmartInfinite\appSmartzAdmin\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
