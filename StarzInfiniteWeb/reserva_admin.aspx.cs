@@ -286,8 +286,8 @@ namespace StarzInfiniteWeb
                             }
                             lblVueltaTitulo.Text = vueltaOrigen + " - " + vueltaDestino;
                             panel_vuelta.Visible = true;
-
-                            lblFechaVueltaRes.Text = "Fecha de salida: " + dr1["FECHAVUELTA"].ToString();
+                            DateTime fechaVuelta = DateTime.Parse(dr1["FECHAVUELTA"].ToString());
+                            lblFechaVueltaRes.Text = "Fecha de salida: " + fechaVuelta.Day.ToString() + "-" + fechaVuelta.Month.ToString() + "-" + fechaVuelta.Year.ToString();
                             lblOrgDestVueltaRes.Text = "Ruta: " + dr1["ORIGENVUELTA"].ToString() + " - " + dr1["DESITINOVUELTA"].ToString();
                             lblHorarioVueltaRes.Text = "Clase: " + dr1["CLASEIDA"].ToString();
                             lblVueloVueltaRes.Text = "NRO. VUELO: " + dr1["NUMEROVUELOVUELTA"].ToString();

@@ -1687,9 +1687,9 @@ namespace StarzInfiniteWeb
                         //lblClaseVResIda.Text = datosIda[4];
                         //lblFechaLlegadaVResIda.Text = datosIda[3];
                         //lblHoraLlegadaVResIda.Text = datosIda[2];
-                        dt_ida.Rows.Add(new string[19] { datosIda[0], datosIda[1], datosIda[2], datosIda[3], datosIda[4],
+                        dt_ida.Rows.Add(new string[20] { datosIda[0], datosIda[1], datosIda[2], datosIda[3], datosIda[4],
                     datosIda[5], datosIda[6], datosIda[7], datosIda[8], datosIda[9],datosIda[10],datosIda[11],
-                    datosIda[12],datosIda[13],datosIda[14],datosIda[15],datosIda[16],datosIda[17],datosIda[19] });//lblFechaSalidaTab.Text
+                    datosIda[12],datosIda[13],datosIda[14],datosIda[15],datosIda[16],datosIda[17],datosIda[18],datosIda[19] });//lblFechaSalidaTab.Text
                     }
 
                     Repeater9.DataSource = dt_ida;
