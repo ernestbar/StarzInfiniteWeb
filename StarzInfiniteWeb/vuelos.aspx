@@ -44,12 +44,11 @@
       
             <asp:Panel ID="Panel_flitros" runat="server">
         <div class="col-xs-12 col-sm-12 col-md-3 side-bar left-side-bar">
-
+               
             <div class="side-bar-block booking-form-block">
             
                  <div id="accordionB" class="card-accordion">
 					<!-- begin card -->
-					<div>
 						<div class="card-header" data-toggle="collapse" data-target="#collapseB">
                             <h2 class="selected-price"><span>BUSQUEDAS</span></h2>
                           </div>
@@ -57,14 +56,11 @@
                          <div id="collapseB"  data-parent="#accordionB">
 							
                                   
-                
-                
-                
             <div class="booking-form">
               <asp:HiddenField ID="hfTipoRuta" Value="RT" runat="server" />
                 <div class="form-inline">
-                     <input id="cbSoloIda" class="checkbox"  onclick="TipoVuelo()" type="checkbox" />Solo Ida
-                    <input id="cbSoloIda2" class="checkbox"  onclick="TipoVuelo2()" type="checkbox" />Ida y vuelta
+                 <input id="cbSoloIda" class="checkbox"  onclick="TipoVuelo()" type="checkbox" />Solo Ida
+                    <input id="cbSoloIda2" class="checkbox" checked="checked"  onclick="TipoVuelo2()" type="checkbox" />Ida y vuelta
                     </div>
                     <div class="form-group">
                         <asp:DropDownList ID="ddlOrigen" Width="230px" class="chosen-select" tabindex="2" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlOrigen_DataBound" DataSourceID="odsRutaInd" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
@@ -239,9 +235,6 @@
             
             
             </div><!-- end side-bar-block -->
-            
-            </div>
-            
 
             </asp:Panel>
             <asp:MultiView ID="MultiView1" runat="server">
@@ -695,13 +688,13 @@
                                                    </ul>
                                                     <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
                                                         <li>
-                                                                <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'>:</asp:Label>
+                                                                <asp:Label ID="Label47" runat="server" ForeColor="Black" Text='<%# Eval("depDate") %>'></asp:Label> - <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'>:</asp:Label>
                                                         </li>
                                                         <li>
                                                             <asp:Image ID="Image6" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> <%--<i class="fa fa-plane-departure fa-fw"></i><hr />--%>
                                                         </li>
                                                         <li>
-                                                                <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'>:</asp:Label>
+                                                                <asp:Label ID="Label48" runat="server" ForeColor="Black" Text='<%# Eval("ArrivalDate") %>'></asp:Label> - <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'>:</asp:Label>
                                                         </li>
                                                                                         
                                                     </ul>
@@ -760,13 +753,13 @@
                                                     </ul>
                                                      <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
                                                         <li>
-                                                                <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'>:</asp:Label>
+                                                                <asp:Label ID="Label47" runat="server" ForeColor="Black" Text='<%# Eval("depDate") %>'></asp:Label> - <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'>:</asp:Label>
                                                         </li>
                                                         <li>
                                                             <asp:Image ID="Image6" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> 
                                                         </li>
                                                         <li>
-                                                                <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'>:</asp:Label>
+                                                                 <asp:Label ID="Label48" runat="server" ForeColor="Black" Text='<%# Eval("ArrivalDate") %>'></asp:Label> - <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'>:</asp:Label>
                                                         </li>
                                                                                         
                                                     </ul>
@@ -1609,37 +1602,47 @@
                  document.getElementById('fecha_retorno').value = document.getElementById('<%=hfFechaRetorno.ClientID%>').value;
              }
 
-            function TipoVueloOW() {
-                if (document.getElementById('<%=hfTipoRuta.ClientID%>').value = "OW") {
-                    document.getElementById("cbSoloIda").checked == true;
+           
+
+            function TipoVuelo() {
+
+
+                if (document.getElementById("cbSoloIda").checked == true) {
+                    document.getElementById('<%=hfTipoRuta.ClientID%>').value = "OW";
                     document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'hidden';
                     var cbIV = document.getElementById("cbSoloIda2");
                     cbIV.checked = false;
+                    //window.alert("sirve");
                 }
+                <%--else
+                {
+                    document.getElementById('<%=hfTipoRuta.ClientID%>').valuee ="RT";
+                    document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'visible';
+                    var cbIV = document.getElementById("cbSoloIda2");
+                    cbIV.checked = true;
+                }--%>
+
             }
 
-            function TipoVueloRT() {
-                if (document.getElementById('<%=hfTipoRuta.ClientID%>').value = "RT") {
-                    document.getElementById("cbSoloIda2").checked == true;
+            function TipoVuelo2() {
+
+
+                if (document.getElementById("cbSoloIda2").checked == true) {
+                    document.getElementById('<%=hfTipoRuta.ClientID%>').value = "RT";
                     document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'visible';
                     var cbIV = document.getElementById("cbSoloIda");
                     cbIV.checked = false;
+                    //window.alert("sirve");
                 }
+                <%--else
+                {
+                    document.getElementById('<%=hfTipoRuta.ClientID%>').valuee ="OW";
+                    document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'hidden';
+                    var cbIV = document.getElementById("cbSoloIda2");
+                    cbIV.checked = true;
+                }--%>
+
             }
-
-            //function TipoVueloOW() {
-            //    var cbIV = document.getElementById("cbSoloIda");
-            //    cbIV.checked = true;
-            //    //var cbIV2 = document.getElementById("cbSoloIda2");
-            //    //cbIV2.checked = false;
-            //}
-
-            //function TipoVueloRT() {
-            //    var cbIV = document.getElementById("cbSoloIda2");
-            //    cbIV.checked = true;
-            //    //var cbIV2 = document.getElementById("cbSoloIda");
-            //    //cbIV2.checked = false;
-            //}
         </script>
     <script type="text/javascript">
 
@@ -1695,38 +1698,9 @@
             //window.print();
             document.body.innerHTML = originalContents;
         }
+
     </script>
     <script type="text/javascript">
-        function checkAll(cb) {
-
-            var elemArray = document.getElementsByClassName('Repeater1');
-            for (var i = 0; i < elemArray.length; i++) {
-                window.alert(cb);
-                var elem = elemArray[i].value;
-            }
-        }
-        function ChkSelected() {
-            var theone = '';
-            var count = 0;
-
-            var Repeater1 = document.getElementById('<%=Repeater1.ClientID %>');
-            var Repeater2 = Repeater1.getElementsByTagName('Repeater2');
-            var ChkBx2s = Repeater2.getElementsByTagName('cbElegirIda');
-            var i = 0;
-            for (i = 0; i < ChkBx2s.length; i++) {
-                if (ChkBx2s[i].type == 'checkbox' && ChkBx2s[i].id.indexOf("ChkBx2") != -1 && ChkBx2s[i].checked == true) {
-                    count = (count + 1);
-                    var lbl = ChkBx2s[i].parentElement.getElementsByTagName('label');
-                    theone += "," + lbl[0].innerHTML + ';';
-                }
-            }
-            if (count == 0) {
-                theone = '';
-            }
-            window.alert(theone + " Count=" + count);
-
-        }
-
         $(document).ready(function () {
             $('[id*=cbElegirIda]').on('change', function () {
                 $(".ClaseIda input[type='checkbox']").each(function () {
