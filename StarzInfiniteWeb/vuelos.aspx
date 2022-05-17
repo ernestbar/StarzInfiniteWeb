@@ -59,8 +59,8 @@
             <div class="booking-form">
               <asp:HiddenField ID="hfTipoRuta" Value="RT" runat="server" />
                 <div class="form-inline">
-                 <input id="cbSoloIda" class="checkbox"  onclick="TipoVuelo()" type="checkbox" />Solo Ida
-                    <input id="cbSoloIda2" class="checkbox" checked="checked"  onclick="TipoVuelo2()" type="checkbox" />Ida y vuelta
+                 <input id="cbSoloIda" class="checkbox"   onclick="TipoVuelo()" type="checkbox" />Solo Ida
+                    <input id="cbSoloIda2" class="checkbox" onclick="TipoVuelo2()" type="checkbox" />Ida y vuelta
                     </div>
                     <div class="form-group">
                         <asp:DropDownList ID="ddlOrigen" Width="230px" class="chosen-select" tabindex="2" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlOrigen_DataBound" DataSourceID="odsRutaInd" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
@@ -239,7 +239,7 @@
             </asp:Panel>
             <asp:MultiView ID="MultiView1" runat="server">
                 <asp:View ID="View1" runat="server">
-                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side" style="height:500px; overflow: scroll;">
+                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side" style="height:800px; overflow: scroll;">
                         <asp:Label ID="lblVueloIdaNoDisponible" runat="server" Text=""></asp:Label>
 					        <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
 					         <ItemTemplate>
@@ -259,23 +259,23 @@
                                                             <div id="accordion" class="card-accordion">
 			                                                <!-- begin card -->
 			                                                <div class="card" style="font-size:smaller;">
-                                                                <ul class="list-unstyled list-inline offer-price-1" style="background-color:lightgray">
+                                                                <ul class="list-unstyled list-inline" style="background-color:lightgray;height:20px">
                                                                         <li>
                                                                             <asp:CheckBox ID="cbElegirIda" runat="server" Text="Elegir ida" CssClass="ClaseIda"/>
-                                                                            <asp:Image ID="Image1" runat="server" Height="30" ImageUrl="~/iconos/icono-avion-ticket.png" />
+                                                                            <asp:Image ID="Image1" runat="server" Height="15" ImageUrl="~/iconos/icono-avion-ticket.png" />
                                                                             <%--<input id="cbElijeIda" class="checkbox" type="checkbox" OnClick="checkAll(this)" />--%>
                                                                         </li>
                                                            
                                                                     </ul>
 				                                                <div class="card-header text-black pointer-cursor" style="background-color:white" data-toggle="collapse" data-target='<%# "#collapseOneIda" + Eval("id_datos") + Eval("id_opcion")+ Eval("AEROLINEA").ToString().Replace(" ","") %>'>
-                                                                  <ul class="list-unstyled list-inline offer-price-1" style="text-align:left;font-size:small">
+                                                                  <ul class="list-unstyled list-inline" style="text-align:left;font-size:xx-small;height:30px">
                                                                         <li>
                                                                             <asp:Image ID="imgIda" Height="20" runat="server" />
                                                                             <asp:Label ID="Label7" runat="server" ForeColor="Blue" Text='<%# Eval("AEROLINEA") %>'></asp:Label>
                                                                             </li>
                                                                          </ul>
                                                                             
-                                                                    <ul class="list-unstyled list-inline col-12" style="text-align:center;font-size:small;vertical-align:top">
+                                                                    <ul class="list-unstyled list-inline col-12" style="text-align:center;font-size:xx-small;vertical-align:top;height:15px">
                                                                         <li>
                                                                             <asp:Label ID="lblOrigenI" Font-Bold="true" runat="server" Text=""></asp:Label>
                                                                         </li>
@@ -292,7 +292,7 @@
                                                                              
                                                                          </li>
                                                                     </ul>
-                                                                    <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
+                                                                    <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top;height:15px">
                                                                          <li>
                                                                             
                                                                             <asp:Label ID="lblHoraSalidaI" ForeColor="Blue" runat="server" Text=""></asp:Label>
@@ -309,7 +309,7 @@
 
                                                                         </li>
                                                                     </ul>
-                                                                     <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
+                                                                     <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top;height:15px">
                                                                          <li>
                                                                              <asp:Label ID="lblFechaSalidaI" ForeColor="Blue" runat="server" Text=""></asp:Label>
                                                                         </li>
@@ -335,44 +335,43 @@
                                                                           </li>
                                                                  
                                                                       </ul>
-
-                                                                     <hr />
-                                                             <div class="row">
+                                                                     
+                                                           <%--  <div class="row">
                                                                 <div class="col">
-                                                                    <asp:Button ID="btnElegir" OnClientClick="getVScroll()" CausesValidation="false" class="btn btn-primary btn-sm" ToolTip="" Visible="false"   runat="server" Text="Seleccionar Ida" /></div>
-                                                            </div>
-					                                     
-                                                            </div>
+                                                               </div>     
+                                                            </div>--%>
+					                                     <asp:Button ID="btnElegir" OnClientClick="getVScroll()" CausesValidation="false" class="btn btn-primary btn-sm" ToolTip="" Visible="false"   runat="server" Text="Seleccionar Ida" /></div>
+                                                            
 				                                                                        
                                                             <div id='<%# "collapseOneIda" + Eval("id_datos") +Eval("id_opcion")+ Eval("AEROLINEA").ToString().Replace(" ","") %>' class="collapse" data-parent="#accordion">
 					                                        <div class="card-body" style="background-color:white"> 
                                                             <asp:Repeater ID="Repeater3" OnItemDataBound="Repeater3_ItemDataBound" runat="server">
 												            <ItemTemplate>
-                                                             <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
+                                                             <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top">
                                                                         <li>
                                                                             Salida
                                                                         </li>
                                                                         <li>
-                                                                            <asp:Image ID="Image3" ImageUrl='<%# "~/Logos/" + Eval("operCompany") +".png" %>' runat="server" />
+                                                                            <asp:Image ID="Image3" Height="20" ImageUrl='<%# "~/Logos/" + Eval("operCompany") +".png" %>' runat="server" />
                                                                             Airline:<asp:Label ID="Label7" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>
                                                                         </li>
                                                                         <li>
                                                                             Llegada
                                                                         </li>
                                                                     </ul>
-                                                                <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
+                                                                <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top">
                                                                         <li>
                                                                             <asp:Label ID="Label47" runat="server" ForeColor="Black" Text='<%# Eval("depDate") %>'></asp:Label> - <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'></asp:Label>
                                                                         </li>
                                                                         <li>
-                                                                            <asp:Image ID="Image6" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> <%--<i class="fa fa-plane-departure fa-fw"></i><hr />--%>
+                                                                            <asp:Image ID="Image6" Height="10" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> <%--<i class="fa fa-plane-departure fa-fw"></i><hr />--%>
                                                                     <br />Duracion: <asp:Label ID="Label44" runat="server" ForeColor="Black" Text='<%# Eval("duracion") %>'></asp:Label>
                                                                         </li>
                                                                         <li>
                                                                             <asp:Label ID="Label48" runat="server" ForeColor="Black" Text='<%# Eval("ArrivalDate") %>'></asp:Label> - <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'></asp:Label>
                                                                         </li>
                                                                     </ul>
-                                                                  <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
+                                                                  <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top">
                                                                         <li>
                                                                             <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
                                                                         </li>
@@ -406,24 +405,24 @@
                                                             <div id="accordionRT" class="card-accordion">
 			                                                <!-- begin card -->
 			                                                <div class="card" style="font-size:smaller;">
-                                                                 <ul class="list-unstyled list-inline offer-price-1" style="background-color:lightgray">
+                                                                 <ul class="list-unstyled list-inline" style="background-color:lightgray;height:20px">
                                                                         <li>
                                                                             <asp:CheckBox ID="cbElegirVuelta" runat="server" Text="Elegir Retorno" CssClass="ClaseVuelta"/>
-                                                                            <asp:Image ID="Image1" runat="server" Height="30" ImageUrl="~/iconos/icono-avion-ticket-reverse.png" />
+                                                                            <asp:Image ID="Image1" runat="server" Height="15" ImageUrl="~/iconos/icono-avion-ticket-reverse.png" />
                                                                             <%--<input id="cbElijeIda" class="checkbox" type="checkbox" OnClick="checkAll(this)" />--%>
                                                                         </li>
                                                            
                                                                     </ul>
 				                                                <div class="card-header text-black pointer-cursor" style="background-color:white" data-toggle="collapse" data-target='<%# "#collapseOneVuelta" + Eval("id_datos") + Eval("id_opcion")+  Eval("AEROLINEA").ToString().Replace(" ","") %>'>
-                                                                    <div class="row">
+                                                                   <%-- <div class="row">
                                                                 <div class="col">
-                                                                    <asp:Button ID="btnElegirRT" class="btn btn-success" ToolTip="" Visible="false" runat="server" Text="Seleccionar Retorno" />
+                                                                    
 
                                                                 </div>
                                                                                        
-                                                            </div>
-                                                           
-                                                              <ul class="list-unstyled list-inline col-12" style="text-align:left;font-size:small;vertical-align:top">
+                                                            </div>--%>
+                                                           <asp:Button ID="btnElegirRT" class="btn btn-success" ToolTip="" Visible="false" runat="server" Text="Seleccionar Retorno" />
+                                                              <ul class="list-unstyled list-inline col-12" style="text-align:left;font-size:xx-small;vertical-align:top;height:20px">
                                                                
                                                                  <li>
                                                                      <asp:Image ID="imgVuelta" Height="20" runat="server" />
@@ -431,7 +430,7 @@
                                                                 </li>
                                                                </ul>
 
-                                                                 <ul class="list-unstyled list-inline col-12" style="text-align:center;font-size:small;vertical-align:top">
+                                                                 <ul class="list-unstyled list-inline col-12" style="text-align:center;font-size:xx-small;vertical-align:top;height:15px">
                                                                       <li>
 
                                                                     <asp:Label ID="lblOrigenI" Font-Bold="true" runat="server" Text=""></asp:Label>
@@ -449,7 +448,7 @@
                                                                      </li>
                                                                 </ul>
                                                                  
-                                                             <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
+                                                             <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top;height:15px">
                                                                 <li>
                                                                     
                                                                     <asp:Label ID="lblHoraSalidaI" ForeColor="Blue" runat="server" Text=""></asp:Label>
@@ -466,7 +465,7 @@
 
                                                                  </li>
                                                              </ul>
-                                                            <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
+                                                            <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top;height:15px">
                                                                 <li>
                                                                     <asp:Label ID="lblFechaSalidaI" ForeColor="Blue" runat="server" Text=""></asp:Label>
                                                                 </li>
@@ -505,31 +504,31 @@
 					                                <div class="card-body"> 
                                                     <asp:Repeater ID="Repeater6" OnItemDataBound="Repeater6_ItemDataBound" runat="server">
 										            <ItemTemplate>
-                                                      <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
+                                                      <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top">
                                                         <li>
                                                             Salida
                                                         </li>
                                                           <li>
-                                                              <asp:Image ID="Image3" ImageUrl='<%# "~/Logos/" + Eval("operCompany") +".png" %>' runat="server" />
+                                                              <asp:Image ID="Image3" Height="20" ImageUrl='<%# "~/Logos/" + Eval("operCompany") +".png" %>' runat="server" />
                                                                 Airline:<asp:Label ID="Label7" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>
                                                           </li>
                                                           <li>
                                                               Llegada
                                                           </li>
                                                       </ul> 
-                                                       <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
+                                                       <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top">
                                                         <li>
                                                                 <asp:Label ID="Label47" runat="server" ForeColor="Black" Text='<%# Eval("depDate") %>'></asp:Label> - <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'></asp:Label>
                                                             </li>
                                                             <li>
-                                                                <asp:Image ID="Image6" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> <%--<i class="fa fa-plane-departure fa-fw"></i><hr />--%>
+                                                                <asp:Image ID="Image6" Height="10" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> <%--<i class="fa fa-plane-departure fa-fw"></i><hr />--%>
                                                         <br />Duracion: <asp:Label ID="Label44" runat="server" ForeColor="Black" Text='<%# Eval("duracion") %>'></asp:Label>
                                                             </li>
                                                             <li>
                                                                 <asp:Label ID="Label48" runat="server" ForeColor="Black" Text='<%# Eval("ArrivalDate") %>'></asp:Label> - <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'></asp:Label>
                                                             </li>
                                                       </ul>
-                                                    <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
+                                                    <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top">
                                                         <li>
                                                             <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
                                                         </li>
@@ -563,7 +562,7 @@
 										        </asp:Repeater>
                                         
                                             </div><!-- end t-list-info -->
-                                            <ul class="list-unstyled list-inline offer-price-1" style="background-color:lightblue">
+                                            <ul class="list-unstyled list-inline" style="background-color:lightblue;height:70px;font-size:small">
                                                    <li>
                                                       <asp:Label ID="ldlOrigen" runat="server" ForeColor="Black"  Font-Bold="true" Text='<%# Eval("ORIGEN") %>' ></asp:Label>-
                                                        <asp:Label ID="lblDestino"  Font-Bold="true" ForeColor="Black" runat="server" Text='<%# Eval("DESTINO") %>'></asp:Label>
@@ -577,7 +576,7 @@
                                                         <%--<asp:Image ID="Image3" ImageUrl='<%# "~/Logos/" + Eval("marketCompany") +".png" %>' runat="server" />--%>
                                                    </li>
                                                    <li>
-                                                       <asp:Button ID="btnComprar" class="btn btn-orange btn-lg col-4" OnClick="btnComprar_Click" runat="server" Text="COMPRAR" />
+                                                       <asp:Button ID="btnComprar" class="btn btn-orange btn-md col-4" OnClick="btnComprar_Click" runat="server" Text="COMPRAR" />
                                                        <%--<a href="tour-detail-left-sidebar.html" class="btn btn-orange btn-lg">COMPRAR</a>--%>
                                                    </li>
                                                </ul>
@@ -1602,46 +1601,32 @@
                  document.getElementById('fecha_retorno').value = document.getElementById('<%=hfFechaRetorno.ClientID%>').value;
              }
 
-           
+            function TipoVueloOW() {
+                   var cbIV = document.getElementById("cbSoloIda");
+                   cbIV.checked = true;
+            }
+
+            function TipoVueloRT() {
+                var cbIV2 = document.getElementById("cbSoloIda2");
+                cbIV2.checked = true;
+            }
 
             function TipoVuelo() {
-
-
                 if (document.getElementById("cbSoloIda").checked == true) {
                     document.getElementById('<%=hfTipoRuta.ClientID%>').value = "OW";
                     document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'hidden';
                     var cbIV = document.getElementById("cbSoloIda2");
                     cbIV.checked = false;
-                    //window.alert("sirve");
                 }
-                <%--else
-                {
-                    document.getElementById('<%=hfTipoRuta.ClientID%>').valuee ="RT";
-                    document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'visible';
-                    var cbIV = document.getElementById("cbSoloIda2");
-                    cbIV.checked = true;
-                }--%>
-
             }
 
             function TipoVuelo2() {
-
-
                 if (document.getElementById("cbSoloIda2").checked == true) {
                     document.getElementById('<%=hfTipoRuta.ClientID%>').value = "RT";
                     document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'visible';
                     var cbIV = document.getElementById("cbSoloIda");
                     cbIV.checked = false;
-                    //window.alert("sirve");
                 }
-                <%--else
-                {
-                    document.getElementById('<%=hfTipoRuta.ClientID%>').valuee ="OW";
-                    document.getElementById('<%=Panel_fecha_regreso.ClientID%>').style.visibility = 'hidden';
-                    var cbIV = document.getElementById("cbSoloIda2");
-                    cbIV.checked = true;
-                }--%>
-
             }
         </script>
     <script type="text/javascript">

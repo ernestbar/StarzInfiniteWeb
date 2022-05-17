@@ -16,7 +16,7 @@ namespace StarzInfiniteWeb
             {
                 if (Session["usuario"] == null)
                 {
-                    Response.Redirect("login.aspx");
+                    Response.Redirect("ingreso.aspx");
                 }
                 else
                 {
@@ -83,11 +83,36 @@ namespace StarzInfiniteWeb
         {
             if (lblCodClienteTicket.Text == "")
             {
+                string detalle = "";
+                foreach (ListItem item1 in lbDetalle.Items)
+                {
+                    detalle = detalle + item1.Value + "|";
+                
+                }
+                //string[] datos = LocalBD.PUT_INGRESA_TICKETS_MANUAL("I", lblUsuario.Text, ddlProducto.SelectedValue, ddlProovedor.SelectedValue,
+                //    txtPNR.Text, txtTourCode.Text, txtDatosFacturacion.Text, txtEmailFact.Text, txtFonoFact.Text, ddlOrigenIda.SelectedValue,
+                //    ddlDestinoIda.SelectedValue, hfFechaSalida.Value, txtClaseIda.Text, txtCarrierIda.Text, txtNroVueloIda.Text, ddlOrigenVuelta.SelectedValue,
+                //    ddlDestinoVuelta.SelectedValue, hfFechaVuelta.Value, txtClaseVuelta.Text, txtCarrierVuelta.Text, txtNroVueloVuelta.Text,
+                //    hfFechaLimite.Value, hfFechaRegistro.Value, ddlBroker.SelectedValue, decimal.Parse(txtTotalCobrar.Text), ddlMoneda.SelectedValue,decimal.Parse(txtTotalImpuestos.Text),
+                //    decimal.Parse(txtMontoSinImpuestos.Text), ddlTipoVenta.SelectedValue,decimal.Parse(txtComisionBroker.Text), detalle, ddlTipoVuelo.SelectedValue, "").Split('|');
+                //lblAviso.Text = datos[1];
 
             }
             else
             {
+                string detalle = "";
+                foreach (ListItem item1 in lbDetalle.Items)
+                {
+                    detalle = detalle + item1.Value + "|";
 
+                }
+                //string[] datos = LocalBD.PUT_INGRESA_TICKETS_MANUAL("U", lblUsuario.Text, ddlProducto.SelectedValue, ddlProovedor.SelectedValue,
+                //    txtPNR.Text, txtTourCode.Text, txtDatosFacturacion.Text, txtEmailFact.Text, txtFonoFact.Text, ddlOrigenIda.SelectedValue,
+                //    ddlDestinoIda.SelectedValue, hfFechaSalida.Value, txtClaseIda.Text, txtCarrierIda.Text, txtNroVueloIda.Text, ddlOrigenVuelta.SelectedValue,
+                //    ddlDestinoVuelta.SelectedValue, hfFechaVuelta.Value, txtClaseVuelta.Text, txtCarrierVuelta.Text, txtNroVueloVuelta.Text,
+                //    hfFechaLimite.Value, hfFechaRegistro.Value, ddlBroker.SelectedValue, decimal.Parse(txtTotalCobrar.Text), ddlMoneda.SelectedValue, decimal.Parse(txtTotalImpuestos.Text),
+                //    decimal.Parse(txtMontoSinImpuestos.Text), ddlTipoVenta.SelectedValue, decimal.Parse(txtComisionBroker.Text), detalle, ddlTipoVuelo.SelectedValue, lblCodClienteTicket.Text).Split('|');
+                //lblAviso.Text = datos[1];
             }
         }
 
@@ -158,6 +183,24 @@ namespace StarzInfiniteWeb
             ddlProovedor.DataBind();
             ddlBroker.DataBind();
             ddlBroker.DataBind();
+        }
+
+        protected void lbDetalle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lbDetalle.Items.RemoveAt(lbDetalle.SelectedIndex);
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            string detalle_txt = "";
+            string detalle_value = "";
+            detalle_txt = txtNroTicket.Text + " - " + txtNombrePasajero.Text + " - " + txtApellidoPasajero.Text + " - " + txtNroDoc.Text + " - " + txtCosto.Text + " - " + txtMontoSinImp.Text + " - " + txtMontoConImp.Text;
+            detalle_value = txtNroTicket.Text + "," + txtNombrePasajero.Text + "," + txtApellidoPasajero.Text + "," + txtNroDoc.Text + "," + txtCosto.Text + "," + txtMontoSinImp.Text + "," + txtMontoConImp.Text;
+            ListItem item = new ListItem();
+            item.Text = detalle_txt;
+            item.Value = detalle_value;
+            lbDetalle.Items.Add(item);
+            lbDetalle.DataBind();
         }
     }
 }

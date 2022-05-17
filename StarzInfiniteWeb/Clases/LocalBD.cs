@@ -543,7 +543,10 @@ namespace StarzInfiniteWeb
                 db1.AddInParameter(cmd, "pv_tipo_venta", DbType.String, pv_tipo_venta);
                 db1.AddInParameter(cmd, "pv_detalle", DbType.Decimal, pv_detalle);
                 db1.AddInParameter(cmd, "pv_tipo_vuelo", DbType.String, pv_tipo_vuelo);
-                db1.AddInParameter(cmd, "PV_COD_CLIENTE_TICKET", DbType.String, PV_COD_CLIENTE_TICKET);
+                if(PV_COD_CLIENTE_TICKET=="")
+                    db1.AddInParameter(cmd, "PV_COD_CLIENTE_TICKET", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "PV_COD_CLIENTE_TICKET", DbType.String, PV_COD_CLIENTE_TICKET);
                 db1.AddOutParameter(cmd, "PV_ESTADOPR", DbType.String, 30);
                 db1.AddOutParameter(cmd, "PV_DESCRIPCIONPR", DbType.String, 250);
                 cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);

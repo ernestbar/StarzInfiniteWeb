@@ -95,6 +95,7 @@
 										</div>
 											<div class="col">
 												<asp:Button ID="btnFiltrarFechas" runat="server" CssClass="btn btn-primary shadow rounded" OnClick="btnFiltrarFechas_Click" OnClientClick="recuperarFechaSalida()" Text="Filtrar Reporte" />
+												<button onclick="exportTableToExcel('tblData')" class="btn btn-orange">Exportar a Excel</button>
 										</div>
 										</div>
                          <br />
@@ -145,7 +146,7 @@
 										</div>
            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
-										<table class="table table-bordered order-table ">
+										<table id="tblData" class="table table-bordered order-table ">
 													<thead>
 																<tr>
 																	<td>
@@ -431,6 +432,36 @@
             document.getElementById('<%=hfFecha2.ClientID%>').value = document.getElementById('fecha_retorno1').value;
          }
 
+         function exportTableToExcel(tableID, filename = '') {
+             var downloadLink;
+             var dataType = 'application/vnd.ms-excel';
+             var tableSelect = document.getElementById(tableID);
+             var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+             // Specify file name
+             filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+             // Create download link element
+             downloadLink = document.createElement("a");
+
+             document.body.appendChild(downloadLink);
+
+             if (navigator.msSaveOrOpenBlob) {
+                 var blob = new Blob(['ufeff', tableHTML], {
+                     type: dataType
+                 });
+                 navigator.msSaveOrOpenBlob(blob, filename);
+             } else {
+                 // Create a link to the file
+                 downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                 // Setting the file name
+                 downloadLink.download = filename;
+
+                 //triggering the function
+                 downloadLink.click();
+             }
+         }
 
      </script>
 	<script type="text/javascript">
@@ -472,6 +503,7 @@
                 }
             });
 
-        })(document);
+		})(document);
+
     </script>
 </asp:Content>

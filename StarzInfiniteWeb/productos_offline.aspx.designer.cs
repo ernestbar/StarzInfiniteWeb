@@ -537,6 +537,15 @@ namespace StarzInfiniteWeb
         protected global::System.Web.UI.WebControls.TextBox txtComisionBroker;
 
         /// <summary>
+        /// ddlTipoVuelo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoVuelo;
+
+        /// <summary>
         /// txtNroTicket control.
         /// </summary>
         /// <remarks>
@@ -609,13 +618,13 @@ namespace StarzInfiniteWeb
         protected global::System.Web.UI.WebControls.Button btnAgregar;
 
         /// <summary>
-        /// ddlTipoVuelo control.
+        /// lbDetalle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoVuelo;
+        protected global::System.Web.UI.WebControls.ListBox lbDetalle;
 
         /// <summary>
         /// btnGuardar control.

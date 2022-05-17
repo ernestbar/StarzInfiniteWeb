@@ -35,13 +35,15 @@ namespace StarzInfiniteWeb
                     
                     if (lblTipoRuta.Text == "OW")
                     {
-                        Panel_fecha_regreso.Visible = false;
-                        //ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionTipoOW", "TipoVueloOW();", true);
+                        //Panel_fecha_regreso.Visible = false;
+                        ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionTipoOW", "TipoVueloOW();", true);
+                        ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionTipo", "TipoVuelo();", true);
                     }
                     else 
                     {
-                        Panel_fecha_regreso.Visible = true;
-                        //ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionTipoRT", "TipoVueloRT();", true);
+                        //Panel_fecha_regreso.Visible = true;
+                        ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionTipoRT", "TipoVueloRT();", true);
+                        ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionTipo2", "TipoVuelo2();", true);
                     }
 
                     //lblTipoRuta.Text = hfTipoRuta.Value;

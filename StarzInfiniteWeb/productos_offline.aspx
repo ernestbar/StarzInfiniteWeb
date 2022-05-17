@@ -599,7 +599,7 @@
 						Fecha Limite Emision:
 					</div>
 					<div class="col-12 col-md-3">
-						<input id="fecha_emision" class="form-control" onfocus="bloquear()" style="background:#ecf1fa" type="date" ><asp:HiddenField ID="hfFechaLimite" runat="server" />
+						<input id="fecha_limite" class="form-control" onfocus="bloquear()" style="background:#ecf1fa" type="date" ><asp:HiddenField ID="hfFechaLimite" runat="server" />
 					</div>
 
 		</div>
@@ -677,6 +677,15 @@
 		</div>
 			<div class="row">
 					<div class="col-12 col-md-2">
+						Tipo Vuelo:
+					</div>
+					<div class="col-12 col-md-3">
+						<asp:DropDownList ID="ddlTipoVuelo" class="form-control" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlTipoVuelo_DataBound" DataSourceID="odsTipoVuelo" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
+					</div>
+
+		</div>
+			<div class="row">
+					<div class="col-12 col-md-2">
 						Detalle:
 					</div>
 					<div class="col-12 col-md-1">
@@ -705,45 +714,44 @@
 					
 					</div>
 		</div>
+			
 			<div class="row">
 					<div class="col-12 col-md-2">
 						
 					</div>
 					<div class="col-12 col-md-1">
-						<asp:TextBox ID="txtNroTicket" CssClass="form-control" runat="server"></asp:TextBox>
+						<asp:TextBox ID="txtNroTicket" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
 					</div>
 					<div class="col-12 col-md-2">
-						<asp:TextBox ID="txtNombrePasajero" CssClass="form-control" runat="server"></asp:TextBox>
+						<asp:TextBox ID="txtNombrePasajero" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
 					</div>
 				<div class="col-12 col-md-2">
-						<asp:TextBox ID="txtApellidoPasajero" CssClass="form-control" runat="server"></asp:TextBox>
+						<asp:TextBox ID="txtApellidoPasajero" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
 					</div>
 
 				<div class="col-12 col-md-1">
-						<asp:TextBox ID="txtNroDoc" CssClass="form-control" runat="server"></asp:TextBox>
+						<asp:TextBox ID="txtNroDoc" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
 					</div>
 				<div class="col-12 col-md-1">
-						<asp:TextBox ID="txtCosto" CssClass="form-control" runat="server"></asp:TextBox>
+						<asp:TextBox ID="txtCosto" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
 					</div>
 				<div class="col-12 col-md-1">
-						<asp:TextBox ID="txtMontoSinImp" CssClass="form-control" runat="server"></asp:TextBox>
+						<asp:TextBox ID="txtMontoSinImp" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
 					</div>
 				<div class="col-12 col-md-1">
-						<asp:TextBox ID="txtMontoConImp" CssClass="form-control" runat="server"></asp:TextBox>
+						<asp:TextBox ID="txtMontoConImp" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
 					</div>
 				<div class="col-12 col-md-1">
-					<asp:Button ID="btnAgregar" CssClass="btn btn-primary" runat="server" Text="Agregar" />
+					<asp:Button ID="btnAgregar" CssClass="btn btn-primary" ValidationGroup="detalle" OnClick="btnAgregar_Click" runat="server" Text="Agregar" />
 					</div>
 		</div>
 			<div class="row">
-					<div class="col-12 col-md-2">
-						Tipo Vuelo:
-					</div>
-					<div class="col-12 col-md-3">
-						<asp:DropDownList ID="ddlTipoVuelo" class="form-control" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlTipoVuelo_DataBound" DataSourceID="odsTipoVuelo" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
+					<div class="col-12 col-md-12">
+						<asp:ListBox ID="lbDetalle" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="lbDetalle_SelectedIndexChanged"  runat="server"></asp:ListBox>
 					</div>
 
 		</div>
+			
 		<%--	<div class="row">
 					<div class="col-12 col-md-2">
 						Codigo Cliente Ticket:
@@ -755,7 +763,7 @@
 		</div>--%>
 		<div class="row">
 					<div class="col-12 col-md-2">
-						<asp:Button ID="btnGuardar"  OnClick="btnGuardar_Click" CssClass="btn btn-primary" runat="server" Text="Guardar" />
+						<asp:Button ID="btnGuardar" OnClientClick="recuperarFechas()" OnClick="btnGuardar_Click" CssClass="btn btn-primary" runat="server" Text="Guardar" />
 					</div>
 					<div class="col-12 col-md-2">
 						<asp:Button ID="btnVolverEstABM" CausesValidation="false" OnClick="btnVolverEstABM_Click" CssClass="btn btn-primary" runat="server" Text="Volver" />
@@ -771,6 +779,14 @@
 
             document.getElementById('<%=hfFecha1.ClientID%>').value = document.getElementById('fecha_salida1').value;
             document.getElementById('<%=hfFecha2.ClientID%>').value = document.getElementById('fecha_retorno1').value;
-		}
+		 }
+
+         function recuperarFechas() {
+
+             document.getElementById('<%=hfFechaSalida.ClientID%>').value = document.getElementById('fecha_salida').value;
+              document.getElementById('<%=hfFechaVuelta.ClientID%>').value = document.getElementById('fecha_vuelta').value;
+              document.getElementById('<%=hfFechaRegistro.ClientID%>').value = document.getElementById('fecha_registro').value;
+              document.getElementById('<%=hfFechaLimite.ClientID%>').value = document.getElementById('fecha_limite').value;
+          }
      </script>
 </asp:Content>
