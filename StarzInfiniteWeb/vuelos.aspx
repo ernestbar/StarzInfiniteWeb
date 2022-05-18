@@ -562,7 +562,7 @@
 										        </asp:Repeater>
                                         
                                             </div><!-- end t-list-info -->
-                                            <ul class="list-unstyled list-inline" style="background-color:lightblue;height:70px;font-size:small">
+                                            <ul class="list-unstyled list-inline" style="background-color:lightblue;height:70px;width:100%;font-size:xx-small">
                                                    <li>
                                                       <asp:Label ID="ldlOrigen" runat="server" ForeColor="Black"  Font-Bold="true" Text='<%# Eval("ORIGEN") %>' ></asp:Label>-
                                                        <asp:Label ID="lblDestino"  Font-Bold="true" ForeColor="Black" runat="server" Text='<%# Eval("DESTINO") %>'></asp:Label>
@@ -600,7 +600,7 @@
                                      <%--<div class="col"><asp:Button ID="btnNuevaBusqueda" OnClick="btnNuevaBusqueda_Click" class="btn btn-default rounded" CausesValidation="false" Visible="false"  runat="server" Text="Nueva busqueda" /></div>   --%>     
                                      <asp:Panel ID="panel_continuar" Visible="false" runat="server">
                                         <div class="col"><asp:Button ID="btnContinuar" OnClick="btnContinuar_Click" class="btn btn-primary rounded" CausesValidation="false"  runat="server" Text="Continuar Pasajeros" /></div>
-                                        <div class="col"><asp:Button ID="btnVolver"  OnClientClick="exportPDF()" class="btn btn-default rounded" CausesValidation="false" Visible="true"  runat="server" Text="Exportar a PDF" /></div>
+                                        <div class="col"><asp:Button ID="btnVolver"  OnClientClick="exportPDF()" class="btn btn-orange rounded" CausesValidation="false" Visible="true"  runat="server" Text="Exportar a PDF" /></div>
                                         <div class="col"><asp:Button ID="btnVerVuelos" OnClick="btnVerVuelos_Click" class="btn btn-success rounded" CausesValidation="false" Visible="true"  runat="server" Text="Elegir otro vuelo" /></div>
                                     </asp:Panel> 
                                         
