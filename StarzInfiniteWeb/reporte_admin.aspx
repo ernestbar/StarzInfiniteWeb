@@ -113,10 +113,11 @@
 				
 			</asp:View>
             <asp:View ID="View1" runat="server">
+				  
 				<h3>REPORTE GENERAL DE VENTAS</h3>
 				
 				<asp:Button ID="btnOtraConsulta" runat="server" CssClass="btn btn-primary" OnClick="btnOtraConsulta_Click" Text="Otra consulta" />
-				<button onclick="exportTableToExcel('tblData')" class="btn btn-orange">Exportar a Excel</button>
+				<button id="export" class="btn btn-orange">Exportar a Excel</button>
 				<div class="row">
 											<div class="col-12 col-md-3">
 											<input class="form-control light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
@@ -193,7 +194,7 @@
 						<asp:Button ID="btnVolver1" runat="server" CssClass="btn btn-primary" OnClick="btnVolver1_Click" Text="Volver" />
 			    </div>
 					<div class="col">
-						<button onclick="exportTableToExcel('tblData2')" class="btn btn-orange">Exportar a Excel</button>
+						<button id="export1" class="btn btn-orange">Exportar a Excel</button>
 					</div>
 				</div>
 				
@@ -204,7 +205,7 @@
 										</div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
-						<table id="tblData2" class="table table-bordered order-table ">
+						<table id="tblData1" class="table table-bordered order-table ">
 									<thead>
 												<tr>
 													<td>
@@ -379,7 +380,7 @@
 						<asp:Button ID="btnVolver2" runat="server" CssClass="btn btn-primary" OnClick="btnVolver2_Click" Text="Volver" />
 			    </div>
 					<div class="col">
-						<button onclick="exportTableToExcel('tblData3')" class="btn btn-orange">Exportar a Excel</button>
+						<button id="export2" class="btn btn-orange">Exportar a Excel</button>
 					</div>
 				</div>
 				
@@ -390,7 +391,7 @@
 										</div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
-						<table id="tblData3" class="table table-bordered order-table ">
+						<table id="tblData2" class="table table-bordered order-table ">
 									<thead>
 												<tr>
 													<td>
@@ -463,6 +464,7 @@
                </div>
             </asp:View>
 			<asp:View ID="View4" runat="server">
+				
 				<h4>REPORTE PARA CAMBIO DE ESTADOS</h4>
 				
 				<div class="row">
@@ -470,7 +472,8 @@
 						<asp:Button ID="btnVolverEstado" runat="server" CssClass="btn btn-primary" OnClick="btnVolverEstado_Click" Text="Otra consulta" />
 			    </div>
 					<div class="col">
-						<button onclick="exportTableToExcel('tblData4')" class="btn btn-orange">Exportar a Excel</button>
+						<button id="export3" class="btn btn-orange">Exportar a Excel</button>
+						<%--<button onclick="exportTableToExcel('tblData4')" class="btn btn-orange">Exportar a Excel</button>--%>
 					</div>
 				</div>
 				
@@ -481,7 +484,7 @@
 										</div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-side"  style="height:500px; overflow-x:scroll;overflow-y:scroll">
             <div>
-						<table id="tblData4" class="table table-bordered order-table ">
+						<table id="tblData3" class="table table-bordered order-table ">
 									<thead>
 												<tr>
 													<td>
@@ -755,5 +758,34 @@
             });
 
         })(document);
+    </script>
+	
+	<script>
+        var table2excel = new Table2Excel();
+
+        document.getElementById('export').addEventListener('click', function () {
+            table2excel.export(document.getElementById('tblData'));
+		});
+    </script>
+	<script>
+        var table2excel = new Table2Excel();
+
+        document.getElementById('export1').addEventListener('click', function () {
+            table2excel.export(document.getElementById('tblData1'));
+        });
+    </script>
+		<script>
+            var table2excel = new Table2Excel();
+
+            document.getElementById('export2').addEventListener('click', function () {
+                table2excel.export(document.getElementById('tblData2'));
+            });
+        </script>
+	<script>
+        var table2excel = new Table2Excel();
+
+        document.getElementById('export3').addEventListener('click', function () {
+            table2excel.export(document.getElementById('tblData3'));
+        });
     </script>
 </asp:Content>

@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="docsupport/style.css">
     <link rel="stylesheet" href="docsupport/prism.css">
     <link rel="stylesheet" href="chosen.css">
-
+    <script src="table2excel.js"></script>
     
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -105,7 +105,7 @@
                 <a href="emision_offline.aspx">Emision Offline<span></span></a>
             </li>
             <li class="dropdown active">
-                <a href="productos_offline.aspx">Productos Offline<span></span></a>
+              <%--  <a href="productos_offline.aspx">Productos Offline<span></span></a>--%>
             </li>
             <li class="dropdown active">
                 <a href="ofertas.aspx">Ofertas<span></span></a>
@@ -187,7 +187,7 @@
     <script src="js/jspdf.debug.js"></script>
 	<script src="js/html2canvas.min.js"></script>
 	<script src="js/html2pdf.min.js"></script>
-   
+        
 </body>
     
 </html>

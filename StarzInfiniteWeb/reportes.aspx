@@ -95,7 +95,7 @@
 										</div>
 											<div class="col">
 												<asp:Button ID="btnFiltrarFechas" runat="server" CssClass="btn btn-primary shadow rounded" OnClick="btnFiltrarFechas_Click" OnClientClick="recuperarFechaSalida()" Text="Filtrar Reporte" />
-												<button onclick="exportTableToExcel('tblData')" class="btn btn-orange">Exportar a Excel</button>
+												<button id="export" class="btn btn-orange">Exportar a Excel</button>
 										</div>
 										</div>
                          <br />
@@ -505,5 +505,12 @@
 
 		})(document);
 
+    </script>
+	<script>
+        var table2excel = new Table2Excel();
+
+        document.getElementById('export').addEventListener('click', function () {
+            table2excel.export(document.getElementById('tblData'));
+        });
     </script>
 </asp:Content>

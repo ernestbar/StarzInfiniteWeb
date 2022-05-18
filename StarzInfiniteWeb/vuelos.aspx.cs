@@ -109,18 +109,37 @@ namespace StarzInfiniteWeb
                     else
                     {
                         string vuelos_directos = datos[13];
-
+                        if (datos[13] == "1")
+                            cbVueloDirecto.Checked = true;
+                        else
+                            cbVueloDirecto.Checked = false;
                         string vuelos_incluyenequipaje = datos[12];
+                        if (datos[12] == "1")
+                            cbEquipaje.Checked = true;
+                        else
+                            cbEquipaje.Checked = false;
                         string gds1 = "A1";
-                        string linea_aerea = "";// datos[9];
+                        string linea_aerea = datos[9];
+                        if (datos[9] != "TODAS")
+                            ddlLineArea.SelectedValue= datos[9];
+                        else
+                            linea_aerea = "";
                         string convenio_adt = "";
                         string convenio_menor = "";
                         string convenio_inf = "";
-                        string turno = "";// datos[10];
+                        string turno = datos[10];
+                        if (datos[10] != "TODAS")
+                            ddlTurnos.SelectedValue = datos[10];
+                        else
+                            turno = "";
 
                         string[] fecha_inf_desde, fecha_inf_hasta;
 
-                        string cabina = "";// datos[11];
+                        string cabina = datos[11];
+                        if (datos[11] != "TODAS")
+                            ddlCabina.SelectedValue = datos[11];
+                        else
+                            cabina = "";
                         string fecha_flex = "0";
                         string fecha_sal = datos[3];
                         string fecha_reg = datos[4];

@@ -485,6 +485,7 @@
     <Content Include="images\wishlist.jpg" />
     <Content Include="index.html" />
     <Content Include="ingreso.aspx" />
+    <Content Include="jquery.table2excel.js" />
     <Content Include="js\bootstrap-datepicker.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\custom-date-picker.js" />
@@ -535,6 +536,7 @@
     <Content Include="reserva_admin.aspx" />
     <Content Include="Scripts\js\chosen.jquery.min.js" />
     <Content Include="soporte.aspx" />
+    <Content Include="table2excel.js" />
     <Content Include="vuelos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

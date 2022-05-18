@@ -876,7 +876,7 @@
                                      <div class="row">
                                     <asp:Panel ID="panel_continuar_pasajero" Visible="false" runat="server">
                                         <div class="col">
-                                                 <asp:Button ID="btnContinuarPasajero" OnClick="btnContinuarPasajero_Click" class="btn btn-primary rounded" CausesValidation="true"  runat="server" Text="Realizar Reserva" />
+                                                 <asp:Button ID="btnContinuarPasajero" OnClick="btnContinuarPasajero_Click" class="btn btn-primary rounded" CausesValidation="true"  runat="server" OnClientClick="this.disabled=true;" UseSubmitBehavior="false" Text="Realizar Reserva" />
                                          </div>
 				                    </asp:Panel>     
                                          <div class="col">
@@ -1686,6 +1686,36 @@
 
     </script>
     <script type="text/javascript">
+        function checkAll(cb) {
+
+            var elemArray = document.getElementsByClassName('Repeater1');
+            for (var i = 0; i < elemArray.length; i++) {
+                window.alert(cb);
+                var elem = elemArray[i].value;
+            }
+        }
+        function ChkSelected() {
+            var theone = '';
+            var count = 0;
+
+            var Repeater1 = document.getElementById('<%=Repeater1.ClientID %>');
+            var Repeater2 = Repeater1.getElementsByTagName('Repeater2');
+            var ChkBx2s = Repeater2.getElementsByTagName('cbElegirIda');
+            var i = 0;
+            for (i = 0; i < ChkBx2s.length; i++) {
+                if (ChkBx2s[i].type == 'checkbox' && ChkBx2s[i].id.indexOf("ChkBx2") != -1 && ChkBx2s[i].checked == true) {
+                    count = (count + 1);
+                    var lbl = ChkBx2s[i].parentElement.getElementsByTagName('label');
+                    theone += "," + lbl[0].innerHTML + ';';
+                }
+            }
+            if (count == 0) {
+                theone = '';
+            }
+            window.alert(theone + " Count=" + count);
+
+        }
+
         $(document).ready(function () {
             $('[id*=cbElegirIda]').on('change', function () {
                 $(".ClaseIda input[type='checkbox']").each(function () {
