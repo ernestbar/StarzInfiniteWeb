@@ -18,7 +18,10 @@ namespace StarzInfiniteWeb
                     Response.Redirect("ingreso.aspx");
                 }
                 else
-                { MultiView1.ActiveViewIndex = 0; }
+                {
+                    MultiView1.ActiveViewIndex = 0;
+                    lblCalendario.Text = Request.QueryString["calendario"];
+                }
                    
                 
 
@@ -60,8 +63,10 @@ namespace StarzInfiniteWeb
                  + "|" + txtAdultos.Text + "|" +txtNinos.Text + "|" +txtInfante.Text + "|" +txtSenior.Text + "|" +ddlLineArea.SelectedValue + "|" +ddlTurnos.SelectedValue
                   + "|" +ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" +ddlOrigen.SelectedItem.Text 
                   + "|" +ddlDestino.SelectedItem.Text + "|" +rblTipoVenta.SelectedValue;
-
-            Response.Redirect("vuelos.aspx");
+            if(lblCalendario.Text=="SI")
+                Response.Redirect("calendario.aspx");
+            else
+                Response.Redirect("vuelos.aspx");
         }
     }
 }

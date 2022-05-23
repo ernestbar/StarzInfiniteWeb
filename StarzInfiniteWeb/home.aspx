@@ -13,7 +13,7 @@
 			 <asp:Parameter DefaultValue="AEROLINEA" Name="PV_DOMINIO" Type="String" />
 		</SelectParameters>
 	 </asp:ObjectDataSource>
-    
+    <asp:Label ID="lblCalendario" runat="server" Text="" Visible="false"></asp:Label>
     <asp:MultiView ID="MultiView1" runat="server">
         <asp:View ID="View1" runat="server">
             <section class="flexslider-container" id="flexslider-container-1">
