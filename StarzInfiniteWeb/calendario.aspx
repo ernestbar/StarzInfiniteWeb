@@ -241,8 +241,13 @@
                 <asp:View ID="View1" runat="server">
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side" style="height:800px; overflow: scroll;">
                         <asp:Label ID="lblVueloIdaNoDisponible" runat="server" Text=""></asp:Label>
+                           <div class="col-xs-12 col-sm-2 col-md-2 dashboard-nav">
+                            <ul class="nav nav-tabs nav-stacked text-center">
+                          
+                           
 					        <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
 					         <ItemTemplate>
+                                   <li class="active"><a href="#"><span><i class="fa fa-cogs"></i></span>Dashboard</a></li>
                                  <%--NUEVA FICHA DE VIAJES--%>
                                   <div class="available-blocks" id="available-tours" style="border:solid 3px;">
                             
@@ -584,10 +589,12 @@
                                     </div><!-- end t-list-block -->
                                     </div>
                             <%--FIN NUEVA FICHA DE VIAJES--%>
-				
+				                
 							        </ItemTemplate>
 					        </asp:Repeater>
 					
+                                </ul>
+                            </div>
 				
                     </div>
                 </asp:View>

@@ -119,6 +119,7 @@
     <Content Include="css\slick-theme.css" />
     <Content Include="css\slick.css" />
     <Content Include="css\style.css" />
+    <Content Include="dashboard.html" />
     <Content Include="Default.aspx" />
     <Content Include="docsupport\chosen.png" />
     <Content Include="docsupport\init.js" />
@@ -554,6 +555,7 @@
     <Compile Include="Clases\Dominios.cs" />
     <Compile Include="Clases\DsiponabilidadIda.cs" />
     <Compile Include="Clases\LocalBD.cs" />
+    <Compile Include="Clases\matriz7.cs" />
     <Compile Include="Clases\precio_sin_pnr.cs" />
     <Compile Include="Clases\Reservas.cs" />
     <Compile Include="Clases\Reservas_kiu.cs" />
