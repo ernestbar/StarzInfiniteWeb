@@ -440,6 +440,72 @@
 					</div>
 
 		</div>
+			<div class="row">
+					<div class="col-12 col-md-2">
+						Detalle:
+					</div>
+					<div class="col-12 col-md-1">
+						Nro. Ticket
+					</div>
+					<div class="col-12 col-md-2">
+						Nombre pasajero
+					</div>
+				<div class="col-12 col-md-2">
+						Apellido pasajero
+					</div>
+
+				<div class="col-12 col-md-1">
+						Nro. de documento
+					</div>
+				<div class="col-12 col-md-1">
+						Costo
+					</div>
+				<div class="col-12 col-md-1">
+						Monto sin impuesto
+					</div>
+				<div class="col-12 col-md-1">
+						Monto con impuesto
+					</div>
+				<div class="col-12 col-md-1">
+					
+					</div>
+		</div>
+			<div class="row">
+					<div class="col-12 col-md-2">
+						
+					</div>
+					<div class="col-12 col-md-1">
+						<asp:TextBox ID="txtNroTicket" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
+					</div>
+					<div class="col-12 col-md-2">
+						<asp:TextBox ID="txtNombrePasajero" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
+					</div>
+				<div class="col-12 col-md-2">
+						<asp:TextBox ID="txtApellidoPasajero" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
+					</div>
+
+				<div class="col-12 col-md-1">
+						<asp:TextBox ID="txtNroDoc" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
+					</div>
+				<div class="col-12 col-md-1">
+						<asp:TextBox ID="txtCosto" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
+					</div>
+				<div class="col-12 col-md-1">
+						<asp:TextBox ID="txtMontoSinImp" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
+					</div>
+				<div class="col-12 col-md-1">
+						<asp:TextBox ID="txtMontoConImp" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
+					</div>
+				<div class="col-12 col-md-1">
+					<asp:Button ID="btnAgregar" CssClass="btn btn-primary" ValidationGroup="detalle" OnClick="btnAgregar_Click" runat="server" Text="Agregar" />
+					</div>
+		</div>
+			<div class="row">
+					<div class="col-12 col-md-12">
+						<asp:ListBox ID="lbDetalle" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="lbDetalle_SelectedIndexChanged"  runat="server"></asp:ListBox>
+					</div>
+
+		</div>
 		<div class="row">
 					<div class="col-12 col-md-2">
 						Nro. PNR:
@@ -684,73 +750,9 @@
 					</div>
 
 		</div>
-			<div class="row">
-					<div class="col-12 col-md-2">
-						Detalle:
-					</div>
-					<div class="col-12 col-md-1">
-						Nro. Ticket
-					</div>
-					<div class="col-12 col-md-2">
-						Nombre pasajero
-					</div>
-				<div class="col-12 col-md-2">
-						Apellido pasajero
-					</div>
-
-				<div class="col-12 col-md-1">
-						Nro. de documento
-					</div>
-				<div class="col-12 col-md-1">
-						Costo
-					</div>
-				<div class="col-12 col-md-1">
-						Monto sin impuesto
-					</div>
-				<div class="col-12 col-md-1">
-						Monto con impuesto
-					</div>
-				<div class="col-12 col-md-1">
-					
-					</div>
-		</div>
 			
-			<div class="row">
-					<div class="col-12 col-md-2">
-						
-					</div>
-					<div class="col-12 col-md-1">
-						<asp:TextBox ID="txtNroTicket" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
-					</div>
-					<div class="col-12 col-md-2">
-						<asp:TextBox ID="txtNombrePasajero" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
-					</div>
-				<div class="col-12 col-md-2">
-						<asp:TextBox ID="txtApellidoPasajero" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
-					</div>
-
-				<div class="col-12 col-md-1">
-						<asp:TextBox ID="txtNroDoc" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
-					</div>
-				<div class="col-12 col-md-1">
-						<asp:TextBox ID="txtCosto" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
-					</div>
-				<div class="col-12 col-md-1">
-						<asp:TextBox ID="txtMontoSinImp" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
-					</div>
-				<div class="col-12 col-md-1">
-						<asp:TextBox ID="txtMontoConImp" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
-					</div>
-				<div class="col-12 col-md-1">
-					<asp:Button ID="btnAgregar" CssClass="btn btn-primary" ValidationGroup="detalle" OnClick="btnAgregar_Click" runat="server" Text="Agregar" />
-					</div>
-		</div>
-			<div class="row">
-					<div class="col-12 col-md-12">
-						<asp:ListBox ID="lbDetalle" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="lbDetalle_SelectedIndexChanged"  runat="server"></asp:ListBox>
-					</div>
-
-		</div>
+			
+			
 			
 		<%--	<div class="row">
 					<div class="col-12 col-md-2">

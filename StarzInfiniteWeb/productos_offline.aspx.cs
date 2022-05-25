@@ -89,13 +89,13 @@ namespace StarzInfiniteWeb
                     detalle = detalle + item1.Value + "|";
                 
                 }
-                //string[] datos = LocalBD.PUT_INGRESA_TICKETS_MANUAL("I", lblUsuario.Text, ddlProducto.SelectedValue, ddlProovedor.SelectedValue,
-                //    txtPNR.Text, txtTourCode.Text, txtDatosFacturacion.Text, txtEmailFact.Text, txtFonoFact.Text, ddlOrigenIda.SelectedValue,
-                //    ddlDestinoIda.SelectedValue, hfFechaSalida.Value, txtClaseIda.Text, txtCarrierIda.Text, txtNroVueloIda.Text, ddlOrigenVuelta.SelectedValue,
-                //    ddlDestinoVuelta.SelectedValue, hfFechaVuelta.Value, txtClaseVuelta.Text, txtCarrierVuelta.Text, txtNroVueloVuelta.Text,
-                //    hfFechaLimite.Value, hfFechaRegistro.Value, ddlBroker.SelectedValue, decimal.Parse(txtTotalCobrar.Text), ddlMoneda.SelectedValue,decimal.Parse(txtTotalImpuestos.Text),
-                //    decimal.Parse(txtMontoSinImpuestos.Text), ddlTipoVenta.SelectedValue,decimal.Parse(txtComisionBroker.Text), detalle, ddlTipoVuelo.SelectedValue, "").Split('|');
-                //lblAviso.Text = datos[1];
+                string[] datos = LocalBD.PUT_INGRESA_TICKETS_MANUAL("I", lblUsuario.Text, ddlProducto.SelectedValue, ddlProovedor.SelectedValue,
+                    txtPNR.Text, txtTourCode.Text, txtDatosFacturacion.Text, txtEmailFact.Text, txtFonoFact.Text, ddlOrigenIda.SelectedValue,
+                    ddlDestinoIda.SelectedValue, hfFechaSalida.Value, txtClaseIda.Text, txtCarrierIda.Text, txtNroVueloIda.Text, ddlOrigenVuelta.SelectedValue,
+                    ddlDestinoVuelta.SelectedValue, hfFechaVuelta.Value, txtClaseVuelta.Text, txtCarrierVuelta.Text, txtNroVueloVuelta.Text,
+                    hfFechaLimite.Value, hfFechaRegistro.Value, ddlBroker.SelectedValue, decimal.Parse(txtTotalCobrar.Text), ddlMoneda.SelectedValue, decimal.Parse(txtTotalImpuestos.Text),
+                    decimal.Parse(txtMontoSinImpuestos.Text), ddlTipoVenta.SelectedValue, decimal.Parse(txtComisionBroker.Text), detalle, ddlTipoVuelo.SelectedValue, "").Split('|');
+                lblAviso.Text = datos[1];
 
             }
             else
@@ -106,13 +106,13 @@ namespace StarzInfiniteWeb
                     detalle = detalle + item1.Value + "|";
 
                 }
-                //string[] datos = LocalBD.PUT_INGRESA_TICKETS_MANUAL("U", lblUsuario.Text, ddlProducto.SelectedValue, ddlProovedor.SelectedValue,
-                //    txtPNR.Text, txtTourCode.Text, txtDatosFacturacion.Text, txtEmailFact.Text, txtFonoFact.Text, ddlOrigenIda.SelectedValue,
-                //    ddlDestinoIda.SelectedValue, hfFechaSalida.Value, txtClaseIda.Text, txtCarrierIda.Text, txtNroVueloIda.Text, ddlOrigenVuelta.SelectedValue,
-                //    ddlDestinoVuelta.SelectedValue, hfFechaVuelta.Value, txtClaseVuelta.Text, txtCarrierVuelta.Text, txtNroVueloVuelta.Text,
-                //    hfFechaLimite.Value, hfFechaRegistro.Value, ddlBroker.SelectedValue, decimal.Parse(txtTotalCobrar.Text), ddlMoneda.SelectedValue, decimal.Parse(txtTotalImpuestos.Text),
-                //    decimal.Parse(txtMontoSinImpuestos.Text), ddlTipoVenta.SelectedValue, decimal.Parse(txtComisionBroker.Text), detalle, ddlTipoVuelo.SelectedValue, lblCodClienteTicket.Text).Split('|');
-                //lblAviso.Text = datos[1];
+                string[] datos = LocalBD.PUT_INGRESA_TICKETS_MANUAL("U", lblUsuario.Text, ddlProducto.SelectedValue, ddlProovedor.SelectedValue,
+                    txtPNR.Text, txtTourCode.Text, txtDatosFacturacion.Text, txtEmailFact.Text, txtFonoFact.Text, ddlOrigenIda.SelectedValue,
+                    ddlDestinoIda.SelectedValue, hfFechaSalida.Value, txtClaseIda.Text, txtCarrierIda.Text, txtNroVueloIda.Text, ddlOrigenVuelta.SelectedValue,
+                    ddlDestinoVuelta.SelectedValue, hfFechaVuelta.Value, txtClaseVuelta.Text, txtCarrierVuelta.Text, txtNroVueloVuelta.Text,
+                    hfFechaLimite.Value, hfFechaRegistro.Value, ddlBroker.SelectedValue, decimal.Parse(txtTotalCobrar.Text), ddlMoneda.SelectedValue, decimal.Parse(txtTotalImpuestos.Text),
+                    decimal.Parse(txtMontoSinImpuestos.Text), ddlTipoVenta.SelectedValue, decimal.Parse(txtComisionBroker.Text), detalle, ddlTipoVuelo.SelectedValue, lblCodClienteTicket.Text).Split('|');
+                lblAviso.Text = datos[1];
             }
         }
 

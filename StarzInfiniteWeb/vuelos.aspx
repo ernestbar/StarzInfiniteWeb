@@ -1267,7 +1267,7 @@
                                                <asp:Label ID="Label45" runat="server" Font-Size="Small" Visible="false"   Font-Bold="false"  Text="Ganancia total     "></asp:Label><asp:Label ID="Label46" CssClass="col-6" runat="server" Font-Size="Small" Visible="false"   Font-Bold="false"  Text=""></asp:Label>
                                            </div>
 				                    </asp:Panel>
-                                    <asp:Label ID="lblAvisoReserva" runat="server" Text="" ForeColor="Red"></asp:Label>
+                                  
 								
 									                    </div>
 		                    </div>
@@ -1275,8 +1275,10 @@
                 </asp:View>
                 <asp:View ID="View4" runat="server">
                   <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side">
+                       
 		                    <div class="shadow rounded col-12 col-md-6" >
                                  <div class="row">
+                                      <asp:Label ID="lblAvisoReserva" runat="server" Text="" ForeColor="Red"></asp:Label>
                                            <asp:Image ID="Image16" ImageUrl="~/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label16" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Reserva creada"></asp:Label>
                         
                                        </div>
@@ -1306,48 +1308,219 @@
 			
                                <br />
                                 <hr />
-                                <div class="row">
-                                       <div class="row">
-                                           <asp:Image ID="Image18" ImageUrl="~/iconos/icono-datos-de-pasajero.png" runat="server" />  <asp:Label ID="Label19" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Lista de pasajeros"></asp:Label>
-                                            <br /><br />
-                                       </div>
-                                    <div class="table-responsive offset-1">
-											                    <table class="col-12 col-md-9 table-borderless">
-												                    <thead>
-													                    <tr>
-														                    <%--<th class="text">NRO</th>--%>
-														                    <th class="text">CI</th>
-														                    <th class="text">NOMBRES</th>
-														                    <th class="text">APELLIDOS</th>
-														                    <th class="text">TIPO</th>
-														
-														                    </tr>
-												                    </thead>
-													                    <tbody>
-														                    <asp:Repeater ID="Repeater8" DataSourceID="" runat="server">
-															                    <ItemTemplate>
-																                    <tr>
-																	                    <%--<td><asp:Label ID="lblNumero" runat="server" Text='<%# Eval("nro") %>'></asp:Label></td>--%>
-																	                    <td><asp:Label ID="lblCI" runat="server" Text='<%# Eval("documento") %>'></asp:Label></td>
-																	                    <td><asp:Label ID="lblNombres" runat="server" Text='<%# Eval("nombre") %>'></asp:Label></td>
-																	                    <td><asp:Label ID="lblApellidos" runat="server" Text='<%# Eval("apellido") %>'></asp:Label></td>
-																	                    <td><asp:Label ID="lblTipo" runat="server" Text='<%# Eval("tipo_pax") %>'></asp:Label></td>
-																	
-																                    </tr>
-																	
-															                    </ItemTemplate>
-														                    </asp:Repeater>
-													                    </tbody>
-											                    </table>
-
-										                    </div>
-                                </div>
+                                
                                  <asp:Label ID="lblTotalPagarFinal" CssClass="label-default col-md-6" Visible="false" runat="server" Text=""></asp:Label>
 	                    </div>
                           </div>
 
+
                     <div class="row">
                         <div class="rounded shadow col-12 col-md-6">
+                            <div id="invoice2" style="font-size:small">
+                                    <div class="row" style="vertical-align:central">
+                                   <asp:Image ID="Image9" Height="50" ImageUrl="~/Logos/encabezado_logo.png" runat="server" /> 
+                               </div>
+                               <div class="row" style="vertical-align:central">
+                                   <asp:Image ID="Image10" Height="20" ImageUrl="~/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label50" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Resumen de la reserva"></asp:Label>
+                               </div>
+                                <hr />
+                                 <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
+                                   <asp:Image ID="Image11" Height="20" ImageUrl="~/iconos/icono-pasajero--resumen-reserva.png" runat="server" />  <asp:Label ID="Label51" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Pasajeros"></asp:Label>
+                               </div>
+                             <div class="row" style="vertical-align:central;text-align:center">
+                                 <div class="col">
+                                     <asp:Label ID="lblSeniorsResumenRes" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                 </div>
+                                 <div class="col">
+                                     <asp:Label ID="lblSeniorPreciosRes" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                 </div>
+                                   
+                                 
+                               </div>
+                                <div class="row" style="vertical-align:central;text-align:center">
+                                    <div class="col">
+                                          <asp:Label ID="lblAdultosResumenRes" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                        <asp:Label ID="lblAdultosPreciosRes" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                 </div>
+                                 
+                                 
+                               </div>
+                                 <div class="row" style="vertical-align:central;text-align:center">
+                                     <div class="col">
+                                         <asp:Label ID="lblNinosResumenRes" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                         <asp:Label ID="lblNinosPreciosRes" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                 </div>
+                                       
+                                   </div>
+                                <div class="row" style="vertical-align:central;text-align:center">
+                                    <div class="col">
+                                        <asp:Label ID="lblInfanteResumenRes" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                        <asp:Label ID="lblInfantePreciosRes" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                 </div>
+                                 
+                                       
+                                   </div>
+                                   <strong></strong>
+				            <asp:Panel ID="panel_idaRes" Visible="false" Font-Size="XX-Small" runat="server">
+                            <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
+                                   <asp:Image ID="Image12" ImageUrl="~/iconos/icono-ida-resumen-reserva.png" Height="20" runat="server" />  <asp:Label ID="Label60" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Itinerario de Ida"></asp:Label>
+                               </div>
+				                    <div class="row">
+                                        <div class="col">
+                                        </div>
+                                        <div class="col" style="font-size:medium;text-align:center">
+                                            <strong>AEROLINEA - <asp:Label ID="lblAreolineaNombResIdaRes" Font-Size="Medium" runat="server" Text="">:</asp:Label></strong>
+                                        </div>
+                                            <div class="col">
+                                            <asp:Label ID="lblEscalasResIdaRes" runat="server" Text=""></asp:Label>
+                                        </div>
+                                    </div>
+                                           <asp:Repeater ID="Repeater11"  runat="server">
+												<ItemTemplate>
+                                                                                 
+                                                                                        
+                                                  <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
+                                                        <li>
+                                                                Salida
+                                                        </li>
+                                                        <li>
+                                                                Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'>:</asp:Label> Airline:<asp:Label ID="Label23" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>
+                                                        </li>
+                                                        <li>
+                                                                Llegada
+                                                        </li>
+                                                                                        
+                                                   </ul>
+                                                    <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
+                                                        <li>
+                                                                <asp:Label ID="Label47" runat="server" ForeColor="Black" Text='<%# Eval("depDate") %>'></asp:Label> - <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'>:</asp:Label>
+                                                        </li>
+                                                        <li>
+                                                            <asp:Image ID="Image6" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> <%--<i class="fa fa-plane-departure fa-fw"></i><hr />--%>
+                                                        </li>
+                                                        <li>
+                                                                <asp:Label ID="Label48" runat="server" ForeColor="Black" Text='<%# Eval("ArrivalDate") %>'></asp:Label> - <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'>:</asp:Label>
+                                                        </li>
+                                                                                        
+                                                    </ul>
+                                                       <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
+                                                        <li>
+                                                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
+                                                        </li>
+                                                        <li>
+                                                            <asp:Label ID="Label5" runat="server" Text='<%# "Vuelo " + Eval("flightNumber") + " Clase "  +Eval("bookClass")+ " Disponibles "  +Eval("lugres_disponibles")%>'></asp:Label><br />
+                                                        </li>
+                                                        <li>
+                                                                <asp:Label ID="Label6" runat="server" Text='<%# Eval("offAirport") %>'>:</asp:Label>
+                                                        </li>
+                                                             
+                                                           <li>
+                                                               Maletas: <asp:Label ID="Label9" runat="server" Text='<%# Eval("equipaje") %>'>:</asp:Label>
+                                                        </li>
+                                                           <li>
+                                                               Duracion: <asp:Label ID="Label49" runat="server" Text='<%# Eval("duracion") %>'>:</asp:Label>
+                                                        </li>
+                                                    </ul>
+
+																	               
+												</ItemTemplate>
+												</asp:Repeater>
+				            </asp:Panel>
+				            <asp:Panel ID="panel_vueltaRes" Visible="false" Font-Size="XX-Small" runat="server">
+					             <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
+                                   <asp:Image ID="Image13" ImageUrl="~/iconos/icono-Vuelta-resumen-reserva.png" Height="20" runat="server" />  <asp:Label ID="Label63" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Itinerario de Vuelta"></asp:Label>
+                               </div>
+                                <div class="row">
+                                        <div class="col">
+                                        </div>
+                                      <div class="col" style="font-size:medium;text-align:center">
+                                            <strong>AEROLINEA - <asp:Label ID="lblAreolineaNombResVueltaRes" runat="server" Text="">:</asp:Label></strong>
+                                        </div>
+                                            <div class="col">
+                                            <asp:Label ID="lblEscalasResVueltaRes" runat="server" Text=""></asp:Label>
+                                        </div>
+                                    </div>
+                                <asp:Repeater ID="Repeater12"  runat="server">
+												<ItemTemplate>
+                                                                                 
+                                                                                        
+                                                    <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
+                                                        <li>
+                                                                Salida
+                                                        </li>
+                                                        <li>
+                                                                Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'></asp:Label>  Airline:<asp:Label ID="Label24" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>
+                                                        </li>
+                                                        <li>
+                                                                Llegada
+                                                        </li>
+                                                                                        
+                                                    </ul>
+                                                     <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
+                                                        <li>
+                                                                <asp:Label ID="Label47" runat="server" ForeColor="Black" Text='<%# Eval("depDate") %>'></asp:Label> - <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'>:</asp:Label>
+                                                        </li>
+                                                        <li>
+                                                            <asp:Image ID="Image6" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> 
+                                                        </li>
+                                                        <li>
+                                                                 <asp:Label ID="Label48" runat="server" ForeColor="Black" Text='<%# Eval("ArrivalDate") %>'></asp:Label> - <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'>:</asp:Label>
+                                                        </li>
+                                                                                        
+                                                    </ul>
+                                                         <ul class="list-unstyled list-inline offer-price-1" style="text-align:center">
+                                                        <li>
+                                                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
+                                                        </li>
+                                                        <li>
+                                                            <asp:Label ID="Label5" runat="server" Text='<%# "Vuelo " + Eval("flightNumber") + " Clase "  +Eval("bookClass")+ " Disponibles "  +Eval("lugres_disponibles")%>'></asp:Label><br />
+                                                        </li>
+                                                        <li>
+                                                                <asp:Label ID="Label6" runat="server" Text='<%# Eval("offAirport") %>'>:</asp:Label>
+                                                        </li>
+                                                              <li>
+                                                               Maletas: <asp:Label ID="Label9" runat="server" Text='<%# Eval("equipaje") %>'>:</asp:Label>
+                                                        </li>
+                                                           <li>
+                                                               Duracion: <asp:Label ID="Label49" runat="server" Text='<%# Eval("duracion") %>'>:</asp:Label>
+                                                        </li>
+                                                                                         
+                                                    </ul>
+
+																	               
+												</ItemTemplate>
+												</asp:Repeater>
+				            </asp:Panel>
+
+
+                                
+
+
+				            <asp:Panel ID="panel_total_resRes" Visible="false" Font-Size="XX-Small" runat="server">
+					             <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
+                                   <asp:Image ID="Image26" ImageUrl="~/iconos/icono-carrita-resumen-reserva.png" Height="20" runat="server" /><asp:Label ID="Label66" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="Label67" CssClass="col-3" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true" Text=""></asp:Label><asp:Label ID="Label68" CssClass="col-5" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label>
+                               </div>
+                                <asp:Panel ID="Panel8" Visible="false" runat="server">
+                                        <div class="row" style="vertical-align:central;text-align:center">
+                                   <asp:Label ID="Label69" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text="Tarifa base     "></asp:Label><asp:Label ID="lblTarifaBaseResRes" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                               </div>
+                                 <div class="row" style="vertical-align:central;text-align:center">
+                                       <asp:Label ID="Label71" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text="Total impuestos    "></asp:Label><asp:Label ID="lblTotalImpuestosResRes" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                   </div>
+                               <div class="row" style="vertical-align:central;text-align:center">
+                                       <asp:Label ID="Label73" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text="Fee emision    "></asp:Label><asp:Label ID="lblFeeEmisionResRes" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                   </div>
+                                <div class="row" style="vertical-align:central;text-align:center">
+                                       <asp:Label ID="Label75" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text="Otros cargos    "></asp:Label><asp:Label ID="lblOtrosCargosRes" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
+                                   </div>
+                                 </asp:Panel>
+                                </asp:Panel>
+                                   <hr />
+
+                                   
+                                    </div>
+                            
+
                                        <div class="row" style="vertical-align:central">
                                            <asp:Image ID="Image19" ImageUrl="~/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label20" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Resumen de la reserva"></asp:Label>
                         
@@ -1423,6 +1596,42 @@
                                                <asp:Label ID="Label38" runat="server" Font-Size="Small" Visible="false"   Font-Bold="false"  Text="Ganancia total     "></asp:Label><asp:Label ID="lblGananciaRes" CssClass="col-6" runat="server" Font-Size="Small" Visible="false"   Font-Bold="false"  Text=""></asp:Label>
                                            </div>
 				                    </asp:Panel><br /><br />
+                            <div class="row">
+                                       <div class="row">
+                                           <asp:Image ID="Image18" ImageUrl="~/iconos/icono-datos-de-pasajero.png" runat="server" />  <asp:Label ID="Label19" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Lista de pasajeros"></asp:Label>
+                                            <br /><br />
+                                       </div>
+                                    <div class="table-responsive offset-1">
+											                    <table class="col-12 col-md-9 table-borderless">
+												                    <thead>
+													                    <tr>
+														                    <%--<th class="text">NRO</th>--%>
+														                    <th class="text">CI</th>
+														                    <th class="text">NOMBRES</th>
+														                    <th class="text">APELLIDOS</th>
+														                    <th class="text">TIPO</th>
+														
+														                    </tr>
+												                    </thead>
+													                    <tbody>
+														                    <asp:Repeater ID="Repeater8" DataSourceID="" runat="server">
+															                    <ItemTemplate>
+																                    <tr>
+																	                    <%--<td><asp:Label ID="lblNumero" runat="server" Text='<%# Eval("nro") %>'></asp:Label></td>--%>
+																	                    <td><asp:Label ID="lblCI" runat="server" Text='<%# Eval("documento") %>'></asp:Label></td>
+																	                    <td><asp:Label ID="lblNombres" runat="server" Text='<%# Eval("nombre") %>'></asp:Label></td>
+																	                    <td><asp:Label ID="lblApellidos" runat="server" Text='<%# Eval("apellido") %>'></asp:Label></td>
+																	                    <td><asp:Label ID="lblTipo" runat="server" Text='<%# Eval("tipo_pax") %>'></asp:Label></td>
+																	
+																                    </tr>
+																	
+															                    </ItemTemplate>
+														                    </asp:Repeater>
+													                    </tbody>
+											                    </table>
+
+										                    </div>
+                                </div>
                                  <%--   <asp:Panel ID="panel_continuar" Visible="false" runat="server">
                                          <div class="row" style="vertical-align:central">
 					                        <asp:Button ID="btnContinuar" OnClick="btnContinuar_Click" class="btn btn-primary btn-lg rounded col-8" Font-Size="Large" CausesValidation="false"  runat="server" Text="Continuar" />

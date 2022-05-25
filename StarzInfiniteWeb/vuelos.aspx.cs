@@ -1262,14 +1262,19 @@ namespace StarzInfiniteWeb
                     lblTotalReservaPasajero.Text = vuelos.datos.monto_total.ToString();
                     lblMontoTotalReserva.Text = vuelos.datos.monto_total.ToString();
                     lblTotalImpuestosRes.Text = vuelos.datos.monto_total_impuestos.ToString();
+                    lblTotalImpuestosResRes.Text = vuelos.datos.monto_total_impuestos.ToString();
                     lblTotalImpPasajeros.Text = vuelos.datos.monto_total_impuestos.ToString();
                     lblTotalImpRserva.Text = vuelos.datos.monto_total_impuestos.ToString();
                     lblTarifaBaseRes.Text = vuelos.datos.monto_total_sin_impuestos.ToString();
+                    lblTarifaBaseResRes.Text = vuelos.datos.monto_total_sin_impuestos.ToString();
+
                     lblTarifaBasePasajeros.Text = vuelos.datos.monto_total_sin_impuestos.ToString();
                     lblTarifaBaseReserva.Text = vuelos.datos.monto_total_sin_impuestos.ToString();
                     string[] datos = LocalBD.PR_GET_FEE_WEB_ITINERARIO_ENVIO(operador, moneda, rblTipoVenta.SelectedValue, lblOrigen.Text, lblDestino.Text, lblTipoRuta.Text, total_pasajeros).Split('|');
                     lblFeeEmisionRes.Text = Math.Round(decimal.Parse(datos[2]), 2).ToString();
+                    lblFeeEmisionResRes.Text = Math.Round(decimal.Parse(datos[2]), 2).ToString();
                     lblOtrosCargos.Text = Math.Round(decimal.Parse(datos[3]), 2).ToString();
+                    lblOtrosCargosRes.Text = Math.Round(decimal.Parse(datos[3]), 2).ToString();
                     lblFeeSZI.Text = Math.Round((decimal.Parse(datos[2]) / total_pasajeros), 2).ToString();
                     lblFeeBroker.Text = Math.Round((decimal.Parse(datos[3]) / total_pasajeros), 2).ToString();
                     lblTotalRes.Text = (double.Parse(datos[1]) + vuelos.datos.monto_total).ToString();
@@ -1694,7 +1699,10 @@ namespace StarzInfiniteWeb
                             foreach (DataRow dr in DT_dom.Rows)
                             {
                                 if (dr["codigo"].ToString() == datosIda[5])
-                                    lblAreolineaNombResIda.Text = dr["descripcion"].ToString() + " (" + datos[5] + ")";
+                                { 
+                                    lblAreolineaNombResIda.Text = dr["descripcion"].ToString() + " (" + datos[5] + ")"; 
+                                    lblAreolineaNombResIdaRes.Text = dr["descripcion"].ToString() + " (" + datos[5] + ")"; 
+                                }
                             }
                         }
                         if (ida == 1)
@@ -1719,6 +1727,8 @@ namespace StarzInfiniteWeb
 
                     Repeater9.DataSource = dt_ida;
                     Repeater9.DataBind();
+                    Repeater11.DataSource = dt_ida;
+                    Repeater11.DataBind();
 
 
                     string cadena = "";
@@ -1733,6 +1743,7 @@ namespace StarzInfiniteWeb
                     lblTotalImpuestosRes.Text = "0";
                     lblTarifaBaseRes.Text = "0";
                     panel_ida.Visible = true;
+                    panel_idaRes.Visible = true;
                     panel_total_res.Visible = true;
                     panel_ida.Visible = true;
                     panel_total_res.Visible = true;
@@ -1817,7 +1828,12 @@ namespace StarzInfiniteWeb
                             foreach (DataRow dr in DT_dom1.Rows)
                             {
                                 if (dr["codigo"].ToString() == datosIda[5])
-                                    lblAreolineaNombResIda.Text = dr["descripcion"].ToString() + " (" + datos[5] + ")";
+                                {
+                                    lblAreolineaNombResIda.Text = dr["descripcion"].ToString() + " (" + datos[5] + ")"; 
+                                    lblAreolineaNombResIdaRes.Text = dr["descripcion"].ToString() + " (" + datos[5] + ")"; 
+
+                                }
+                                   
                             }
                         }
                         if (ida == 1)
@@ -1842,6 +1858,8 @@ namespace StarzInfiniteWeb
 
                     Repeater9.DataSource = dt_ida;
                     Repeater9.DataBind();
+                    Repeater11.DataSource = dt_ida;
+                    Repeater11.DataBind();
 
 
                     string cadena = "";
@@ -1856,6 +1874,7 @@ namespace StarzInfiniteWeb
                     lblTotalImpuestosRes.Text = "0";
                     lblTarifaBaseRes.Text = "0";
                     panel_ida.Visible = true;
+                    panel_idaRes.Visible = true;
                     panel_total_res.Visible = true;
                     panel_ida.Visible = true;
                     panel_total_res.Visible = true;
@@ -1922,6 +1941,8 @@ namespace StarzInfiniteWeb
                     }
                     Repeater10.DataSource = dt_vuelta;
                     Repeater10.DataBind();
+                    Repeater12.DataSource = dt_vuelta;
+                    Repeater12.DataBind();
                     DataTable DT_dom = new DataTable();
                     DT_dom = Dominios.Lista("AEROLINEA");
                     if (DT_dom.Rows.Count > 0)
@@ -1929,15 +1950,21 @@ namespace StarzInfiniteWeb
                         foreach (DataRow dr in DT_dom.Rows)
                         {
                             if (dr["codigo"].ToString() == datos[5])
+                            {
                                 lblAreolineaNombResVuelta.Text = dr["descripcion"].ToString() + " (" + datos[5] + ")";
+                                lblAreolineaNombResVueltaRes.Text = dr["descripcion"].ToString() + " (" + datos[5] + ")";
+                            }
+                               
                         }
                     }
                     lblTotalRes.Text = datos[12];
                     lblTotalImpuestosRes.Text = "0";
                     lblTarifaBaseRes.Text = "0";
                     panel_vuelta.Visible = true;
+                    panel_vueltaRes.Visible = true;
                     panel_ida.Visible = true;
                     panel_total_res.Visible = true;
+                    panel_total_resRes.Visible = true;
 
                     GenerarGanancias(cadena);
                     panel_continuar.Visible = true;
@@ -2117,6 +2144,8 @@ namespace StarzInfiniteWeb
                 string[] aux_ida = lblItiIda.Text.Split('&');
 
                 string aerolinea = "";
+                string hora_salida_ida = "";
+                string hora_llegada_ida = "";
                 for (int x = 1; x < aux_ida.Length; x++)
                 {
                     Itinerario obj_i = new Itinerario();
@@ -2135,6 +2164,8 @@ namespace StarzInfiniteWeb
                     if (x == 1)
                     {
                         aerolinea = "|aerolinea:" + iti_ida[5];
+                        hora_salida_ida = iti_ida[2];
+                        hora_llegada_ida = iti_ida[16];
                     }
                     //dt_itinerario.Rows.Add(new string[10] { iti_ida[0], iti_ida[1], iti_ida[2], fecha, iti_ida[4], iti_ida[5], iti_ida[6], iti_ida[7], iti_ida[8], iti_ida[9] });//lblFechaSalidaTab.Text
                 }
@@ -2152,7 +2183,7 @@ namespace StarzInfiniteWeb
 
 
 
-                string origen_vuelta, total_pag_vuelta, destino_vuelta, fecha_vuelta, clase_vuelta, carrier_vuelta, nvuelo_vuelta;
+                string origen_vuelta, total_pag_vuelta, destino_vuelta, fecha_vuelta, clase_vuelta, carrier_vuelta, nvuelo_vuelta,hora_salida_vuelta,hora_llegada_vuelta;
                 origen_vuelta = "";
                 destino_vuelta = "";
                 fecha_vuelta = "01/01/3000";
@@ -2160,6 +2191,9 @@ namespace StarzInfiniteWeb
                 carrier_vuelta = "";
                 nvuelo_vuelta = "";
                 total_pag_vuelta = "";
+                hora_salida_vuelta = "";
+                hora_llegada_vuelta = "";
+
                 if (lblTipoRuta.Text == "RT")
                 {
                     string[] datos_vuelo_retorno_aux = lblItiVuelta.Text.Split('&');
@@ -2194,6 +2228,8 @@ namespace StarzInfiniteWeb
                     carrier_vuelta = datos_vuelo_retorno[5];
                     nvuelo_vuelta = datos_vuelo_retorno[6];
                     total_pag_vuelta = lblTotalPagarFinal.Text;
+                    hora_salida_vuelta = datos_vuelo_retorno[2];
+                    hora_llegada_vuelta = datos_vuelo_retorno[16];
                     //obj_ir.origen = datos_vuelo_retorno[0];
                     //obj_ir.destino = datos_vuelo_retorno[1];
                     //obj_ir.fecha = fecha_ret;
@@ -2260,290 +2296,308 @@ namespace StarzInfiniteWeb
 
                 }
 
-                string json = JsonConvert.SerializeObject(obj_r);
-                dynamic respuesta = obj.Post("http://20.39.32.111/api/GetReserva.php", json, "Basic MDQ4NjQwNjY4c3R6cmVycjg2Y2Q3MGE4OTVjZDlmYTowNHdlcndld2V3NjhzdHpyZXJyODZjZDcwYTg5NWNkOWZh");
-
-
-                string respuestaJson = respuesta.ToString();
-                //string error = respuesta.First().Error.ToString();
-                if (lblGds.Text.ToUpper() == "KIU")
+                if (LocalBD.PR_VALIDA_RESERVAS(datos_fac[0] + "/" + datos_fac[1], lblOrigenDes.Text, lblDestinoDes.Text, origen_vuelta, destino_vuelta) == "1")
                 {
-                    Reservas_kiu.Application respuesta_res = new Reservas_kiu.Application();
-                    respuesta_res = JsonConvert.DeserializeObject<Reservas_kiu.Application>(respuestaJson);
-                    if (respuesta_res.error == "00")
-                    {
-                        //MultiView1.ActiveViewIndex = 6;
-                        txtPNR.Text = respuesta_res.datos.pnr;
-                        lblMoneda.Text = respuesta_res.datos.moneda;
-
-                        string[] fechHoraLim = respuesta_res.datos.fecha_limite_emision.Split(' ');
-                        string[] fechLim = fechHoraLim[0].Split('-');
-                        lblTiempoLimite.Text = "HORA: " + fechHoraLim[1] + " - " + fechLim[2] + " de " + Nombre_mes(int.Parse(fechLim[1])) + ", " + fechLim[0];
-                        lblTotalPagarFinal.Text = respuesta_res.datos.total_acobrar.ToString();
-                        //lblMonedaFinal.Text = respuesta_res.datos.moneda;
-                        //lblSaldoCuenta.Text = "2500";
-                        //lblEmail.Text = datos_fac[2];
-
-
-                        string[] hora_limite = respuesta_res.datos.fecha_limite_emision.Split(' ');
-                        string[] fecha_lim_aux = respuesta_res.datos.fecha_limite_emision.Split('-');
-                        string[] dia_aux = fecha_lim_aux[2].Split(' ');
-                        /////VERIFICAR LA FECHA DEL SERVIDOR FORMATO
-                        // SERVIDOR FINAL: string fecha_lim_emision = fecha_lim_aux[1] + "/" + dia_aux[0] + "/" + fecha_lim_aux[0] + " " + hora_limite[1];
-                        // MAQUINA DESARROLLO: string fecha_lim_emision = dia_aux[0] + "/" + fecha_lim_aux[1] + "/" + fecha_lim_aux[0] + " " + hora_limite[1];
-                        string fecha_lim_emision = fecha_lim_aux[1] + "/" + dia_aux[0] + "/" + fecha_lim_aux[0] + " " + hora_limite[1];
-                        lblFechaLimite.Text = fecha_lim_emision;
-                        string sessionID = "";
-                        string tipo_busqueda = "";
-                        if (lblTipoRuta.Text == "RT")
-                            tipo_busqueda = "T:2";
-                        else
-                            tipo_busqueda = "T:1";
-
-                        sessionID = tipo_busqueda + "|PIda:" + it_i.Count().ToString() + "|PVuelta:" + it_v.Count().ToString() + "|6.97" + aerolinea;
-
-                        //securitytoken = Session["securitytoken"].ToString().Replace(',', '.');
-                        //0 Eval("boardAirport") +"|"+
-                        //1 Eval("offAirport")+"|"+
-                        //2 Eval("depDate")+"|"+
-                        //3 Eval("depTime")+"|"+
-                        //4 Eval("ArrivalDate")+"|"+
-                        //5 Eval("hora_llegada")+"|"+
-                        //6 Eval("duracion")+"|"+
-                        //7 Eval("flightNumber")+"|"+
-                        //8 Eval("bookClass")+"|"+
-                        //9 Eval("precio")+"|"+
-                        //10 Eval("marketCompany") + "|" +
-                        //11 Eval("segment") %>'
-                        //12 Eval("leg") %>'
-                        string resultado = LocalBD.PUT_INGRESA_TICKETS("I", lblUsuario.Text, respuesta_res.datos.pnr, "AAAAAA",
-                            datos_fac[0] + "/" + datos_fac[1], datos_fac[2], datos_fac[3], datos_ida[0],
-                            datos_ida[1], DateTime.Parse(fecha_ida), datos_ida[4], datos_ida[5], datos_ida[6], origen_vuelta, destino_vuelta,
-                            DateTime.Parse(fecha_vuelta), clase_vuelta, carrier_vuelta, nvuelo_vuelta,
-                            DateTime.Parse(fecha_lim_emision), respuesta_res.datos.total_acobrar,
-                            respuesta_res.datos.moneda, respuesta_res.datos.total_impuestos, respuesta_res.datos.monto_sin_impuestos,
-                            sessionID, securitytoken.Replace(',', '.'));
-                        string[] cod_ticket = resultado.Split('|');
-                        lblCodTiket.Text = cod_ticket[2];
-                        string resultado1 = "";
-                        string resultado2 = "";
-                        int cli_c = 0;
-                        decimal tarifa_base_aux = 0;
-                        decimal total_impuestos_aux = 0;
-                        for (cli_c = 0; cli_c < respuesta_res.datos.pasajeros.Count(); cli_c++)
-                        {
-                            //string[] docs = respuesta_res.datos.pasajeros[cli_c].foid.Split('|');
-                            resultado1 = LocalBD.PUT_INGRESA_CLIENTES(lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
-                            respuesta_res.datos.pasajeros[cli_c].foid, "", "");
-
-                            if (respuesta_res.datos.pasajeros[cli_c].tipo == "ADT")
-                            {
-                                resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
-                                    respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, respuesta_res.datos.total_adt, respuesta_res.datos.moneda,
-                                    respuesta_res.datos.total_adt_sin_impuestos, respuesta_res.datos.total_adt_impuestos, cod_ticket[2]);
-                                tarifa_base_aux = tarifa_base_aux + respuesta_res.datos.total_adt_sin_impuestos;
-                                total_impuestos_aux = total_impuestos_aux + respuesta_res.datos.total_adt_impuestos;
-                            }
-                            if (respuesta_res.datos.pasajeros[cli_c].tipo == "CHD")
-                            {
-                                resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
-                                    respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, respuesta_res.datos.total_chd, respuesta_res.datos.moneda,
-                                    respuesta_res.datos.total_chd_sin_impuestos, respuesta_res.datos.total_chd_impuestos, cod_ticket[2]);
-                                tarifa_base_aux = tarifa_base_aux + respuesta_res.datos.total_chd_sin_impuestos;
-                                total_impuestos_aux = total_impuestos_aux + respuesta_res.datos.total_chd_impuestos;
-                            }
-                            if (respuesta_res.datos.pasajeros[cli_c].tipo == "INF")
-                            {
-                                resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
-                                    respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, respuesta_res.datos.total_inf, respuesta_res.datos.moneda,
-                                    respuesta_res.datos.total_inf_sin_impuestos, respuesta_res.datos.total_inf_impuestos, cod_ticket[2]);
-                                tarifa_base_aux = tarifa_base_aux + respuesta_res.datos.total_inf_sin_impuestos;
-                                total_impuestos_aux = total_impuestos_aux + respuesta_res.datos.total_inf_impuestos;
-                            }
-
-
-
-                        }
-
-
-                        panel_ida.Visible = true;
-                        lblAdultosResumen.Text = lblNroAdultos.Text;
-                        lblNinosResumen.Text = lblNroNinos.Text;
-                        lblInfanteResumen.Text = lblNroInfante.Text;
-                        lblFechaIdaRes.Text = hfFechaSalida.Value;
-                        lblOrgDestIdaRes.Text = lblOrigen.Text + " - " + lblDestino.Text;
-                        lblHorarioIdaRes.Text = lblHorarioIdaRes.Text;
-                        lblVueloIdaRes.Text = lblVueloIdaRes.Text;
-                        panel_total_res.Visible = true;
-                        //lblTotalRes.Text = datos_res[7];
-                        //lblGananciaRes.Text = datos_res[10];
-                        //lblIdaTitulo.Text = datos_res[11];
-
-                        lblOrgDestVueltaRes.Text = lblDestino.Text + " - " + lblOrigen.Text;
-                        lblHorarioVueltaRes.Text = lblHorarioVueltaRes.Text;
-                        lblVueloVueltaRes.Text = lblVueloVueltaRes.Text;
-                        //lblVueltaTitulo.Text = datos_res[15];
-
-                        if (lblTipoRuta.Text == "OW")
-                        {
-                            panel_vuelta.Visible = false;
-                        }
-                        else
-                        { panel_vuelta.Visible = true; }
-
-
-
-                        btnComprarReserva.Enabled = true;
-                    }
-                    else
-                    {
-                        lblAvisoReserva.Text = "Error: " + respuesta_res.error + ", elija otro vuelo por favor.";
-                        btnComprarReserva.Enabled = false;
-
-                    }
+                    lblAvisoReserva.Text = "YA SE REALIZO UNA RESERVA ANTERIORMENTE";
                 }
                 else
                 {
-                    Reservas.Application respuesta_res = new Reservas.Application();
-                    respuesta_res = JsonConvert.DeserializeObject<Reservas.Application>(respuestaJson);
-                    if (respuesta_res.error == "00")
+                    string json = JsonConvert.SerializeObject(obj_r);
+                    dynamic respuesta = obj.Post("http://20.39.32.111/api/GetReserva.php", json, "Basic MDQ4NjQwNjY4c3R6cmVycjg2Y2Q3MGE4OTVjZDlmYTowNHdlcndld2V3NjhzdHpyZXJyODZjZDcwYTg5NWNkOWZh");
+
+
+                    string respuestaJson = respuesta.ToString();
+                    //string error = respuesta.First().Error.ToString();
+                    if (lblGds.Text.ToUpper() == "KIU")
                     {
-                        //MultiView1.ActiveViewIndex = 6;
-                        txtPNR.Text = respuesta_res.datos.pnr;
-                        lblMoneda.Text = respuesta_res.datos.moneda;
-                        string[] fechHoraLim = respuesta_res.datos.fecha_limite_emision.Split(' ');
-                        string[] fechLim = fechHoraLim[0].Split('-');
-                        lblTiempoLimite.Text = "HORA: " + fechHoraLim[1] + " - " + fechLim[2] + " de " + Nombre_mes(int.Parse(fechLim[1])) + ", " + fechLim[0];
-                        lblTotalPagarFinal.Text = respuesta_res.datos.total_acobrar.ToString();
-                        //lblMonedaFinal.Text = respuesta_res.datos.moneda;
-                        //lblSaldoCuenta.Text = "2500";
-                        //lblEmail.Text = datos_fac[2];
-
-
-                        string[] hora_limite = respuesta_res.datos.fecha_limite_emision.Split(' ');
-                        string[] fecha_lim_aux = respuesta_res.datos.fecha_limite_emision.Split('-');
-                        string[] dia_aux = fecha_lim_aux[2].Split(' ');
-                        /////VERIFICAR LA FECHA DEL SERVIDOR FORMATO
-                        // SERVIDOR FINAL: string fecha_lim_emision = fecha_lim_aux[1] + "/" + dia_aux[0] + "/" + fecha_lim_aux[0] + " " + hora_limite[1];
-                        // MAQUINA DESARROLLO: string fecha_lim_emision = dia_aux[0] + "/" + fecha_lim_aux[1] + "/" + fecha_lim_aux[0] + " " + hora_limite[1];
-                        string fecha_lim_emision = fecha_lim_aux[1] + "/" + dia_aux[0] + "/" + fecha_lim_aux[0] + " " + hora_limite[1];
-                        lblFechaLimite.Text = fecha_lim_emision;
-                        string sessionID = "";
-                        string tipo_busqueda = "";
-                        if (lblTipoRuta.Text == "RT")
-                            tipo_busqueda = "T:2";
-                        else
-                            tipo_busqueda = "T:1";
-
-                        sessionID = tipo_busqueda + "|PIda:" + it_i.Count().ToString() + "|PVuelta:" + it_v.Count().ToString() + "|6.97" + aerolinea;
-
-                        //0 Eval("boardAirport") +"|"+
-                        //1 Eval("offAirport")+"|"+
-                        //2 Eval("depDate")+"|"+
-                        //3 Eval("depTime")+"|"+
-                        //4 Eval("ArrivalDate")+"|"+
-                        //5 Eval("hora_llegada")+"|"+
-                        //6 Eval("duracion")+"|"+
-                        //7 Eval("flightNumber")+"|"+
-                        //8 Eval("bookClass")+"|"+
-                        //9 Eval("precio")+"|"+
-                        //10 Eval("marketCompany") + "|" +
-                        //11 Eval("segment") %>'
-                        //12 Eval("leg") %>'
-                        string resultado = LocalBD.PUT_INGRESA_TICKETS("I", lblUsuario.Text, respuesta_res.datos.pnr, "AAAAAA",
-                            datos_fac[0] + "/" + datos_fac[1], datos_fac[2], datos_fac[3], datos_ida[0],
-                            datos_ida[1], DateTime.Parse(fecha_ida), datos_ida[4], datos_ida[5], datos_ida[6], origen_vuelta, destino_vuelta,
-                            DateTime.Parse(fecha_vuelta), clase_vuelta, carrier_vuelta, nvuelo_vuelta,
-                            DateTime.Parse(fecha_lim_emision), respuesta_res.datos.total_acobrar,
-                            respuesta_res.datos.moneda, respuesta_res.datos.total_impuestos, respuesta_res.datos.monto_sin_impuestos,
-                            sessionID, securitytoken.Replace(',', '.'));
-                        string[] cod_ticket = resultado.Split('|');
-                        lblCodTiket.Text = cod_ticket[2];
-                        string resultado1 = "";
-                        string resultado2 = "";
-                        int cli_c = 0;
-                        for (cli_c = 0; cli_c < respuesta_res.datos.pasajeros.Count(); cli_c++)
+                        Reservas_kiu.Application respuesta_res = new Reservas_kiu.Application();
+                        respuesta_res = JsonConvert.DeserializeObject<Reservas_kiu.Application>(respuestaJson);
+                        if (respuesta_res.error == "00")
                         {
-                            //string[] docs = respuesta_res.datos.pasajeros[cli_c].foid.Split('|');
-                            resultado1 = LocalBD.PUT_INGRESA_CLIENTES(lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
+                            //MultiView1.ActiveViewIndex = 6;
+                            txtPNR.Text = respuesta_res.datos.pnr;
+                            lblMoneda.Text = respuesta_res.datos.moneda;
+
+                            string[] fechHoraLim = respuesta_res.datos.fecha_limite_emision.Split(' ');
+                            string[] fechLim = fechHoraLim[0].Split('-');
+                            lblTiempoLimite.Text = "HORA: " + fechHoraLim[1] + " - " + fechLim[2] + " de " + Nombre_mes(int.Parse(fechLim[1])) + ", " + fechLim[0];
+                            lblTotalPagarFinal.Text = respuesta_res.datos.total_acobrar.ToString();
+                            //lblMonedaFinal.Text = respuesta_res.datos.moneda;
+                            //lblSaldoCuenta.Text = "2500";
+                            //lblEmail.Text = datos_fac[2];
+
+
+                            string[] hora_limite = respuesta_res.datos.fecha_limite_emision.Split(' ');
+                            string[] fecha_lim_aux = respuesta_res.datos.fecha_limite_emision.Split('-');
+                            string[] dia_aux = fecha_lim_aux[2].Split(' ');
+                            /////VERIFICAR LA FECHA DEL SERVIDOR FORMATO
+                            // SERVIDOR FINAL: string fecha_lim_emision = fecha_lim_aux[1] + "/" + dia_aux[0] + "/" + fecha_lim_aux[0] + " " + hora_limite[1];
+                            // MAQUINA DESARROLLO: string fecha_lim_emision = dia_aux[0] + "/" + fecha_lim_aux[1] + "/" + fecha_lim_aux[0] + " " + hora_limite[1];
+                            string fecha_lim_emision = fecha_lim_aux[1] + "/" + dia_aux[0] + "/" + fecha_lim_aux[0] + " " + hora_limite[1];
+                            lblFechaLimite.Text = fecha_lim_emision;
+                            string sessionID = "";
+                            string tipo_busqueda = "";
+                            if (lblTipoRuta.Text == "RT")
+                                tipo_busqueda = "T:2";
+                            else
+                                tipo_busqueda = "T:1";
+
+                            sessionID = tipo_busqueda + "|PIda:" + it_i.Count().ToString() + "|PVuelta:" + it_v.Count().ToString() + "|6.97" + aerolinea;
+
+                            //securitytoken = Session["securitytoken"].ToString().Replace(',', '.');
+                            //0 Eval("boardAirport") +"|"+
+                            //1 Eval("offAirport")+"|"+
+                            //2 Eval("depDate")+"|"+
+                            //3 Eval("depTime")+"|"+
+                            //4 Eval("ArrivalDate")+"|"+
+                            //5 Eval("hora_llegada")+"|"+
+                            //6 Eval("duracion")+"|"+
+                            //7 Eval("flightNumber")+"|"+
+                            //8 Eval("bookClass")+"|"+
+                            //9 Eval("precio")+"|"+
+                            //10 Eval("marketCompany") + "|" +
+                            //11 Eval("segment") %>'
+                            //12 Eval("leg") %>'
+                            //string resultado = LocalBD.PUT_INGRESA_TICKETS("I", lblUsuario.Text, respuesta_res.datos.pnr, "AAAAAA",
+                            //    datos_fac[0] + "/" + datos_fac[1], datos_fac[2], datos_fac[3], datos_ida[0],
+                            //    datos_ida[1], DateTime.Parse(fecha_ida), datos_ida[4], datos_ida[5], datos_ida[6], origen_vuelta, destino_vuelta,
+                            //    DateTime.Parse(fecha_vuelta), clase_vuelta, carrier_vuelta, nvuelo_vuelta,
+                            //    DateTime.Parse(fecha_lim_emision), respuesta_res.datos.total_acobrar,
+                            //    respuesta_res.datos.moneda, respuesta_res.datos.total_impuestos, respuesta_res.datos.monto_sin_impuestos,
+                            //    sessionID, securitytoken.Replace(',', '.'));
+
+                            string resultado = LocalBD.PUT_INGRESA_TICKETS_WEB("I", lblUsuario.Text, respuesta_res.datos.pnr, "AAAAAA",
+                                datos_fac[0] + "/" + datos_fac[1], datos_fac[2], datos_fac[3], datos_ida[0],
+                                datos_ida[1], DateTime.Parse(fecha_ida), datos_ida[4], datos_ida[5], datos_ida[6], origen_vuelta, destino_vuelta,
+                                DateTime.Parse(fecha_vuelta), clase_vuelta, carrier_vuelta, nvuelo_vuelta,
+                                DateTime.Parse(fecha_lim_emision), respuesta_res.datos.total_acobrar,
+                                respuesta_res.datos.moneda, respuesta_res.datos.total_impuestos, respuesta_res.datos.monto_sin_impuestos,
+                                sessionID, securitytoken.Replace(',', '.'), hora_salida_ida, hora_llegada_ida, hora_salida_vuelta, hora_llegada_vuelta);
+
+                            string[] cod_ticket = resultado.Split('|');
+                            lblCodTiket.Text = cod_ticket[2];
+                            string resultado1 = "";
+                            string resultado2 = "";
+                            int cli_c = 0;
+                            decimal tarifa_base_aux = 0;
+                            decimal total_impuestos_aux = 0;
+                            for (cli_c = 0; cli_c < respuesta_res.datos.pasajeros.Count(); cli_c++)
+                            {
+                                //string[] docs = respuesta_res.datos.pasajeros[cli_c].foid.Split('|');
+                                resultado1 = LocalBD.PUT_INGRESA_CLIENTES(lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
                                 respuesta_res.datos.pasajeros[cli_c].foid, "", "");
 
-                            if (respuesta_res.datos.pasajeros[cli_c].tipo == "ADT")
-                            {
-                                resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
-                                  respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, decimal.Parse(respuesta_res.datos.datos_por_tipo.ADT[0].costo), respuesta_res.datos.datos_por_tipo.ADT[0].moneda,
-                                  decimal.Parse(respuesta_res.datos.datos_por_tipo.ADT[0].monto_sin_impuestos), decimal.Parse(respuesta_res.datos.datos_por_tipo.ADT[0].total_impuestos.ToString()), cod_ticket[2]);
-                            }
-                            if (respuesta_res.datos.pasajeros[cli_c].tipo == "CHD")
-                            {
-                                resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
-                                   respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, decimal.Parse(respuesta_res.datos.datos_por_tipo.CHD[0].costo), respuesta_res.datos.datos_por_tipo.CHD[0].moneda,
-                                   decimal.Parse(respuesta_res.datos.datos_por_tipo.CHD[0].monto_sin_impuestos), decimal.Parse(respuesta_res.datos.datos_por_tipo.CHD[0].total_impuestos.ToString()), cod_ticket[2]);
-                            }
-                            if (respuesta_res.datos.pasajeros[cli_c].tipo == "INF")
-                            {
-                                resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
-                                   respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, decimal.Parse(respuesta_res.datos.datos_por_tipo.INF[0].costo), respuesta_res.datos.datos_por_tipo.INF[0].moneda,
-                                   decimal.Parse(respuesta_res.datos.datos_por_tipo.INF[0].monto_sin_impuestos), decimal.Parse(respuesta_res.datos.datos_por_tipo.INF[0].total_impuestos.ToString()), cod_ticket[2]);
-                            }
-                            if (respuesta_res.datos.pasajeros[cli_c].tipo == "SNN")
-                            {
-                                string costo = "0";
-                                string total_impuestos = "0";
-                                string monto_sin_impuestos = "0";
-                                resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
-                                   respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, decimal.Parse(costo), "",
-                                   decimal.Parse(monto_sin_impuestos), decimal.Parse(total_impuestos), cod_ticket[2]);
-                            }
-                            if (respuesta_res.datos.pasajeros[cli_c].tipo == "YCD")
-                            {
-                                resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
-                                   respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, decimal.Parse(respuesta_res.datos.datos_por_tipo.YCD[0].costo), respuesta_res.datos.datos_por_tipo.YCD[0].moneda,
-                                   decimal.Parse(respuesta_res.datos.datos_por_tipo.YCD[0].monto_sin_impuestos), decimal.Parse(respuesta_res.datos.datos_por_tipo.YCD[0].total_impuestos.ToString()), cod_ticket[2]);
+                                if (respuesta_res.datos.pasajeros[cli_c].tipo == "ADT")
+                                {
+                                    resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
+                                        respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, respuesta_res.datos.total_adt, respuesta_res.datos.moneda,
+                                        respuesta_res.datos.total_adt_sin_impuestos, respuesta_res.datos.total_adt_impuestos, cod_ticket[2]);
+                                    tarifa_base_aux = tarifa_base_aux + respuesta_res.datos.total_adt_sin_impuestos;
+                                    total_impuestos_aux = total_impuestos_aux + respuesta_res.datos.total_adt_impuestos;
+                                }
+                                if (respuesta_res.datos.pasajeros[cli_c].tipo == "CHD")
+                                {
+                                    resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
+                                        respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, respuesta_res.datos.total_chd, respuesta_res.datos.moneda,
+                                        respuesta_res.datos.total_chd_sin_impuestos, respuesta_res.datos.total_chd_impuestos, cod_ticket[2]);
+                                    tarifa_base_aux = tarifa_base_aux + respuesta_res.datos.total_chd_sin_impuestos;
+                                    total_impuestos_aux = total_impuestos_aux + respuesta_res.datos.total_chd_impuestos;
+                                }
+                                if (respuesta_res.datos.pasajeros[cli_c].tipo == "INF")
+                                {
+                                    resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
+                                        respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, respuesta_res.datos.total_inf, respuesta_res.datos.moneda,
+                                        respuesta_res.datos.total_inf_sin_impuestos, respuesta_res.datos.total_inf_impuestos, cod_ticket[2]);
+                                    tarifa_base_aux = tarifa_base_aux + respuesta_res.datos.total_inf_sin_impuestos;
+                                    total_impuestos_aux = total_impuestos_aux + respuesta_res.datos.total_inf_impuestos;
+                                }
+
+
+
                             }
 
 
+                            panel_ida.Visible = true;
+                            lblAdultosResumen.Text = lblNroAdultos.Text;
+                            lblNinosResumen.Text = lblNroNinos.Text;
+                            lblInfanteResumen.Text = lblNroInfante.Text;
+                            lblFechaIdaRes.Text = hfFechaSalida.Value;
+                            lblOrgDestIdaRes.Text = lblOrigen.Text + " - " + lblDestino.Text;
+                            lblHorarioIdaRes.Text = lblHorarioIdaRes.Text;
+                            lblVueloIdaRes.Text = lblVueloIdaRes.Text;
+                            panel_total_res.Visible = true;
+                            //lblTotalRes.Text = datos_res[7];
+                            //lblGananciaRes.Text = datos_res[10];
+                            //lblIdaTitulo.Text = datos_res[11];
 
-                        }
+                            lblOrgDestVueltaRes.Text = lblDestino.Text + " - " + lblOrigen.Text;
+                            lblHorarioVueltaRes.Text = lblHorarioVueltaRes.Text;
+                            lblVueloVueltaRes.Text = lblVueloVueltaRes.Text;
+                            //lblVueltaTitulo.Text = datos_res[15];
+
+                            if (lblTipoRuta.Text == "OW")
+                            {
+                                panel_vuelta.Visible = false;
+                            }
+                            else
+                            { panel_vuelta.Visible = true; }
 
 
-                        panel_ida.Visible = true;
-                        lblAdultosResumen.Text = lblNroAdultos.Text;
-                        lblNinosResumen.Text = lblNroNinos.Text;
-                        lblInfanteResumen.Text = lblNroInfante.Text;
-                        lblFechaIdaRes.Text = hfFechaSalida.Value;
-                        lblOrgDestIdaRes.Text = lblOrigen.Text + " - " + lblDestino.Text;
-                        lblHorarioIdaRes.Text = lblHorarioIdaRes.Text;
-                        lblVueloIdaRes.Text = lblVueloIdaRes.Text;
-                        panel_total_res.Visible = true;
-                        //lblTotalRes.Text = datos_res[7];
-                        lblTarifaBaseRes.Text = lblTarifaBaseRes.Text;// datos_res[8];
-                        lblTotalImpuestosRes.Text = lblTotalImpuestosRes.Text;// datos_res[9];
-                                                                              //lblGananciaRes.Text = datos_res[10];
-                                                                              //lblIdaTitulo.Text = datos_res[11];
 
-                        lblOrgDestVueltaRes.Text = lblDestino.Text + " - " + lblOrigen.Text;
-                        lblHorarioVueltaRes.Text = lblHorarioVueltaRes.Text;
-                        lblVueloVueltaRes.Text = lblVueloVueltaRes.Text;
-                        //lblVueltaTitulo.Text = datos_res[15];
-
-                        if (lblTipoRuta.Text == "OW")
-                        {
-                            panel_vuelta.Visible = false;
+                            btnComprarReserva.Enabled = true;
                         }
                         else
-                        { panel_vuelta.Visible = true; }
+                        {
+                            lblAvisoReserva.Text = "Error: " + respuesta_res.error + ", elija otro vuelo por favor.";
+                            btnComprarReserva.Enabled = false;
 
-
-                        btnComprarReserva.Enabled = true;
-
+                        }
                     }
                     else
                     {
-                        txtPNR.Text = "Error: " + respuesta_res.error + ", elija otro vuelo por favor.";
-                        btnComprarReserva.Enabled = false;
+                        Reservas.Application respuesta_res = new Reservas.Application();
+                        respuesta_res = JsonConvert.DeserializeObject<Reservas.Application>(respuestaJson);
+                        if (respuesta_res.error == "00")
+                        {
+                            //MultiView1.ActiveViewIndex = 6;
+                            txtPNR.Text = respuesta_res.datos.pnr;
+                            lblMoneda.Text = respuesta_res.datos.moneda;
+                            string[] fechHoraLim = respuesta_res.datos.fecha_limite_emision.Split(' ');
+                            string[] fechLim = fechHoraLim[0].Split('-');
+                            lblTiempoLimite.Text = "HORA: " + fechHoraLim[1] + " - " + fechLim[2] + " de " + Nombre_mes(int.Parse(fechLim[1])) + ", " + fechLim[0];
+                            lblTotalPagarFinal.Text = respuesta_res.datos.total_acobrar.ToString();
+                            //lblMonedaFinal.Text = respuesta_res.datos.moneda;
+                            //lblSaldoCuenta.Text = "2500";
+                            //lblEmail.Text = datos_fac[2];
+
+
+                            string[] hora_limite = respuesta_res.datos.fecha_limite_emision.Split(' ');
+                            string[] fecha_lim_aux = respuesta_res.datos.fecha_limite_emision.Split('-');
+                            string[] dia_aux = fecha_lim_aux[2].Split(' ');
+                            /////VERIFICAR LA FECHA DEL SERVIDOR FORMATO
+                            // SERVIDOR FINAL: string fecha_lim_emision = fecha_lim_aux[1] + "/" + dia_aux[0] + "/" + fecha_lim_aux[0] + " " + hora_limite[1];
+                            // MAQUINA DESARROLLO: string fecha_lim_emision = dia_aux[0] + "/" + fecha_lim_aux[1] + "/" + fecha_lim_aux[0] + " " + hora_limite[1];
+                            string fecha_lim_emision = fecha_lim_aux[1] + "/" + dia_aux[0] + "/" + fecha_lim_aux[0] + " " + hora_limite[1];
+                            lblFechaLimite.Text = fecha_lim_emision;
+                            string sessionID = "";
+                            string tipo_busqueda = "";
+                            if (lblTipoRuta.Text == "RT")
+                                tipo_busqueda = "T:2";
+                            else
+                                tipo_busqueda = "T:1";
+
+                            sessionID = tipo_busqueda + "|PIda:" + it_i.Count().ToString() + "|PVuelta:" + it_v.Count().ToString() + "|6.97" + aerolinea;
+
+                            //0 Eval("boardAirport") +"|"+
+                            //1 Eval("offAirport")+"|"+
+                            //2 Eval("depDate")+"|"+
+                            //3 Eval("depTime")+"|"+
+                            //4 Eval("ArrivalDate")+"|"+
+                            //5 Eval("hora_llegada")+"|"+
+                            //6 Eval("duracion")+"|"+
+                            //7 Eval("flightNumber")+"|"+
+                            //8 Eval("bookClass")+"|"+
+                            //9 Eval("precio")+"|"+
+                            //10 Eval("marketCompany") + "|" +
+                            //11 Eval("segment") %>'
+                            //12 Eval("leg") %>'
+                            string resultado = LocalBD.PUT_INGRESA_TICKETS_WEB("I", lblUsuario.Text, respuesta_res.datos.pnr, "AAAAAA",
+                                datos_fac[0] + "/" + datos_fac[1], datos_fac[2], datos_fac[3], datos_ida[0],
+                                datos_ida[1], DateTime.Parse(fecha_ida), datos_ida[4], datos_ida[5], datos_ida[6], origen_vuelta, destino_vuelta,
+                                DateTime.Parse(fecha_vuelta), clase_vuelta, carrier_vuelta, nvuelo_vuelta,
+                                DateTime.Parse(fecha_lim_emision), respuesta_res.datos.total_acobrar,
+                                respuesta_res.datos.moneda, respuesta_res.datos.total_impuestos, respuesta_res.datos.monto_sin_impuestos,
+                                 sessionID, securitytoken.Replace(',', '.'), hora_salida_ida, hora_llegada_ida, hora_salida_vuelta, hora_llegada_vuelta);
+                            string[] cod_ticket = resultado.Split('|');
+                            lblCodTiket.Text = cod_ticket[2];
+                            string resultado1 = "";
+                            string resultado2 = "";
+                            int cli_c = 0;
+                            for (cli_c = 0; cli_c < respuesta_res.datos.pasajeros.Count(); cli_c++)
+                            {
+                                //string[] docs = respuesta_res.datos.pasajeros[cli_c].foid.Split('|');
+                                resultado1 = LocalBD.PUT_INGRESA_CLIENTES(lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
+                                    respuesta_res.datos.pasajeros[cli_c].foid, "", "");
+
+                                if (respuesta_res.datos.pasajeros[cli_c].tipo == "ADT")
+                                {
+                                    resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
+                                      respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, decimal.Parse(respuesta_res.datos.datos_por_tipo.ADT[0].costo), respuesta_res.datos.datos_por_tipo.ADT[0].moneda,
+                                      decimal.Parse(respuesta_res.datos.datos_por_tipo.ADT[0].monto_sin_impuestos), decimal.Parse(respuesta_res.datos.datos_por_tipo.ADT[0].total_impuestos.ToString()), cod_ticket[2]);
+                                }
+                                if (respuesta_res.datos.pasajeros[cli_c].tipo == "CHD")
+                                {
+                                    resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
+                                       respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, decimal.Parse(respuesta_res.datos.datos_por_tipo.CHD[0].costo), respuesta_res.datos.datos_por_tipo.CHD[0].moneda,
+                                       decimal.Parse(respuesta_res.datos.datos_por_tipo.CHD[0].monto_sin_impuestos), decimal.Parse(respuesta_res.datos.datos_por_tipo.CHD[0].total_impuestos.ToString()), cod_ticket[2]);
+                                }
+                                if (respuesta_res.datos.pasajeros[cli_c].tipo == "INF")
+                                {
+                                    resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
+                                       respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, decimal.Parse(respuesta_res.datos.datos_por_tipo.INF[0].costo), respuesta_res.datos.datos_por_tipo.INF[0].moneda,
+                                       decimal.Parse(respuesta_res.datos.datos_por_tipo.INF[0].monto_sin_impuestos), decimal.Parse(respuesta_res.datos.datos_por_tipo.INF[0].total_impuestos.ToString()), cod_ticket[2]);
+                                }
+                                if (respuesta_res.datos.pasajeros[cli_c].tipo == "SNN")
+                                {
+                                    string costo = "0";
+                                    string total_impuestos = "0";
+                                    string monto_sin_impuestos = "0";
+                                    resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
+                                       respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, decimal.Parse(costo), "",
+                                       decimal.Parse(monto_sin_impuestos), decimal.Parse(total_impuestos), cod_ticket[2]);
+                                }
+                                if (respuesta_res.datos.pasajeros[cli_c].tipo == "YCD")
+                                {
+                                    resultado2 = LocalBD.PUT_INGRESA_TICKETS_DET("I", lblUsuario.Text, respuesta_res.datos.pasajeros[cli_c].nombre, respuesta_res.datos.pasajeros[cli_c].apellido,
+                                       respuesta_res.datos.pasajeros[cli_c].tipo, respuesta_res.datos.pasajeros[cli_c].foid, DateTime.Now, decimal.Parse(respuesta_res.datos.datos_por_tipo.YCD[0].costo), respuesta_res.datos.datos_por_tipo.YCD[0].moneda,
+                                       decimal.Parse(respuesta_res.datos.datos_por_tipo.YCD[0].monto_sin_impuestos), decimal.Parse(respuesta_res.datos.datos_por_tipo.YCD[0].total_impuestos.ToString()), cod_ticket[2]);
+                                }
+
+
+
+                            }
+
+
+                            panel_ida.Visible = true;
+                            lblAdultosResumen.Text = lblNroAdultos.Text;
+                            lblNinosResumen.Text = lblNroNinos.Text;
+                            lblInfanteResumen.Text = lblNroInfante.Text;
+                            lblFechaIdaRes.Text = hfFechaSalida.Value;
+                            lblOrgDestIdaRes.Text = lblOrigen.Text + " - " + lblDestino.Text;
+                            lblHorarioIdaRes.Text = lblHorarioIdaRes.Text;
+                            lblVueloIdaRes.Text = lblVueloIdaRes.Text;
+                            panel_total_res.Visible = true;
+                            //lblTotalRes.Text = datos_res[7];
+                            lblTarifaBaseRes.Text = lblTarifaBaseRes.Text;// datos_res[8];
+                            lblTotalImpuestosRes.Text = lblTotalImpuestosRes.Text;// datos_res[9];
+                                                                                  //lblGananciaRes.Text = datos_res[10];
+                                                                                  //lblIdaTitulo.Text = datos_res[11];
+
+                            lblOrgDestVueltaRes.Text = lblDestino.Text + " - " + lblOrigen.Text;
+                            lblHorarioVueltaRes.Text = lblHorarioVueltaRes.Text;
+                            lblVueloVueltaRes.Text = lblVueloVueltaRes.Text;
+                            //lblVueltaTitulo.Text = datos_res[15];
+
+                            if (lblTipoRuta.Text == "OW")
+                            {
+                                panel_vuelta.Visible = false;
+                            }
+                            else
+                            { panel_vuelta.Visible = true; }
+
+
+                            btnComprarReserva.Enabled = true;
+
+                        }
+                        else
+                        {
+                            txtPNR.Text = "Error: " + respuesta_res.error + ", elija otro vuelo por favor.";
+                            btnComprarReserva.Enabled = false;
+                        }
                     }
                 }
+
+                
 
             }
             catch (Exception ex)
