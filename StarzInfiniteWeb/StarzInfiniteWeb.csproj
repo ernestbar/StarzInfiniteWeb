@@ -133,6 +133,7 @@
     <Content Include="docsupport\style.css" />
     <Content Include="emision_offline.aspx" />
     <Content Include="flight-detail-left-sidebar.html" />
+    <Content Include="flight-grid-left-sidebar.html" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="home.aspx" />

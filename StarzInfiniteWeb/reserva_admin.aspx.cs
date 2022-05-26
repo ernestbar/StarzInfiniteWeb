@@ -188,9 +188,10 @@ namespace StarzInfiniteWeb
             try
             {
                 MultiView1.ActiveViewIndex = 2;
-                lblAdultosResumen.Text = "";
-                lblNinosResumen.Text = "";
-                lblInfanteResumen.Text = "";
+                lblAdultosResumenRes.Text = "";
+                lblInfanteResumenRes.Text = "";
+                lblNinosResumenRes.Text = "";
+                lblSeniorsResumenRes.Text = "";
                 LinkButton obj = (LinkButton)sender;
                 string id = obj.CommandArgument.ToString();
                 txtPNR.Text = id;
@@ -237,11 +238,11 @@ namespace StarzInfiniteWeb
                     }
                 }
                 if (adultos > 0)
-                    lblAdultosResumen.Text = adultos.ToString() + " adultos";
+                    lblAdultosResumenRes.Text = adultos.ToString() + " adultos";
                 if (ninos > 0)
-                    lblNinosResumen.Text = ninos.ToString() + " niños";
+                    lblNinosResumenRes.Text = ninos.ToString() + " niños";
                 if (infantes > 0)
-                    lblInfanteResumen.Text = infantes.ToString() + " infantes";
+                    lblInfanteResumenRes.Text = infantes.ToString() + " infantes";
                 Repeater4.DataSource = dt_pasajeros;
                 Repeater4.DataBind();
                 DataTable dt1 = LocalBD.PR_OBTIENE_BOLETOS_PNR(id);
@@ -250,11 +251,12 @@ namespace StarzInfiniteWeb
                     foreach (DataRow dr1 in dt1.Rows)
                     {
                         DateTime fechaIda = DateTime.Parse(dr1["FECHAIDA"].ToString());
-                        panel_ida.Visible = true;
-                        lblFechaIdaRes.Text = "Fecha de salida: " + fechaIda.Day.ToString() + "-" + fechaIda.Month.ToString() + "-" + fechaIda.Year.ToString();
-                        lblOrgDestIdaRes.Text = "Ruta: " + dr1["ORIGENIDA"].ToString() + " - " + dr1["DESTINOIDA"].ToString();
-                        lblHorarioIdaRes.Text = "Clase: " + dr1["CLASEIDA"].ToString();
-                        lblVueloIdaRes.Text = "NRO. VUELO: " + dr1["NUMEROVUELOIDA"].ToString();
+                        panel_idaRes.Visible = true;
+                        lblFechaSalidaIda.Text = "Fecha de salida: " + fechaIda.Day.ToString() + "-" + fechaIda.Month.ToString() + "-" + fechaIda.Year.ToString();
+                        lblOrigenIda.Text = dr1["ORIGENIDA"].ToString();
+                        lblDestinoIda.Text= dr1["DESTINOIDA"].ToString();
+                        lblVueloClaseIda.Text = "Vuelo: " + dr1["NUMEROVUELOIDA"].ToString()+ "Clase: " + dr1["CLASEIDA"].ToString();
+                        
                         string idaOrigen = "";
                         string idaDestino = "";
                         foreach (DataRow drIti in Dominios.Lista("RUTA INDIVIDUAL").Rows)
@@ -270,9 +272,9 @@ namespace StarzInfiniteWeb
                                 idaOrigen = dra["descripcion"].ToString();
 
                         }
-                        lblIdaTitulo.Text = idaOrigen + " - " + idaDestino;
+                        lblAreolineaNombResIdaRes.Text = idaOrigen + " - " + idaDestino;
                         if (String.IsNullOrEmpty(dr1["ORIGENVUELTA"].ToString()))
-                        { panel_vuelta.Visible = false; }
+                        { panel_vueltaRes.Visible = false; }
                         else
                         {
                             string vueltaOrigen = "";
@@ -284,21 +286,22 @@ namespace StarzInfiniteWeb
                                 if (dr1["DESITINOVUELTA"].ToString() == drIti["codigo"].ToString())
                                     vueltaDestino = drIti["descripcion"].ToString();
                             }
-                            lblVueltaTitulo.Text = vueltaOrigen + " - " + vueltaDestino;
-                            panel_vuelta.Visible = true;
+                            lblAreolineaNombResVueltaRes.Text = vueltaOrigen + " - " + vueltaDestino;
+                            panel_vueltaRes.Visible = true;
                             DateTime fechaVuelta = DateTime.Parse(dr1["FECHAVUELTA"].ToString());
-                            lblFechaVueltaRes.Text = "Fecha de salida: " + fechaVuelta.Day.ToString() + "-" + fechaVuelta.Month.ToString() + "-" + fechaVuelta.Year.ToString();
-                            lblOrgDestVueltaRes.Text = "Ruta: " + dr1["ORIGENVUELTA"].ToString() + " - " + dr1["DESITINOVUELTA"].ToString();
-                            lblHorarioVueltaRes.Text = "Clase: " + dr1["CLASEIDA"].ToString();
-                            lblVueloVueltaRes.Text = "NRO. VUELO: " + dr1["NUMEROVUELOVUELTA"].ToString();
+                            lblFechaSalidaVuelta.Text = "Fecha de salida: " + fechaVuelta.Day.ToString() + "-" + fechaVuelta.Month.ToString() + "-" + fechaVuelta.Year.ToString();
+                            lblOrigenVuelta.Text =dr1["ORIGENVUELTA"].ToString();
+                            lblDestinoVuelta.Text=dr1["DESITINOVUELTA"].ToString();
+                            lblVueloClaseVuelta.Text = "Vuelo: " + dr1["NUMEROVUELOVUELTA"].ToString() + " Clase: " + dr1["CLASEIDA"].ToString();
+                            
                         }
 
-                        panel_total_res.Visible = true;
+                        panel_total_resRes.Visible = true;
 
-                        lblTotalRes.Text = Math.Round(decimal.Parse(dr1["TOTALCOBRAR"].ToString()), 2).ToString();
-                        lblTarifaBaseRes.Text = Math.Round(decimal.Parse(dr1["MONTOSINIMPUESTOS"].ToString()), 2).ToString();
-                        lblTotalImpuestosRes.Text = Math.Round(decimal.Parse(dr1["TOTALIMPUESTOS"].ToString()), 2).ToString();
-                        lblMonedaRes.Text = dr1["MONEDA"].ToString();
+                        lblMontoTotalReserva.Text = Math.Round(decimal.Parse(dr1["TOTALCOBRAR"].ToString()), 2).ToString();
+                        lblTarifaBaseResRes.Text = Math.Round(decimal.Parse(dr1["MONTOSINIMPUESTOS"].ToString()), 2).ToString();
+                        lblTotalImpuestosResRes.Text = Math.Round(decimal.Parse(dr1["TOTALIMPUESTOS"].ToString()), 2).ToString();
+                        lblMonedaReserva.Text = dr1["MONEDA"].ToString();
 
                         if (dr1["ESTADO"].ToString() == "PENDIENTE")
                         {
@@ -316,18 +319,18 @@ namespace StarzInfiniteWeb
                     }
                 }
 
-                DataTable dt2 = LocalBD.PR_OBTIENE_REPORTE_GANANCIAS(lblUsuario.Text);
-                if (dt2.Rows.Count > 0)
-                {
-                    foreach (DataRow dr2 in dt2.Rows)
-                    {
-                        if (dr2["CONCEPTO"].ToString().Contains(id))
-                        {
-                            lblGananciaRes.Text = dr2["MONTO"].ToString().Replace("+", "");
-                        }
-                    }
+                //DataTable dt2 = LocalBD.PR_OBTIENE_REPORTE_GANANCIAS(lblUsuario.Text);
+                //if (dt2.Rows.Count > 0)
+                //{
+                //    foreach (DataRow dr2 in dt2.Rows)
+                //    {
+                //        if (dr2["CONCEPTO"].ToString().Contains(id))
+                //        {
+                //            lblGananciaRes.Text = dr2["MONTO"].ToString().Replace("+", "");
+                //        }
+                //    }
 
-                }
+                //}
                 //myIframe.Src = url;
             }
             catch (Exception ex)
