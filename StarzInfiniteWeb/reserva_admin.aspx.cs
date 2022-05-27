@@ -251,12 +251,29 @@ namespace StarzInfiniteWeb
                     foreach (DataRow dr1 in dt1.Rows)
                     {
                         DateTime fechaIda = DateTime.Parse(dr1["FECHAIDA"].ToString());
+                        if (String.IsNullOrEmpty(dr1["FECHA_LLEGADAIDA"].ToString()))
+                            lblFechaLlegadaIda.Text = "S/D";
+                        else
+                        {
+                            DateTime fechallegadaIda = DateTime.Parse(dr1["FECHA_LLEGADAIDA"].ToString());
+                            lblFechaLlegadaIda.Text = fechallegadaIda.Day.ToString() + "-" + fechallegadaIda.Month.ToString() + "-" + fechallegadaIda.Year.ToString();
+                        }
+                        
+                        if (String.IsNullOrEmpty(dr1["HORAORIGENIDA"].ToString()))
+                            lblHoraSalidaIda.Text = "S/D";
+                        else
+                            lblHoraSalidaIda.Text = dr1["HORAORIGENIDA"].ToString();
+                        if (String.IsNullOrEmpty(dr1["HORADESTINOIDA"].ToString()))
+                            lblHoraLLegadaIda.Text = "S/D";
+                        else
+                            lblHoraLLegadaIda.Text = dr1["HORADESTINOIDA"].ToString();
+
                         panel_idaRes.Visible = true;
-                        lblFechaSalidaIda.Text = "Fecha de salida: " + fechaIda.Day.ToString() + "-" + fechaIda.Month.ToString() + "-" + fechaIda.Year.ToString();
+                        lblFechaSalidaIda.Text = fechaIda.Day.ToString() + "-" + fechaIda.Month.ToString() + "-" + fechaIda.Year.ToString();
                         lblOrigenIda.Text = dr1["ORIGENIDA"].ToString();
                         lblDestinoIda.Text= dr1["DESTINOIDA"].ToString();
                         lblVueloClaseIda.Text = "Vuelo: " + dr1["NUMEROVUELOIDA"].ToString()+ "Clase: " + dr1["CLASEIDA"].ToString();
-                        
+                        string idaaerolinea = "";
                         string idaOrigen = "";
                         string idaDestino = "";
                         foreach (DataRow drIti in Dominios.Lista("RUTA INDIVIDUAL").Rows)
@@ -268,17 +285,18 @@ namespace StarzInfiniteWeb
                         }
                         foreach (DataRow dra in Dominios.Lista("AEROLINEA").Rows)
                         {
-                            if (dr1["ORIGENIDA"].ToString() == dra["codigo"].ToString())
-                                idaOrigen = dra["descripcion"].ToString();
+                            if (dr1["CARRIERIDA"].ToString() == dra["codigo"].ToString())
+                                idaaerolinea = dra["descripcion"].ToString();
 
                         }
-                        lblAreolineaNombResIdaRes.Text = idaOrigen + " - " + idaDestino;
+                        lblAreolineaNombResIdaRes.Text = idaaerolinea+": "+  idaOrigen + " - " + idaDestino;
                         if (String.IsNullOrEmpty(dr1["ORIGENVUELTA"].ToString()))
                         { panel_vueltaRes.Visible = false; }
                         else
                         {
                             string vueltaOrigen = "";
                             string vueltaDestino = "";
+                            string vueltaaerolinea = "";
                             foreach (DataRow drIti in Dominios.Lista("RUTA INDIVIDUAL").Rows)
                             {
                                 if (dr1["ORIGENVUELTA"].ToString() == drIti["codigo"].ToString())
@@ -286,14 +304,43 @@ namespace StarzInfiniteWeb
                                 if (dr1["DESITINOVUELTA"].ToString() == drIti["codigo"].ToString())
                                     vueltaDestino = drIti["descripcion"].ToString();
                             }
-                            lblAreolineaNombResVueltaRes.Text = vueltaOrigen + " - " + vueltaDestino;
+                            foreach (DataRow dra in Dominios.Lista("AEROLINEA").Rows)
+                            {
+                                if (dr1["CARRIERVUELTA"].ToString() == dra["codigo"].ToString())
+                                    vueltaaerolinea = dra["descripcion"].ToString();
+
+                            }
+                            lblAreolineaNombResVueltaRes.Text = vueltaaerolinea + ": " + vueltaOrigen + " - " + vueltaDestino;
                             panel_vueltaRes.Visible = true;
                             DateTime fechaVuelta = DateTime.Parse(dr1["FECHAVUELTA"].ToString());
-                            lblFechaSalidaVuelta.Text = "Fecha de salida: " + fechaVuelta.Day.ToString() + "-" + fechaVuelta.Month.ToString() + "-" + fechaVuelta.Year.ToString();
+                            lblFechaSalidaVuelta.Text =fechaVuelta.Day.ToString() + "-" + fechaVuelta.Month.ToString() + "-" + fechaVuelta.Year.ToString();
+                            if (String.IsNullOrEmpty(dr1["FECHA_LLEGADAVUELTA"].ToString()))
+                                lblFechaLlegadaVuelta.Text = "S/D";
+                            else
+                            {
+                                DateTime fechallegadavuelta = DateTime.Parse(dr1["FECHA_LLEGADAVUELTA"].ToString());
+                                lblFechaLlegadaVuelta.Text = fechallegadavuelta.Day.ToString() + "-" + fechallegadavuelta.Month.ToString() + "-" + fechallegadavuelta.Year.ToString();
+                            }
+
+                            if (String.IsNullOrEmpty(dr1["HORAORIGENVUELTA"].ToString()))
+                                lblHoraSalidaVuelta.Text = "S/D";
+                            else
+                                lblHoraSalidaVuelta.Text = dr1["HORAORIGENVUELTA"].ToString();
+                            if (String.IsNullOrEmpty(dr1["HORADESITINOVUELTA"].ToString()))
+                                lblHoraLLegadaVuelta.Text = "S/D";
+                            else
+                                lblHoraLLegadaVuelta.Text = dr1["HORADESITINOVUELTA"].ToString();
+
                             lblOrigenVuelta.Text =dr1["ORIGENVUELTA"].ToString();
                             lblDestinoVuelta.Text=dr1["DESITINOVUELTA"].ToString();
                             lblVueloClaseVuelta.Text = "Vuelo: " + dr1["NUMEROVUELOVUELTA"].ToString() + " Clase: " + dr1["CLASEIDA"].ToString();
-                            
+                            foreach (DataRow dra in Dominios.Lista("AEROLINEA").Rows)
+                            {
+                                if (dr1["CARRIERVUELTA"].ToString() == dra["codigo"].ToString())
+                                    idaOrigen = dra["descripcion"].ToString();
+
+                            }
+
                         }
 
                         panel_total_resRes.Visible = true;

@@ -537,24 +537,6 @@ namespace StarzInfiniteWeb
         protected global::System.Web.UI.WebControls.Label lblDestinoIda;
 
         /// <summary>
-        /// lblMaletasIda control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMaletasIda;
-
-        /// <summary>
-        /// lblDuracionIda control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDuracionIda;
-
-        /// <summary>
         /// panel_vueltaRes control.
         /// </summary>
         /// <remarks>
@@ -679,24 +661,6 @@ namespace StarzInfiniteWeb
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDestinoVuelta;
-
-        /// <summary>
-        /// lblMaletasVuelta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMaletasVuelta;
-
-        /// <summary>
-        /// lblDuracionVuelta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDuracionVuelta;
 
         /// <summary>
         /// panel_total_resRes control.

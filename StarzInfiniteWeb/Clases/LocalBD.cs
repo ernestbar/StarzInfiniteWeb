@@ -106,7 +106,7 @@ namespace StarzInfiniteWeb
                     string pv_carriervuelta, string pv_numerovuelovuelta, DateTime pd_fechalimiteemision, decimal pd_totalcobrar,
                     string pv_moneda, decimal pd_totalimpuestos, decimal pd_montosinimpuestos, string pv_sessionid,
                     string pv_securitytogen,string pv_horaorigenida,string pv_horadestinoida,string pv_horaorigenvuelta,
-                    string pv_horadesitinovuelta)
+                    string pv_horadesitinovuelta,DateTime ps_fecha_llegada_ida, DateTime ps_fecha_llegada_vuelta)
         {
             try
             {
@@ -123,6 +123,7 @@ namespace StarzInfiniteWeb
                 db1.AddInParameter(cmd, "pv_origenida", DbType.String, pv_origenida);
                 db1.AddInParameter(cmd, "pv_destinoida", DbType.String, pv_destinoida);
                 db1.AddInParameter(cmd, "ps_fechaida", DbType.DateTime, ps_fechaida);
+                db1.AddInParameter(cmd, "ps_fecha_llegada_ida", DbType.DateTime, ps_fecha_llegada_ida);
                 db1.AddInParameter(cmd, "pv_claseida", DbType.String, pv_claseida);
                 db1.AddInParameter(cmd, "pv_carrierida", DbType.String, pv_carrierida);
                 db1.AddInParameter(cmd, "pv_numerovueloida", DbType.String, pv_numerovueloida);
@@ -134,6 +135,7 @@ namespace StarzInfiniteWeb
                     db1.AddInParameter(cmd, "pv_origenvuelta", DbType.String, null);
                     db1.AddInParameter(cmd, "pv_desitinovuelta", DbType.String, null);
                     db1.AddInParameter(cmd, "pd_fechavuelta", DbType.DateTime, null);
+                    db1.AddInParameter(cmd, "ps_fecha_llegada_vuelta", DbType.DateTime, null);
                     db1.AddInParameter(cmd, "pv_clasevuelta", DbType.String, null);
                     db1.AddInParameter(cmd, "pv_carriervuelta", DbType.String, null);
                     db1.AddInParameter(cmd, "pv_numerovuelovuelta", DbType.String, null);
@@ -145,6 +147,7 @@ namespace StarzInfiniteWeb
                     db1.AddInParameter(cmd, "pv_origenvuelta", DbType.String, pv_origenvuelta);
                     db1.AddInParameter(cmd, "pv_desitinovuelta", DbType.String, pv_desitinovuelta);
                     db1.AddInParameter(cmd, "pd_fechavuelta", DbType.DateTime, pd_fechavuelta);
+                    db1.AddInParameter(cmd, "ps_fecha_llegada_vuelta", DbType.DateTime, ps_fecha_llegada_vuelta);
                     db1.AddInParameter(cmd, "pv_clasevuelta", DbType.String, pv_clasevuelta);
                     db1.AddInParameter(cmd, "pv_carriervuelta", DbType.String, pv_carriervuelta);
                     db1.AddInParameter(cmd, "pv_numerovuelovuelta", DbType.String, pv_numerovuelovuelta);

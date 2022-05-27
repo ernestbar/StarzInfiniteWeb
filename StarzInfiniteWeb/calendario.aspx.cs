@@ -306,7 +306,7 @@ namespace StarzInfiniteWeb
                                             carrier = vuelos.datos[i].op[x][y].marketCompany;
                                             lugares_disponibles = "";// vuelos.datos[i].op[x][y].lugres_disponibles;
                                             destino = vuelos.datos[i].op[x][y].offAirport;
-                                            fecha_llegada = vuelos.datos[i].op[x][y].ArrivalDate;
+                                            fecha_llegada = ""; //vuelos.datos[i].op[x][y].ArrivalDate;
                                             hora_llegada = vuelos.datos[i].op[x][y].hora_llegada;
                                             duracion = vuelos.datos[i].op[x][y].duracion;
                                             clase = "";// vuelos.datos[i].op[x][y].bookClass;
@@ -600,7 +600,11 @@ namespace StarzInfiniteWeb
             Button obj = (Button)sender;
             string[] datos = obj.CommandArgument.ToString().Split('|');
             string fecha1 = datos[2];
-            string fecha2 = datos[3];
+            string fecha2 = "";
+            if (datos[3]=="")
+                 fecha2 = datos[1];
+            else
+                fecha2 = datos[2];
             string vuelos_directos = "";
             if (cbVueloDirecto.Checked == false)
                 vuelos_directos = "0";

@@ -1280,40 +1280,67 @@ namespace StarzInfiniteWeb
                     lblTotalRes.Text = (double.Parse(datos[1]) + vuelos.datos.monto_total).ToString();
                     if (adultos > 0)
                     {
-
+                        lblAdultosResumenRes.Text = adultos.ToString();
                         if (vuelos.datos.detalle.ADT != null)
                         {
                             lblAdultosPrecios.Text = "<strong>Total: " + vuelos.datos.detalle.ADT.monto_total_por_tipo_pax + "</strong> - Tarifa Base:" + vuelos.datos.detalle.ADT.monto_sin_impuestos_tipo_pax + " - Impuestos: " + vuelos.datos.detalle.ADT.monto_impuestos_tipo_pax;
+                            lblAdultosPreciosRes.Text = "<strong>Total: " + vuelos.datos.detalle.ADT.monto_total_por_tipo_pax + "</strong> - Tarifa Base:" + vuelos.datos.detalle.ADT.monto_sin_impuestos_tipo_pax + " - Impuestos: " + vuelos.datos.detalle.ADT.monto_impuestos_tipo_pax;
                         }
                         else
                         {
                             lblAdultosPrecios.Text = "";
+                            lblAdultosPreciosRes.Text = "";
                         }
 
                     }
                     if (ninos > 0)
                     {
+                        lblNinosResumenRes.Text = ninos.ToString();
                         if (vuelos.datos.detalle.CHD != null)
                         {
                             lblNinosPrecios.Text = "<strong>Total: " + vuelos.datos.detalle.CHD.monto_total_por_tipo_pax + "</strong> - Tarifa Base:" + vuelos.datos.detalle.CHD.monto_sin_impuestos_tipo_pax + " - Impuestos: " + vuelos.datos.detalle.CHD.monto_impuestos_tipo_pax;
+                            lblNinosPreciosRes.Text = "<strong>Total: " + vuelos.datos.detalle.CHD.monto_total_por_tipo_pax + "</strong> - Tarifa Base:" + vuelos.datos.detalle.CHD.monto_sin_impuestos_tipo_pax + " - Impuestos: " + vuelos.datos.detalle.CHD.monto_impuestos_tipo_pax;
                         }
                         else
                         {
                             lblNinosPrecios.Text = "";
+                            lblNinosPreciosRes.Text = "";
                         }
 
 
                     }
                     if (infantes > 0)
                     {
+                        lblInfanteResumenRes.Text = infantes.ToString();
                         if (vuelos.datos.detalle.INF != null)
                         {
                             lblInfantePrecios.Text = "<strong>Total: " + vuelos.datos.detalle.INF.monto_total_por_tipo_pax + "</strong> - Tarifa Base:" + vuelos.datos.detalle.INF.monto_sin_impuestos_tipo_pax + " - Impuestos: " + vuelos.datos.detalle.INF.monto_impuestos_tipo_pax;
+                            lblInfantePreciosRes.Text = "<strong>Total: " + vuelos.datos.detalle.INF.monto_total_por_tipo_pax + "</strong> - Tarifa Base:" + vuelos.datos.detalle.INF.monto_sin_impuestos_tipo_pax + " - Impuestos: " + vuelos.datos.detalle.INF.monto_impuestos_tipo_pax;
                         }
                         else
                         {
                             lblInfantePrecios.Text = "";
+                            lblInfantePreciosRes.Text = "";
                         }
+
+
+
+
+                    }
+                    if (senior > 0)
+                    {
+                        lblSeniorsResumenRes.Text = senior.ToString();
+                        lblSeniorPreciosRes.Text = "";
+                        //if (vuelos.datos.detalle.INF != null)
+                        //{
+                        //    lblInfantePrecios.Text = "<strong>Total: " + vuelos.datos.detalle.INF.monto_total_por_tipo_pax + "</strong> - Tarifa Base:" + vuelos.datos.detalle.INF.monto_sin_impuestos_tipo_pax + " - Impuestos: " + vuelos.datos.detalle.INF.monto_impuestos_tipo_pax;
+                        //    lblInfantePreciosRes.Text = "<strong>Total: " + vuelos.datos.detalle.INF.monto_total_por_tipo_pax + "</strong> - Tarifa Base:" + vuelos.datos.detalle.INF.monto_sin_impuestos_tipo_pax + " - Impuestos: " + vuelos.datos.detalle.INF.monto_impuestos_tipo_pax;
+                        //}
+                        //else
+                        //{
+                        //    lblInfantePrecios.Text = "";
+                        //    lblInfantePreciosRes.Text = "";
+                        //}
 
 
 
@@ -2142,10 +2169,17 @@ namespace StarzInfiniteWeb
                 //dt_itinerario.Columns.Add("leg", typeof(string));8
                 //dt_itinerario.Columns.Add("ld", typeof(string));9
                 string[] aux_ida = lblItiIda.Text.Split('&');
-
+                string origen_ida = "";
+                string destino_ida = "";
                 string aerolinea = "";
                 string hora_salida_ida = "";
                 string hora_llegada_ida = "";
+                string fecha_salida_ida = "";
+                string fecha_llegada_ida = "";
+                string clase_ida = "";
+                string carrier_ida = "";
+                string numero_vuelo_ida = "";
+
                 for (int x = 1; x < aux_ida.Length; x++)
                 {
                     Itinerario obj_i = new Itinerario();
@@ -2163,10 +2197,17 @@ namespace StarzInfiniteWeb
                     it_i.Add(obj_i);
                     if (x == 1)
                     {
+                        clase_ida= iti_ida[4];
+                        carrier_ida= iti_ida[5];
+                        numero_vuelo_ida= iti_ida[6];
+                        origen_ida = iti_ida[0];
                         aerolinea = "|aerolinea:" + iti_ida[5];
                         hora_salida_ida = iti_ida[2];
-                        hora_llegada_ida = iti_ida[16];
+                        fecha_salida_ida = iti_ida[3];
                     }
+                    destino_ida = iti_ida[1];
+                    hora_llegada_ida = iti_ida[16];
+                    fecha_llegada_ida = iti_ida[17];
                     //dt_itinerario.Rows.Add(new string[10] { iti_ida[0], iti_ida[1], iti_ida[2], fecha, iti_ida[4], iti_ida[5], iti_ida[6], iti_ida[7], iti_ida[8], iti_ida[9] });//lblFechaSalidaTab.Text
                 }
                 //dt_itinerario.Columns.Add("origen", typeof(string));0
@@ -2183,16 +2224,18 @@ namespace StarzInfiniteWeb
 
 
 
-                string origen_vuelta, total_pag_vuelta, destino_vuelta, fecha_vuelta, clase_vuelta, carrier_vuelta, nvuelo_vuelta,hora_salida_vuelta,hora_llegada_vuelta;
+                string origen_vuelta, total_pag_vuelta, destino_vuelta, fecha_vuelta, clase_vuelta, carrier_vuelta, nvuelo_vuelta,hora_salida_vuelta,hora_llegada_vuelta,fecha_llegada_vuelta;
                 origen_vuelta = "";
                 destino_vuelta = "";
                 fecha_vuelta = "01/01/3000";
+                fecha_llegada_vuelta = "01/01/3000";
                 clase_vuelta = "";
                 carrier_vuelta = "";
                 nvuelo_vuelta = "";
                 total_pag_vuelta = "";
                 hora_salida_vuelta = "";
                 hora_llegada_vuelta = "";
+                
 
                 if (lblTipoRuta.Text == "RT")
                 {
@@ -2219,17 +2262,28 @@ namespace StarzInfiniteWeb
                         obj_ir.numero_vuelo = iti_vuelta[6];
                         obj_ir.ld = iti_vuelta[9];
                         it_v.Add(obj_ir);
+                        if (z == 1)
+                        {
+                            origen_vuelta = iti_vuelta[0];
+                            aerolinea = "|aerolinea:" + iti_vuelta[5];
+                            hora_salida_vuelta = iti_vuelta[2];
+                            fecha_vuelta = iti_vuelta[3];
+                            clase_vuelta = iti_vuelta[4];
+                            carrier_vuelta = iti_vuelta[5];
+                            nvuelo_vuelta = iti_vuelta[6];
+                        }
+                        destino_vuelta = iti_vuelta[1];
+                        hora_llegada_vuelta = iti_vuelta[16];
+                        fecha_llegada_vuelta = iti_vuelta[17];
                         //dt_itinerario.Rows.Add(new string[10] { iti_vuelta[0], iti_vuelta[1], iti_vuelta[2], fecha, iti_vuelta[4], iti_vuelta[5], iti_vuelta[6], iti_vuelta[7], iti_vuelta[8], iti_vuelta[9] });//lblFechaSalidaTab.Text
                     }
-                    origen_vuelta = datos_vuelo_retorno[0];
-                    destino_vuelta = datos_vuelo_retorno[1];
-                    fecha_vuelta = datos_vuelo_retorno[3];
-                    clase_vuelta = datos_vuelo_retorno[4];
-                    carrier_vuelta = datos_vuelo_retorno[5];
-                    nvuelo_vuelta = datos_vuelo_retorno[6];
+                    //origen_vuelta = datos_vuelo_retorno[0];
+                    //destino_vuelta = datos_vuelo_retorno[1];
+                    //fecha_vuelta = datos_vuelo_retorno[3];
+                   
                     total_pag_vuelta = lblTotalPagarFinal.Text;
-                    hora_salida_vuelta = datos_vuelo_retorno[2];
-                    hora_llegada_vuelta = datos_vuelo_retorno[16];
+                    //hora_salida_vuelta = datos_vuelo_retorno[2];
+                    //hora_llegada_vuelta = datos_vuelo_retorno[16];
                     //obj_ir.origen = datos_vuelo_retorno[0];
                     //obj_ir.destino = datos_vuelo_retorno[1];
                     //obj_ir.fecha = fecha_ret;
@@ -2367,12 +2421,12 @@ namespace StarzInfiniteWeb
                             //    sessionID, securitytoken.Replace(',', '.'));
 
                             string resultado = LocalBD.PUT_INGRESA_TICKETS_WEB("I", lblUsuario.Text, respuesta_res.datos.pnr, "AAAAAA",
-                                datos_fac[0] + "/" + datos_fac[1], datos_fac[2], datos_fac[3], datos_ida[0],
-                                datos_ida[1], DateTime.Parse(fecha_ida), datos_ida[4], datos_ida[5], datos_ida[6], origen_vuelta, destino_vuelta,
+                                datos_fac[0] + "/" + datos_fac[1], datos_fac[2], datos_fac[3], origen_ida,destino_ida,
+                                DateTime.Parse(fecha_ida),clase_ida, carrier_ida, numero_vuelo_ida, origen_vuelta, destino_vuelta,
                                 DateTime.Parse(fecha_vuelta), clase_vuelta, carrier_vuelta, nvuelo_vuelta,
                                 DateTime.Parse(fecha_lim_emision), respuesta_res.datos.total_acobrar,
                                 respuesta_res.datos.moneda, respuesta_res.datos.total_impuestos, respuesta_res.datos.monto_sin_impuestos,
-                                sessionID, securitytoken.Replace(',', '.'), hora_salida_ida, hora_llegada_ida, hora_salida_vuelta, hora_llegada_vuelta);
+                                sessionID, securitytoken.Replace(',', '.'), hora_salida_ida, hora_llegada_ida, hora_salida_vuelta, hora_llegada_vuelta, DateTime.Parse(fecha_llegada_ida), DateTime.Parse(fecha_llegada_vuelta));
 
                             string[] cod_ticket = resultado.Split('|');
                             lblCodTiket.Text = cod_ticket[2];
@@ -2502,12 +2556,12 @@ namespace StarzInfiniteWeb
                             //11 Eval("segment") %>'
                             //12 Eval("leg") %>'
                             string resultado = LocalBD.PUT_INGRESA_TICKETS_WEB("I", lblUsuario.Text, respuesta_res.datos.pnr, "AAAAAA",
-                                datos_fac[0] + "/" + datos_fac[1], datos_fac[2], datos_fac[3], datos_ida[0],
-                                datos_ida[1], DateTime.Parse(fecha_ida), datos_ida[4], datos_ida[5], datos_ida[6], origen_vuelta, destino_vuelta,
+                                datos_fac[0] + "/" + datos_fac[1], datos_fac[2], datos_fac[3], origen_ida, destino_ida,
+                                DateTime.Parse(fecha_ida), clase_ida, carrier_ida, numero_vuelo_ida, origen_vuelta, destino_vuelta,
                                 DateTime.Parse(fecha_vuelta), clase_vuelta, carrier_vuelta, nvuelo_vuelta,
                                 DateTime.Parse(fecha_lim_emision), respuesta_res.datos.total_acobrar,
                                 respuesta_res.datos.moneda, respuesta_res.datos.total_impuestos, respuesta_res.datos.monto_sin_impuestos,
-                                 sessionID, securitytoken.Replace(',', '.'), hora_salida_ida, hora_llegada_ida, hora_salida_vuelta, hora_llegada_vuelta);
+                                sessionID, securitytoken.Replace(',', '.'), hora_salida_ida, hora_llegada_ida, hora_salida_vuelta, hora_llegada_vuelta, DateTime.Parse(fecha_llegada_ida), DateTime.Parse(fecha_llegada_vuelta));
                             string[] cod_ticket = resultado.Split('|');
                             lblCodTiket.Text = cod_ticket[2];
                             string resultado1 = "";
