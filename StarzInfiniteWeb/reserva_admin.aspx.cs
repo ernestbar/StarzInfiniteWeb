@@ -345,10 +345,10 @@ namespace StarzInfiniteWeb
 
                         panel_total_resRes.Visible = true;
 
-                        lblMontoTotalReserva.Text = Math.Round(decimal.Parse(dr1["TOTALCOBRAR"].ToString()), 2).ToString();
+                        lblTotalReservaRes.Text = Math.Round(decimal.Parse(dr1["TOTALCOBRAR"].ToString()), 2).ToString();
                         lblTarifaBaseResRes.Text = Math.Round(decimal.Parse(dr1["MONTOSINIMPUESTOS"].ToString()), 2).ToString();
                         lblTotalImpuestosResRes.Text = Math.Round(decimal.Parse(dr1["TOTALIMPUESTOS"].ToString()), 2).ToString();
-                        lblMonedaReserva.Text = dr1["MONEDA"].ToString();
+                        lblMonedaResRes.Text = dr1["MONEDA"].ToString();
 
                         if (dr1["ESTADO"].ToString() == "PENDIENTE")
                         {
@@ -522,6 +522,12 @@ namespace StarzInfiniteWeb
         protected void btnVolverReserva_Click(object sender, EventArgs e)
         {
             MultiView1.ActiveViewIndex = 0;
+        }
+
+        protected void btnEnviar_Click(object sender, EventArgs e)
+        {
+            string valorHTML = hfHTML.Value;
+            string aux = lblAviso.Text;
         }
     }
 }

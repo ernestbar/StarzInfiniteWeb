@@ -156,8 +156,11 @@
 									</asp:View>
                                     <%--VER                   RESERVA--%>
                                     <asp:View ID="View3" runat="server">
+                                        <asp:Button ID="btnEnviar" CssClass="btn btn-orange" OnClientClick="traerHTML()" OnClick="btnEnviar_Click" runat="server" Text="Enviar Correo" />
+                                        <asp:HiddenField ID="hfHTML" runat="server" />
 										<asp:Button ID="btnVolverReserva" CssClass="btn btn-orange" OnClick="btnVolverReserva_Click" runat="server" Text="Volver" />
-                                        <div class="row">
+                                        <div class="row" style="text-align:left">
+                                            <div id="invoice2" style="font-size:small">
 		                                    <div class="col-12 col-md-6 shadow rounded">
                                                  <div class="row" style="text-align:center;">
                                                            <asp:Image ID="Image9" ImageUrl="~/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label1" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Reserva creada"></asp:Label>
@@ -185,10 +188,7 @@
                                                <br />
                                                 <hr />
                                                  </div>
-                                            </div>
-												<div class="row">
-                                            <div class="rounded shadow col-12 col-md-6">
-                                                <div id="invoice2" style="font-size:small">
+                                                <div class="col-12 col-md-6 shadow rounded">
                                                         <div class="row" style="vertical-align:central">
                                                        <asp:Image ID="Image10" Height="50" ImageUrl="~/Logos/encabezado_logo.png" runat="server" /> 
                                                    </div>
@@ -363,11 +363,11 @@
                                 
 
 
-				                                <asp:Panel ID="panel_total_resRes" Visible="false" Font-Size="XX-Small" runat="server">
+				                                <asp:Panel ID="panel_total_resRes" Visible="true" Font-Size="XX-Small" runat="server">
 					                                 <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
-                                                       <asp:Image ID="Image26" ImageUrl="~/iconos/icono-carrita-resumen-reserva.png" Height="20" runat="server" /><asp:Label ID="Label66" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="Label67" CssClass="col-3" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true" Text=""></asp:Label><asp:Label ID="Label68" CssClass="col-5" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label>
+                                                       <asp:Image ID="Image26" ImageUrl="~/iconos/icono-carrita-resumen-reserva.png" Height="20" runat="server" /><asp:Label ID="Label66" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="lblTotalReservaRes" CssClass="col-3" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true" Text=""></asp:Label><asp:Label ID="lblMonedaResRes" CssClass="col-5" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label>
                                                    </div>
-                                                    <asp:Panel ID="Panel8" Visible="false" runat="server">
+                                                    <asp:Panel ID="Panel8" Visible="true" runat="server">
                                                             <div class="row" style="vertical-align:central;text-align:center">
                                                        <asp:Label ID="Label69" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text="Tarifa base     "></asp:Label><asp:Label ID="lblTarifaBaseResRes" CssClass="col-6" runat="server" Font-Size="Medium"   Font-Bold="false"  Text=""></asp:Label>
                                                    </div>
@@ -385,10 +385,10 @@
                                                        <hr />
 
                                    
-                                                        </div>
+                                                      
                             
 
-                                                           <div class="row" style="vertical-align:central">
+                                                          <%-- <div class="row" style="vertical-align:central">
                                                                <asp:Image ID="Image19" ImageUrl="~/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label20" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Resumen de la reserva"></asp:Label>
                         
                                                            </div>
@@ -442,7 +442,7 @@
 				                                        </asp:Panel>
 				                                        <asp:Panel ID="panel3" Visible="true" runat="server">
 					                                         <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
-                                                               <asp:Image ID="Image23" ImageUrl="~/iconos/icono-carrita-resumen-reserva.png" runat="server" /><asp:Label ID="Label29" CssClass="col-4" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="lblMonedaReserva" runat="server" Font-Size="Large"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label><asp:Label ID="lblMontoTotalReserva" CssClass="col-4" runat="server" Font-Size="Large"  ForeColor="#0066ff"  Font-Bold="true"  Text="Vuelta"></asp:Label>
+                                                               <asp:Image ID="Image23" ImageUrl="~/iconos/icono-carrita-resumen-reserva.png" Height="30" runat="server" /><asp:Label ID="Label29" CssClass="col-4" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="lblMonedaReserva" runat="server" Font-Size="Large"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label><asp:Label ID="lblMontoTotalReserva" CssClass="col-4" runat="server" Font-Size="Large"  ForeColor="#0066ff"  Font-Bold="true"  Text="Vuelta"></asp:Label>
                                                            </div>
                                                             <div class="row" style="vertical-align:central">
                                                                <asp:Label ID="Label30"  runat="server" Font-Size="Small"   Font-Bold="false"  Text="Tarifa base     "></asp:Label><asp:Label ID="lblTarifaBaseReserva" CssClass="col-6" runat="server" Font-Size="Small"   Font-Bold="false"  Text=""></asp:Label>
@@ -462,13 +462,10 @@
                                                             <div class="row" style="vertical-align:central;border-style:solid;border-color:yellow;border-width:1px;">
                                                                    <asp:Label ID="Label38" runat="server" Font-Size="Small" Visible="false"   Font-Bold="false"  Text="Ganancia total     "></asp:Label><asp:Label ID="Label32" CssClass="col-6" runat="server" Font-Size="Small" Visible="false"   Font-Bold="false"  Text=""></asp:Label>
                                                                </div>
-				                                        </asp:Panel><br /><br />
-                                               
-                                                    </div>
-                                        </div>
+				                                        </asp:Panel><br /><br />--%>
                                                 <div class="row">
                                                        <div class="row">
-                                                           <asp:Image ID="Image8" ImageUrl="~/iconos/icono-datos-de-pasajero.png" runat="server" />  <asp:Label ID="Label4" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Lista de pasajeros"></asp:Label>
+                                                           <asp:Image ID="Image8" ImageUrl="~/iconos/icono-datos-de-pasajero.png" Height="30" runat="server" />  <asp:Label ID="Label4" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Lista de pasajeros"></asp:Label>
                                                             <br /><br />
                                                        </div>
                                                     <div class="table-responsive offset-1">
@@ -502,9 +499,9 @@
 
 										                                    </div>
                                                 </div>
-    
+                                                    </div>
+    </div></div>
                                                  
-
 										
                                     </asp:View>
 
@@ -525,6 +522,12 @@
             document.getElementById('<%=hfFecha2.ClientID%>').value = document.getElementById('fecha_retorno1').value;
 		}
 
+         function traerHTML() {
+             alert();
+             var MyDiv1 = document.getElementById('invoice2').innerHTML;
+             alert(MyDiv1);
+             document.getElementById('<%=lblAviso.ClientID%>').text = MyDiv1;
+         }
       
      </script>
 
