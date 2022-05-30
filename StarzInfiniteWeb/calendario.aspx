@@ -241,37 +241,75 @@
                 <asp:View ID="View1" runat="server">
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side">
                         <div class="row">
-                          
+                            <div class="table-responsive">
+                          <table class="table table-bordered order-table ">
+											 <thead>
+																<tr>
+																	<td>
+																		<strong>+/- 3</strong>
+																	</td>
+                                                                    <td>
+																		<strong><asp:Label ID="lblF1" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
+																	</td>
+																	<td>
+																		<strong><asp:Label ID="lblF2" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
+																	</td>
+																	<td>
+																		<strong><asp:Label ID="lblF3" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
+																	</td>
+																	<td>
+																		<strong><asp:Label ID="lblF4" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
+																	</td>
+																	
+																	<td>
+                                                                       <strong><asp:Label ID="lblF5" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
+																	</td>
+																	<td>
+                                                                        <strong><asp:Label ID="lblF6" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
+																	</td>
+																	<td>
+                                                                        <strong><asp:Label ID="lblF7" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
+																	</td>
+																</tr>
+														</thead>
+													<tbody>	
        		                <asp:Repeater ID="Repeater1" runat="server">
 					                 <ItemTemplate>
-                                           <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                                          <div class="grid-block main-block f-grid-block">
-                                                <a href="flight-detail-left-sidebar.html">
-                                                <div class="main-img f-img">
-                                                    <asp:Label ID="Label8" runat="server" ForeColor="Green" Font-Bold="true" Font-Size="Larger" Text='<%# Eval("depDate") %>'> </asp:Label>
-                                                    <asp:Button ID="btnComprar" class="btn btn-orange btn-md col-4" OnClick="btnComprar_Click" CommandArgument='<%# Eval("boardAirport") +"|"+Eval("offAirport") +"|"+Eval("depDate") +"|"+Eval("ArrivalDate") %>' runat="server" Text="VER VUELOS" />
-                                                    <asp:Label ID="Label1" runat="server" ForeColor="Green" Font-Bold="true" Font-Size="Larger" Text='<%# Eval("ArrivalDate") %>'> </asp:Label>
-                                                   <%-- <img src="images/flight-1.jpg" class="img-responsive" alt="flight-img" />--%>
-                                                    </div><!-- end f-img -->
-                                                    </a>
-                                                <ul class="list-unstyled list-inline offer-price-1">
-                                                <li class="price"><asp:Label ID="lblCosto" ForeColor="Green" runat="server" Font-Bold="true" Font-Size="Larger" Text='<%# Eval("precio") %>'></asp:Label><span class="divider">|</span>
-                                                    <span class="pkg"><asp:Label ID="Label3" runat="server" ForeColor="Green" Font-Bold="true" Font-Size="Larger" Text='<%# Eval("moneda") %>'> </asp:Label></span>
-                                                    </li>
-                                                    </ul>
-
-                                            </div>
-                                               </div>
-                                           <%--<li class="active"><a href="#"><span></span>
-                                               
-                                                                
-                                       
-                                                              </a></li>--%>
+                                        
+                                          <tr>
+																			<td>
+                                                                                <asp:Label ID="lblFechaLlegada" Font-Bold="true" runat="server" Text='<%# Eval("[0]") %>'></asp:Label>
+																			</td>
+                                                                            <td style="align-content:center">
+                                                                                <asp:Button ID="btnComprar1" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|1" %>' OnClick="btnComprar1_Click" runat="server" Text='<%# Eval("[1]")+" "+ Eval("[8]") %>' />
+																			</td>
+																			  <td>
+                                                                                  <asp:Button ID="btnComprar2" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|2" %>' OnClick="btnComprar2_Click" runat="server" Text='<%# Eval("[2]")+" "+ Eval("[8]") %>' />
+																			</td>
+																			  <td>
+																				<asp:Button ID="btnComprar3" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|3" %>' OnClick="btnComprar3_Click" runat="server" Text='<%# Eval("[3]")+" "+ Eval("[8]") %>' />
+																			</td>
+																			<td>
+																				<asp:Button ID="btnComprar4" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|4" %>' OnClick="btnComprar4_Click" runat="server" Text='<%# Eval("[4]")+" "+ Eval("[8]") %>' />
+																			</td>
+																			<td>
+																				<asp:Button ID="btnComprar5" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|5" %>' OnClick="btnComprar5_Click" runat="server" Text='<%# Eval("[5]")+" "+ Eval("[8]") %>' />
+																			</td>
+																		<td>
+																				<asp:Button ID="btnComprar6" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|6" %>' OnClick="btnComprar6_Click" runat="server" Text='<%# Eval("[6]")+" "+ Eval("[8]") %>' />
+																			</td>
+                                                                        <td>
+																				<asp:Button ID="btnComprar7" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|7" %>' OnClick="btnComprar7_Click" runat="server" Text='<%# Eval("[7]")+" "+ Eval("[8]") %>' />
+																			</td>
+																		</tr>
+                                           
 							                </ItemTemplate>
 					                </asp:Repeater>
 
-                            
-
+                           </tbody>
+																
+															</table>
+                                </div>
                         </div>
                         </div>
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side">
@@ -288,6 +326,7 @@
                             </div>
 				
                     </div>
+                    <asp:GridView ID="gvMatriz" runat="server"></asp:GridView>
                 </asp:View>
                
             </asp:MultiView>
