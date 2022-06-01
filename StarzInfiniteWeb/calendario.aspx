@@ -281,25 +281,31 @@
                                                                                 <asp:Label ID="lblFechaLlegada" Font-Bold="true" runat="server" Text='<%# Eval("[0]") %>'></asp:Label>
 																			</td>
                                                                             <td style="align-content:center">
-                                                                                <asp:Button ID="btnComprar1" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|1" %>' OnClick="btnComprar1_Click" runat="server" Text='<%# Eval("[1]")+" "+ Eval("[8]") %>' />
+                                                                                <asp:Image ID="Image3" Height="30" ImageUrl='<%# "~/Logos/" + Eval("[11]") +".png" %>' runat="server" Visible='<%# Eval("[1]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' />
+                                                                                <asp:Button ID="btnComprar1" Visible='<%# Eval("[1]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|1" %>' OnClick="btnComprar1_Click" runat="server" Text='<%# Eval("[1]")+" "+ Eval("[8]") %>' />
 																			</td>
 																			  <td>
-                                                                                  <asp:Button ID="btnComprar2" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|2" %>' OnClick="btnComprar2_Click" runat="server" Text='<%# Eval("[2]")+" "+ Eval("[8]") %>' />
+                                                                                  <asp:Image ID="Image1" Height="30" ImageUrl='<%# "~/Logos/" + Eval("[12]") +".png" %>' runat="server" Visible='<%# Eval("[2]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>'/>
+                                                                                  <asp:Button ID="btnComprar2" Visible='<%# Eval("[2]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|2" %>' OnClick="btnComprar2_Click" runat="server" Text='<%# Eval("[2]")+" "+ Eval("[8]") %>' />
 																			</td>
 																			  <td>
-																				<asp:Button ID="btnComprar3" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|3" %>' OnClick="btnComprar3_Click" runat="server" Text='<%# Eval("[3]")+" "+ Eval("[8]") %>' />
+                                                                                  <asp:Image ID="Image2" Height="30" ImageUrl='<%# "~/Logos/" + Eval("[13]") +".png" %>' runat="server" Visible='<%# Eval("[3]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' />
+																				<asp:Button ID="btnComprar3" Visible='<%# Eval("[3]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|3" %>' OnClick="btnComprar3_Click" runat="server" Text='<%# Eval("[3]")+" "+ Eval("[8]") %>' />
 																			</td>
 																			<td>
-																				<asp:Button ID="btnComprar4" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|4" %>' OnClick="btnComprar4_Click" runat="server" Text='<%# Eval("[4]")+" "+ Eval("[8]") %>' />
+                                                                                <asp:Image ID="Image4" Height="30" ImageUrl='<%# "~/Logos/" + Eval("[14]") +".png" %>' runat="server" Visible='<%# Eval("[4]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' />
+																				<asp:Button ID="btnComprar4" Visible='<%# Eval("[4]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|4" %>' OnClick="btnComprar4_Click" runat="server" Text='<%# Eval("[4]")+" "+ Eval("[8]") %>' />
 																			</td>
 																			<td>
-																				<asp:Button ID="btnComprar5" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|5" %>' OnClick="btnComprar5_Click" runat="server" Text='<%# Eval("[5]")+" "+ Eval("[8]") %>' />
+                                                                                <asp:Image ID="Image5" Height="30" ImageUrl='<%# "~/Logos/" + Eval("[15]") +".png" %>' runat="server" Visible='<%# Eval("[5]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' />
+																				<asp:Button ID="btnComprar5" Visible='<%# Eval("[5]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|5" %>' OnClick="btnComprar5_Click" runat="server" Text='<%# Eval("[5]")+" "+ Eval("[8]") %>' />
 																			</td>
-																		<td>
-																				<asp:Button ID="btnComprar6" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|6" %>' OnClick="btnComprar6_Click" runat="server" Text='<%# Eval("[6]")+" "+ Eval("[8]") %>' />
+																		    <td><asp:Image ID="Image6" Height="30" ImageUrl='<%# "~/Logos/" + Eval("[16]") +".png" %>' runat="server" Visible='<%# Eval("[6]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' />
+																				<asp:Button ID="btnComprar6" Visible='<%# Eval("[6]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|6" %>' OnClick="btnComprar6_Click" runat="server" Text='<%# Eval("[6]")+" "+ Eval("[8]") %>' />
 																			</td>
                                                                         <td>
-																				<asp:Button ID="btnComprar7" class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[10]")+"|"+ Eval("[11]")+"|7" %>' OnClick="btnComprar7_Click" runat="server" Text='<%# Eval("[7]")+" "+ Eval("[8]") %>' />
+                                                                            <asp:Image ID="Image7" Height="30" ImageUrl='<%# "~/Logos/" + Eval("[17]") +".png" %>' runat="server" Visible='<%# Eval("[7]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>'/>
+																				<asp:Button ID="btnComprar7" Visible='<%# Eval("[7]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|7" %>' OnClick="btnComprar7_Click" runat="server" Text='<%# Eval("[7]")+" "+ Eval("[8]") %>' />
 																			</td>
 																		</tr>
                                            
@@ -326,7 +332,7 @@
                             </div>
 				
                     </div>
-                    <asp:GridView ID="gvMatriz" runat="server"></asp:GridView>
+                    <asp:GridView ID="gvMatriz" Visible="false" runat="server"></asp:GridView>
                 </asp:View>
                
             </asp:MultiView>

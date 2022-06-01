@@ -227,9 +227,9 @@ namespace StarzInfiniteWeb
 
 
 
-                        dt_matriz.Columns.AddRange(new DataColumn[12]
+                        dt_matriz.Columns.AddRange(new DataColumn[18]
                         {
-                             new DataColumn("+/-3", typeof(string)),
+                             new DataColumn("+/-3", typeof(DateTime)),
                              new DataColumn(fMatriz.AddDays(-3).ToShortDateString(), typeof(decimal)),
                              new DataColumn(fMatriz.AddDays(-2).ToShortDateString(), typeof(decimal)),
                              new DataColumn(fMatriz.AddDays(-1).ToShortDateString(), typeof(decimal)),
@@ -238,9 +238,15 @@ namespace StarzInfiniteWeb
                              new DataColumn(fMatriz.AddDays(2).ToShortDateString(), typeof(decimal)),
                              new DataColumn(fMatriz.AddDays(3).ToShortDateString(), typeof(decimal)),
                              new DataColumn("moneda", typeof(string)),
-                             new DataColumn("operador", typeof(string)),
                              new DataColumn("origen", typeof(string)),
-                             new DataColumn("destino", typeof(string))
+                             new DataColumn("destino", typeof(string)),
+                             new DataColumn("op1", typeof(string)),
+                             new DataColumn("op2", typeof(string)),
+                             new DataColumn("op3", typeof(string)),
+                             new DataColumn("op4", typeof(string)),
+                             new DataColumn("op5", typeof(string)),
+                             new DataColumn("op6", typeof(string)),
+                             new DataColumn("op7", typeof(string))
                         });
 
 
@@ -330,7 +336,7 @@ namespace StarzInfiniteWeb
                                             hora_salida = vuelos.datos[i].op[x][y].depTime;
                                             numero_vuelo = vuelos.datos[i].op[x][y].flightNumber;
                                             carrier =vuelos.datos[i].op[x][y].marketCompany;
-                                            carrier_aux = carrier_aux + "|" + carrier;
+                                            carrier_aux = carrier;
                                             lugares_disponibles = "";// vuelos.datos[i].op[x][y].lugres_disponibles;
                                             destino = vuelos.datos[i].op[x][y].offAirport;
                                             fecha_llegada = "Sólo ida";// vuelos.datos[i].op[x][y].ArrivalDate;
@@ -385,19 +391,19 @@ namespace StarzInfiniteWeb
                                 lblF6.Text = fMatriz.AddDays(2).ToShortDateString();
                                 lblF7.Text = fMatriz.AddDays(3).ToShortDateString();
                                 if (fMatriz.AddDays(-3).ToShortDateString() == DateTime.Parse(fecha_partida).ToShortDateString())
-                                    dt_matriz.Rows.Add(fecha_llegada, monto, 0, 0, 0, 0, 0, 0,moneda, carrier_aux, origen,destino);
+                                    dt_matriz.Rows.Add(fecha_llegada, monto, 0, 0, 0, 0, 0, 0,moneda, origen,destino, carrier_aux,"","","","","","" );
                                 if (fMatriz.AddDays(-2).ToShortDateString() == DateTime.Parse(fecha_partida).ToShortDateString())
-                                    dt_matriz.Rows.Add(fecha_llegada, 0, monto, 0, 0, 0, 0, 0, moneda, carrier_aux, origen, destino);
+                                    dt_matriz.Rows.Add(fecha_llegada, 0, monto, 0, 0, 0, 0, 0, moneda, origen, destino, "",carrier_aux, "", "", "", "", "");
                                 if (fMatriz.AddDays(-1).ToShortDateString() == DateTime.Parse(fecha_partida).ToShortDateString())
-                                    dt_matriz.Rows.Add(fecha_llegada, 0, 0, monto, 0, 0, 0, 0, moneda, carrier_aux, origen, destino);
+                                    dt_matriz.Rows.Add(fecha_llegada, 0, 0, monto, 0, 0, 0, 0, moneda, origen, destino, "", "", carrier_aux, "", "", "", "");
                                 if (fMatriz.ToShortDateString() == DateTime.Parse(fecha_partida).ToShortDateString())
-                                    dt_matriz.Rows.Add(fecha_llegada, 0, 0, 0, monto, 0, 0, 0, moneda, carrier_aux, origen, destino);
+                                    dt_matriz.Rows.Add(fecha_llegada, 0, 0, 0, monto, 0, 0, 0, moneda, origen, destino, "", "", "", carrier_aux, "", "", "");
                                 if (fMatriz.AddDays(1).ToShortDateString() == DateTime.Parse(fecha_partida).ToShortDateString())
-                                    dt_matriz.Rows.Add(fecha_llegada, 0, 0, 0, 0, monto, 0, 0, moneda, carrier_aux, origen, destino);
+                                    dt_matriz.Rows.Add(fecha_llegada, 0, 0, 0, 0, monto, 0, 0, moneda, origen, destino, "", "", "", "", carrier_aux, "", "");
                                 if (fMatriz.AddDays(2).ToShortDateString() == DateTime.Parse(fecha_partida).ToShortDateString())
-                                    dt_matriz.Rows.Add(fecha_llegada, 0, 0, 0, 0, 0, monto, 0, moneda, carrier_aux, origen, destino);
+                                    dt_matriz.Rows.Add(fecha_llegada, 0, 0, 0, 0, 0, monto, 0, moneda, origen, destino, "", "", "", "", "", carrier_aux, "");
                                 if (fMatriz.AddDays(3).ToShortDateString() == DateTime.Parse(fecha_partida).ToShortDateString())
-                                    dt_matriz.Rows.Add(fecha_llegada, 0, 0, 0, 0, 0, 0, monto, moneda, carrier_aux, origen, destino);
+                                    dt_matriz.Rows.Add(fecha_llegada, 0, 0, 0, 0, 0, 0, monto, moneda, origen, destino, "", "", "", "", "", "", carrier_aux);
                                 //monto_total = Math.Round((decimal.Parse(monto.Replace(".", ",")) + decimal.Parse(FeeTotal.Replace(".", ","))), 2);
                                 monto_total = Math.Round((decimal.Parse(monto.Replace(",", ".")) + decimal.Parse(FeeTotal.Replace(",", "."))), 2);
                                 lblDtDatosAll.Text = lblDtDatosAll.Text + i + "&" + monto_total.ToString() + "&" + vuelos.datos[i].moneda + "&" + vuelos.datos[i].gds + "&" + origen + "&" + destino + "&" + fecha_partida + "&" + fecha_llegada + "&" +
@@ -514,13 +520,22 @@ namespace StarzInfiniteWeb
                                                 row[8] = x.First().Field<string>(8);
                                                 row[9] = x.First().Field<string>(9);
                                                 row[10] = x.First().Field<string>(10);
-                                                row[11] = x.First().Field<string>(11);
+                                                row[11] = x.Last().Field<string>(11);
+                                                row[12] = x.Last().Field<string>(12);
+                                                row[13] = x.Last().Field<string>(13);
+                                                row[14] = x.Last().Field<string>(14);
+                                                row[15] = x.Last().Field<string>(15);
+                                                row[16] = x.Last().Field<string>(16);
+                                                row[17] = x.Last().Field<string>(17);
                                                 return row;
                                             }).CopyToDataTable();
 
 
+                        DataView dtV = dtFinal.DefaultView;
+                        dtV.Sort = "+/-3 ASC";
+                        dtFinal = dtV.ToTable();
 
-                        gvMatriz.DataSource = dt_datos;
+                        gvMatriz.DataSource = dt_matriz;
                         gvMatriz.DataBind();
                         Repeater1.DataSource = dtFinal;
                         Repeater1.DataBind();
@@ -769,32 +784,260 @@ namespace StarzInfiniteWeb
 
         protected void btnComprar2_Click(object sender, EventArgs e)
         {
+            Button obj = (Button)sender;
+            string[] datos = obj.CommandArgument.ToString().Split('|');
+            string[] aux_fecha1 = lblF1.Text.Split('/');
 
+
+
+            string fecha1 = aux_fecha1[2] + "-" + aux_fecha1[1] + "-" + aux_fecha1[0];
+            string fecha2 = "";
+
+            if (datos[0] == "Sólo ida")
+                fecha2 = fecha1;
+            else
+            {
+                string[] aux_fecha2 = datos[0].Split('/');
+                fecha2 = aux_fecha2[2] + "-" + aux_fecha2[1] + "-" + aux_fecha2[0];
+            }
+
+
+            //if (datos[3] == "")
+            //    fecha2 = datos[1];
+            //else
+            //    fecha2 = datos[2];
+            string vuelos_directos = "";
+            if (cbVueloDirecto.Checked == false)
+                vuelos_directos = "0";
+            else
+                vuelos_directos = "1";
+            string vuelos_incluyenequipaje = "";
+            if (cbEquipaje.Checked == false)
+                vuelos_incluyenequipaje = "0";
+            else
+                vuelos_incluyenequipaje = "1";
+
+            Session["DATOSINI"] = hfTipoRuta.Value + "|" + datos[1] + "|" + datos[2] + "|" + fecha1 + "|" + fecha2
+                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
+                 + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
+                 + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
+
+            Response.Redirect("vuelos.aspx");
         }
 
         protected void btnComprar3_Click(object sender, EventArgs e)
         {
+            Button obj = (Button)sender;
+            string[] datos = obj.CommandArgument.ToString().Split('|');
+            string[] aux_fecha1 = lblF1.Text.Split('/');
 
+
+
+            string fecha1 = aux_fecha1[2] + "-" + aux_fecha1[1] + "-" + aux_fecha1[0];
+            string fecha2 = "";
+
+            if (datos[0] == "Sólo ida")
+                fecha2 = fecha1;
+            else
+            {
+                string[] aux_fecha2 = datos[0].Split('/');
+                fecha2 = aux_fecha2[2] + "-" + aux_fecha2[1] + "-" + aux_fecha2[0];
+            }
+
+
+            //if (datos[3] == "")
+            //    fecha2 = datos[1];
+            //else
+            //    fecha2 = datos[2];
+            string vuelos_directos = "";
+            if (cbVueloDirecto.Checked == false)
+                vuelos_directos = "0";
+            else
+                vuelos_directos = "1";
+            string vuelos_incluyenequipaje = "";
+            if (cbEquipaje.Checked == false)
+                vuelos_incluyenequipaje = "0";
+            else
+                vuelos_incluyenequipaje = "1";
+
+            Session["DATOSINI"] = hfTipoRuta.Value + "|" + datos[1] + "|" + datos[2] + "|" + fecha1 + "|" + fecha2
+                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
+                 + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
+                 + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
+
+            Response.Redirect("vuelos.aspx");
         }
 
         protected void btnComprar4_Click(object sender, EventArgs e)
         {
+            Button obj = (Button)sender;
+            string[] datos = obj.CommandArgument.ToString().Split('|');
+            string[] aux_fecha1 = lblF1.Text.Split('/');
 
+
+
+            string fecha1 = aux_fecha1[2] + "-" + aux_fecha1[1] + "-" + aux_fecha1[0];
+            string fecha2 = "";
+
+            if (datos[0] == "Sólo ida")
+                fecha2 = fecha1;
+            else
+            {
+                string[] aux_fecha2 = datos[0].Split('/');
+                fecha2 = aux_fecha2[2] + "-" + aux_fecha2[1] + "-" + aux_fecha2[0];
+            }
+
+
+            //if (datos[3] == "")
+            //    fecha2 = datos[1];
+            //else
+            //    fecha2 = datos[2];
+            string vuelos_directos = "";
+            if (cbVueloDirecto.Checked == false)
+                vuelos_directos = "0";
+            else
+                vuelos_directos = "1";
+            string vuelos_incluyenequipaje = "";
+            if (cbEquipaje.Checked == false)
+                vuelos_incluyenequipaje = "0";
+            else
+                vuelos_incluyenequipaje = "1";
+
+            Session["DATOSINI"] = hfTipoRuta.Value + "|" + datos[1] + "|" + datos[2] + "|" + fecha1 + "|" + fecha2
+                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
+                 + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
+                 + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
+
+            Response.Redirect("vuelos.aspx");
         }
 
         protected void btnComprar5_Click(object sender, EventArgs e)
         {
+            Button obj = (Button)sender;
+            string[] datos = obj.CommandArgument.ToString().Split('|');
+            string[] aux_fecha1 = lblF1.Text.Split('/');
 
+
+
+            string fecha1 = aux_fecha1[2] + "-" + aux_fecha1[1] + "-" + aux_fecha1[0];
+            string fecha2 = "";
+
+            if (datos[0] == "Sólo ida")
+                fecha2 = fecha1;
+            else
+            {
+                string[] aux_fecha2 = datos[0].Split('/');
+                fecha2 = aux_fecha2[2] + "-" + aux_fecha2[1] + "-" + aux_fecha2[0];
+            }
+
+
+            //if (datos[3] == "")
+            //    fecha2 = datos[1];
+            //else
+            //    fecha2 = datos[2];
+            string vuelos_directos = "";
+            if (cbVueloDirecto.Checked == false)
+                vuelos_directos = "0";
+            else
+                vuelos_directos = "1";
+            string vuelos_incluyenequipaje = "";
+            if (cbEquipaje.Checked == false)
+                vuelos_incluyenequipaje = "0";
+            else
+                vuelos_incluyenequipaje = "1";
+
+            Session["DATOSINI"] = hfTipoRuta.Value + "|" + datos[1] + "|" + datos[2] + "|" + fecha1 + "|" + fecha2
+                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
+                 + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
+                 + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
+
+            Response.Redirect("vuelos.aspx");
         }
 
         protected void btnComprar6_Click(object sender, EventArgs e)
         {
+            Button obj = (Button)sender;
+            string[] datos = obj.CommandArgument.ToString().Split('|');
+            string[] aux_fecha1 = lblF1.Text.Split('/');
 
+
+
+            string fecha1 = aux_fecha1[2] + "-" + aux_fecha1[1] + "-" + aux_fecha1[0];
+            string fecha2 = "";
+
+            if (datos[0] == "Sólo ida")
+                fecha2 = fecha1;
+            else
+            {
+                string[] aux_fecha2 = datos[0].Split('/');
+                fecha2 = aux_fecha2[2] + "-" + aux_fecha2[1] + "-" + aux_fecha2[0];
+            }
+
+
+            //if (datos[3] == "")
+            //    fecha2 = datos[1];
+            //else
+            //    fecha2 = datos[2];
+            string vuelos_directos = "";
+            if (cbVueloDirecto.Checked == false)
+                vuelos_directos = "0";
+            else
+                vuelos_directos = "1";
+            string vuelos_incluyenequipaje = "";
+            if (cbEquipaje.Checked == false)
+                vuelos_incluyenequipaje = "0";
+            else
+                vuelos_incluyenequipaje = "1";
+
+            Session["DATOSINI"] = hfTipoRuta.Value + "|" + datos[1] + "|" + datos[2] + "|" + fecha1 + "|" + fecha2
+                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
+                 + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
+                 + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
+
+            Response.Redirect("vuelos.aspx");
         }
 
         protected void btnComprar7_Click(object sender, EventArgs e)
         {
+            Button obj = (Button)sender;
+            string[] datos = obj.CommandArgument.ToString().Split('|');
+            string[] aux_fecha1 = lblF1.Text.Split('/');
 
+
+
+            string fecha1 = aux_fecha1[2] + "-" + aux_fecha1[1] + "-" + aux_fecha1[0];
+            string fecha2 = "";
+
+            if (datos[0] == "Sólo ida")
+                fecha2 = fecha1;
+            else
+            {
+                string[] aux_fecha2 = datos[0].Split('/');
+                fecha2 = aux_fecha2[2] + "-" + aux_fecha2[1] + "-" + aux_fecha2[0];
+            }
+
+
+            //if (datos[3] == "")
+            //    fecha2 = datos[1];
+            //else
+            //    fecha2 = datos[2];
+            string vuelos_directos = "";
+            if (cbVueloDirecto.Checked == false)
+                vuelos_directos = "0";
+            else
+                vuelos_directos = "1";
+            string vuelos_incluyenequipaje = "";
+            if (cbEquipaje.Checked == false)
+                vuelos_incluyenequipaje = "0";
+            else
+                vuelos_incluyenequipaje = "1";
+
+            Session["DATOSINI"] = hfTipoRuta.Value + "|" + datos[1] + "|" + datos[2] + "|" + fecha1 + "|" + fecha2
+                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
+                 + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
+                 + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
+
+            Response.Redirect("vuelos.aspx");
         }
     }
 }
