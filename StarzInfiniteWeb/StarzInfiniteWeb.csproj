@@ -540,6 +540,7 @@
     <Content Include="Scripts\js\chosen.jquery.min.js" />
     <Content Include="soporte.aspx" />
     <Content Include="table2excel.js" />
+    <Content Include="test_correo.aspx" />
     <Content Include="vuelos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -555,6 +556,7 @@
     <Compile Include="Clases\DBApi.cs" />
     <Compile Include="Clases\Dominios.cs" />
     <Compile Include="Clases\DsiponabilidadIda.cs" />
+    <Compile Include="Clases\enviar_correo.cs" />
     <Compile Include="Clases\LocalBD.cs" />
     <Compile Include="Clases\matriz7.cs" />
     <Compile Include="Clases\precio_sin_pnr.cs" />
@@ -652,6 +654,13 @@
     </Compile>
     <Compile Include="soporte.aspx.designer.cs">
       <DependentUpon>soporte.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test_correo.aspx.cs">
+      <DependentUpon>test_correo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test_correo.aspx.designer.cs">
+      <DependentUpon>test_correo.aspx</DependentUpon>
     </Compile>
     <Compile Include="vuelos.aspx.cs">
       <DependentUpon>vuelos.aspx</DependentUpon>

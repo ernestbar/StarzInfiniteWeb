@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="vuelos.aspx.cs" Inherits="StarzInfiniteWeb.vuelos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" ValidateRequest="false" CodeBehind="vuelos.aspx.cs" Inherits="StarzInfiniteWeb.vuelos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -678,7 +678,8 @@
                                                                 Salida
                                                         </li>
                                                         <li>
-                                                                Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'>:</asp:Label> Airline:<asp:Label ID="Label23" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>
+                                                            ________________________________
+                                                                <%--Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'>:</asp:Label> Airline:<asp:Label ID="Label23" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>--%>
                                                         </li>
                                                         <li>
                                                                 Llegada
@@ -702,17 +703,12 @@
                                                                 <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
                                                         </li>
                                                         <li>
-                                                            <asp:Label ID="Label5" runat="server" Text='<%# "Vuelo " + Eval("flightNumber") + " Clase "  +Eval("bookClass")+ " Disponibles "  +Eval("lugres_disponibles")%>'></asp:Label><br />
+                                                             Maletas: <asp:Label ID="Label9" runat="server" Text='<%# Eval("equipaje") %>'>:</asp:Label>
+                                                             Duracion: <asp:Label ID="Label49" runat="server" Text='<%# Eval("duracion") %>'>:</asp:Label>
+                                                            <%--<asp:Label ID="Label5" runat="server" Text='<%# "Vuelo " + Eval("flightNumber") + " Clase "  +Eval("bookClass")+ " Disponibles "  +Eval("lugres_disponibles")%>'></asp:Label><br />--%>
                                                         </li>
                                                         <li>
                                                                 <asp:Label ID="Label6" runat="server" Text='<%# Eval("offAirport") %>'>:</asp:Label>
-                                                        </li>
-                                                             
-                                                           <li>
-                                                               Maletas: <asp:Label ID="Label9" runat="server" Text='<%# Eval("equipaje") %>'>:</asp:Label>
-                                                        </li>
-                                                           <li>
-                                                               Duracion: <asp:Label ID="Label49" runat="server" Text='<%# Eval("duracion") %>'>:</asp:Label>
                                                         </li>
                                                     </ul>
 
@@ -743,7 +739,8 @@
                                                                 Salida
                                                         </li>
                                                         <li>
-                                                                Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'></asp:Label>  Airline:<asp:Label ID="Label24" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>
+                                                            ________________________________
+                                                                <%--Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'></asp:Label>  Airline:<asp:Label ID="Label24" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>--%>
                                                         </li>
                                                         <li>
                                                                 Llegada
@@ -767,17 +764,14 @@
                                                                 <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
                                                         </li>
                                                         <li>
-                                                            <asp:Label ID="Label5" runat="server" Text='<%# "Vuelo " + Eval("flightNumber") + " Clase "  +Eval("bookClass")+ " Disponibles "  +Eval("lugres_disponibles")%>'></asp:Label><br />
+                                                            Maletas: <asp:Label ID="Label9" runat="server" Text='<%# Eval("equipaje") %>'>:</asp:Label>
+                                                            Duracion: <asp:Label ID="Label49" runat="server" Text='<%# Eval("duracion") %>'>:</asp:Label>
+                                                            <%--<asp:Label ID="Label5" runat="server" Text='<%# "Vuelo " + Eval("flightNumber") + " Clase "  +Eval("bookClass")+ " Disponibles "  +Eval("lugres_disponibles")%>'></asp:Label><br />--%>
                                                         </li>
                                                         <li>
                                                                 <asp:Label ID="Label6" runat="server" Text='<%# Eval("offAirport") %>'>:</asp:Label>
                                                         </li>
-                                                              <li>
-                                                               Maletas: <asp:Label ID="Label9" runat="server" Text='<%# Eval("equipaje") %>'>:</asp:Label>
-                                                        </li>
-                                                           <li>
-                                                               Duracion: <asp:Label ID="Label49" runat="server" Text='<%# Eval("duracion") %>'>:</asp:Label>
-                                                        </li>
+                                                        
                                                                                          
                                                     </ul>
 
@@ -1274,12 +1268,21 @@
                         </div>
                 </asp:View>
                 <asp:View ID="View4" runat="server">
+                     
+                    
                   <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side">
-                       
+                       <div class="row">
+					                    <div class="col-12 col-md-5"><asp:Button ID="btnGuardarReserva" OnClick="btnGuardarReserva_Click"  class="btn btn-success rounded"  runat="server" Text="Pagar Luego" /></div>
+					                    <div class="col-12 col-md-5"><asp:Button ID="btnComprarReserva" OnClick="btnComprarReserva_Click"  class="btn btn-primary rounded"  runat="server" Text="Pagar Ahora" /></div>	
+                                        <div class="col-12 col-md-5"><asp:Button ID="btnEnviarCorreo" OnClick="btnEnviarCorreo_Click" OnClientClick="copiar()" class="btn btn-orange rounded"  runat="server" Text="Enviar Email" /></div>	
+                                        <%--<div class="col"><asp:Button ID="btnNuevaBusquedaReserva" OnClick="btnNuevaBusquedaReserva_Click"  class="btn btn-default rounded"  runat="server" Text="Nueva busqueda" /></div>	--%>
+						
+				                    </div>
+                        <div id="invoice2" style="font-size:small">
 		                    <div class="shadow rounded col-12 col-md-6" >
                                  <div class="row">
                                       <asp:Label ID="lblAvisoReserva" runat="server" Text="" ForeColor="Red"></asp:Label>
-                                           <asp:Image ID="Image16" ImageUrl="~/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label16" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Reserva creada"></asp:Label>
+                                           <asp:Image ID="Image16" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label16" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Reserva creada"></asp:Label>
                         
                                        </div>
                                     <hr />
@@ -1290,7 +1293,7 @@
                                            <asp:TextBox ID="txtPNR" ReadOnly="true" CssClass="form-control" Font-Bold="true" Font-Size="Large" Height="50px" runat="server"></asp:TextBox>
                                        </div>
                                  <div class="row align-content-center col-12" style="text-align:center;">
-                                           <asp:Image ID="Image17" ImageUrl="~/iconos/icono-tiempo-limite.png" CssClass="offset-6" runat="server" /> 
+                                           <asp:Image ID="Image17" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-tiempo-limite.png" CssClass="offset-6" runat="server" /> 
                                        </div>
                                  <div class="row" style="text-align:center;">
                                            <asp:Label ID="Label18" runat="server" Font-Size="Medium" CssClass="col-12 align-content-center"  Font-Bold="false"  Text="Tiempo limite de emisión:"></asp:Label>
@@ -1299,33 +1302,28 @@
                                          <asp:Label ID="lblTiempoLimite" CssClass="col-12 align-content-center" runat="server" Text=""></asp:Label>
                                        </div>
             
-                                <div class="row">
-					                    <div class="col-12 col-md-5"><asp:Button ID="btnGuardarReserva" OnClick="btnGuardarReserva_Click"  class="btn btn-success rounded"  runat="server" Text="Pagar Luego" /></div>
-					                    <div class="col-12 col-md-5"><asp:Button ID="btnComprarReserva" OnClick="btnComprarReserva_Click"  class="btn btn-primary rounded"  runat="server" Text="Pagar Ahora" /></div>	
-                                        <%--<div class="col"><asp:Button ID="btnNuevaBusquedaReserva" OnClick="btnNuevaBusquedaReserva_Click"  class="btn btn-default rounded"  runat="server" Text="Nueva busqueda" /></div>	--%>
-						
-				                    </div>
+                              
 			
                                <br />
                                 <hr />
                                 
                                  <asp:Label ID="lblTotalPagarFinal" CssClass="label-default col-md-6" Visible="false" runat="server" Text=""></asp:Label>
 	                    </div>
-                          </div>
+                         
 
 
                     <div class="row">
                         <div class="rounded shadow col-12 col-md-6">
-                            <div id="invoice2" style="font-size:small">
+                           
                                     <div class="row" style="vertical-align:central">
-                                   <asp:Image ID="Image9" Height="50" ImageUrl="~/Logos/encabezado_logo.png" runat="server" /> 
+                                   <asp:Image ID="Image9" Height="50" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/Logos/encabezado_logo.png" runat="server" /> 
                                </div>
                                <div class="row" style="vertical-align:central">
-                                   <asp:Image ID="Image10" Height="20" ImageUrl="~/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label50" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Resumen de la reserva"></asp:Label>
+                                   <asp:Image ID="Image10" Height="20" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label50" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Resumen de la reserva"></asp:Label>
                                </div>
                                 <hr />
                                  <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
-                                   <asp:Image ID="Image11" Height="20" ImageUrl="~/iconos/icono-pasajero--resumen-reserva.png" runat="server" />  <asp:Label ID="Label51" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Pasajeros"></asp:Label>
+                                   <asp:Image ID="Image11" Height="20" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-pasajero--resumen-reserva.png" runat="server" />  <asp:Label ID="Label51" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Pasajeros"></asp:Label>
                                </div>
                              <div class="row" style="vertical-align:central;text-align:center">
                                  <div class="col">
@@ -1363,7 +1361,7 @@
                                    <strong></strong>
 				            <asp:Panel ID="panel_idaRes" Visible="false" Font-Size="XX-Small" runat="server">
                             <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
-                                   <asp:Image ID="Image12" ImageUrl="~/iconos/icono-ida-resumen-reserva.png" Height="20" runat="server" />  <asp:Label ID="Label60" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Itinerario de Ida"></asp:Label>
+                                   <asp:Image ID="Image12" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-ida-resumen-reserva.png" Height="20" runat="server" />  <asp:Label ID="Label60" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Itinerario de Ida"></asp:Label>
                                </div>
 				                    <div class="row">
                                         <div class="col">
@@ -1384,7 +1382,8 @@
                                                                 Salida
                                                         </li>
                                                         <li>
-                                                                Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'>:</asp:Label> Airline:<asp:Label ID="Label23" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>
+                                                            ________________________________
+                                                                <%--Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'>:</asp:Label> Airline:<asp:Label ID="Label23" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>--%>
                                                         </li>
                                                         <li>
                                                                 Llegada
@@ -1396,7 +1395,7 @@
                                                                 <asp:Label ID="Label47" runat="server" ForeColor="Black" Text='<%# Eval("depDate") %>'></asp:Label> - <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'>:</asp:Label>
                                                         </li>
                                                         <li>
-                                                            <asp:Image ID="Image6" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> <%--<i class="fa fa-plane-departure fa-fw"></i><hr />--%>
+                                                            <asp:Image ID="Image6" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/salida-llegada-ticket.png" runat="server" /> <%--<i class="fa fa-plane-departure fa-fw"></i><hr />--%>
                                                         </li>
                                                         <li>
                                                                 <asp:Label ID="Label48" runat="server" ForeColor="Black" Text='<%# Eval("ArrivalDate") %>'></asp:Label> - <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'>:</asp:Label>
@@ -1408,18 +1407,14 @@
                                                                 <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
                                                         </li>
                                                         <li>
-                                                            <asp:Label ID="Label5" runat="server" Text='<%# "Vuelo " + Eval("flightNumber") + " Clase "  +Eval("bookClass") %>'></asp:Label><br />
+                                                            Maletas: <asp:Label ID="Label9" runat="server" Text='<%# Eval("equipaje") %>'>:</asp:Label>
+                                                               Duracion: <asp:Label ID="Label49" runat="server" Text='<%# Eval("duracion") %>'>:</asp:Label>
+                                                            <%--<asp:Label ID="Label5" runat="server" Text='<%# "Vuelo " + Eval("flightNumber") + " Clase "  +Eval("bookClass") %>'></asp:Label><br />--%>
                                                         </li>
                                                         <li>
                                                                 <asp:Label ID="Label6" runat="server" Text='<%# Eval("offAirport") %>'>:</asp:Label>
                                                         </li>
                                                              
-                                                           <li>
-                                                               Maletas: <asp:Label ID="Label9" runat="server" Text='<%# Eval("equipaje") %>'>:</asp:Label>
-                                                        </li>
-                                                           <li>
-                                                               Duracion: <asp:Label ID="Label49" runat="server" Text='<%# Eval("duracion") %>'>:</asp:Label>
-                                                        </li>
                                                     </ul>
 
 																	               
@@ -1428,7 +1423,7 @@
 				            </asp:Panel>
 				            <asp:Panel ID="panel_vueltaRes" Visible="false" Font-Size="XX-Small" runat="server">
 					             <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
-                                   <asp:Image ID="Image13" ImageUrl="~/iconos/icono-Vuelta-resumen-reserva.png" Height="20" runat="server" />  <asp:Label ID="Label63" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Itinerario de Vuelta"></asp:Label>
+                                   <asp:Image ID="Image13" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-Vuelta-resumen-reserva.png" Height="20" runat="server" />  <asp:Label ID="Label63" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Itinerario de Vuelta"></asp:Label>
                                </div>
                                 <div class="row">
                                         <div class="col">
@@ -1449,7 +1444,8 @@
                                                                 Salida
                                                         </li>
                                                         <li>
-                                                                Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'></asp:Label>  Airline:<asp:Label ID="Label24" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>
+                                                            ________________________________
+                                                                <%--Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'></asp:Label>  Airline:<asp:Label ID="Label24" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>--%>
                                                         </li>
                                                         <li>
                                                                 Llegada
@@ -1461,7 +1457,7 @@
                                                                 <asp:Label ID="Label47" runat="server" ForeColor="Black" Text='<%# Eval("depDate") %>'></asp:Label> - <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'>:</asp:Label>
                                                         </li>
                                                         <li>
-                                                            <asp:Image ID="Image6" ImageUrl="~/iconos/salida-llegada-ticket.png" runat="server" /> 
+                                                            <asp:Image ID="Image6" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/salida-llegada-ticket.png" runat="server" /> 
                                                         </li>
                                                         <li>
                                                                  <asp:Label ID="Label48" runat="server" ForeColor="Black" Text='<%# Eval("ArrivalDate") %>'></asp:Label> - <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'>:</asp:Label>
@@ -1473,16 +1469,12 @@
                                                                 <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
                                                         </li>
                                                         <li>
-                                                            <asp:Label ID="Label5" runat="server" Text='<%# "Vuelo " + Eval("flightNumber") + " Clase "  +Eval("bookClass") %>'></asp:Label><br />
+                                                            Maletas: <asp:Label ID="Label9" runat="server" Text='<%# Eval("equipaje") %>'>:</asp:Label>
+                                                            Duracion: <asp:Label ID="Label49" runat="server" Text='<%# Eval("duracion") %>'>:</asp:Label>
+                                                            <%--<asp:Label ID="Label5" runat="server" Text='<%# "Vuelo " + Eval("flightNumber") + " Clase "  +Eval("bookClass") %>'></asp:Label><br />--%>
                                                         </li>
                                                         <li>
                                                                 <asp:Label ID="Label6" runat="server" Text='<%# Eval("offAirport") %>'>:</asp:Label>
-                                                        </li>
-                                                              <li>
-                                                               Maletas: <asp:Label ID="Label9" runat="server" Text='<%# Eval("equipaje") %>'>:</asp:Label>
-                                                        </li>
-                                                           <li>
-                                                               Duracion: <asp:Label ID="Label49" runat="server" Text='<%# Eval("duracion") %>'>:</asp:Label>
                                                         </li>
                                                                                          
                                                     </ul>
@@ -1498,7 +1490,7 @@
 
 				            <asp:Panel ID="panel_total_resRes" Visible="false" Font-Size="XX-Small" runat="server">
 					             <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
-                                   <asp:Image ID="Image26" ImageUrl="~/iconos/icono-carrita-resumen-reserva.png" Height="20" runat="server" /><asp:Label ID="Label66" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="Label67" CssClass="col-3" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true" Text=""></asp:Label><asp:Label ID="Label68" CssClass="col-5" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label>
+                                   <asp:Image ID="Image26" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-carrita-resumen-reserva.png" Height="20" runat="server" /><asp:Label ID="Label66" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="Label67" CssClass="col-3" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true" Text=""></asp:Label><asp:Label ID="Label68" CssClass="col-5" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label>
                                </div>
                                 <asp:Panel ID="Panel8" Visible="false" runat="server">
                                         <div class="row" style="vertical-align:central;text-align:center">
@@ -1518,16 +1510,16 @@
                                    <hr />
 
                                    
-                                    </div>
+                                 
                             
 
                                        <div class="row" style="vertical-align:central">
-                                           <asp:Image ID="Image19" ImageUrl="~/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label20" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Resumen de la reserva"></asp:Label>
+                                           <asp:Image ID="Image19" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label20" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Resumen de la reserva"></asp:Label>
                         
                                        </div>
                                         <hr />
                                          <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
-                                           <asp:Image ID="Image20" ImageUrl="~/iconos/icono-pasajero--resumen-reserva.png" Visible="false" runat="server" />  <asp:Label ID="Label21" Visible="false" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Pasajeros"></asp:Label>
+                                           <asp:Image ID="Image20" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-pasajero--resumen-reserva.png" Visible="false" runat="server" />  <asp:Label ID="Label21" Visible="false" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Pasajeros"></asp:Label>
                                        </div>
                                         <div class="row" style="vertical-align:central">
                                            <asp:Label ID="lblReservaADT" CssClass="col-12" runat="server" Font-Size="Large"   Font-Bold="false"  Text=""></asp:Label>
@@ -1541,7 +1533,7 @@
 
 				                    <asp:Panel ID="panel1" Visible="false" runat="server">
 					                     <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
-                                           <asp:Image ID="Image21" ImageUrl="~/iconos/icono-ida-resumen-reserva.png" runat="server" />  <asp:Label ID="Label25" runat="server" Font-Size="Large"   Font-Bold="True"></asp:Label>
+                                           <asp:Image ID="Image21" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-ida-resumen-reserva.png" runat="server" />  <asp:Label ID="Label25" runat="server" Font-Size="Large"   Font-Bold="True"></asp:Label>
                                        </div>
                                         <div class="row" style="text-align:center">
                                            <asp:Label ID="lblFechaIdaRes" CssClass="col-lg-12" runat="server" Font-Size="Small"   Font-Bold="false"  Text=""></asp:Label>
@@ -1558,7 +1550,7 @@
 				                    </asp:Panel>
 				                    <asp:Panel ID="panel2" Visible="false" runat="server">
 					                     <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
-                                           <asp:Image ID="Image22" ImageUrl="~/iconos/icono-vuelta-resumen-reserva.png" runat="server" />  <asp:Label ID="Label26" runat="server" Font-Size="Large"   Font-Bold="true"  Text=""></asp:Label>
+                                           <asp:Image ID="Image22" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-vuelta-resumen-reserva.png" runat="server" />  <asp:Label ID="Label26" runat="server" Font-Size="Large"   Font-Bold="true"  Text=""></asp:Label>
                                        </div>
                                         <div class="row" style="text-align:center">
                                            <asp:Label ID="lblFechaVueltaRes" CssClass="col-lg-12" runat="server" Font-Size="Small"   Font-Bold="false"  Text=""></asp:Label>
@@ -1575,7 +1567,7 @@
 				                    </asp:Panel>
 				                    <asp:Panel ID="panel3" Visible="true" runat="server">
 					                     <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
-                                           <asp:Image ID="Image23" ImageUrl="~/iconos/icono-carrita-resumen-reserva.png" runat="server" /><asp:Label ID="Label27" CssClass="col-4" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="lblMonedaReserva" runat="server" Font-Size="Large"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label><asp:Label ID="lblMontoTotalReserva" CssClass="col-4" runat="server" Font-Size="Large"  ForeColor="#0066ff"  Font-Bold="true"  Text="Vuelta"></asp:Label>
+                                           <asp:Image ID="Image23" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-carrita-resumen-reserva.png" runat="server" /><asp:Label ID="Label27" CssClass="col-4" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="lblMonedaReserva" runat="server" Font-Size="Large"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label><asp:Label ID="lblMontoTotalReserva" CssClass="col-4" runat="server" Font-Size="Large"  ForeColor="#0066ff"  Font-Bold="true"  Text="Vuelta"></asp:Label>
                                        </div>
                                         <div class="row" style="vertical-align:central">
                                            <asp:Label ID="Label29"  runat="server" Font-Size="Small"   Font-Bold="false"  Text="Tarifa base     "></asp:Label><asp:Label ID="lblTarifaBaseReserva" CssClass="col-6" runat="server" Font-Size="Small"   Font-Bold="false"  Text=""></asp:Label>
@@ -1598,7 +1590,7 @@
 				                    </asp:Panel><br /><br />
                             <div class="row">
                                        <div class="row">
-                                           <asp:Image ID="Image18" ImageUrl="~/iconos/icono-datos-de-pasajero.png" runat="server" />  <asp:Label ID="Label19" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Lista de pasajeros"></asp:Label>
+                                           <asp:Image ID="Image18" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-datos-de-pasajero.png" runat="server" />  <asp:Label ID="Label19" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Lista de pasajeros"></asp:Label>
                                             <br /><br />
                                        </div>
                                     <div class="table-responsive offset-1">
@@ -1638,10 +1630,16 @@
                                              </div>
 				                    </asp:Panel>--%>
 
-                        
+                        <div class="row">
+                            Puede realizar su pago en este link:
+                            <asp:Label ID="lblLinkPago" runat="server" Text=""></asp:Label>
+                        </div>
                     
                                 </div>
                     </div>
+                       
+                  </div>
+                   </div>
                 </asp:View>
             </asp:MultiView>
 
@@ -1941,4 +1939,21 @@
             });
         });
     </script>
+     <asp:HiddenField ID="hfDiv" runat="server" />
+
+                <script type="text/javascript">
+                    function copiar() {
+                        // Crea un input para poder copiar el texto dentro       
+                        let copyText = document.getElementById('invoice2').innerHTML
+                        const textArea = document.createElement('textarea');
+                        textArea.textContent = copyText;
+                        document.body.append(textArea);
+                        textArea.select();
+                        document.execCommand("copy");
+                        document.getElementById('<%=hfDiv.ClientID%>').value = textArea.textContent;
+                        // Delete created Element       
+                        textArea.remove()
+                    }
+
+                </script>               
 </asp:Content>

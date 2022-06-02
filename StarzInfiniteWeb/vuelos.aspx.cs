@@ -2642,6 +2642,8 @@ namespace StarzInfiniteWeb
 
                             btnComprarReserva.Enabled = true;
 
+                            
+
                         }
                         else
                         {
@@ -2649,6 +2651,99 @@ namespace StarzInfiniteWeb
                             btnComprarReserva.Enabled = false;
                         }
                     }
+                    ////////////////////////////////SOLICITAR LINK DE PAGO//////////////////////////
+                    DataTable dt = LocalBD.PR_GET_DATOSPASARELAPAGO(txtPNR.Text);
+
+                    string Pusuario = "";
+                    string PcorreoElectronico = "";
+                    string PmontoPago = "";
+                    string Pmoneda = "";
+                    string Pdescripcion = "";
+                    string PnombreComprador = "";
+                    string PapellidoComprador = "";
+                    string PdocumentoIdentidadComprador = "";
+                    string PfechaHoraRegistro = "";
+                    string PfechaHoraVencimiento = "";
+                    string PcodigoOperacion = "";
+                    string PurlRespuesta = "";
+                    string PPNR = "";
+                    string Pgds = "";
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            Pusuario = dr["USUARIO"].ToString();
+                            PcorreoElectronico = dr["CORREOELECTRONICO"].ToString();
+                            PmontoPago = dr["MONTOPAGO"].ToString();
+                            Pmoneda = dr["MONEDA"].ToString();
+                            Pdescripcion = dr["DESCRIPCION"].ToString();
+                            PnombreComprador = dr["NOMBRECOMPRADOR"].ToString();
+                            PapellidoComprador = dr["APELLIDOCOMPRADOR"].ToString();
+                            PdocumentoIdentidadComprador = dr["DOCUMENTOIDENTIDADCOMPRADOR"].ToString();
+                            PfechaHoraRegistro = dr["FECHAHORAREGISTRO"].ToString();
+                            PfechaHoraVencimiento = dr["FECHAHORAVENCIMIENTO"].ToString();
+                            PcodigoOperacion = dr["CODIGOOPERACION"].ToString();
+                            PurlRespuesta = dr["URL_RESPUESTA"].ToString();
+                            PPNR = dr["PNR"].ToString();
+                            Pgds = lblGds.Text;
+
+                        }
+
+                    }
+                    //string monto_pagar = PmontoPago.Replace(",", ".");
+                    decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(",", "."));
+                    decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(",", "."));
+                    //decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(".", ","));
+                    //decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(".", ","));
+                    if (Pmoneda == "USD")
+                    {
+                        monto_pagar_t = monto_pagar_i * decimal.Parse("6.97");
+                        //monto_pagar_t = monto_pagar_i * decimal.Parse("6,97");
+                        Pmoneda = "BOB";
+                    }
+
+                    string porcentaje = "";
+                    DataTable dt_porcentaje = new DataTable();
+                    dt_porcentaje = Dominios.Lista("COMISION PASARELA");
+                    foreach (DataRow dr_porcentaje in dt_porcentaje.Rows)
+                    {
+                        porcentaje = dr_porcentaje["valor_numerico"].ToString();
+                    }
+
+                    string[] url_aux = PurlRespuesta.Split('|');
+
+                    pagar_reserva.SolicitudPago obj_sp = new pagar_reserva.SolicitudPago
+                    {
+                        usuario = "web",
+                        correoElectronico = PcorreoElectronico,
+                        montoPago = Math.Round(monto_pagar_t,2).ToString().Replace(",", "."),
+                        moneda = Pmoneda,
+                        descripcion = Pdescripcion,
+                        nombreComprador = PnombreComprador,
+                        apellidoComprador = PapellidoComprador,
+                        documentoIdentidadComprador = PdocumentoIdentidadComprador,
+                        fechaHoraRegistro = PfechaHoraRegistro,
+                        fechaHoraVencimiento = PfechaHoraVencimiento,
+                        codigoOperacion = PcodigoOperacion,
+                        urlRespuesta = url_aux[0],
+                        PNR = txtPNR.Text,
+                        gds = Pusuario,
+                        montoPagoDos = Math.Round(((decimal.Parse(monto_pagar_t.ToString().Replace(",", ".")) * (decimal.Parse(porcentaje) / 100)) + decimal.Parse(monto_pagar_t.ToString().Replace(",", "."))),2).ToString().Replace(",", ".")
+                        //montoPagoDos = ((decimal.Parse(monto_pagar_t.ToString().Replace(".", ",")) * (decimal.Parse(porcentaje) / 100)) + decimal.Parse(monto_pagar_t.ToString().Replace(".", ","))).ToString().Replace(",",".")
+                    };
+                    DBApi obj_pago = new DBApi();
+                    string json_pago = JsonConvert.SerializeObject(obj_sp);
+                    dynamic respuesta_pago = obj.Post("http://backendstarz.eastus.cloudapp.azure.com/paginapagospro/solicitud_pago.php", json, "Basic MDQ4NjQxMjRzZGY0NTIzZjA2ODZjZmZmZDcwYTg5NTMzY2Q5ZmE6ZWUyZWMzY2MzNDUzdHNzODk0NDk1MDY4MjIyYTg=");
+                    string respuestaJson_pago = respuesta_pago.ToString();
+
+                    pagar_reserva.RespuestaSP resp = new pagar_reserva.RespuestaSP();
+                    resp = JsonConvert.DeserializeObject<pagar_reserva.RespuestaSP>(respuestaJson_pago);
+                    //MultiView1.ActiveViewIndex = 3;
+                    string url = "https://psp.starzinfinite.com/psp/?IdTransaccion=" + resp.IdTransaccion;
+                    lblLinkPago.Text = url;
+                    lblAviso.Text = json_pago;
+
                 }
 
                 
@@ -3063,6 +3158,13 @@ namespace StarzInfiniteWeb
         {
             Session["datos_iframe"] = txtPNR.Text + "|" + lblMontoTotalReserva.Text + "|" + lblMonedaIda.Text + "|" + txtEmailTit.Text + "|" + lblCodTiket.Text + "|" + lblGds.Text + "|" + lblFechaLimite.Text;
             Response.Redirect("pagar_reserva.aspx?admin=SI",false);
+        }
+
+        protected void btnEnviarCorreo_Click(object sender, EventArgs e)
+        {
+            enviar_correo objC = new enviar_correo();
+            string resp_email = objC.enviar(txtEmailTit.Text, "Confirmación de reserva StarzInfinite", hfDiv.Value, "");
+            lblAviso.Text = resp_email;
         }
     }
 }
