@@ -678,7 +678,7 @@
                                                                 Salida
                                                         </li>
                                                         <li>
-                                                            ________________________________
+                                                            __________________________
                                                                 <%--Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'>:</asp:Label> Airline:<asp:Label ID="Label23" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>--%>
                                                         </li>
                                                         <li>
@@ -739,7 +739,7 @@
                                                                 Salida
                                                         </li>
                                                         <li>
-                                                            ________________________________
+                                                            __________________________
                                                                 <%--Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'></asp:Label>  Airline:<asp:Label ID="Label24" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>--%>
                                                         </li>
                                                         <li>
@@ -1278,7 +1278,7 @@
                                         <%--<div class="col"><asp:Button ID="btnNuevaBusquedaReserva" OnClick="btnNuevaBusquedaReserva_Click"  class="btn btn-default rounded"  runat="server" Text="Nueva busqueda" /></div>	--%>
 						
 				                    </div>
-                        <div id="invoice2" style="font-size:small">
+                        <div id="invoice2" style="font-size:medium">
 		                    <div class="shadow rounded col-12 col-md-6" >
                                  <div class="row">
                                       <asp:Label ID="lblAvisoReserva" runat="server" Text="" ForeColor="Red"></asp:Label>
@@ -1382,7 +1382,7 @@
                                                                 Salida
                                                         </li>
                                                         <li>
-                                                            ________________________________
+                                                            __________________________
                                                                 <%--Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'>:</asp:Label> Airline:<asp:Label ID="Label23" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>--%>
                                                         </li>
                                                         <li>
@@ -1444,7 +1444,7 @@
                                                                 Salida
                                                         </li>
                                                         <li>
-                                                            ________________________________
+                                                            __________________________
                                                                 <%--Fecha:<asp:Label ID="Label7" runat="server" Text='<%# Eval("ArrivalDate") %>'></asp:Label>  Airline:<asp:Label ID="Label24" runat="server" Text='<%# Eval("operCompany") %>'>:</asp:Label>--%>
                                                         </li>
                                                         <li>
