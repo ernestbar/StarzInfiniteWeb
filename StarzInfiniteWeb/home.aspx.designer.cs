@@ -285,6 +285,15 @@ namespace StarzInfiniteWeb
         protected global::System.Web.UI.WebControls.RadioButtonList rblTipoVenta;
 
         /// <summary>
+        /// rblCuotas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rblCuotas;
+
+        /// <summary>
         /// View2 control.
         /// </summary>
         /// <remarks>

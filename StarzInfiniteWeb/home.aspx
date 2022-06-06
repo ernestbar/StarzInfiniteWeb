@@ -288,6 +288,20 @@
                                                       
                                                      </div>
                                                 </div>
+
+                                            <div class="row">
+                                                 <div class="col-12 col-md-12">
+                                                  <strong></strong>
+                                                    <div class="col-12 col-md-12">
+                                                    <asp:RadioButtonList ID="rblCuotas" CellPadding="5" CellSpacing="1" RepeatDirection="Horizontal" runat="server">
+					                                                        <asp:ListItem Text="CONTADO" Value="0" Selected="True"></asp:ListItem>
+					                                                        <asp:ListItem Text="EN CUOTAS" Value="1"></asp:ListItem>
+				                                                        </asp:RadioButtonList>
+                                                    </div>
+                                                    
+                                                      
+                                                     </div>
+                                                </div>
                                      </div><!-- end flights -->
                             </div>
 

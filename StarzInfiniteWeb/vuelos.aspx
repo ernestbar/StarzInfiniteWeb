@@ -10,12 +10,12 @@
         <asp:Label ID="lblDtOpcionesRT" runat="server" Text="" Visible="false"></asp:Label>
         <asp:Label ID="lblDtDatosRTAll" runat="server" Text="" Visible="false"></asp:Label>
         <asp:Label ID="lblDtDatosAll" runat="server" Text="" Visible="false"></asp:Label>
-    <asp:Label ID="lblUsuario" runat="server" Text="" Visible="false"></asp:Label>
-    <asp:Label ID="lblAviso" runat="server" ForeColor="Blue" Text=""></asp:Label>
+        <asp:Label ID="lblUsuario" runat="server" Text="" Visible="false"></asp:Label>
+        <asp:Label ID="lblAviso" runat="server" ForeColor="Blue" Text=""></asp:Label>
 
-     <asp:Label ID="lblItiIda" runat="server" Text="" Visible="false"></asp:Label>
+        <asp:Label ID="lblItiIda" runat="server" Text="" Visible="false"></asp:Label>
         <asp:Label ID="lblItiVuelta" runat="server" Text="" Visible="false"></asp:Label>
-     <asp:Label ID="lblOrigen" runat="server" Text="" Visible="false"></asp:Label>
+        <asp:Label ID="lblOrigen" runat="server" Text="" Visible="false"></asp:Label>
 		<asp:Label ID="lblDestino" runat="server" Text="" Visible="false"></asp:Label>
         <asp:Label ID="lblOrigenDes" runat="server" Text="" Visible="false"></asp:Label>
 		<asp:Label ID="lblDestinoDes" runat="server" Text="" Visible="false"></asp:Label>
@@ -24,11 +24,11 @@
         <asp:Label ID="lblNroAdultos" runat="server" Text="" Visible="false"></asp:Label>
 		<asp:Label ID="lblNroNinos" runat="server" Text="" Visible="false"></asp:Label>
 		<asp:Label ID="lblNroInfante" runat="server" Text="" Visible="false"></asp:Label>
-    <asp:Label ID="lblFeeSZI" Visible="false"  runat="server" Text="0"></asp:Label>
-    <asp:Label ID="lblFeeBroker" Visible="false"  runat="server" Text="0"></asp:Label>
-     <asp:Label ID="lblMoneda" runat="server" Text="" Visible="false"></asp:Label>
-     <asp:Label ID="lblCodTiket" runat="server" Text="" Visible="false"></asp:Label>
-     <asp:Label ID="lblFechaLimite" runat="server" Text="" Visible="false"></asp:Label>
+        <asp:Label ID="lblFeeSZI" Visible="false"  runat="server" Text="0"></asp:Label>
+        <asp:Label ID="lblFeeBroker" Visible="false"  runat="server" Text="0"></asp:Label>
+        <asp:Label ID="lblMoneda" runat="server" Text="" Visible="false"></asp:Label>
+        <asp:Label ID="lblCodTiket" runat="server" Text="" Visible="false"></asp:Label>
+        <asp:Label ID="lblFechaLimite" runat="server" Text="" Visible="false"></asp:Label>
     	<asp:Label ID="lblDatosVueloIda" runat="server" Text="" Visible="false"></asp:Label>
 
      <asp:ObjectDataSource ID="odsRutaInd" runat="server" SelectMethod="Lista" TypeName="StarzInfiniteWeb.Dominios">
@@ -221,6 +221,12 @@
 					    <asp:ListItem Text="CORPORATIVO" Value="1"></asp:ListItem>
 				    </asp:RadioButtonList>
                     </div>
+                <div class="form-group">
+                    <asp:RadioButtonList ID="rblCuotas" RepeatDirection="Horizontal" runat="server">
+					     <asp:ListItem Text="CONTADO" Value="0" Selected="True"></asp:ListItem>
+					     <asp:ListItem Text="EN CUOTAS" Value="1"></asp:ListItem>
+				    </asp:RadioButtonList>
+                    </div>
                 <asp:Button ID="btnVuelos" class="btn btn-orange" OnClientClick="recuperarFechaSalida()" OnClick="btnVuelos_Click"  BackColor="#309fd9" runat="server" Text="Buscar vuelos" />
                 </div><!-- end booking-form -->
                
@@ -233,13 +239,13 @@
               </div>
                 </div>  
             
-            
+            <br /><br /><br /><br />
             </div><!-- end side-bar-block -->
 
             </asp:Panel>
             <asp:MultiView ID="MultiView1" runat="server">
                 <asp:View ID="View1" runat="server">
-                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side" style="height:800px; overflow: scroll;">
+                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side" style="height:900px; overflow: scroll;">
                         <asp:Label ID="lblVueloIdaNoDisponible" runat="server" Text=""></asp:Label>
 					        <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
 					         <ItemTemplate>
@@ -1275,11 +1281,12 @@
 					                    <div class="col-12 col-md-5"><asp:Button ID="btnGuardarReserva" OnClick="btnGuardarReserva_Click"  class="btn btn-success rounded"  runat="server" Text="Pagar Luego" /></div>
 					                    <div class="col-12 col-md-5"><asp:Button ID="btnComprarReserva" OnClick="btnComprarReserva_Click"  class="btn btn-primary rounded"  runat="server" Text="Pagar Ahora" /></div>	
                                         <div class="col-12 col-md-5"><asp:Button ID="btnEnviarCorreo" OnClick="btnEnviarCorreo_Click" OnClientClick="copiar()" class="btn btn-orange rounded"  runat="server" Text="Enviar Email" /></div>	
+                                        <div class="col-12 col-md-5"><asp:Button ID="btnExportar2"  OnClientClick="exportPDF2()" class="btn btn-orange rounded" CausesValidation="false" Visible="true"  runat="server" Text="Exportar a PDF" /></div>
                                         <%--<div class="col"><asp:Button ID="btnNuevaBusquedaReserva" OnClick="btnNuevaBusquedaReserva_Click"  class="btn btn-default rounded"  runat="server" Text="Nueva busqueda" /></div>	--%>
 						
 				                    </div>
                         <div id="invoice2" style="font-size:medium">
-		                    <div class="shadow rounded col-12 col-md-6" >
+		                    <div class="shadow rounded col-12 col-md-8" >
                                  <div class="row">
                                       <asp:Label ID="lblAvisoReserva" runat="server" Text="" ForeColor="Red"></asp:Label>
                                            <asp:Image ID="Image16" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label16" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Reserva creada"></asp:Label>
@@ -1313,7 +1320,7 @@
 
 
                     <div class="row">
-                        <div class="rounded shadow col-12 col-md-6">
+                        <div class="rounded shadow col-12 col-md-8">
                            
                                     <div class="row" style="vertical-align:central">
                                    <asp:Image ID="Image9" Height="50" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/Logos/encabezado_logo.png" runat="server" /> 
@@ -1486,9 +1493,10 @@
 
 
                                 
+                            <%-- <div class="row">
+                        <div class="rounded shadow col-12 col-md-8">
 
-
-				            <asp:Panel ID="panel_total_resRes" Visible="false" Font-Size="XX-Small" runat="server">
+				            
 					             <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
                                    <asp:Image ID="Image26" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-carrita-resumen-reserva.png" Height="20" runat="server" /><asp:Label ID="Label66" CssClass="col-4" runat="server" Font-Size="Medium"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="Label67" CssClass="col-3" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true" Text=""></asp:Label><asp:Label ID="Label68" CssClass="col-5" runat="server" Font-Size="Medium"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label>
                                </div>
@@ -1507,13 +1515,40 @@
                                    </div>
                                  </asp:Panel>
                                 </asp:Panel>
+                            </div>
+                                 </div>--%>
                                    <hr />
-
+                            <asp:Panel ID="panel_total_resRes" Visible="false" Font-Size="XX-Small" runat="server">
+                             <div class="row">
+                        <div class="rounded shadow col-12 col-md-8">
+                            <div class="row col-form-label bg-silver-lighter">
+                                           <asp:Image ID="Image23" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-carrita-resumen-reserva.png" runat="server" /><asp:Label ID="Label27" CssClass="col-4" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="lblMonedaReserva" runat="server" Font-Size="Large"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label><asp:Label ID="lblMontoTotalReserva" CssClass="col-4" runat="server" Font-Size="Large"  ForeColor="#0066ff"  Font-Bold="true"  Text="Vuelta"></asp:Label>
+                                       </div>
+                                        <div class="row" style="vertical-align:central">
+                                           <asp:Label ID="Label29"  runat="server" Font-Size="Small"   Font-Bold="false"  Text="Tarifa base     "></asp:Label><asp:Label ID="lblTarifaBaseReserva" CssClass="col-6" runat="server" Font-Size="Small"   Font-Bold="false"  Text=""></asp:Label>
+                                       </div>
+                                         <div class="row" style="vertical-align:central">
+                                               <asp:Label ID="Label31"  runat="server" Font-Size="Small"   Font-Bold="false"  Text="Total impuestos    "></asp:Label><asp:Label ID="lblTotalImpRserva" CssClass="col-6" runat="server" Font-Size="Small"   Font-Bold="false"  Text=""></asp:Label>
+                                           </div>
+                                        <div class="row" style="vertical-align:central">
+                                               <asp:Label ID="Label33"  runat="server" Font-Size="Small"   Font-Bold="false"  Text="Fee de Emision:"></asp:Label><asp:Label ID="lblFeeEmisionReserva" CssClass="col-6" runat="server" Font-Size="Small"   Font-Bold="false"  Text="0"></asp:Label>
+                                           </div>
+                                        <div class="row" style="vertical-align:central">
+                                               <asp:Label ID="Label35"  runat="server" Font-Size="Small"   Font-Bold="false"  Text="Otros Cargos:"></asp:Label><asp:Label ID="lblOtrosCargosReserva" CssClass="col-6" runat="server" Font-Size="Small"   Font-Bold="false"  Text="0"></asp:Label>
+                                           </div>
+                                        <div class="row" style="vertical-align:central">
+                                               <asp:Label ID="Label37"  runat="server" Font-Size="Small" Visible="false"  Font-Bold="false"  Text="Comision:"></asp:Label><asp:Label ID="lblComisionReserva" Visible="false" CssClass="col-6" runat="server" Font-Size="Small"   Font-Bold="false"  Text="0"></asp:Label>
+                                           </div>
+                                        <div class="row" style="vertical-align:central;border-style:solid;border-color:yellow;border-width:1px;">
+                                               <asp:Label ID="Label38" runat="server" Font-Size="Small" Visible="false"   Font-Bold="false"  Text="Ganancia total     "></asp:Label><asp:Label ID="lblGananciaRes" CssClass="col-6" runat="server" Font-Size="Small" Visible="false"   Font-Bold="false"  Text=""></asp:Label>
+                                           </div>
+                            </div>
+                                 </div>
                                    
                                  
                             
 
-                                       <div class="row" style="vertical-align:central">
+                                       <%--<div class="row" style="vertical-align:central">
                                            <asp:Image ID="Image19" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label20" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Resumen de la reserva"></asp:Label>
                         
                                        </div>
@@ -1566,28 +1601,10 @@
                                            </div>
 				                    </asp:Panel>
 				                    <asp:Panel ID="panel3" Visible="true" runat="server">
-					                     <div class="row col-form-label bg-silver-lighter" style="vertical-align:central">
-                                           <asp:Image ID="Image23" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-carrita-resumen-reserva.png" runat="server" /><asp:Label ID="Label27" CssClass="col-4" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Total  "></asp:Label><asp:Label ID="lblMonedaReserva" runat="server" Font-Size="Large"  ForeColor="#0066ff"  Font-Bold="true"  Text=""></asp:Label><asp:Label ID="lblMontoTotalReserva" CssClass="col-4" runat="server" Font-Size="Large"  ForeColor="#0066ff"  Font-Bold="true"  Text="Vuelta"></asp:Label>
-                                       </div>
-                                        <div class="row" style="vertical-align:central">
-                                           <asp:Label ID="Label29"  runat="server" Font-Size="Small"   Font-Bold="false"  Text="Tarifa base     "></asp:Label><asp:Label ID="lblTarifaBaseReserva" CssClass="col-6" runat="server" Font-Size="Small"   Font-Bold="false"  Text=""></asp:Label>
-                                       </div>
-                                         <div class="row" style="vertical-align:central">
-                                               <asp:Label ID="Label31"  runat="server" Font-Size="Small"   Font-Bold="false"  Text="Total impuestos    "></asp:Label><asp:Label ID="lblTotalImpRserva" CssClass="col-6" runat="server" Font-Size="Small"   Font-Bold="false"  Text=""></asp:Label>
-                                           </div>
-                                        <div class="row" style="vertical-align:central">
-                                               <asp:Label ID="Label33"  runat="server" Font-Size="Small"   Font-Bold="false"  Text="Fee de Emision:"></asp:Label><asp:Label ID="lblFeeEmisionReserva" CssClass="col-6" runat="server" Font-Size="Small"   Font-Bold="false"  Text="0"></asp:Label>
-                                           </div>
-                                        <div class="row" style="vertical-align:central">
-                                               <asp:Label ID="Label35"  runat="server" Font-Size="Small"   Font-Bold="false"  Text="Otros Cargos:"></asp:Label><asp:Label ID="lblOtrosCargosReserva" CssClass="col-6" runat="server" Font-Size="Small"   Font-Bold="false"  Text="0"></asp:Label>
-                                           </div>
-                                        <div class="row" style="vertical-align:central">
-                                               <asp:Label ID="Label37"  runat="server" Font-Size="Small" Visible="false"  Font-Bold="false"  Text="Comision:"></asp:Label><asp:Label ID="lblComisionReserva" Visible="false" CssClass="col-6" runat="server" Font-Size="Small"   Font-Bold="false"  Text="0"></asp:Label>
-                                           </div>
-                                        <div class="row" style="vertical-align:central;border-style:solid;border-color:yellow;border-width:1px;">
-                                               <asp:Label ID="Label38" runat="server" Font-Size="Small" Visible="false"   Font-Bold="false"  Text="Ganancia total     "></asp:Label><asp:Label ID="lblGananciaRes" CssClass="col-6" runat="server" Font-Size="Small" Visible="false"   Font-Bold="false"  Text=""></asp:Label>
-                                           </div>
-				                    </asp:Panel><br /><br />
+					                     
+				                    </asp:Panel><br /><br />--%>
+                             <div class="row">
+                        <div class="rounded shadow col-12 col-md-8">
                             <div class="row">
                                        <div class="row">
                                            <asp:Image ID="Image18" ImageUrl="https://psp.starzinfinite.com/StarzInfinite/iconos/icono-datos-de-pasajero.png" runat="server" />  <asp:Label ID="Label19" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Lista de pasajeros"></asp:Label>
@@ -1631,10 +1648,15 @@
 				                    </asp:Panel>--%>
 
                         <div class="row">
-                            Puede realizar su pago en este link:
+                            Puede realizar su pago en este link:<br />
                             <asp:Label ID="lblLinkPago" runat="server" Text=""></asp:Label>
                         </div>
                     
+                            </div>
+                                 </div>
+
+                        </asp:Panel>
+
                                 </div>
                     </div>
                        
@@ -1882,6 +1904,11 @@
             printDiv('invoice');
         }
 
+        function exportPDF2() {
+            const element = document.getElementById('invoice2');
+            html2pdf().from(element).set(options).save();
+            printDiv('invoice2');
+        }
 
         function printDiv(divName) {
             var printContents = document.getElementById(divName).innerHTML;

@@ -161,7 +161,7 @@
 										<asp:Button ID="btnVolverReserva" CssClass="btn btn-orange" OnClick="btnVolverReserva_Click" runat="server" Text="Volver" />
                                         <div class="row" style="text-align:left">
                                             <div id="invoice2" style="font-size:small">
-		                                    <div class="col-12 col-md-6 shadow rounded">
+		                                    <div class="col-12 col-md-8 shadow rounded">
                                                  <div class="row" style="text-align:center;">
                                                            <asp:Image ID="Image9" ImageUrl="~/iconos/icono-resumen-reserva.png" runat="server" />  <asp:Label ID="Label1" runat="server" Font-Size="Large"   Font-Bold="true"  Text="Reserva creada"></asp:Label>
                         
@@ -188,7 +188,7 @@
                                                <br />
                                                 <hr />
                                                  </div>
-                                                <div class="col-12 col-md-6 shadow rounded">
+                                                <div class="col-12 col-md-8 shadow rounded">
                                                         <div class="row" style="vertical-align:central">
                                                        <asp:Image ID="Image10" Height="50" ImageUrl="~/Logos/encabezado_logo.png" runat="server" /> 
                                                    </div>
@@ -255,7 +255,8 @@
                                                                                     Salida
                                                                             </li>
                                                                             <li>
-                                                                                   Airline:<asp:Label ID="lblAreolineaIda" runat="server" Text=""></asp:Label>
+                                                                                _______________________
+                                                                                   <%--Airline:<asp:Label ID="lblAreolineaIda" runat="server" Text=""></asp:Label>--%>
                                                                             </li>
                                                                             <li>
                                                                                     Llegada
@@ -317,7 +318,8 @@
                                                                                     Salida
                                                                             </li>
                                                                             <li>
-                                                                                    Airline:<asp:Label ID="Label24" runat="server" Text=""></asp:Label>
+                                                                                _______________________
+                                                                                    <%--Airline:<asp:Label ID="Label24" runat="server" Text=""></asp:Label>--%>
                                                                             </li>
                                                                             <li>
                                                                                     Llegada
@@ -508,7 +510,7 @@
 								</asp:MultiView>
 							
 								
-								
+						</div>		
 
 							
 						

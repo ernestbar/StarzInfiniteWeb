@@ -474,15 +474,6 @@ namespace StarzInfiniteWeb
         protected global::System.Web.UI.WebControls.Label lblEscalasResIdaRes;
 
         /// <summary>
-        /// lblAreolineaIda control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAreolineaIda;
-
-        /// <summary>
         /// lblFechaSalidaIda control.
         /// </summary>
         /// <remarks>
@@ -598,15 +589,6 @@ namespace StarzInfiniteWeb
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEscalasResVueltaRes;
-
-        /// <summary>
-        /// Label24 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label24;
 
         /// <summary>
         /// lblFechaSalidaVuelta control.
