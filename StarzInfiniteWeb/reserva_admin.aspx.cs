@@ -206,9 +206,9 @@ namespace StarzInfiniteWeb
                     dt_pasajeros.Columns.Add("nombre", typeof(string));
                     dt_pasajeros.Columns.Add("apellido", typeof(string));
                     // dt_pasajeros.Columns.Add("tipo_doc", typeof(string));
-                    // dt_pasajeros.Columns.Add("documento", typeof(string));
                     dt_pasajeros.Columns.Add("tipo_pax", typeof(string));
-                    // dt_pasajeros.Columns.Add("fecha_nacimiento", typeof(string));
+                    dt_pasajeros.Columns.Add("documento", typeof(string));
+                    dt_pasajeros.Columns.Add("ticket", typeof(string));
                 }
                 string url = "";
                 int nro = 1;
@@ -230,7 +230,7 @@ namespace StarzInfiniteWeb
                             ninos++;
                         if (nob_aux[2].ToUpper() == "(INF)")
                             infantes++;
-                        dt_pasajeros.Rows.Add(new string[4] { nro.ToString(), nob_aux[0], nob_aux[1], nob_aux[2] });
+                        dt_pasajeros.Rows.Add(new string[6] { nro.ToString(), nob_aux[0], nob_aux[1], nob_aux[2], nob_aux[3], nob_aux[4] });
                         //Response.Redirect("pagar_reserva.aspx?cambiar_fecha=SI");
                         //url = "https://www.amaszonas.com/scripts/reservas/atc_portal.php?pnr=" + id + "&lastname=" + nob_aux[1] + "&home=BO";
                         nro++;

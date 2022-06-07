@@ -282,6 +282,7 @@
                                                     <asp:RadioButtonList ID="rblTipoVenta" RepeatDirection="Horizontal" runat="server">
 					                                                        <asp:ListItem Text="NORMAL" Value="0" Selected="True"></asp:ListItem>
 					                                                        <asp:ListItem Text="CORPORATIVO" Value="1"></asp:ListItem>
+                                                                            <%--<asp:ListItem Text="CUOTAS" Value="2"></asp:ListItem>--%>
 				                                                        </asp:RadioButtonList>
                                                     </div>
                                                     
@@ -289,7 +290,7 @@
                                                      </div>
                                                 </div>
 
-                                            <div class="row">
+                                           <%-- <div class="row">
                                                  <div class="col-12 col-md-12">
                                                   <strong></strong>
                                                     <div class="col-12 col-md-12">
@@ -301,7 +302,7 @@
                                                     
                                                       
                                                      </div>
-                                                </div>
+                                                </div>--%>
                                      </div><!-- end flights -->
                             </div>
 

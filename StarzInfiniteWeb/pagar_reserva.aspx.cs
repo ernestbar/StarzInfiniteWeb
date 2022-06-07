@@ -63,7 +63,22 @@ namespace StarzInfiniteWeb
                         }
 
                         if (LocalBD.PR_GET_PREPAGO(lblUsuario.Text) == "1")
+                        {
                             Panel_billetera.Visible = true;
+                            string[] datos_billetra = LocalBD.PR_OBTIENE_HOME_VENTAS(lblUsuario.Text).Split('|');
+                            lblSaldo.Text = datos_billetra[3];
+                            if (decimal.Parse(lblSaldo.Text) < decimal.Parse(lblTotalPagar.Text))
+                            {
+                                btnPagarSaldo.Enabled = false;
+                                lblAviso.Text = "Saldo insuficiente!";
+                            }
+                            else
+                            {
+                                btnPagarSaldo.Enabled = true;
+                                lblAviso.Text = "";
+                            }
+
+                        }
                         else
                             Panel_billetera.Visible = false;
                         //Session["datos_reserva"] = lblAdultosResumen.Text + "|" + lblNinosResumen.Text + "|" + lblInfanteResumen.Text + "|" +//
@@ -299,21 +314,28 @@ namespace StarzInfiniteWeb
                     respuesta_res = JsonConvert.DeserializeObject<Reservas.Application>(respuestaJson);
                     if (respuesta_res.error == "00")
                     {
-                        string nombre, tipo, sesionId, token, ticket, correo;
-                        nombre = ""; ticket = "";
+                        string nombre, tipo, sesionId, token, ticket, ticket_g, correo, nombre_g;
+                        nombre = ""; ticket = ""; tipo = "";
                         sesionId = respuesta_res.datos.SessionId;
                         token = respuesta_res.datos.SecurityToken;
                         correo = respuesta_res.datos.correo_titular;
                         for (int x = 0; x < respuesta_res.datos.pasajeros.Count; x++)
                         {
                             if (x == 0)
+                            {
                                 nombre = respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
-                            else
-                                nombre = nombre + "|" + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
-                            ticket = respuesta_res.datos.pasajeros[x].ticket;
-                            tipo = respuesta_res.datos.pasajeros[x].tipo;
+                                ticket = respuesta_res.datos.pasajeros[x].ticket;
 
-                            dt_pasajeros.Rows.Add(nombre, tipo, sesionId, token, ticket, correo);
+                            }
+                            else
+                            {
+                                nombre = nombre + "|" + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
+                                ticket = ticket + "|" + respuesta_res.datos.pasajeros[x].ticket;
+                            }
+                            nombre_g = respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
+                            tipo = respuesta_res.datos.pasajeros[x].tipo;
+                            ticket_g = respuesta_res.datos.pasajeros[x].ticket;
+                            dt_pasajeros.Rows.Add(nombre_g, tipo, sesionId, token, ticket_g, correo);
                         }
                         string detalle = lblPNR.Text + "," + nombre + "," + ticket;
                         string resultado = LocalBD.PUT_PAGO_EMISION("BI", lblUsuario.Text, lblPNR.Text, detalle);

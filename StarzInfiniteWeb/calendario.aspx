@@ -219,14 +219,10 @@
                     <asp:RadioButtonList ID="rblTipoVenta" RepeatDirection="Horizontal" runat="server">
 					    <asp:ListItem Text="NORMAL" Value="0"></asp:ListItem>
 					    <asp:ListItem Text="CORPORATIVO" Value="1"></asp:ListItem>
+                        <%--<asp:ListItem Text="CUOTAS" Value="2"></asp:ListItem>--%>
 				    </asp:RadioButtonList>
                     </div>
-                 <div class="form-group">
-                    <asp:RadioButtonList ID="rblCuotas" RepeatDirection="Horizontal" runat="server">
-					     <asp:ListItem Text="CONTADO" Value="0" Selected="True"></asp:ListItem>
-					     <asp:ListItem Text="EN CUOTAS" Value="1"></asp:ListItem>
-				    </asp:RadioButtonList>
-                    </div>
+                 
                 <asp:Button ID="btnVuelos" class="btn btn-orange" OnClientClick="recuperarFechaSalida()" OnClick="btnVuelos_Click"  BackColor="#309fd9" runat="server" Text="Buscar vuelos" />
                 </div><!-- end booking-form -->
                
@@ -239,7 +235,7 @@
               </div>
                 </div>  
             
-            
+            <br /><br /><br /><br /><br /><br />
             </div><!-- end side-bar-block -->
 
             </asp:Panel>

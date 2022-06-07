@@ -24,13 +24,13 @@ namespace StarzInfiniteWeb
                 }
                 else
                 {
-                    //   0         1        2      3          4         5       6    7       8      9    10     11     12       13       14          15         16         17
-                    //TIPO RUTA|ORIGEN|DESSTINO|FECHAIDA|FECHAVUELTA|ADULTOS|NINOS|INFANTE|SENIOR|LINEA|TURNO|CABINA|EQUIPAJE|DIRECTO|NOMBORIGEN|NOMBDESTINO|TIPOVENTA|CUOTAS
+                    //   0         1        2      3          4         5       6    7       8      9    10     11     12       13       14          15         16    
+                    //TIPO RUTA|ORIGEN|DESSTINO|FECHAIDA|FECHAVUELTA|ADULTOS|NINOS|INFANTE|SENIOR|LINEA|TURNO|CABINA|EQUIPAJE|DIRECTO|NOMBORIGEN|NOMBDESTINO|TIPOVENTA
                     string[] datos = Session["DATOSINI"].ToString().Split('|');
                     MultiView1.ActiveViewIndex = 0;
                     lblTipoRuta.Text = datos[0];
                     rblTipoVenta.SelectedValue = datos[16];
-                    rblCuotas.SelectedValue = datos[17];
+                    //rblCuotas.SelectedValue = datos[17];
                     hfTipoRuta.Value= datos[0];
                     
                     if (lblTipoRuta.Text == "OW")
@@ -492,7 +492,7 @@ namespace StarzInfiniteWeb
             Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + hfFechaSalida.Value + "|" + hfFechaRetorno.Value
                  + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
                   + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
-                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue + "|" + rblCuotas.SelectedValue;
+                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue ;
 
             Response.Redirect("vuelos.aspx",false);
         }
@@ -3256,7 +3256,10 @@ namespace StarzInfiniteWeb
         {
             enviar_correo objC = new enviar_correo();
             string resp_email = objC.enviar(txtEmailTit.Text, "Confirmación de reserva StarzInfinite", hfDiv.Value, "");
-            lblAviso.Text = resp_email;
+            if (resp_email == "OK")
+                lblAviso.Text = "Correo enviado correctamente a: " + txtEmailTit.Text;
+            else
+                lblAviso.Text = "Hubo un problema al enviar el correo: " + resp_email;
         }
     }
 }

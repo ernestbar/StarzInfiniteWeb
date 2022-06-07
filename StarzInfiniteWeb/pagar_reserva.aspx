@@ -13,7 +13,7 @@
 	<asp:Label ID="lblMoneda" runat="server" Text="" Visible="false"></asp:Label>
 	<asp:Label ID="lblEmail" runat="server" Text="" Visible="false"></asp:Label>
 	<asp:Label ID="lblDatosVueloIda" runat="server" Text="" Visible="false"></asp:Label>
-    <asp:Label ID="lblAviso" runat="server" Text=""></asp:Label>
+     <asp:Label ID="lblAviso" ForeColor="Blue" Font-Size="Large" runat="server" Text=""></asp:Label>     
 
 
             

@@ -62,7 +62,7 @@ namespace StarzInfiniteWeb
             Session["DATOSINI"] = hfTipoRuta.Value+"|"+ddlOrigen.SelectedValue + "|" +ddlDestino.SelectedValue + "|" +hfFechaSalida.Value + "|" +hfFechaRetorno.Value
                  + "|" + txtAdultos.Text + "|" +txtNinos.Text + "|" +txtInfante.Text + "|" +txtSenior.Text + "|" +ddlLineArea.SelectedValue + "|" +ddlTurnos.SelectedValue
                   + "|" +ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" +ddlOrigen.SelectedItem.Text 
-                  + "|" +ddlDestino.SelectedItem.Text + "|" +rblTipoVenta.SelectedValue + "|" + rblCuotas.SelectedValue;
+                  + "|" +ddlDestino.SelectedItem.Text + "|" +rblTipoVenta.SelectedValue;
             if (lblCalendario.Text=="SI")
                 Response.Redirect("calendario.aspx");
             else

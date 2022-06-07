@@ -129,7 +129,8 @@
 																			</td>
 																			<td>
                                                                                 <asp:LinkButton ID="lbtnVer" CommandArgument='<%# Eval("NRO_PNR") %>' runat="server" CssClass="btn-sm btn-orange" OnClick="lbtnVer_Click" ToolTip="Ver detalles reserva">Detalles</asp:LinkButton><br />
-																				<asp:LinkButton ID="lbtnCambiarFecha" Visible='<%# Eval("ESTADO").ToString().Equals("EMITIDO".ToString()) ? Convert.ToBoolean(1) : Convert.ToBoolean(0) %>' CssClass="btn-sm btn-default" CommandArgument='<%# Eval("NRO_PNR") %>' runat="server" OnClick="lbtnCambiarFecha_Click" ToolTip="Cambiar la fecha">Cambiar fecha</asp:LinkButton><br />
+																				<%--<asp:LinkButton ID="lbtnCambiarFecha" Visible='<%# Eval("ESTADO").ToString().Equals("EMITIDO".ToString()) ? Convert.ToBoolean(1) : Convert.ToBoolean(0) %>' CssClass="btn-sm btn-default" CommandArgument='<%# Eval("NRO_PNR") %>' runat="server" OnClick="lbtnCambiarFecha_Click" ToolTip="Cambiar la fecha">Cambiar fecha</asp:LinkButton><br />--%>
+                                                                                <asp:LinkButton ID="lbtnCambiarFecha" Visible="false" CssClass="btn-sm btn-default" CommandArgument='<%# Eval("NRO_PNR") %>' runat="server" OnClick="lbtnCambiarFecha_Click" ToolTip="Cambiar la fecha">Cambiar fecha</asp:LinkButton><br />
 																				<asp:LinkButton ID="btnPagar" Visible='<%# Eval("ESTADO").ToString().Equals("PENDIENTE".ToString()) ? Convert.ToBoolean(1) : Convert.ToBoolean(0) %>' CssClass="btn-sm btn-success"  CommandArgument='<%# Eval("NRO_PNR") +"|"+ Eval("COD_CLIENTE_TICKET") +"|"+ Eval("SECURITYTOGEN")+"|"+ Eval("DATOSFACTURACION")+"|"+ Eval("FECHA_LIMITE") %>' runat="server" OnClick="btnPagar_Click" ToolTip="Pagar reserva">Pagar</asp:LinkButton><br />
                                                                                 <asp:LinkButton ID="btnCancelar" Visible='<%# Eval("ESTADO").ToString().Equals("PENDIENTE".ToString()) ? Convert.ToBoolean(1) : Convert.ToBoolean(0) %>' CssClass="btn-sm btn-danger" CommandArgument='<%# Eval("NRO_PNR") %>' runat="server" OnClick="btnCancelar_Click" ToolTip="Cancelar reserva">Cancelar</asp:LinkButton>
 																			</td>
@@ -156,7 +157,7 @@
 									</asp:View>
                                     <%--VER                   RESERVA--%>
                                     <asp:View ID="View3" runat="server">
-                                        <asp:Button ID="btnEnviar" CssClass="btn btn-orange" OnClientClick="traerHTML()" OnClick="btnEnviar_Click" runat="server" Text="Enviar Correo" />
+                                        <asp:Button ID="btnEnviar" CssClass="btn btn-orange" OnClientClick="traerHTML()" OnClick="btnEnviar_Click" Visible="false" runat="server" Text="Enviar Correo" />
                                         <asp:HiddenField ID="hfHTML" runat="server" />
 										<asp:Button ID="btnVolverReserva" CssClass="btn btn-orange" OnClick="btnVolverReserva_Click" runat="server" Text="Volver" />
                                         <div class="row" style="text-align:left">
@@ -471,15 +472,16 @@
                                                             <br /><br />
                                                        </div>
                                                     <div class="table-responsive offset-1">
-											                                    <table class="col-8 table-borderless">
+											                                    <table class="col-12 table-condensed" style="text-align:center;">
 												                                    <thead>
 													                                    <tr>
 														                                    <%--<th class="text">NRO</th>--%>
 														                                    <th class="text">NRO</th>
 														                                    <th class="text">NOMBRES</th>
 														                                    <th class="text">APELLIDOS</th>
-														                                    <th class="text">TIPO</th>
-														
+														                                    <th class="text">TIPO PASAJERO</th>
+														                                    <th class="text">DOCUMENTO</th>
+                                                                                            <th class="text">TICKET</th>
 														                                    </tr>
 												                                    </thead>
 													                                    <tbody>
@@ -491,6 +493,8 @@
 																	                                    <td><asp:Label ID="lblNombres" runat="server" Text='<%# Eval("nombre") %>'></asp:Label></td>
 																	                                    <td><asp:Label ID="lblApellidos" runat="server" Text='<%# Eval("apellido") %>'></asp:Label></td>
 																	                                    <td><asp:Label ID="lblTipo" runat="server" Text='<%# Eval("tipo_pax") %>'></asp:Label></td>
+                                                                                                          <td><asp:Label ID="Label10" runat="server" Text='<%# Eval("documento") %>'></asp:Label></td>
+                                                                                                          <td><asp:Label ID="Label11" runat="server" Text='<%# Eval("ticket") %>'></asp:Label></td>
 																	
 																                                    </tr>
 																	
@@ -504,7 +508,7 @@
                                                     </div>
     </div></div>
                                                  
-										
+										<br /><br /><br /><br />
                                     </asp:View>
 
 								</asp:MultiView>
