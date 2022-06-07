@@ -262,7 +262,8 @@ namespace StarzInfiniteWeb
 
                 if (datos[1].ToUpper() == "LOGIN CORRECTO")
                 {
-                        MetodoPago obj_mp = new MetodoPago
+                        
+                    MetodoPago obj_mp = new MetodoPago
                     {
                         mediopago = "CA",
                         marca = "",
@@ -321,6 +322,10 @@ namespace StarzInfiniteWeb
                         Repeater1.DataSource = dt_pasajeros;
                         Repeater1.DataBind();
                         MultiView1.ActiveViewIndex = 2;
+                    }
+                    else
+                    {
+                        lblAviso.Text = "El servicio dio el siguiente error: "+ respuesta_res.error;
                     }
 
                 }
