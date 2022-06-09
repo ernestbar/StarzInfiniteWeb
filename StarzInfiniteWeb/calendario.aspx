@@ -2,6 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        .alert{
+         color:red;
+            background-color:yellow;
+        }
+    </style>
       <div class="container">
     <asp:Label ID="lblTipoRuta" runat="server" Visible="false" Text=""></asp:Label>
     <asp:Label ID="lblDtSegmentos" runat="server" Text="" Visible="false"></asp:Label>
@@ -219,7 +225,7 @@
                     <asp:RadioButtonList ID="rblTipoVenta" RepeatDirection="Horizontal" runat="server">
 					    <asp:ListItem Text="NORMAL" Value="0"></asp:ListItem>
 					    <asp:ListItem Text="CORPORATIVO" Value="1"></asp:ListItem>
-                        <%--<asp:ListItem Text="CUOTAS" Value="2"></asp:ListItem>--%>
+                        <asp:ListItem Text="CUOTAS" Value="2"></asp:ListItem>
 				    </asp:RadioButtonList>
                     </div>
                  
@@ -247,65 +253,73 @@
                           <table class="table table-bordered order-table ">
 											 <thead>
 																<tr>
-																	<td>
+																	<th>
 																		<strong>+/- 3</strong>
-																	</td>
-                                                                    <td>
+																	</th>
+                                                                    <th>
 																		<strong><asp:Label ID="lblF1" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
-																	</td>
-																	<td>
+																	</th>
+																	<th>
 																		<strong><asp:Label ID="lblF2" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
-																	</td>
-																	<td>
+																	</th>
+																	<th>
 																		<strong><asp:Label ID="lblF3" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
-																	</td>
-																	<td>
+																	</th>
+																	<th>
 																		<strong><asp:Label ID="lblF4" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
-																	</td>
+																	</th>
 																	
-																	<td>
+																	<th>
                                                                        <strong><asp:Label ID="lblF5" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
-																	</td>
-																	<td>
+																	</th>
+																	<th>
                                                                         <strong><asp:Label ID="lblF6" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
-																	</td>
-																	<td>
+																	</th>
+																	<th>
                                                                         <strong><asp:Label ID="lblF7" Font-Bold="true" runat="server" Text="Label"></asp:Label></strong>
-																	</td>
+																	</th>
 																</tr>
 														</thead>
 													<tbody>	
-       		                <asp:Repeater ID="Repeater1" runat="server">
+       		                <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
 					                 <ItemTemplate>
                                         
                                           <tr>
-																			<td>
+																			<th>
                                                                                 <asp:Label ID="lblFechaLlegada" Font-Bold="true" runat="server" Text='<%# Eval("[0]", "{0:dd/MM/yyyy}")  %>'></asp:Label>
-																			</td>
+																			</th>
                                                                             <td style="align-content:center">
+                                                                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("[1]") %>' Font-Size="1" ForeColor="White"></asp:Label>
                                                                                 <asp:Image ID="Image3" Height="40" ImageUrl='<%# "~/Logos/" + Eval("[11]") +".png" %>' runat="server" Visible='<%# Eval("[1]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' />
                                                                                 <asp:Button ID="btnComprar1" Visible='<%# Eval("[1]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]", "{0:dd/MM/yyyy}") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|"+Eval("[11]")+"|1" %>' OnClick="btnComprar1_Click" runat="server" Text='<%# Eval("[1]")+" "+ Eval("[8]") %>' />
 																			</td>
 																			  <td>
+                                                                                  <asp:Label ID="Label2" runat="server" Text='<%# Eval("[2]") %>' Font-Size="1" ForeColor="White"></asp:Label>
                                                                                   <asp:Image ID="Image1" Height="40" ImageUrl='<%# "~/Logos/" + Eval("[12]") +".png" %>' runat="server" Visible='<%# Eval("[2]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>'/>
                                                                                   <asp:Button ID="btnComprar2" Visible='<%# Eval("[2]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]", "{0:dd/MM/yyyy}") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|"+Eval("[12]")+"|2" %>' OnClick="btnComprar2_Click" runat="server" Text='<%# Eval("[2]")+" "+ Eval("[8]") %>' />
 																			</td>
 																			  <td>
+                                                                                  <asp:Label ID="Label3" runat="server" Text='<%# Eval("[3]") %>' Font-Size="1" ForeColor="White"></asp:Label>
                                                                                   <asp:Image ID="Image2" Height="40" ImageUrl='<%# "~/Logos/" + Eval("[13]") +".png" %>' runat="server" Visible='<%# Eval("[3]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' />
 																				<asp:Button ID="btnComprar3" Visible='<%# Eval("[3]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]", "{0:dd/MM/yyyy}") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|"+Eval("[13]")+"|3" %>' OnClick="btnComprar3_Click" runat="server" Text='<%# Eval("[3]")+" "+ Eval("[8]") %>' />
 																			</td>
 																			<td>
+                                                                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("[4]") %>' Font-Size="1" ForeColor="White"></asp:Label>
                                                                                 <asp:Image ID="Image4" Height="40" ImageUrl='<%# "~/Logos/" + Eval("[14]") +".png" %>' runat="server" Visible='<%# Eval("[4]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' />
 																				<asp:Button ID="btnComprar4" Visible='<%# Eval("[4]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]", "{0:dd/MM/yyyy}") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|"+Eval("[14]")+"|4" %>' OnClick="btnComprar4_Click" runat="server" Text='<%# Eval("[4]")+" "+ Eval("[8]") %>' />
 																			</td>
 																			<td>
+                                                                                <asp:Label ID="Label5" runat="server" Text='<%# Eval("[5]") %>' Font-Size="1" ForeColor="White"></asp:Label>
                                                                                 <asp:Image ID="Image5" Height="40" ImageUrl='<%# "~/Logos/" + Eval("[15]") +".png" %>' runat="server" Visible='<%# Eval("[5]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' />
 																				<asp:Button ID="btnComprar5" Visible='<%# Eval("[5]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]", "{0:dd/MM/yyyy}") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|"+Eval("[15]")+"|5" %>' OnClick="btnComprar5_Click" runat="server" Text='<%# Eval("[5]")+" "+ Eval("[8]") %>' />
 																			</td>
-																		    <td><asp:Image ID="Image6" Height="40" ImageUrl='<%# "~/Logos/" + Eval("[16]") +".png" %>' runat="server" Visible='<%# Eval("[6]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' />
+																		    <td>
+                                                                                <asp:Label ID="Label6" runat="server" Text='<%# Eval("[6]") %>' Font-Size="1" ForeColor="White"></asp:Label>
+                                                                                <asp:Image ID="Image6" Height="40" ImageUrl='<%# "~/Logos/" + Eval("[16]") +".png" %>' runat="server" Visible='<%# Eval("[6]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' />
 																				<asp:Button ID="btnComprar6" Visible='<%# Eval("[6]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]", "{0:dd/MM/yyyy}") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|"+Eval("[16]")+"|6" %>' OnClick="btnComprar6_Click" runat="server" Text='<%# Eval("[6]")+" "+ Eval("[8]") %>' />
 																			</td>
                                                                         <td>
+                                                                            <asp:Label ID="Label7" runat="server" Text='<%# Eval("[7]") %>' Font-Size="1" ForeColor="White"></asp:Label>
                                                                             <asp:Image ID="Image7" Height="40" ImageUrl='<%# "~/Logos/" + Eval("[17]") +".png" %>' runat="server" Visible='<%# Eval("[7]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>'/>
 																				<asp:Button ID="btnComprar7" Visible='<%# Eval("[7]").ToString().Equals("0".ToString()) ? Convert.ToBoolean(0) : Convert.ToBoolean(1) %>' class="btn btn-orange btn-md col-12 col-md-12" CommandArgument='<%# Eval("[0]", "{0:dd/MM/yyyy}") +"|"+ Eval("[9]")+"|"+ Eval("[10]")+"|"+Eval("[17]")+"|7" %>' OnClick="btnComprar7_Click" runat="server" Text='<%# Eval("[7]")+" "+ Eval("[8]") %>' />
 																			</td>
@@ -623,5 +637,18 @@
                 this.checked = true;
             });
         });
+    </script>
+    <script type="text/javascript">
+        var vals = $('tr td').map(function () {
+            return parseInt($(this).text(), 10) ? parseInt($(this).text(), 10) : null;
+        }).get();
+
+        // then find their minimum
+        var min = Math.min.apply(Math, vals);
+
+        // tag any cell matching the min value
+        $('tr td').filter(function () {
+            return parseInt($(this).text(), 10) === min;
+        }).addClass('alert alert-danger');
     </script>
 </asp:Content>

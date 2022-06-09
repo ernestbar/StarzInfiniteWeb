@@ -310,7 +310,7 @@ namespace StarzInfiniteWeb
                     string respuestaJson = respuesta.ToString();
                     //string error = respuesta.First().Error.ToString();
                     Reservas.Application respuesta_res = new Reservas.Application();
-
+                    string detalle_aux = "";
                     respuesta_res = JsonConvert.DeserializeObject<Reservas.Application>(respuestaJson);
                     if (respuesta_res.error == "00")
                     {
@@ -323,12 +323,14 @@ namespace StarzInfiniteWeb
                         {
                             if (x == 0)
                             {
+                                detalle_aux = lblPNR.Text + "," + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido + "," + respuesta_res.datos.pasajeros[x].ticket;
                                 nombre = respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
                                 ticket = respuesta_res.datos.pasajeros[x].ticket;
 
                             }
                             else
                             {
+                                detalle_aux = detalle_aux + "|" + lblPNR.Text + "," + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido + "," + respuesta_res.datos.pasajeros[x].ticket;
                                 nombre = nombre + "|" + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
                                 ticket = ticket + "|" + respuesta_res.datos.pasajeros[x].ticket;
                             }
@@ -337,7 +339,7 @@ namespace StarzInfiniteWeb
                             ticket_g = respuesta_res.datos.pasajeros[x].ticket;
                             dt_pasajeros.Rows.Add(nombre_g, tipo, sesionId, token, ticket_g, correo);
                         }
-                        string detalle = lblPNR.Text + "," + nombre + "," + ticket;
+                        string detalle = detalle_aux;
                         string resultado = LocalBD.PUT_PAGO_EMISION("BI", lblUsuario.Text, lblPNR.Text, detalle);
                         string[] mesaje = resultado.Split('|');
                         lblAviso.Text = mesaje[1];

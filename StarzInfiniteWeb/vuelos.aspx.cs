@@ -315,7 +315,7 @@ namespace StarzInfiniteWeb
                                         clase = vuelos.datos[i].opciones.ida[x][y].bookClass;
                                         leg = vuelos.datos[i].opciones.ida[x][y].leg.ToString();
 
-                                        string feetotal_aux = LocalBD.PR_GET_FEE_WEB_ITINERARIO(carrier, moneda, datos[16], origen, destino, lblTipoRuta.Text, total_pasajeros);
+                                        string feetotal_aux = LocalBD.PR_GET_FEE_WEB_ITINERARIO(carrier, moneda, datos[16], ddlOrigen.SelectedValue, ddlDestino.SelectedValue, lblTipoRuta.Text, total_pasajeros);
                                         if (decimal.Parse(feetotal_aux) > 0)
                                             FeeTotal = feetotal_aux;
 

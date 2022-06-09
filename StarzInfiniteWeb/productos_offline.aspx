@@ -734,10 +734,9 @@
 		</div>
 		<div class="row">
 					<div class="col-12 col-md-2">
-						Comision Broker:
 					</div>
 					<div class="col-12 col-md-3">
-						<asp:TextBox ID="txtComisionBroker" CssClass="form-control" runat="server"></asp:TextBox>
+						<asp:TextBox ID="txtComisionBroker" CssClass="form-control" Text="0" Visible="false" runat="server"></asp:TextBox>
 					</div>
 
 		</div>

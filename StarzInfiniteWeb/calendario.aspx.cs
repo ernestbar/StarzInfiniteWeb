@@ -299,8 +299,9 @@ namespace StarzInfiniteWeb
                         //string fecha_llegada1F = "", fecha_llegada2F = "", fecha_llegada3F = "", fecha_llegada4F = "", fecha_llegada5F = "", fecha_llegada6F = "", fecha_llegada7F = "";
                         //string fecha_llegada1G = "", fecha_llegada2G = "", fecha_llegada3G = "", fecha_llegada4G = "", fecha_llegada5G = "", fecha_llegada6G = "", fecha_llegada7G = "";
 
-                        
 
+                        decimal monto_total = 0;
+                        decimal monto_totalR = 0;
                         string moneda_all = "", origen_all = "", destino_all = "";
                         if (vuelos.error == "00")
                         {
@@ -309,8 +310,7 @@ namespace StarzInfiniteWeb
                             for (int i = 0; i < vuelos.datos.Count; i++)
                             {
                                 string carrier_aux = "";
-                                decimal monto_total = 0;
-                                decimal monto_totalR = 0;
+                               
                                 //if (vuelos.datos[i].estado == 1)
                                 //{
                                
@@ -372,7 +372,7 @@ namespace StarzInfiniteWeb
                                             clase = "";// vuelos.datos[i].op[x][y].bookClass;
                                             leg = vuelos.datos[i].op[x][y].leg.ToString();
 
-                                            string feetotal_aux = LocalBD.PR_GET_FEE_WEB_ITINERARIO(carrier, moneda, datos[16], origen, destino, lblTipoRuta.Text, total_pasajeros);
+                                            string feetotal_aux = LocalBD.PR_GET_FEE_WEB_ITINERARIO(carrier, moneda, datos[16], ddlOrigen.SelectedValue, ddlDestino.SelectedValue, lblTipoRuta.Text, total_pasajeros);
                                             if (decimal.Parse(feetotal_aux) > 0)
                                                 FeeTotal = feetotal_aux;
 
@@ -407,7 +407,6 @@ namespace StarzInfiniteWeb
                                     //dt_opciones.Rows.Add(x, i, monto, moneda, AEROLINEA);
                                     monto_total = decimal.Parse(monto.Replace(",", ".")) + decimal.Parse(FeeTotal.Replace(",", "."));
                                     //duracion = dur_aux[0] + "h" + dur_aux[1] + "m";
-                                   
 
                                 }
 
@@ -443,43 +442,43 @@ namespace StarzInfiniteWeb
                                     if (fMatriz2.AddDays(-3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada1 = fecha_llegada;
-                                        monto1A = monto;
+                                        monto1A = Math.Round(monto_total,2).ToString();
                                         carrier1A = carrier;
                                     }
                                     if (fMatriz2.AddDays(-2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada2 = fecha_llegada;
-                                        monto2A = monto;
+                                        monto2A = Math.Round(monto_total,2).ToString(); 
                                         carrier2A = carrier;
                                     }
                                     if (fMatriz2.AddDays(-1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada3 = fecha_llegada;
-                                        monto3A = monto;
+                                        monto3A = Math.Round(monto_total,2).ToString();
                                         carrier3A = carrier;
                                     }
                                     if (fMatriz2.ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada4 = fecha_llegada;
-                                        monto4A = monto;
+                                        monto4A = Math.Round(monto_total,2).ToString();
                                         carrier4A = carrier;
                                     }
                                     if (fMatriz2.AddDays(1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada5 = fecha_llegada;
-                                        monto5A = monto;
+                                        monto5A = Math.Round(monto_total,2).ToString();
                                         carrier5A = carrier;
                                     }
                                     if (fMatriz2.AddDays(2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada6 = fecha_llegada;
-                                        monto6A = monto;
+                                        monto6A = Math.Round(monto_total,2).ToString();
                                         carrier6A = carrier;
                                     }
                                     if (fMatriz2.AddDays(3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada7 = fecha_llegada;
-                                        monto7A = monto;
+                                        monto7A = Math.Round(monto_total,2).ToString();
                                         carrier7A = carrier;
                                     }
                                 }
@@ -489,43 +488,43 @@ namespace StarzInfiniteWeb
                                     if (fMatriz2.AddDays(-3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada1 = fecha_llegada;
-                                        monto1B = monto;
+                                        monto1B = Math.Round(monto_total,2).ToString();
                                         carrier1B = carrier;
                                     }
                                     if (fMatriz2.AddDays(-2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada2 = fecha_llegada;
-                                        monto2B = monto;
+                                        monto2B = Math.Round(monto_total,2).ToString();
                                         carrier2B = carrier;
                                     }
                                     if (fMatriz2.AddDays(-1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada3 = fecha_llegada;
-                                        monto3B = monto;
+                                        monto3B = Math.Round(monto_total,2).ToString();
                                         carrier3B = carrier;
                                     }
                                     if (fMatriz2.ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada4 = fecha_llegada;
-                                        monto4B = monto;
+                                        monto4B = Math.Round(monto_total,2).ToString();
                                         carrier4B = carrier;
                                     }
                                     if (fMatriz2.AddDays(1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada5 = fecha_llegada;
-                                        monto5B = monto;
+                                        monto5B = Math.Round(monto_total,2).ToString();
                                         carrier5B = carrier;
                                     }
                                     if (fMatriz2.AddDays(2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada6 = fecha_llegada;
-                                        monto6B = monto;
+                                        monto6B = Math.Round(monto_total,2).ToString();
                                         carrier6B = carrier;
                                     }
                                     if (fMatriz2.AddDays(3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada7 = fecha_llegada;
-                                        monto7B = monto;
+                                        monto7B = Math.Round(monto_total,2).ToString();
                                         carrier7B = carrier;
                                     }
                                 }
@@ -534,43 +533,43 @@ namespace StarzInfiniteWeb
                                     if (fMatriz2.AddDays(-3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada1 = fecha_llegada;
-                                        monto1C = monto;
+                                        monto1C = Math.Round(monto_total,2).ToString();
                                         carrier1C = carrier;
                                     }
                                     if (fMatriz2.AddDays(-2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada2 = fecha_llegada;
-                                        monto2C = monto;
+                                        monto2C = Math.Round(monto_total,2).ToString();
                                         carrier2C = carrier;
                                     }
                                     if (fMatriz2.AddDays(-1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada3 = fecha_llegada;
-                                        monto3C = monto;
+                                        monto3C = Math.Round(monto_total,2).ToString();
                                         carrier3C = carrier;
                                     }
                                     if (fMatriz2.ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada4 = fecha_llegada;
-                                        monto4C = monto;
+                                        monto4C = Math.Round(monto_total,2).ToString();
                                         carrier4C = carrier;
                                     }
                                     if (fMatriz2.AddDays(1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada5 = fecha_llegada;
-                                        monto5C = monto;
+                                        monto5C = Math.Round(monto_total,2).ToString();
                                         carrier5C = carrier;
                                     }
                                     if (fMatriz2.AddDays(2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada6 = fecha_llegada;
-                                        monto6C = monto;
+                                        monto6C = Math.Round(monto_total,2).ToString();
                                         carrier6C = carrier;
                                     }
                                     if (fMatriz2.AddDays(3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada7 = fecha_llegada;
-                                        monto7C = monto;
+                                        monto7C = Math.Round(monto_total,2).ToString();
                                         carrier7C = carrier;
                                     }
                                 }
@@ -579,43 +578,43 @@ namespace StarzInfiniteWeb
                                     if (fMatriz2.AddDays(-3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada1 = fecha_llegada;
-                                        monto1D = monto;
+                                        monto1D = Math.Round(monto_total,2).ToString();
                                         carrier1D = carrier;
                                     }
                                     if (fMatriz2.AddDays(-2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada2 = fecha_llegada;
-                                        monto2D = monto;
+                                        monto2D = Math.Round(monto_total,2).ToString();
                                         carrier2D = carrier;
                                     }
                                     if (fMatriz2.AddDays(-1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada3 = fecha_llegada;
-                                        monto3D = monto;
+                                        monto3D = Math.Round(monto_total,2).ToString();
                                         carrier3D = carrier;
                                     }
                                     if (fMatriz2.ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada4 = fecha_llegada;
-                                        monto4D = monto;
+                                        monto4D = Math.Round(monto_total,2).ToString();
                                         carrier4D = carrier;
                                     }
                                     if (fMatriz2.AddDays(1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada5 = fecha_llegada;
-                                        monto5D = monto;
+                                        monto5D = Math.Round(monto_total,2).ToString();
                                         carrier5D = carrier;
                                     }
                                     if (fMatriz2.AddDays(2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada6 = fecha_llegada;
-                                        monto6D = monto;
+                                        monto6D = Math.Round(monto_total,2).ToString();
                                         carrier6D = carrier;
                                     }
                                     if (fMatriz2.AddDays(3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada7 = fecha_llegada;
-                                        monto7D = monto;
+                                        monto7D = Math.Round(monto_total,2).ToString();
                                         carrier7D = carrier;
                                     }
                                 }
@@ -624,43 +623,43 @@ namespace StarzInfiniteWeb
                                     if (fMatriz2.AddDays(-3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada1 = fecha_llegada;
-                                        monto1E = monto;
+                                        monto1E = Math.Round(monto_total,2).ToString();
                                         carrier1E = carrier;
                                     }
                                     if (fMatriz2.AddDays(-2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada2 = fecha_llegada;
-                                        monto2E = monto;
+                                        monto2E = Math.Round(monto_total,2).ToString();
                                         carrier2E = carrier;
                                     }
                                     if (fMatriz2.AddDays(-1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada3 = fecha_llegada;
-                                        monto3E = monto;
+                                        monto3E = Math.Round(monto_total,2).ToString();
                                         carrier3E = carrier;
                                     }
                                     if (fMatriz2.ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada4 = fecha_llegada;
-                                        monto4E = monto;
+                                        monto4E = Math.Round(monto_total,2).ToString();
                                         carrier4E = carrier;
                                     }
                                     if (fMatriz2.AddDays(1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada5 = fecha_llegada;
-                                        monto5E = monto;
+                                        monto5E = Math.Round(monto_total,2).ToString();
                                         carrier5E = carrier;
                                     }
                                     if (fMatriz2.AddDays(2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada6 = fecha_llegada;
-                                        monto6E = monto;
+                                        monto6E = Math.Round(monto_total,2).ToString();
                                         carrier6E = carrier;
                                     }
                                     if (fMatriz2.AddDays(3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada7 = fecha_llegada;
-                                        monto7E = monto;
+                                        monto7E = Math.Round(monto_total,2).ToString();
                                         carrier7E = carrier;
                                     }
                                 }
@@ -669,43 +668,43 @@ namespace StarzInfiniteWeb
                                     if (fMatriz2.AddDays(-3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada1 = fecha_llegada;
-                                        monto1F = monto;
+                                        monto1F = Math.Round(monto_total,2).ToString();
                                         carrier1F = carrier;
                                     }
                                     if (fMatriz2.AddDays(-2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada2 = fecha_llegada;
-                                        monto2F = monto;
+                                        monto2F = Math.Round(monto_total,2).ToString();
                                         carrier2F = carrier;
                                     }
                                     if (fMatriz2.AddDays(-1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada3 = fecha_llegada;
-                                        monto3F = monto;
+                                        monto3F = Math.Round(monto_total,2).ToString();
                                         carrier3F = carrier;
                                     }
                                     if (fMatriz2.ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada4 = fecha_llegada;
-                                        monto4F = monto;
+                                        monto4F = Math.Round(monto_total,2).ToString();
                                         carrier4F = carrier;
                                     }
                                     if (fMatriz2.AddDays(1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada5 = fecha_llegada;
-                                        monto5F = monto;
+                                        monto5F = Math.Round(monto_total,2).ToString();
                                         carrier5F = carrier;
                                     }
                                     if (fMatriz2.AddDays(2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada6 = fecha_llegada;
-                                        monto6F = monto;
+                                        monto6F = Math.Round(monto_total,2).ToString();
                                         carrier6F = carrier;
                                     }
                                     if (fMatriz2.AddDays(3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada7 = fecha_llegada;
-                                        monto7F = monto;
+                                        monto7F = Math.Round(monto_total,2).ToString();
                                         carrier7F = carrier;
                                     }
                                 }
@@ -714,43 +713,43 @@ namespace StarzInfiniteWeb
                                     if (fMatriz2.AddDays(-3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada1 = fecha_llegada;
-                                        monto1G = monto;
+                                        monto1G = Math.Round(monto_total,2).ToString();
                                         carrier1G = carrier;
                                     }
                                     if (fMatriz2.AddDays(-2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada2 = fecha_llegada;
-                                        monto2G = monto;
+                                        monto2G = Math.Round(monto_total,2).ToString();
                                         carrier2G = carrier;
                                     }
                                     if (fMatriz2.AddDays(-1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada3 = fecha_llegada;
-                                        monto3G = monto;
+                                        monto3G = Math.Round(monto_total,2).ToString();
                                         carrier3G = carrier;
                                     }
                                     if (fMatriz2.ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada4 = fecha_llegada;
-                                        monto4G = monto;
+                                        monto4G = Math.Round(monto_total,2).ToString();
                                         carrier4G = carrier;
                                     }
                                     if (fMatriz2.AddDays(1).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada5 = fecha_llegada;
-                                        monto5G = monto;
+                                        monto5G = Math.Round(monto_total,2).ToString();
                                         carrier5G = carrier;
                                     }
                                     if (fMatriz2.AddDays(2).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada6 = fecha_llegada;
-                                        monto6G = monto;
+                                        monto6G = Math.Round(monto_total,2).ToString();
                                         carrier6G = carrier;
                                     }
                                     if (fMatriz2.AddDays(3).ToShortDateString() == DateTime.Parse(fecha_llegada).ToShortDateString())
                                     {
                                         fecha_llegada7 = fecha_llegada;
-                                        monto7G = monto;
+                                        monto7G = Math.Round(monto_total,2).ToString();
                                         carrier7G = carrier;
                                     }
                                 }
@@ -998,9 +997,11 @@ namespace StarzInfiniteWeb
 
 
             string mes1 = "";
-            if (aux_fecha1[1].Length == 1) {mes1= "0" + aux_fecha1[1]; } else {mes1= aux_fecha1[1]; }
+            string dia1 = "";
+            if (aux_fecha1[1].Length == 1) { mes1 = "0" + aux_fecha1[1]; } else { mes1 = aux_fecha1[1]; }
+            if (aux_fecha1[0].Length == 1) { dia1 = "0" + aux_fecha1[0]; } else { dia1 = aux_fecha1[0]; }
 
-            string fecha1 = aux_fecha1[2] +"-"+ mes1  + "-" + aux_fecha1[0];
+            string fecha1 = aux_fecha1[2] + "-" + mes1 + "-" + dia1;
             string fecha2 = "";
 
             if (datos[0] == "Sólo ida")
@@ -1027,7 +1028,7 @@ namespace StarzInfiniteWeb
             else
                 vuelos_incluyenequipaje = "1";
 
-            Session["DATOSINI"] = hfTipoRuta.Value + "|" + datos[1] + "|" + datos[2] + "|" + fecha1 + "|" + fecha2
+            Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
                 + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
@@ -1046,9 +1047,11 @@ namespace StarzInfiniteWeb
 
 
             string mes1 = "";
+            string dia1 = "";
             if (aux_fecha1[1].Length == 1) { mes1 = "0" + aux_fecha1[1]; } else { mes1 = aux_fecha1[1]; }
+            if (aux_fecha1[0].Length == 1) { dia1 = "0" + aux_fecha1[0]; } else { dia1 = aux_fecha1[0]; }
 
-            string fecha1 = aux_fecha1[2] + "-" + mes1 + "-" + aux_fecha1[0];
+            string fecha1 = aux_fecha1[2] + "-" + mes1 + "-" + dia1;
             string fecha2 = "";
 
             if (datos[0] == "Sólo ida")
@@ -1075,7 +1078,7 @@ namespace StarzInfiniteWeb
             else
                 vuelos_incluyenequipaje = "1";
 
-            Session["DATOSINI"] = hfTipoRuta.Value + "|" + datos[1] + "|" + datos[2] + "|" + fecha1 + "|" + fecha2
+            Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
                 + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
@@ -1092,9 +1095,11 @@ namespace StarzInfiniteWeb
 
 
             string mes1 = "";
+            string dia1 = "";
             if (aux_fecha1[1].Length == 1) { mes1 = "0" + aux_fecha1[1]; } else { mes1 = aux_fecha1[1]; }
+            if (aux_fecha1[0].Length == 1) { dia1 = "0" + aux_fecha1[0]; } else { dia1 = aux_fecha1[0]; }
 
-            string fecha1 = aux_fecha1[2] + "-" + mes1 + "-" + aux_fecha1[0];
+            string fecha1 = aux_fecha1[2] + "-" + mes1 + "-" + dia1;
             string fecha2 = "";
 
             if (datos[0] == "Sólo ida")
@@ -1121,7 +1126,7 @@ namespace StarzInfiniteWeb
             else
                 vuelos_incluyenequipaje = "1";
 
-            Session["DATOSINI"] = hfTipoRuta.Value + "|" + datos[1] + "|" + datos[2] + "|" + fecha1 + "|" + fecha2
+            Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
                 + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
@@ -1138,9 +1143,11 @@ namespace StarzInfiniteWeb
 
 
             string mes1 = "";
+            string dia1 = "";
             if (aux_fecha1[1].Length == 1) { mes1 = "0" + aux_fecha1[1]; } else { mes1 = aux_fecha1[1]; }
+            if (aux_fecha1[0].Length == 1) { dia1 = "0" + aux_fecha1[0]; } else { dia1 = aux_fecha1[0]; }
 
-            string fecha1 = aux_fecha1[2] + "-" + mes1 + "-" + aux_fecha1[0];
+            string fecha1 = aux_fecha1[2] + "-" + mes1 + "-" + dia1;
             string fecha2 = "";
 
             if (datos[0] == "Sólo ida")
@@ -1167,7 +1174,7 @@ namespace StarzInfiniteWeb
             else
                 vuelos_incluyenequipaje = "1";
 
-            Session["DATOSINI"] = hfTipoRuta.Value + "|" + datos[1] + "|" + datos[2] + "|" + fecha1 + "|" + fecha2
+            Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
                 + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
@@ -1184,9 +1191,11 @@ namespace StarzInfiniteWeb
 
 
             string mes1 = "";
+            string dia1 = "";
             if (aux_fecha1[1].Length == 1) { mes1 = "0" + aux_fecha1[1]; } else { mes1 = aux_fecha1[1]; }
+            if (aux_fecha1[0].Length == 1) { dia1 = "0" + aux_fecha1[0]; } else { dia1 = aux_fecha1[0]; }
 
-            string fecha1 = aux_fecha1[2] + "-" + mes1 + "-" + aux_fecha1[0];
+            string fecha1 = aux_fecha1[2] + "-" + mes1 + "-" + dia1;
             string fecha2 = "";
 
             if (datos[0] == "Sólo ida")
@@ -1213,7 +1222,7 @@ namespace StarzInfiniteWeb
             else
                 vuelos_incluyenequipaje = "1";
 
-            Session["DATOSINI"] = hfTipoRuta.Value + "|" + datos[1] + "|" + datos[2] + "|" + fecha1 + "|" + fecha2
+            Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
                 + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
@@ -1225,14 +1234,16 @@ namespace StarzInfiniteWeb
         {
             Button obj = (Button)sender;
             string[] datos = obj.CommandArgument.ToString().Split('|');
-            string[] aux_fecha1 = lblF7.Text.Split('/');
+            string[] aux_fecha1 = lblF6.Text.Split('/');
 
 
 
             string mes1 = "";
+            string dia1 = "";
             if (aux_fecha1[1].Length == 1) { mes1 = "0" + aux_fecha1[1]; } else { mes1 = aux_fecha1[1]; }
+            if (aux_fecha1[0].Length == 1) { dia1 = "0" + aux_fecha1[0]; } else { dia1 = aux_fecha1[0]; }
 
-            string fecha1 = aux_fecha1[2] + "-" + mes1 + "-" + aux_fecha1[0];
+            string fecha1 = aux_fecha1[2] + "-" + mes1 + "-" + dia1;
             string fecha2 = "";
 
             if (datos[0] == "Sólo ida")
@@ -1259,7 +1270,7 @@ namespace StarzInfiniteWeb
             else
                 vuelos_incluyenequipaje = "1";
 
-            Session["DATOSINI"] = hfTipoRuta.Value + "|" + datos[1] + "|" + datos[2] + "|" + fecha1 + "|" + fecha2
+            Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
                 + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
@@ -1276,9 +1287,11 @@ namespace StarzInfiniteWeb
 
 
             string mes1 = "";
+            string dia1 = "";
             if (aux_fecha1[1].Length == 1) { mes1 = "0" + aux_fecha1[1]; } else { mes1 = aux_fecha1[1]; }
+            if (aux_fecha1[0].Length == 1) { dia1 = "0" + aux_fecha1[0]; } else { dia1 = aux_fecha1[0]; }
 
-            string fecha1 = aux_fecha1[2] + "-" + mes1 + "-" + aux_fecha1[0];
+            string fecha1 = aux_fecha1[2] + "-" + mes1 + "-" + dia1;
             string fecha2 = "";
 
             if (datos[0] == "Sólo ida")
@@ -1305,12 +1318,22 @@ namespace StarzInfiniteWeb
             else
                 vuelos_incluyenequipaje = "1";
 
-            Session["DATOSINI"] = hfTipoRuta.Value + "|" + datos[1] + "|" + datos[2] + "|" + fecha1 + "|" + fecha2
+            Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
                 + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
 
             Response.Redirect("vuelos.aspx");
+        }
+
+        protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item ||
+               e.Item.ItemType == ListItemType.AlternatingItem)
+            { 
+            
+            }
+            
         }
     }
 }

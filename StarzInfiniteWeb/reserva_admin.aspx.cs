@@ -477,7 +477,9 @@ namespace StarzInfiniteWeb
                 string[] fhAux = fechaLimAux.Text.Split(' ');
                 string[] fecha = fhAux[0].Split('/');
                 string[] hora = fhAux[1].Split(':');
-                fechaLim.Text = hora[0] + ":" + hora[1] + "-" + fecha[0] + " " + Nombre_mes(int.Parse(fecha[1])) + ", " + fecha[2];
+                //LOCAL//fechaLim.Text = hora[0] + ":" + hora[1] + "-" + fecha[0] + " " + Nombre_mes(int.Parse(fecha[1])) + ", " + fecha[2];
+                //SERVIDOR fechaLim.Text = hora[0] + ":" + hora[1] + "-" + fecha[1] + " " + Nombre_mes(int.Parse(fecha[0])) + ", " + fecha[2];
+                fechaLim.Text = hora[0] + ":" + hora[1] + "-" + fecha[1] + " " + Nombre_mes(int.Parse(fecha[0])) + ", " + fecha[2];
 
 
                 //DataTable dt = clases.LocalBD.PR_OBTIENE_BOLETOS_VENDIDOS_DETALLE(pnr.Text);
