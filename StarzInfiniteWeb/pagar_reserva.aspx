@@ -52,7 +52,7 @@
                            <asp:Button ID="btnOtrasFormasPago" OnClick="btnOtrasFormasPago_Click"  class="btn btn-primary rounded shadow"  runat="server" Text="Realizar el Pago" />
                         </div>
                     </div>
-                    <br /><br />
+                    <br /><br /><br /><br /><br /><br /> <br /><br /><br /><br /><br /><br /> <br /><br /><br /><br /><br /><br />
                 </div>
 							
 						</div>

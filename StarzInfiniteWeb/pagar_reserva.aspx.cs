@@ -45,7 +45,7 @@ namespace StarzInfiniteWeb
                         lblCorreoFin.Text = datos_iframe[3];
                         lblCodTicket.Text = datos_iframe[4];
                         lblGds.Text = datos_iframe[5];
-                        lblUsuario.Text = "Avera@starzinfinite.com";//Session["usuario"].ToString();
+                        lblUsuario.Text = Session["usuario"].ToString();
                         string[] datos = LocalBD.PR_OBTIENE_HOME_VENTAS(lblUsuario.Text).Split('|');
                         //lblSaldo.Text = datos[3];
 

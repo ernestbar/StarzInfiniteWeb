@@ -763,12 +763,12 @@ namespace StarzInfiniteWeb
         }
 
         public static string PR_VALIDA_RESERVAS(string pv_DATOSFACTURACION,string pv_ORIGENIDA,string pv_DESTINOIDA,
-            string pv_ORIGENVUELTA,string pv_DESITINOVUELTA)
+            string pv_ORIGENVUELTA,string pv_DESITINOVUELTA,string pv_USUARIO)
         {
             try
             {
                 string resultado = "0";
-                DbCommand cmd = db1.GetStoredProcCommand("PR_VALIDA_RESERVAS");
+                DbCommand cmd = db1.GetStoredProcCommand("PR_VALIDA_RESERVAS_WEB");
                 db1.AddInParameter(cmd, "pv_DATOSFACTURACION", DbType.String, pv_DATOSFACTURACION);
                 db1.AddInParameter(cmd, "pv_ORIGENIDA", DbType.String, pv_ORIGENIDA);
                 db1.AddInParameter(cmd, "pv_DESTINOIDA", DbType.String, pv_DESTINOIDA);
@@ -780,6 +780,7 @@ namespace StarzInfiniteWeb
                     db1.AddInParameter(cmd, "pv_DESITINOVUELTA", DbType.String, null);
                 else
                     db1.AddInParameter(cmd, "pv_DESITINOVUELTA", DbType.String, pv_DESITINOVUELTA);
+                db1.AddInParameter(cmd, "pv_USUARIO", DbType.String, pv_USUARIO);
                 cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
                 foreach (DataRow dr in db1.ExecuteDataSet(cmd).Tables[0].Rows)
                 {

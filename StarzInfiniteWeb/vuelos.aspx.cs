@@ -24,6 +24,7 @@ namespace StarzInfiniteWeb
                 }
                 else
                 {
+                    lblUsuario.Text = Session["usuario"].ToString();
                     //   0         1        2      3          4         5       6    7       8      9    10     11     12       13       14          15         16    
                     //TIPO RUTA|ORIGEN|DESSTINO|FECHAIDA|FECHAVUELTA|ADULTOS|NINOS|INFANTE|SENIOR|LINEA|TURNO|CABINA|EQUIPAJE|DIRECTO|NOMBORIGEN|NOMBDESTINO|TIPOVENTA
                     string[] datos = Session["DATOSINI"].ToString().Split('|');
@@ -2350,7 +2351,7 @@ namespace StarzInfiniteWeb
 
                 }
 
-                if (LocalBD.PR_VALIDA_RESERVAS(datos_fac[0] + "/" + datos_fac[1], lblOrigenDes.Text, lblDestinoDes.Text, origen_vuelta, destino_vuelta) == "1")
+                if (LocalBD.PR_VALIDA_RESERVAS(datos_fac[0] + "/" + datos_fac[1], lblOrigenDes.Text, lblDestinoDes.Text, origen_vuelta, destino_vuelta,lblUsuario.Text) == "1")
                 {
                     lblAvisoReserva.Text = "YA SE REALIZO UNA RESERVA ANTERIORMENTE";
                 }

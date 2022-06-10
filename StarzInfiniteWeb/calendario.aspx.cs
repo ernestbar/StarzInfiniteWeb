@@ -345,25 +345,30 @@ namespace StarzInfiniteWeb
                                     {
                                         if (x == 0)
                                         {
-                                            DataTable DT_dom = new DataTable();
-                                            DT_dom = Dominios.Lista("AEROLINEA");
-                                            if (DT_dom.Rows.Count > 0)
+
+                                            if (y == 0)
                                             {
-                                                foreach (DataRow dr in DT_dom.Rows)
+                                                DataTable DT_dom = new DataTable();
+                                                DT_dom = Dominios.Lista("AEROLINEA");
+                                                if (DT_dom.Rows.Count > 0)
                                                 {
-                                                    if (dr["codigo"].ToString() == vuelos.datos[i].op[x][y].operCompany)
-                                                        AEROLINEA = dr["descripcion"].ToString();
+                                                    foreach (DataRow dr in DT_dom.Rows)
+                                                    {
+                                                        if (dr["codigo"].ToString() == vuelos.datos[i].op[x][y].operCompany)
+                                                            AEROLINEA = dr["descripcion"].ToString();
+                                                    }
                                                 }
+                                                escalas = vuelos.datos[i].op[x][y].segment.ToString();
+                                                origen = vuelos.datos[i].op[x][y].boardAirport;
+                                                origen_all = vuelos.datos[i].op[x][y].boardAirport;
+                                                fecha_partida = vuelos.datos[i].op[x][y].depDate;
+                                                hora_salida = vuelos.datos[i].op[x][y].depTime;
+                                                numero_vuelo = vuelos.datos[i].op[x][y].flightNumber;
+                                                carrier = vuelos.datos[i].op[x][y].marketCompany;
+                                                carrier_aux = carrier;
+                                                lugares_disponibles = "";// vuelos.datos[i].op[x][y].lugres_disponibles; }
                                             }
-                                            escalas = vuelos.datos[i].op[x][y].segment.ToString();
-                                            origen = vuelos.datos[i].op[x][y].boardAirport;
-                                            origen_all = vuelos.datos[i].op[x][y].boardAirport;
-                                            fecha_partida = vuelos.datos[i].op[x][y].depDate;
-                                            hora_salida = vuelos.datos[i].op[x][y].depTime;
-                                            numero_vuelo = vuelos.datos[i].op[x][y].flightNumber;
-                                            carrier =vuelos.datos[i].op[x][y].marketCompany;
-                                            carrier_aux = carrier;
-                                            lugares_disponibles = "";// vuelos.datos[i].op[x][y].lugres_disponibles;
+                                             
                                             destino = vuelos.datos[i].op[x][y].offAirport;
                                             destino_all  = vuelos.datos[i].op[x][y].offAirport;
                                             fecha_llegada = "Solo Ida";// vuelos.datos[i].op[x][y].ArrivalDate;
@@ -1029,7 +1034,7 @@ namespace StarzInfiniteWeb
                 vuelos_incluyenequipaje = "1";
 
             Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
-                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
+                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + "TODAS" + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
 
@@ -1079,7 +1084,7 @@ namespace StarzInfiniteWeb
                 vuelos_incluyenequipaje = "1";
 
             Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
-                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
+                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + "TODAS" + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
 
@@ -1127,7 +1132,7 @@ namespace StarzInfiniteWeb
                 vuelos_incluyenequipaje = "1";
 
             Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
-                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
+                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + "TODAS" + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
 
@@ -1175,7 +1180,7 @@ namespace StarzInfiniteWeb
                 vuelos_incluyenequipaje = "1";
 
             Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
-                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
+                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + "TODAS" + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
 
@@ -1223,7 +1228,7 @@ namespace StarzInfiniteWeb
                 vuelos_incluyenequipaje = "1";
 
             Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
-                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
+                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + "TODAS" + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
 
@@ -1271,7 +1276,7 @@ namespace StarzInfiniteWeb
                 vuelos_incluyenequipaje = "1";
 
             Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
-                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
+                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + "TODAS" + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
 
@@ -1319,7 +1324,7 @@ namespace StarzInfiniteWeb
                 vuelos_incluyenequipaje = "1";
 
             Session["DATOSINI"] = hfTipoRuta.Value + "|" + ddlOrigen.SelectedValue + "|" + ddlDestino.SelectedValue + "|" + fecha1 + "|" + fecha2
-                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + ddlLineArea.SelectedValue + "|" + ddlTurnos.SelectedValue
+                + "|" + txtAdultos.Text + "|" + txtNinos.Text + "|" + txtInfante.Text + "|" + txtSenior.Text + "|" + "TODAS" + "|" + ddlTurnos.SelectedValue
                  + "|" + ddlCabina.SelectedValue + "|" + vuelos_incluyenequipaje + "|" + vuelos_directos + "|" + ddlOrigen.SelectedItem.Text
                  + "|" + ddlDestino.SelectedItem.Text + "|" + rblTipoVenta.SelectedValue;
 

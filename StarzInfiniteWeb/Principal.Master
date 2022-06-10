@@ -107,9 +107,9 @@
                 <li class="dropdown active">
                 <a href="productos_offline.aspx">Productos Offline<span></span></a>
             </li>
-            <li class="dropdown active">
+           <%-- <li class="dropdown active">
                 <a href="home.aspx?calendario=SI">+/- 3<span></span></a>
-            </li>
+            </li>--%>
             <li class="dropdown active">
                 <a href="ofertas.aspx">Ofertas<span></span></a>
             </li>
@@ -147,7 +147,7 @@
                         <div class="list-group panel">
                              <a href="home.aspx" class="list-group-item">Home<span></span></a>
                            <a href="reserva_admin.aspx" class="list-group-item">Reservas<span></span></a>
-                             <a href="home.aspx?calendario=SI" class="list-group-item">+/- 3<span></span></a>
+                             <%--<a href="home.aspx?calendario=SI" class="list-group-item">+/- 3<span></span></a>--%>
                             <a href="emision_offline.aspx" class="list-group-item">Emision Offline<span></span></a>
                             <a href="productos_offline.aspx" class="list-group-item">Productos Offline<span></span></a>
                             <a href="ofertas.aspx" class="list-group-item">Ofertas<span></span></a>

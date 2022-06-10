@@ -260,7 +260,7 @@
 												        <ItemTemplate>
                                                             <div id="accordion" class="card-accordion">
 			                                                <!-- begin card -->
-			                                                <div class="card" style="font-size:smaller;">
+			                                                <div class="card" style="font-size:small;">
                                                                 <ul class="list-unstyled list-inline" style="background-color:lightgray;height:20px">
                                                                         <li>
                                                                             <asp:CheckBox ID="cbElegirIda" runat="server" Text="Elegir ida" CssClass="ClaseIda"/>
@@ -270,14 +270,14 @@
                                                            
                                                                     </ul>
 				                                                <div class="card-header text-black pointer-cursor" style="background-color:white" data-toggle="collapse" data-target='<%# "#collapseOneIda" + Eval("id_datos") + Eval("id_opcion")+ Eval("AEROLINEA").ToString().Replace(" ","") %>'>
-                                                                  <ul class="list-unstyled list-inline" style="text-align:left;font-size:xx-small;height:30px">
+                                                                  <ul class="list-unstyled list-inline" style="text-align:left;font-size:x-small;height:30px">
                                                                         <li>
                                                                             <asp:Image ID="imgIda" Height="20" runat="server" />
                                                                             <asp:Label ID="Label7" runat="server" ForeColor="Blue" Text='<%# Eval("AEROLINEA") %>'></asp:Label>
                                                                             </li>
                                                                          </ul>
                                                                             
-                                                                    <ul class="list-unstyled list-inline col-12" style="text-align:center;font-size:xx-small;vertical-align:top;height:15px">
+                                                                    <ul class="list-unstyled list-inline col-12" style="text-align:center;font-size:x-small;vertical-align:top;height:15px">
                                                                         <li>
                                                                             <asp:Label ID="lblOrigenI" Font-Bold="true" runat="server" Text=""></asp:Label>
                                                                         </li>
@@ -294,7 +294,7 @@
                                                                              
                                                                          </li>
                                                                     </ul>
-                                                                    <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top;height:15px">
+                                                                    <ul class="list-unstyled list-inline" style="text-align:center;font-size:x-small;vertical-align:top;height:15px">
                                                                          <li>
                                                                             
                                                                             <asp:Label ID="lblHoraSalidaI" ForeColor="Blue" runat="server" Text=""></asp:Label>
@@ -311,13 +311,13 @@
 
                                                                         </li>
                                                                     </ul>
-                                                                     <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top;height:15px">
+                                                                     <ul class="list-unstyled list-inline" style="text-align:center;font-size:x-small;vertical-align:top;height:15px">
                                                                          <li>
                                                                              <asp:Label ID="lblFechaSalidaI" ForeColor="Blue" runat="server" Text=""></asp:Label>
                                                                         </li>
                                                                          <li>
                                                                              Equipaje <asp:Image ID="imgEBodega" ImageUrl="~/iconos/icono-maleta-viaje-png.png" Height="20" runat="server" />
-                                                                              <asp:Label ID="lblEquipajeI"  ForeColor="Blue" Font-Size="XX-Small" runat="server" Visible="true" Text=""></asp:Label>
+                                                                              <asp:Label ID="lblEquipajeI"  ForeColor="Blue" Font-Size="X-Small" runat="server" Visible="true" Text=""></asp:Label>
                                                                              <asp:Image ID="imgEMano" runat="server" />
                                                                         </li>
                                                                          <li>
@@ -349,7 +349,7 @@
 					                                        <div class="card-body" style="background-color:white"> 
                                                             <asp:Repeater ID="Repeater3" OnItemDataBound="Repeater3_ItemDataBound" runat="server">
 												            <ItemTemplate>
-                                                             <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top">
+                                                             <ul class="list-unstyled list-inline" style="text-align:center;font-size:x-small;vertical-align:top">
                                                                         <li>
                                                                             Salida
                                                                         </li>
@@ -361,7 +361,7 @@
                                                                             Llegada
                                                                         </li>
                                                                     </ul>
-                                                                <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top">
+                                                                <ul class="list-unstyled list-inline" style="text-align:center;font-size:x-small;vertical-align:top">
                                                                         <li>
                                                                             <asp:Label ID="Label47" runat="server" ForeColor="Black" Text='<%# Eval("depDate") %>'></asp:Label> - <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'></asp:Label>
                                                                         </li>
@@ -373,7 +373,7 @@
                                                                             <asp:Label ID="Label48" runat="server" ForeColor="Black" Text='<%# Eval("ArrivalDate") %>'></asp:Label> - <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'></asp:Label>
                                                                         </li>
                                                                     </ul>
-                                                                  <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top">
+                                                                  <ul class="list-unstyled list-inline" style="text-align:center;font-size:x-small;vertical-align:top">
                                                                         <li>
                                                                             <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
                                                                         </li>
@@ -424,7 +424,7 @@
                                                                                        
                                                             </div>--%>
                                                            <asp:Button ID="btnElegirRT" class="btn btn-success" ToolTip="" Visible="false" runat="server" Text="Seleccionar Retorno" />
-                                                              <ul class="list-unstyled list-inline col-12" style="text-align:left;font-size:xx-small;vertical-align:top;height:20px">
+                                                              <ul class="list-unstyled list-inline col-12" style="text-align:left;font-size:x-small;vertical-align:top;height:20px">
                                                                
                                                                  <li>
                                                                      <asp:Image ID="imgVuelta" Height="20" runat="server" />
@@ -432,7 +432,7 @@
                                                                 </li>
                                                                </ul>
 
-                                                                 <ul class="list-unstyled list-inline col-12" style="text-align:center;font-size:xx-small;vertical-align:top;height:15px">
+                                                                 <ul class="list-unstyled list-inline col-12" style="text-align:center;font-size:x-small;vertical-align:top;height:15px">
                                                                       <li>
 
                                                                     <asp:Label ID="lblOrigenI" Font-Bold="true" runat="server" Text=""></asp:Label>
@@ -450,7 +450,7 @@
                                                                      </li>
                                                                 </ul>
                                                                  
-                                                             <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top;height:15px">
+                                                             <ul class="list-unstyled list-inline" style="text-align:center;font-size:x-small;vertical-align:top;height:15px">
                                                                 <li>
                                                                     
                                                                     <asp:Label ID="lblHoraSalidaI" ForeColor="Blue" runat="server" Text=""></asp:Label>
@@ -467,13 +467,13 @@
 
                                                                  </li>
                                                              </ul>
-                                                            <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top;height:15px">
+                                                            <ul class="list-unstyled list-inline" style="text-align:center;font-size:x-small;vertical-align:top;height:15px">
                                                                 <li>
                                                                     <asp:Label ID="lblFechaSalidaI" ForeColor="Blue" runat="server" Text=""></asp:Label>
                                                                 </li>
                                                                     <li>
                                                                         Equipaje <asp:Image ID="imgEBodega" ImageUrl="~/iconos/icono-maleta-viaje-png.png" Height="20" runat="server" />
-                                                                     <asp:Label ID="lblEquipajeI" ForeColor="Blue" Font-Size="XX-Small" runat="server" Visible="true" Text=""></asp:Label>
+                                                                     <asp:Label ID="lblEquipajeI" ForeColor="Blue" Font-Size="X-Small" runat="server" Visible="true" Text=""></asp:Label>
                                                                         <asp:Image ID="imgEMano" runat="server" />
                                                                 </li>
                                                                     <li>
@@ -483,7 +483,7 @@
 
                                                                 </li>
                                                             </ul>
-                                                             <ul class="list-unstyled list-inline" style="text-align:center;font-size:small;vertical-align:top">
+                                                             <ul class="list-unstyled list-inline" style="text-align:center;font-size:x-small;vertical-align:top">
                                                                 <li>
                                                                     
                                                                     
@@ -506,7 +506,7 @@
 					                                <div class="card-body"> 
                                                     <asp:Repeater ID="Repeater6" OnItemDataBound="Repeater6_ItemDataBound" runat="server">
 										            <ItemTemplate>
-                                                      <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top">
+                                                      <ul class="list-unstyled list-inline" style="text-align:center;font-size:x-small;vertical-align:top">
                                                         <li>
                                                             Salida
                                                         </li>
@@ -518,7 +518,7 @@
                                                               Llegada
                                                           </li>
                                                       </ul> 
-                                                       <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top">
+                                                       <ul class="list-unstyled list-inline" style="text-align:center;font-size:x-small;vertical-align:top">
                                                         <li>
                                                                 <asp:Label ID="Label47" runat="server" ForeColor="Black" Text='<%# Eval("depDate") %>'></asp:Label> - <asp:Label ID="Label1" runat="server" ForeColor="Black" Text='<%# Eval("depTime") %>'></asp:Label>
                                                             </li>
@@ -530,7 +530,7 @@
                                                                 <asp:Label ID="Label48" runat="server" ForeColor="Black" Text='<%# Eval("ArrivalDate") %>'></asp:Label> - <asp:Label ID="Label2" runat="server" ForeColor="Black" Text='<%# Eval("hora_llegada") %>'></asp:Label>
                                                             </li>
                                                       </ul>
-                                                    <ul class="list-unstyled list-inline" style="text-align:center;font-size:xx-small;vertical-align:top">
+                                                    <ul class="list-unstyled list-inline" style="text-align:center;font-size:x-small;vertical-align:top">
                                                         <li>
                                                             <asp:Label ID="Label4" runat="server" Text='<%# Eval("boardAirport") %>'>:</asp:Label>
                                                         </li>
@@ -564,7 +564,7 @@
 										        </asp:Repeater>
                                         
                                             </div><!-- end t-list-info -->
-                                            <ul class="list-unstyled list-inline" style="background-color:lightblue;height:70px;width:100%;font-size:xx-small">
+                                            <ul class="list-unstyled list-inline" style="background-color:lightblue;height:70px;width:100%;font-size:x-small">
                                                    <li>
                                                       <asp:Label ID="ldlOrigen" runat="server" ForeColor="Black"  Font-Bold="true" Text='<%# Eval("ORIGEN") %>' ></asp:Label>-
                                                        <asp:Label ID="lblDestino"  Font-Bold="true" ForeColor="Black" runat="server" Text='<%# Eval("DESTINO") %>'></asp:Label>
