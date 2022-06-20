@@ -358,19 +358,20 @@ namespace StarzInfiniteWeb
                         montoPagoDos = Math.Round(((decimal.Parse(monto_pagar_t.ToString().Replace(",", ".")) * (decimal.Parse(porcentaje) / 100)) + decimal.Parse(monto_pagar_t.ToString().Replace(",", "."))), 2).ToString().Replace(",", ".")
                         //montoPagoDos = ((decimal.Parse(monto_pagar_t.ToString().Replace(".", ",")) * (decimal.Parse(porcentaje) / 100)) + decimal.Parse(monto_pagar_t.ToString().Replace(".", ","))).ToString().Replace(",",".")
                     };
-                    DBApi obj_pago = new DBApi();
-                    string json_pago = JsonConvert.SerializeObject(obj_sp);
-                    dynamic respuesta_pago = obj_pago.Post("http://backendstarz.eastus.cloudapp.azure.com/paginapagospro/solicitud_pago.php", json_pago, "Basic MDQ4NjQxMjRzZGY0NTIzZjA2ODZjZmZmZDcwYTg5NTMzY2Q5ZmE6ZWUyZWMzY2MzNDUzdHNzODk0NDk1MDY4MjIyYTg=");
-                    string respuestaJson_pago = respuesta_pago.ToString();
+                    //DBApi obj_pago = new DBApi();
+                    //string json_pago = JsonConvert.SerializeObject(obj_sp);
+                    //dynamic respuesta_pago = obj_pago.Post("http://backendstarz.eastus.cloudapp.azure.com/paginapagospro/solicitud_pago.php", json_pago, "Basic MDQ4NjQxMjRzZGY0NTIzZjA2ODZjZmZmZDcwYTg5NTMzY2Q5ZmE6ZWUyZWMzY2MzNDUzdHNzODk0NDk1MDY4MjIyYTg=");
+                    //string respuestaJson_pago = respuesta_pago.ToString();
 
-                    pagar_reserva.RespuestaSP resp = new pagar_reserva.RespuestaSP();
-                    resp = JsonConvert.DeserializeObject<pagar_reserva.RespuestaSP>(respuestaJson_pago);
-                    //MultiView1.ActiveViewIndex = 3;
-                    string url = "https://psp.starzinfinite.com/psp/?IdTransaccion=" + resp.IdTransaccion;
-                    //lblLinkPago.Text = url;
+                    //pagar_reserva.RespuestaSP resp = new pagar_reserva.RespuestaSP();
+                    //resp = JsonConvert.DeserializeObject<pagar_reserva.RespuestaSP>(respuestaJson_pago);
+                    ////MultiView1.ActiveViewIndex = 3;
+                    //string url = "https://psp.starzinfinite.com/psp/?IdTransaccion=" + resp.IdTransaccion;
+                    ////lblLinkPago.Text = url;
 
                     MetodoPago obj_mp = new MetodoPago
                     {
+                        gds=Pusuario,
                         mediopago = "CA",
                         marca = "",
                         numero = "",
@@ -499,6 +500,7 @@ namespace StarzInfiniteWeb
 
         public class MetodoPago
         {
+            public string gds { get; set; }
             public string mediopago { get; set; }
             public string marca { get; set; }
             public string numero { get; set; }
