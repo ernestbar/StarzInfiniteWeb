@@ -317,47 +317,47 @@ namespace StarzInfiniteWeb
                         }
 
                     }
-                    //string monto_pagar = PmontoPago.Replace(",", ".");
-                    decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(",", "."));
-                    decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(",", "."));
-                    //decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(".", ","));
-                    //decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(".", ","));
-                    if (Pmoneda == "USD")
-                    {
-                        monto_pagar_t = monto_pagar_i * decimal.Parse("6.97");
-                        //monto_pagar_t = monto_pagar_i * decimal.Parse("6,97");
-                        Pmoneda = "BOB";
-                    }
+                    ////string monto_pagar = PmontoPago.Replace(",", ".");
+                    //decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(",", "."));
+                    //decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(",", "."));
+                    ////decimal monto_pagar_i = decimal.Parse(PmontoPago.Replace(".", ","));
+                    ////decimal monto_pagar_t = decimal.Parse(PmontoPago.Replace(".", ","));
+                    //if (Pmoneda == "USD")
+                    //{
+                    //    monto_pagar_t = monto_pagar_i * decimal.Parse("6.97");
+                    //    //monto_pagar_t = monto_pagar_i * decimal.Parse("6,97");
+                    //    Pmoneda = "BOB";
+                    //}
 
-                    string porcentaje = "";
-                    DataTable dt_porcentaje = new DataTable();
-                    dt_porcentaje = Dominios.Lista("COMISION PASARELA");
-                    foreach (DataRow dr_porcentaje in dt_porcentaje.Rows)
-                    {
-                        porcentaje = dr_porcentaje["valor_numerico"].ToString();
-                    }
+                    //string porcentaje = "";
+                    //DataTable dt_porcentaje = new DataTable();
+                    //dt_porcentaje = Dominios.Lista("COMISION PASARELA");
+                    //foreach (DataRow dr_porcentaje in dt_porcentaje.Rows)
+                    //{
+                    //    porcentaje = dr_porcentaje["valor_numerico"].ToString();
+                    //}
 
-                    string[] url_aux = PurlRespuesta.Split('|');
+                    //string[] url_aux = PurlRespuesta.Split('|');
 
-                    pagar_reserva.SolicitudPago obj_sp = new pagar_reserva.SolicitudPago
-                    {
-                        usuario = "web",
-                        correoElectronico = PcorreoElectronico,
-                        montoPago = Math.Round(monto_pagar_t, 2).ToString().Replace(",", "."),
-                        moneda = Pmoneda,
-                        descripcion = Pdescripcion,
-                        nombreComprador = PnombreComprador,
-                        apellidoComprador = PapellidoComprador,
-                        documentoIdentidadComprador = PdocumentoIdentidadComprador,
-                        fechaHoraRegistro = PfechaHoraRegistro,
-                        fechaHoraVencimiento = PfechaHoraVencimiento,
-                        codigoOperacion = PcodigoOperacion,
-                        urlRespuesta = url_aux[0],
-                        PNR = lblPNR.Text,
-                        gds = Pusuario,
-                        montoPagoDos = Math.Round(((decimal.Parse(monto_pagar_t.ToString().Replace(",", ".")) * (decimal.Parse(porcentaje) / 100)) + decimal.Parse(monto_pagar_t.ToString().Replace(",", "."))), 2).ToString().Replace(",", ".")
-                        //montoPagoDos = ((decimal.Parse(monto_pagar_t.ToString().Replace(".", ",")) * (decimal.Parse(porcentaje) / 100)) + decimal.Parse(monto_pagar_t.ToString().Replace(".", ","))).ToString().Replace(",",".")
-                    };
+                    //pagar_reserva.SolicitudPago obj_sp = new pagar_reserva.SolicitudPago
+                    //{
+                    //    usuario = "web",
+                    //    correoElectronico = PcorreoElectronico,
+                    //    montoPago = Math.Round(monto_pagar_t, 2).ToString().Replace(",", "."),
+                    //    moneda = Pmoneda,
+                    //    descripcion = Pdescripcion,
+                    //    nombreComprador = PnombreComprador,
+                    //    apellidoComprador = PapellidoComprador,
+                    //    documentoIdentidadComprador = PdocumentoIdentidadComprador,
+                    //    fechaHoraRegistro = PfechaHoraRegistro,
+                    //    fechaHoraVencimiento = PfechaHoraVencimiento,
+                    //    codigoOperacion = PcodigoOperacion,
+                    //    urlRespuesta = url_aux[0],
+                    //    PNR = lblPNR.Text,
+                    //    gds = Pusuario,
+                    //    montoPagoDos = Math.Round(((decimal.Parse(monto_pagar_t.ToString().Replace(",", ".")) * (decimal.Parse(porcentaje) / 100)) + decimal.Parse(monto_pagar_t.ToString().Replace(",", "."))), 2).ToString().Replace(",", ".")
+                    //    //montoPagoDos = ((decimal.Parse(monto_pagar_t.ToString().Replace(".", ",")) * (decimal.Parse(porcentaje) / 100)) + decimal.Parse(monto_pagar_t.ToString().Replace(".", ","))).ToString().Replace(",",".")
+                    //};
                     //DBApi obj_pago = new DBApi();
                     //string json_pago = JsonConvert.SerializeObject(obj_sp);
                     //dynamic respuesta_pago = obj_pago.Post("http://backendstarz.eastus.cloudapp.azure.com/paginapagospro/solicitud_pago.php", json_pago, "Basic MDQ4NjQxMjRzZGY0NTIzZjA2ODZjZmZmZDcwYTg5NTMzY2Q5ZmE6ZWUyZWMzY2MzNDUzdHNzODk0NDk1MDY4MjIyYTg=");
@@ -401,48 +401,100 @@ namespace StarzInfiniteWeb
 
                     string respuestaJson = respuesta.ToString();
                     //string error = respuesta.First().Error.ToString();
-                    Reservas.Application respuesta_res = new Reservas.Application();
-                    string detalle_aux = "";
-                    respuesta_res = JsonConvert.DeserializeObject<Reservas.Application>(respuestaJson);
-                    if (respuesta_res.error == "00")
+                    if (Pusuario.ToUpper() == "KIU")
                     {
-                        string nombre, tipo, sesionId, token, ticket, ticket_g, correo, nombre_g;
-                        nombre = ""; ticket = ""; tipo = "";
-                        sesionId = respuesta_res.datos.SessionId;
-                        token = respuesta_res.datos.SecurityToken;
-                        correo = respuesta_res.datos.correo_titular;
-                        for (int x = 0; x < respuesta_res.datos.pasajeros.Count; x++)
+                        Reservas_kiu.Application respuesta_res = new Reservas_kiu.Application();
+                        string detalle_aux = "";
+                        respuesta_res = JsonConvert.DeserializeObject<Reservas_kiu.Application>(respuestaJson);
+                        if (respuesta_res.error == "00")
                         {
-                            if (x == 0)
+                            string nombre, tipo, sesionId, token, ticket, ticket_g, correo, nombre_g;
+                            nombre = ""; ticket = ""; tipo = "";
+                            sesionId = respuesta_res.datos.SessionId;
+                            token = respuesta_res.datos.SecurityToken;
+                            correo = respuesta_res.datos.correo_titular;
+                            for (int x = 0; x < respuesta_res.datos.pasajeros.Count; x++)
                             {
-                                detalle_aux = lblPNR.Text + "," + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido + "," + respuesta_res.datos.pasajeros[x].ticket;
-                                nombre = respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
-                                ticket = respuesta_res.datos.pasajeros[x].ticket;
+                                if (x == 0)
+                                {
+                                    detalle_aux = lblPNR.Text + "," + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido + "," + respuesta_res.datos.pasajeros[x].ticket;
+                                    nombre = respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
+                                    ticket = respuesta_res.datos.pasajeros[x].ticket;
 
+                                }
+                                else
+                                {
+                                    detalle_aux = detalle_aux + "|" + lblPNR.Text + "," + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido + "," + respuesta_res.datos.pasajeros[x].ticket;
+                                    nombre = nombre + "|" + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
+                                    ticket = ticket + "|" + respuesta_res.datos.pasajeros[x].ticket;
+                                }
+                                nombre_g = respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
+                                tipo = respuesta_res.datos.pasajeros[x].tipo;
+                                ticket_g = respuesta_res.datos.pasajeros[x].ticket;
+                                dt_pasajeros.Rows.Add(nombre_g, tipo, sesionId, token, ticket_g, correo);
                             }
-                            else
-                            {
-                                detalle_aux = detalle_aux + "|" + lblPNR.Text + "," + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido + "," + respuesta_res.datos.pasajeros[x].ticket;
-                                nombre = nombre + "|" + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
-                                ticket = ticket + "|" + respuesta_res.datos.pasajeros[x].ticket;
-                            }
-                            nombre_g = respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
-                            tipo = respuesta_res.datos.pasajeros[x].tipo;
-                            ticket_g = respuesta_res.datos.pasajeros[x].ticket;
-                            dt_pasajeros.Rows.Add(nombre_g, tipo, sesionId, token, ticket_g, correo);
+                            string detalle = detalle_aux;
+                            string resultado = LocalBD.PUT_PAGO_EMISION("BI", lblUsuario.Text, lblPNR.Text, detalle);
+                            string[] mesaje = resultado.Split('|');
+                            lblAviso.Text = mesaje[1];
+                            Repeater1.DataSource = dt_pasajeros;
+                            Repeater1.DataBind();
+                            MultiView1.ActiveViewIndex = 2;
                         }
-                        string detalle = detalle_aux;
-                        string resultado = LocalBD.PUT_PAGO_EMISION("BI", lblUsuario.Text, lblPNR.Text, detalle);
-                        string[] mesaje = resultado.Split('|');
-                        lblAviso.Text = mesaje[1];
-                        Repeater1.DataSource = dt_pasajeros;
-                        Repeater1.DataBind();
-                        MultiView1.ActiveViewIndex = 2;
+                        else
+                        {
+                            lblAviso.Text = "El servicio dio el siguiente error: " + respuesta_res.error;
+                        }
                     }
+
                     else
                     {
-                        lblAviso.Text = "El servicio dio el siguiente error: "+ respuesta_res.error;
+                        Reservas.Application respuesta_res = new Reservas.Application();
+                        string detalle_aux = "";
+                        respuesta_res = JsonConvert.DeserializeObject<Reservas.Application>(respuestaJson);
+                        if (respuesta_res.error == "00")
+                        {
+                            string nombre, tipo, sesionId, token, ticket, ticket_g, correo, nombre_g;
+                            nombre = ""; ticket = ""; tipo = "";
+                            sesionId = respuesta_res.datos.SessionId;
+                            token = respuesta_res.datos.SecurityToken;
+                            correo = respuesta_res.datos.correo_titular;
+                            for (int x = 0; x < respuesta_res.datos.pasajeros.Count; x++)
+                            {
+                                if (x == 0)
+                                {
+                                    detalle_aux = lblPNR.Text + "," + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido + "," + respuesta_res.datos.pasajeros[x].ticket;
+                                    nombre = respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
+                                    ticket = respuesta_res.datos.pasajeros[x].ticket;
+
+                                }
+                                else
+                                {
+                                    detalle_aux = detalle_aux + "|" + lblPNR.Text + "," + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido + "," + respuesta_res.datos.pasajeros[x].ticket;
+                                    nombre = nombre + "|" + respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
+                                    ticket = ticket + "|" + respuesta_res.datos.pasajeros[x].ticket;
+                                }
+                                nombre_g = respuesta_res.datos.pasajeros[x].nombre + " " + respuesta_res.datos.pasajeros[x].apellido;
+                                tipo = respuesta_res.datos.pasajeros[x].tipo;
+                                ticket_g = respuesta_res.datos.pasajeros[x].ticket;
+                                dt_pasajeros.Rows.Add(nombre_g, tipo, sesionId, token, ticket_g, correo);
+                            }
+                            string detalle = detalle_aux;
+                            string resultado = LocalBD.PUT_PAGO_EMISION("BI", lblUsuario.Text, lblPNR.Text, detalle);
+                            string[] mesaje = resultado.Split('|');
+                            lblAviso.Text = mesaje[1];
+                            Repeater1.DataSource = dt_pasajeros;
+                            Repeater1.DataBind();
+                            MultiView1.ActiveViewIndex = 2;
+                        }
+                        else
+                        {
+                            lblAviso.Text = "El servicio dio el siguiente error: " + respuesta_res.error;
+                        }
                     }
+                       
+
+                    
 
                 }
                 else
