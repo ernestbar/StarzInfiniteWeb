@@ -510,7 +510,7 @@ namespace StarzInfiniteWeb
                 StreamWriter writer5 = new StreamWriter(directorio2 + "\\" + nombre_archivo, true, Encoding.Unicode);
                 writer5.WriteLine(ex.ToString());
                 writer5.Close();
-                lblAviso.Text = "Excepcion no controlada, reive los log o consulte con el administrador.";
+                lblAviso.Text = "Excepcion no controlada, revise los log o consulte con el administrador.";
             }
 
 

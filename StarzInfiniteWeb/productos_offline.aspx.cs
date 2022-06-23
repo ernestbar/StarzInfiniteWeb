@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -81,39 +83,52 @@ namespace StarzInfiniteWeb
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (lblCodClienteTicket.Text == "")
+            try 
             {
-                string detalle = "";
-                foreach (ListItem item1 in lbDetalle.Items)
+                if (lblCodClienteTicket.Text == "")
                 {
-                    detalle = detalle + item1.Value + "|";
-                
-                }
-                string[] datos = LocalBD.PUT_INGRESA_TICKETS_MANUAL("I", lblUsuario.Text, ddlProducto.SelectedValue, ddlProovedor.SelectedValue,
-                    txtPNR.Text, txtTourCode.Text, txtDatosFacturacion.Text, txtEmailFact.Text, txtFonoFact.Text, ddlOrigenIda.SelectedValue,
-                    ddlDestinoIda.SelectedValue, hfFechaSalida.Value, txtClaseIda.Text, txtCarrierIda.Text, txtNroVueloIda.Text, ddlOrigenVuelta.SelectedValue,
-                    ddlDestinoVuelta.SelectedValue, hfFechaVuelta.Value, txtClaseVuelta.Text, txtCarrierVuelta.Text, txtNroVueloVuelta.Text,
-                    hfFechaLimite.Value, hfFechaRegistro.Value, ddlBroker.SelectedValue, decimal.Parse(txtTotalCobrar.Text), ddlMoneda.SelectedValue, decimal.Parse(txtTotalImpuestos.Text),
-                    decimal.Parse(txtMontoSinImpuestos.Text), ddlTipoVenta.SelectedValue, decimal.Parse(txtComisionBroker.Text), detalle, ddlTipoVuelo.SelectedValue, "").Split('|');
-                lblAviso.Text = datos[1];
+                    string detalle = "";
+                    foreach (ListItem item1 in lbDetalle.Items)
+                    {
+                        detalle = detalle + item1.Value + "|";
 
-            }
-            else
-            {
-                string detalle = "";
-                foreach (ListItem item1 in lbDetalle.Items)
-                {
-                    detalle = detalle + item1.Value + "|";
+                    }
+                    string[] datos = LocalBD.PUT_INGRESA_TICKETS_MANUAL("I", lblUsuario.Text, ddlProducto.SelectedValue, ddlProovedor.SelectedValue,
+                        txtPNR.Text, txtTourCode.Text, txtDatosFacturacion.Text, txtEmailFact.Text, txtFonoFact.Text, ddlOrigenIda.SelectedValue,
+                        ddlDestinoIda.SelectedValue, hfFechaSalida.Value, txtClaseIda.Text, txtCarrierIda.Text, txtNroVueloIda.Text, ddlOrigenVuelta.SelectedValue,
+                        ddlDestinoVuelta.SelectedValue, hfFechaVuelta.Value, txtClaseVuelta.Text, txtCarrierVuelta.Text, txtNroVueloVuelta.Text,
+                        hfFechaLimite.Value, hfFechaRegistro.Value, ddlBroker.SelectedValue, decimal.Parse(txtTotalCobrar.Text), ddlMoneda.SelectedValue, decimal.Parse(txtTotalImpuestos.Text),
+                        decimal.Parse(txtMontoSinImpuestos.Text), ddlTipoVenta.SelectedValue, decimal.Parse(txtComisionBroker.Text), detalle, ddlTipoVuelo.SelectedValue, "").Split('|');
+                    lblAviso.Text = datos[1];
 
                 }
-                string[] datos = LocalBD.PUT_INGRESA_TICKETS_MANUAL("U", lblUsuario.Text, ddlProducto.SelectedValue, ddlProovedor.SelectedValue,
-                    txtPNR.Text, txtTourCode.Text, txtDatosFacturacion.Text, txtEmailFact.Text, txtFonoFact.Text, ddlOrigenIda.SelectedValue,
-                    ddlDestinoIda.SelectedValue, hfFechaSalida.Value, txtClaseIda.Text, txtCarrierIda.Text, txtNroVueloIda.Text, ddlOrigenVuelta.SelectedValue,
-                    ddlDestinoVuelta.SelectedValue, hfFechaVuelta.Value, txtClaseVuelta.Text, txtCarrierVuelta.Text, txtNroVueloVuelta.Text,
-                    hfFechaLimite.Value, hfFechaRegistro.Value, ddlBroker.SelectedValue, decimal.Parse(txtTotalCobrar.Text), ddlMoneda.SelectedValue, decimal.Parse(txtTotalImpuestos.Text),
-                    decimal.Parse(txtMontoSinImpuestos.Text), ddlTipoVenta.SelectedValue, decimal.Parse(txtComisionBroker.Text), detalle, ddlTipoVuelo.SelectedValue, lblCodClienteTicket.Text).Split('|');
-                lblAviso.Text = datos[1];
+                else
+                {
+                    string detalle = "";
+                    foreach (ListItem item1 in lbDetalle.Items)
+                    {
+                        detalle = detalle + item1.Value + "|";
+
+                    }
+                    string[] datos = LocalBD.PUT_INGRESA_TICKETS_MANUAL("U", lblUsuario.Text, ddlProducto.SelectedValue, ddlProovedor.SelectedValue,
+                        txtPNR.Text, txtTourCode.Text, txtDatosFacturacion.Text, txtEmailFact.Text, txtFonoFact.Text, ddlOrigenIda.SelectedValue,
+                        ddlDestinoIda.SelectedValue, hfFechaSalida.Value, txtClaseIda.Text, txtCarrierIda.Text, txtNroVueloIda.Text, ddlOrigenVuelta.SelectedValue,
+                        ddlDestinoVuelta.SelectedValue, hfFechaVuelta.Value, txtClaseVuelta.Text, txtCarrierVuelta.Text, txtNroVueloVuelta.Text,
+                        hfFechaLimite.Value, hfFechaRegistro.Value, ddlBroker.SelectedValue, decimal.Parse(txtTotalCobrar.Text), ddlMoneda.SelectedValue, decimal.Parse(txtTotalImpuestos.Text),
+                        decimal.Parse(txtMontoSinImpuestos.Text), ddlTipoVenta.SelectedValue, decimal.Parse(txtComisionBroker.Text), detalle, ddlTipoVuelo.SelectedValue, lblCodClienteTicket.Text).Split('|');
+                    lblAviso.Text = datos[1];
+                }
             }
+            catch (Exception ex)
+            {
+                string nombre_archivo = "error_productos_offline_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".txt";
+                string directorio2 = Server.MapPath("~/Logs");
+                StreamWriter writer5 = new StreamWriter(directorio2 + "\\" + nombre_archivo, true, Encoding.Unicode);
+                writer5.WriteLine(ex.ToString());
+                writer5.Close();
+                lblAviso.Text = "Excepcion no controlada, revise los log o consulte con el administrador.";
+            }
+            
         }
 
         protected void rbTipo_SelectedIndexChanged(object sender, EventArgs e)
