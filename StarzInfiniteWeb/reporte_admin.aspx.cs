@@ -115,5 +115,56 @@ namespace StarzInfiniteWeb
         {
             MultiView1.ActiveViewIndex = 0;
         }
+
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            Button obj = (Button)sender;
+            string id = obj.CommandArgument.ToString();
+            lblPNRcambios.Text = id;
+            MultiView1.ActiveViewIndex = 6;
+        }
+
+        protected void ddlFomrmaPago_DataBound(object sender, EventArgs e)
+        {
+            ddlFomrmaPago.Items.Insert(0, "SELECCIONAR");
+        }
+
+        
+
+        protected void btnGuardarCambios_Click(object sender, EventArgs e)
+        {
+            string[] datos=LocalBD.abm_cambia_data_tickets("I", lblPNRcambios.Text, "", ddlFomrmaPago.SelectedValue, ddlParticipante.SelectedValue, "", lblUsuario.Text).Split('|');
+            lblAviso.Text = datos[1];
+            Repeater2.DataBind();
+        }
+
+        protected void btnVolverCambios_Click(object sender, EventArgs e)
+        {
+            MultiView1.ActiveViewIndex = 2;
+        }
+
+        protected void ddlParticipante_DataBound(object sender, EventArgs e)
+        {
+            ddlParticipante.Items.Insert(0, "SELECCIONAR");
+        }
+
+        protected void btnEditarTicket_Click(object sender, EventArgs e)
+        {
+            Button obj = (Button)sender;
+            lblCodTicketDetalle.Text = obj.CommandArgument.ToString();
+            MultiView1.ActiveViewIndex = 7;
+        }
+
+        protected void btnGuardarTicket_Click(object sender, EventArgs e)
+        {
+            string[] datos = LocalBD.abm_cambia_data_tickets("I", "", lblCodTicketDetalle.Text, "SELECCIONAR", "SELECCIONAR",txtCodTicket.Text, lblUsuario.Text).Split('|');
+            lblAviso.Text = datos[1];
+            Repeater3.DataBind();
+        }
+
+        protected void btnVolverTicket_Click(object sender, EventArgs e)
+        {
+            MultiView1.ActiveViewIndex = 3;
+        }
     }
 }

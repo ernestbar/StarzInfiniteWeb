@@ -105,6 +105,15 @@ namespace StarzInfiniteWeb
         protected global::System.Web.UI.WebControls.ObjectDataSource odsProductos;
 
         /// <summary>
+        /// odsTipoPas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource odsTipoPas;
+
+        /// <summary>
         /// odsProveedor control.
         /// </summary>
         /// <remarks>
@@ -330,6 +339,15 @@ namespace StarzInfiniteWeb
         protected global::System.Web.UI.WebControls.TextBox txtApellidoPasajero;
 
         /// <summary>
+        /// ddlTipoPas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoPas;
+
+        /// <summary>
         /// txtNroDoc control.
         /// </summary>
         /// <remarks>
@@ -337,6 +355,15 @@ namespace StarzInfiniteWeb
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNroDoc;
+
+        /// <summary>
+        /// hfFechaNac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfFechaNac;
 
         /// <summary>
         /// txtCosto control.

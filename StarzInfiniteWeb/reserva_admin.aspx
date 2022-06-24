@@ -114,7 +114,7 @@
 																				<asp:Label ID="Label8" Font-Size="Smaller" runat="server" Text='<%# Eval("MONEDA") %>'></asp:Label>
 																			</td>
 																			<td>
-																				<asp:Label ID="Label1" Font-Size="Smaller" runat="server" Text='<%#Eval("FECHA_LIMITE", "{0:dd/M/yyyy}")%>'></asp:Label>
+																				<asp:Label ID="Label1" Font-Size="Smaller" runat="server" Text='<%#Eval("FECHA_CREACION", "{0:dd/MM/yyyy}")%>'></asp:Label>
 																			</td>
 																			<td>
 																				<asp:Label ID="Label9" Font-Size="Smaller" runat="server" Text='<%# Eval("EMAILFACT") %>'></asp:Label>

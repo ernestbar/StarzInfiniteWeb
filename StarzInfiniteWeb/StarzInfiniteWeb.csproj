@@ -536,6 +536,8 @@
     <Content Include="productos_offline.aspx" />
     <Content Include="reportes.aspx" />
     <Content Include="reporte_admin.aspx" />
+    <Content Include="reporte_broker_adm.aspx" />
+    <Content Include="reporte_counter_adm.aspx" />
     <Content Include="reserva_admin.aspx" />
     <Content Include="Scripts\js\chosen.jquery.min.js" />
     <Content Include="soporte.aspx" />
@@ -640,6 +642,20 @@
     </Compile>
     <Compile Include="reporte_admin.aspx.designer.cs">
       <DependentUpon>reporte_admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reporte_broker_adm.aspx.cs">
+      <DependentUpon>reporte_broker_adm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reporte_broker_adm.aspx.designer.cs">
+      <DependentUpon>reporte_broker_adm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reporte_counter_adm.aspx.cs">
+      <DependentUpon>reporte_counter_adm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reporte_counter_adm.aspx.designer.cs">
+      <DependentUpon>reporte_counter_adm.aspx</DependentUpon>
     </Compile>
     <Compile Include="reserva_admin.aspx.cs">
       <DependentUpon>reserva_admin.aspx</DependentUpon>

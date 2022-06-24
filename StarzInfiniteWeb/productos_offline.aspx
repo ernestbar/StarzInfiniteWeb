@@ -48,6 +48,11 @@
 		<SelectParameters>
 			 <asp:Parameter DefaultValue="PRODUCTOS" Name="PV_DOMINIO" Type="String" />
 		</SelectParameters></asp:ObjectDataSource>
+	<asp:ObjectDataSource ID="odsTipoPas" runat="server" SelectMethod="Lista2" TypeName="StarzInfiniteWeb.Dominios">
+		<SelectParameters>
+			 <asp:Parameter DefaultValue="TIPO PASAJERO" Name="PV_DOMINIO" Type="String" />
+			<asp:ControlParameter ControlID="ddlProducto" propertyname="SelectedValue" Name="PV_PRODUCTO" Type="String" />
+		</SelectParameters></asp:ObjectDataSource>
 	<asp:ObjectDataSource ID="odsProveedor" runat="server" SelectMethod="Lista2" TypeName="StarzInfiniteWeb.Dominios">
 		<SelectParameters>
 			 <asp:Parameter DefaultValue="PROVEEDOR" Name="PV_DOMINIO" Type="String" />
@@ -447,15 +452,21 @@
 					<div class="col-12 col-md-1">
 						Nro. Ticket
 					</div>
-					<div class="col-12 col-md-2">
+					<div class="col-12 col-md-1">
 						Nombre pasajero
 					</div>
-				<div class="col-12 col-md-2">
+				<div class="col-12 col-md-1">
 						Apellido pasajero
+					</div>
+				<div class="col-12 col-md-1">
+						Tipo pasajero
 					</div>
 
 				<div class="col-12 col-md-1">
 						Nro. de documento
+					</div>
+				<div class="col-12 col-md-1">
+						Fecha Nacimiento
 					</div>
 				<div class="col-12 col-md-1">
 						Costo
@@ -477,15 +488,20 @@
 					<div class="col-12 col-md-1">
 						<asp:TextBox ID="txtNroTicket" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
 					</div>
-					<div class="col-12 col-md-2">
+					<div class="col-12 col-md-1">
 						<asp:TextBox ID="txtNombrePasajero" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
 					</div>
-				<div class="col-12 col-md-2">
+				<div class="col-12 col-md-1">
 						<asp:TextBox ID="txtApellidoPasajero" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
 					</div>
-
+				<div class="col-12 col-md-1">
+						<asp:DropDownList ID="ddlTipoPas" class="form-control" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlTipoPas_DataBound" DataSourceID="odsTipoPas" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
+					</div>
 				<div class="col-12 col-md-1">
 						<asp:TextBox ID="txtNroDoc" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
+					</div>
+				<div class="col-12 col-md-1">
+						<input id="fecha_nac" class="form-control" onfocus="bloquear()" style="background:#ecf1fa" type="date" ><asp:HiddenField ID="hfFechaNac" runat="server" />
 					</div>
 				<div class="col-12 col-md-1">
 						<asp:TextBox ID="txtCosto" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
@@ -497,7 +513,7 @@
 						<asp:TextBox ID="txtMontoConImp" ValidationGroup="detalle" CssClass="form-control" runat="server"></asp:TextBox>
 					</div>
 				<div class="col-12 col-md-1">
-					<asp:Button ID="btnAgregar" CssClass="btn btn-primary" ValidationGroup="detalle" OnClick="btnAgregar_Click" runat="server" Text="Agregar" />
+					<asp:Button ID="btnAgregar" CssClass="btn btn-primary" ValidationGroup="detalle" OnClientClick="recuperarFechas2()" OnClick="btnAgregar_Click" runat="server" Text="Agregar" />
 					</div>
 		</div>
 			<div class="row">
@@ -788,6 +804,11 @@
               document.getElementById('<%=hfFechaVuelta.ClientID%>').value = document.getElementById('fecha_vuelta').value;
               document.getElementById('<%=hfFechaRegistro.ClientID%>').value = document.getElementById('fecha_registro').value;
               document.getElementById('<%=hfFechaLimite.ClientID%>').value = document.getElementById('fecha_limite').value;
-          }
+		 }
+
+         function recuperarFechas2() {
+
+             document.getElementById('<%=hfFechaNac.ClientID%>').value = document.getElementById('fecha_nac').value;
+         }
      </script>
 </asp:Content>

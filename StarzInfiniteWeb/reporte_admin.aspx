@@ -21,6 +21,12 @@
 			  <asp:ControlParameter ControlID="lblUsuario" Name="pv_usuario" Type="String" />
 		 </SelectParameters>
 		</asp:ObjectDataSource>
+
+	<asp:ObjectDataSource ID="odsParticipante" runat="server" SelectMethod="PR_GET_PARTICIPANTES_USUARIO" TypeName="StarzInfiniteWeb.LocalBD">
+		 <SelectParameters>
+             <asp:Parameter DefaultValue="T" Name="PV_TIPO_PARTICIPANTE" Type="String" />
+		 </SelectParameters>
+		</asp:ObjectDataSource>
     <asp:ObjectDataSource ID="odsObtieneGananciasDetalle" runat="server" SelectMethod="PR_OBTIENE_BOLETOS_VENDIDOS_DET_ADM" TypeName="StarzInfiniteWeb.LocalBD">
 		 <SelectParameters>
              <asp:ControlParameter ControlID="hfFecha1" Name="fecha1" Type="String" />
@@ -31,6 +37,11 @@
 	<asp:ObjectDataSource ID="odsEstado" runat="server" SelectMethod="Lista" TypeName="StarzInfiniteWeb.Dominios">
 		<SelectParameters>
 			 <asp:Parameter DefaultValue="ESTADO TICKET" Name="PV_DOMINIO" Type="String" />
+		</SelectParameters>
+    </asp:ObjectDataSource>
+	<asp:ObjectDataSource ID="odsFormaPago" runat="server" SelectMethod="Lista" TypeName="StarzInfiniteWeb.Dominios">
+		<SelectParameters>
+			 <asp:Parameter DefaultValue="FORMA PAGO" Name="PV_DOMINIO" Type="String" />
 		</SelectParameters>
     </asp:ObjectDataSource>
 	<style type="text/css">
@@ -143,7 +154,15 @@
 													<td>
 														<strong>GANACIAS</strong>
 													</td>
-																	
+													<td>
+														<strong>SUCURSAL</strong>
+													</td>
+													<td>
+														<strong>MONTO NETO</strong>
+													</td>
+													<td>
+														<strong>MONTO BRUTO</strong>
+													</td>
 													<td>
                                                         <strong>TICKETS</strong>
 													</td>
@@ -170,6 +189,15 @@
 															</td>
 															<td>
 																<asp:Label ID="Label4" runat="server" Text='<%# Eval("GANANCIAS") %>'></asp:Label>
+															</td>
+															<td>
+																<asp:Label ID="Label26" runat="server" Text='<%# Eval("SUCURSAL") %>'></asp:Label>
+															</td>
+															<td>
+																<asp:Label ID="Label27" runat="server" Text='<%# Eval("MONTO_BRUTO") %>'></asp:Label>
+															</td>
+															<td>
+																<asp:Label ID="Label28" runat="server" Text='<%# Eval("MONTO_NETO") %>'></asp:Label>
 															</td>
                                                             <td>
 																<asp:Label ID="Label2" runat="server" Text='<%# Eval("TICKETS") %>'></asp:Label>
@@ -359,10 +387,11 @@
 																<asp:Label ID="Label24" runat="server" Text='<%# Eval("TIPO_VENTA") %>'></asp:Label>
 															</td>
 															<td>
-																<asp:Label ID="Label25" runat="server" Text='<%# Eval("ESTADOD") %>'></asp:Label>
+																<asp:Label ID="Label25" runat="server" Text='<%# Eval("ESTADO") %>'></asp:Label>
 															</td>
                                                             <td>
                                                                 <asp:Button ID="btnDetalle2" OnClick="btnDetalle2_Click" CommandArgument='<%# Eval("PNR") %>' CssClass="btn-sm btn-primary" runat="server" Text="Detalles" />
+																 <asp:Button ID="btnEditar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("PNR") %>' CssClass="btn-sm btn-primary" runat="server" Text="Cambiar datos" />
                                                                 
 															</td>
 														</tr>
@@ -421,6 +450,9 @@
 													<td>
                                                         <strong>MONTO IMPUESTO</strong>
 													</td>
+													<td>
+                                                        <strong>OPCIONES</strong>
+													</td>
 												</tr>
 										</thead>
 									<tbody>
@@ -453,6 +485,9 @@
 															</td>
 															<td>
 																<asp:Label ID="Label10" runat="server" Text='<%# Eval("MONTO_IMPUESTOS") %>'></asp:Label>
+															</td>
+															<td>
+																<asp:Button ID="btnEditarTicket" OnClick="btnEditarTicket_Click" CommandArgument='<%# Eval("COD_TICKET_DETALLE") %>' CssClass="btn-sm btn-primary" runat="server" Text="Editar Ticket" />
 															</td>
 														</tr>
 													</ItemTemplate>
@@ -673,6 +708,74 @@
 					</div>
 
 				</div>
+			</asp:View>
+			<asp:View ID="View7" runat="server">
+				<div class="row">
+					<div class="col-12 col-md-3">
+						Cambiar usuario reserva y forma de pago del PNR:
+					</div>
+					<div class="col-12 col-md-2">
+						<asp:Label ID="lblPNRcambios" CssClass="form-control" runat="server" Text=""></asp:Label>
+					</div>
+					</div>
+					<div class="row">
+
+					<div class="col-12 col-md-3">
+						Forma de pago:
+					</div>
+					<div class="col-12 col-md-3">
+						<asp:DropDownList ID="ddlFomrmaPago" class="form-control" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlFomrmaPago_DataBound" DataSourceID="odsFormaPago" DataValueField="codigo" DataTextField="descripcion" runat="server"></asp:DropDownList>
+					                            
+					</div>
+						</div>
+					<div class="row">
+					<div class="col-12 col-md-3">
+						Usuario reserva:
+					</div>
+					<div class="col-12 col-md-3">
+						<asp:DropDownList ID="ddlParticipante" class="chosen-select" data-size="10" data-live-search="true" data-style="btn-white" OnDataBound="ddlParticipante_DataBound" DataSourceID="odsParticipante" DataValueField="USUARIO" DataTextField="NOMBRE_RAZON_SOCIAL" runat="server"></asp:DropDownList>
+					</div>
+						</div>
+					<div class="row">
+					<div class="col-12 col-md-2">
+						<asp:Button ID="btnGuardarCambios"  OnClick="btnGuardarCambios_Click" CssClass="btn btn-orange" runat="server" Text="Guardar cambios" />
+					</div>
+					<div class="col-12 col-md-2">
+						<asp:Button ID="btnVolverCambios" OnClick="btnVolverCambios_Click" CssClass="btn btn-primary" runat="server" Text="Volver" />
+					</div>
+					
+				</div>
+				
+			</asp:View>
+			<asp:View ID="View8" runat="server">
+				<div class="row">
+					<div class="col-12 col-md-3">
+						Cambiar el codigo de Ticket
+					</div>
+					<div class="col-12 col-md-2">
+						<asp:Label ID="lblCodTicketDetalle" Visible="false" CssClass="form-control" runat="server" Text=""></asp:Label>
+					</div>
+					</div>
+					<div class="row">
+
+					<div class="col-12 col-md-3">
+						COD TICKET:
+					</div>
+					<div class="col-12 col-md-3">
+						
+					          <asp:TextBox ID="txtCodTicket" CssClass="form-control" runat="server"></asp:TextBox>                  
+					</div>
+						</div>
+					<div class="row">
+					<div class="col-12 col-md-2">
+						<asp:Button ID="btnGuardarTicket"  OnClick="btnGuardarTicket_Click" CssClass="btn btn-orange" runat="server" Text="Guardar cambios" />
+					</div>
+					<div class="col-12 col-md-2">
+						<asp:Button ID="btnVolverTicket" OnClick="btnVolverTicket_Click" CssClass="btn btn-primary" runat="server" Text="Volver" />
+					</div>
+					
+				</div>
+				
 			</asp:View>
         </asp:MultiView>
 

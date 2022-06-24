@@ -271,7 +271,7 @@
                                                   <asp:Button ID="btnVuelos" class="btn btn-orange" OnClientClick="recuperarFechaSalida()" OnClick="btnVuelos_Click"  runat="server" Text="Buscar vuelos" />
                                             </div><!-- end columns --> 
                                                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 search-btn">
-                                                <asp:Button ID="btnMatriz" class="btn btn-success" OnClientClick="recuperarFechaSalida()" OnClick="btnMatriz_Click" Visible="true"  runat="server" Text="+/-3 Fechas Flexibles" />
+                                                <asp:Button ID="btnMatriz" class="btn btn-success" OnClientClick="recuperarFechaSalida()" OnClick="btnMatriz_Click" Visible="false"  runat="server" Text="+/-3 Fechas Flexibles" />
                                             </div>
 
                                         </div><!-- end row -->

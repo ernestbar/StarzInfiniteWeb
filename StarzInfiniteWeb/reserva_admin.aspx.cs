@@ -23,8 +23,10 @@ namespace StarzInfiniteWeb
                 }
                 else
                 {
-                    hfFecha1.Value = DateTime.Now.ToShortDateString();
-                    hfFecha2.Value = DateTime.Now.ToShortDateString();
+                    DateTime fecha1 = DateTime.Now.AddDays(-1);
+                    DateTime fecha2 = DateTime.Now.AddDays(-1);
+                    hfFecha1.Value = fecha1.Year.ToString()+"-"+ fecha1.Month.ToString() + "-" + fecha1.Day.ToString() ;
+                    hfFecha2.Value = fecha2.Year.ToString() + "-" + fecha2.Month.ToString() + "-" + fecha2.Day.ToString();
                     Session.Remove("datos_iniciales");
                     Session.Remove("datos_vuelo_ida");
                     Session.Remove("datos_reserva");

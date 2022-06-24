@@ -90,7 +90,10 @@ namespace StarzInfiniteWeb
                     string detalle = "";
                     foreach (ListItem item1 in lbDetalle.Items)
                     {
+                        //if (lbDetalle.Items.Count == 1)
+                        //    detalle = item1.Value;
                         detalle = detalle + item1.Value + "|";
+
 
                     }
                     string[] datos = LocalBD.PUT_INGRESA_TICKETS_MANUAL("I", lblUsuario.Text, ddlProducto.SelectedValue, ddlProovedor.SelectedValue,
@@ -209,13 +212,18 @@ namespace StarzInfiniteWeb
         {
             string detalle_txt = "";
             string detalle_value = "";
-            detalle_txt = txtNroTicket.Text + " - " + txtNombrePasajero.Text + " - " + txtApellidoPasajero.Text + " - " + txtNroDoc.Text + " - " + txtCosto.Text + " - " + txtMontoSinImp.Text + " - " + txtMontoConImp.Text;
-            detalle_value = txtNroTicket.Text + "," + txtNombrePasajero.Text + "," + txtApellidoPasajero.Text + "," + txtNroDoc.Text + "," + txtCosto.Text + "," + txtMontoSinImp.Text + "," + txtMontoConImp.Text;
+            detalle_txt = txtNroTicket.Text + " - " + txtNombrePasajero.Text + " - " + txtApellidoPasajero.Text + " - " + ddlTipoPas.SelectedItem.Text + " - " + txtNroDoc.Text + " - " + hfFechaNac.Value + " - " + txtCosto.Text + " - " + txtMontoSinImp.Text + " - " + txtMontoConImp.Text;
+            detalle_value = txtNroTicket.Text + "," + txtNombrePasajero.Text + "," + txtApellidoPasajero.Text + "," + ddlTipoPas.SelectedValue + "," + txtNroDoc.Text + "," + hfFechaNac.Value + "," + txtCosto.Text + "," + txtMontoSinImp.Text + "," + txtMontoConImp.Text;
             ListItem item = new ListItem();
             item.Text = detalle_txt;
             item.Value = detalle_value;
             lbDetalle.Items.Add(item);
             lbDetalle.DataBind();
+        }
+
+        protected void ddlTipoPas_DataBound(object sender, EventArgs e)
+        {
+            ddlTipoPas.Items.Insert(0, "SELECCIONAR");
         }
     }
 }
