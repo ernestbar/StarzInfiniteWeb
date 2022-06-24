@@ -377,9 +377,10 @@ namespace StarzInfiniteWeb
                                             clase = "";// vuelos.datos[i].op[x][y].bookClass;
                                             leg = vuelos.datos[i].op[x][y].leg.ToString();
 
-                                            string feetotal_aux = LocalBD.PR_GET_FEE_WEB_ITINERARIO(carrier, moneda, datos[16], ddlOrigen.SelectedValue, ddlDestino.SelectedValue, lblTipoRuta.Text, total_pasajeros);
-                                            if (decimal.Parse(feetotal_aux) > 0)
-                                                FeeTotal = feetotal_aux;
+                                            string feetotal_aux = LocalBD.PR_GET_FEE_WEB_ITINERARIO(carrier, moneda, datos[16], datos[1], datos[2], lblTipoRuta.Text, total_pasajeros);
+                                            FeeTotal = feetotal_aux;
+                                            //if (decimal.Parse(feetotal_aux) > 0)
+                                            //    FeeTotal = feetotal_aux;
 
                                             //SERVIDOR: monto_total = decimal.Parse(monto.Replace(",",".")) + decimal.Parse(FeeTotal.Replace(",", "."));
                                             //monto_total = Math.Round(( decimal.Parse(monto.Replace(".",",")) + decimal.Parse(FeeTotal.Replace(".", ","))),2);
