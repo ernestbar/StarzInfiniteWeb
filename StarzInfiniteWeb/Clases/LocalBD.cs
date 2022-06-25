@@ -674,35 +674,126 @@ namespace StarzInfiniteWeb
                 db1.AddInParameter(cmd, "pv_usuario", DbType.String, pv_usuario);
                 db1.AddInParameter(cmd, "pv_producto", DbType.String, pv_producto);
                 db1.AddInParameter(cmd, "pv_proveedor", DbType.String, pv_proveedor);
-                db1.AddInParameter(cmd, "pv_nro_pnr", DbType.String, pv_nro_pnr);
-                db1.AddInParameter(cmd, "pv_tourcode", DbType.String, pv_tourcode);
-                db1.AddInParameter(cmd, "pv_datosfacturacion", DbType.String, pv_datosfacturacion);
-                db1.AddInParameter(cmd, "pv_emailfact", DbType.String, pv_emailfact);
-                db1.AddInParameter(cmd, "pv_telefonofact", DbType.String, pv_telefonofact);
-                db1.AddInParameter(cmd, "pv_origenida", DbType.String, pv_origenida);
-                db1.AddInParameter(cmd, "pv_destinoida", DbType.String, pv_destinoida);
-                db1.AddInParameter(cmd, "ps_fechaida", DbType.DateTime, ps_fechaida);
-                db1.AddInParameter(cmd, "pv_claseida", DbType.String, pv_claseida);
-                db1.AddInParameter(cmd, "pv_carrierida", DbType.String, pv_carrierida);
-                db1.AddInParameter(cmd, "pv_numerovueloida", DbType.String, pv_numerovueloida);
-                db1.AddInParameter(cmd, "pv_origenvuelta", DbType.String, pv_origenvuelta);
-                db1.AddInParameter(cmd, "pv_desitinovuelta", DbType.String, pv_desitinovuelta);
-                db1.AddInParameter(cmd, "pd_fechavuelta", DbType.DateTime, pd_fechavuelta);
-                db1.AddInParameter(cmd, "pv_clasevuelta", DbType.String, pv_clasevuelta);
-                db1.AddInParameter(cmd, "pv_carriervuelta", DbType.String, pv_carriervuelta);
-                db1.AddInParameter(cmd, "pv_numerovuelovuelta", DbType.String, pv_numerovuelovuelta);
-                db1.AddInParameter(cmd, "pd_fechalimiteemision", DbType.DateTime, pd_fechalimiteemision);
-                db1.AddInParameter(cmd, "pd_fecha_regitro", DbType.String, pd_fecha_regitro);
-                db1.AddInParameter(cmd, "pv_broker", DbType.String, pv_broker);
+                if(pv_nro_pnr=="")
+                    db1.AddInParameter(cmd, "pv_nro_pnr", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_nro_pnr", DbType.String, pv_nro_pnr);
+                if (pv_tourcode == "")
+                    db1.AddInParameter(cmd, "pv_tourcode", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_tourcode", DbType.String, pv_tourcode);
+                if (pv_datosfacturacion == "")
+                    db1.AddInParameter(cmd, "pv_datosfacturacion", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_datosfacturacion", DbType.String, pv_datosfacturacion);
+                if (pv_emailfact == "")
+                    db1.AddInParameter(cmd, "pv_emailfact", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_emailfact", DbType.String, pv_emailfact);
+                if (pv_telefonofact == "")
+                    db1.AddInParameter(cmd, "pv_telefonofact", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_telefonofact", DbType.String, pv_telefonofact);
+                if (pv_origenida == "")
+                    db1.AddInParameter(cmd, "pv_origenida", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_origenida", DbType.String, pv_origenida);
+                if (pv_destinoida == "")
+                    db1.AddInParameter(cmd, "pv_destinoida", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_destinoida", DbType.String, pv_destinoida);
+                if (ps_fechaida == "")
+                    db1.AddInParameter(cmd, "ps_fechaida", DbType.DateTime, null);
+                else
+                    db1.AddInParameter(cmd, "ps_fechaida", DbType.DateTime, ps_fechaida);
+                if (pv_claseida == "")
+                    db1.AddInParameter(cmd, "pv_claseida", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_claseida", DbType.String, pv_claseida);
+
+                if (pv_carrierida == "")
+                    db1.AddInParameter(cmd, "pv_carrierida", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_carrierida", DbType.String, pv_carrierida);
+                
+                if (pv_numerovueloida == "")
+                    db1.AddInParameter(cmd, "pv_numerovueloida", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_numerovueloida", DbType.String, pv_numerovueloida);
+
+                if (pv_origenvuelta == "")
+                    db1.AddInParameter(cmd, "pv_origenvuelta", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_origenvuelta", DbType.String, pv_origenvuelta);
+
+                if (pv_desitinovuelta == "")
+                    db1.AddInParameter(cmd, "pv_desitinovuelta", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_desitinovuelta", DbType.String, pv_desitinovuelta);
+
+                if (pd_fechavuelta == "")
+                    db1.AddInParameter(cmd, "pd_fechavuelta", DbType.DateTime, null);
+                else
+                    db1.AddInParameter(cmd, "pd_fechavuelta", DbType.DateTime, pd_fechavuelta);
+
+                if (pv_clasevuelta == "")
+                    db1.AddInParameter(cmd, "pv_clasevuelta", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_clasevuelta", DbType.String, pv_clasevuelta);
+
+                if (pv_carriervuelta == "")
+                    db1.AddInParameter(cmd, "pv_carriervuelta", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_carriervuelta", DbType.String, pv_carriervuelta);
+
+                if (pv_numerovuelovuelta == "")
+                    db1.AddInParameter(cmd, "pv_numerovuelovuelta", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_numerovuelovuelta", DbType.String, pv_numerovuelovuelta);
+
+                if (pd_fechalimiteemision == "")
+                    db1.AddInParameter(cmd, "pd_fechalimiteemision", DbType.DateTime, null);
+                else
+                    db1.AddInParameter(cmd, "pd_fechalimiteemision", DbType.DateTime, pd_fechalimiteemision);
+
+                if (pd_fecha_regitro == "")
+                    db1.AddInParameter(cmd, "pd_fecha_regitro", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pd_fecha_regitro", DbType.String, pd_fecha_regitro);
+
+                if (pv_broker == "")
+                    db1.AddInParameter(cmd, "pv_broker", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_broker", DbType.String, pv_broker);
+                
                 db1.AddInParameter(cmd, "pd_totalcobrar", DbType.Decimal, pd_totalcobrar);
-                db1.AddInParameter(cmd, "pv_moneda", DbType.String, pv_moneda);
+                
+                if (pv_moneda == "")
+                    db1.AddInParameter(cmd, "pv_moneda", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_moneda", DbType.String, pv_moneda);
+
                 db1.AddInParameter(cmd, "pd_totalimpuestos", DbType.Decimal, pd_totalimpuestos);
                 db1.AddInParameter(cmd, "pd_montosinimpuestos", DbType.Decimal, pd_montosinimpuestos);
-                db1.AddInParameter(cmd, "pv_tipo_venta", DbType.String, pv_tipo_venta);
+
+                if (pv_tipo_venta == "")
+                    db1.AddInParameter(cmd, "pv_tipo_venta", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_tipo_venta", DbType.String, pv_tipo_venta);
+
                 db1.AddInParameter(cmd, "pd_comisionbroker", DbType.Decimal, pd_comisionbroker);
-                db1.AddInParameter(cmd, "pv_detalle", DbType.String, pv_detalle);
-                db1.AddInParameter(cmd, "pv_tipo_vuelo", DbType.String, pv_tipo_vuelo);
-                if(PV_COD_CLIENTE_TICKET=="")
+                
+                if (pv_detalle == "")
+                    db1.AddInParameter(cmd, "pv_detalle", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_detalle", DbType.String, pv_detalle);
+
+                if (pv_tipo_vuelo == "")
+                    db1.AddInParameter(cmd, "pv_tipo_vuelo", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "pv_tipo_vuelo", DbType.String, pv_tipo_vuelo);
+
+                if (PV_COD_CLIENTE_TICKET=="")
                     db1.AddInParameter(cmd, "PV_COD_CLIENTE_TICKET", DbType.String, null);
                 else
                     db1.AddInParameter(cmd, "PV_COD_CLIENTE_TICKET", DbType.String, PV_COD_CLIENTE_TICKET);
