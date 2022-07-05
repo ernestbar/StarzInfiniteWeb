@@ -1122,10 +1122,10 @@
 																                    </div>
 															                    </div>
 													                    <div class="col-lg-12">
-																                    <div class="form-group col-12 col-md-3">
+																                    <div class="form-group col-12 col-md-5">
 
 																	                    <span class="form-label">Fecha de Nacimiento:</span><br />
-																	                    <input id="fecha_nac_inf" class="form-control" style="background:#ecf1fa" type="date"><asp:HiddenField ID="hfFechaNacInf" runat="server" />
+																	                    <input id="fecha_nac_inf" class="form-control" onfocus="bloquearInf()" style="background:#ecf1fa" type="date"><asp:HiddenField ID="hfFechaNacInf" runat="server" />
 																                    </div>
 															                    </div>
 													                    <div class="col-lg-12">
@@ -1808,7 +1808,11 @@
         };
         function formatISOLocalNinoMin(d) {
             let z = n => ('0' + n).slice(-2);
-            return d.getFullYear() + '-' + z(0 + 1) + '-' + z(d.getDate() + 1);
+            return d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' + z(d.getDate() + 1);
+        };
+        function formatISOLocalInfMin(d) {
+            let z = n => ('0' + n).slice(-2);
+            return d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' + z(d.getDate() + 1);
         };
         function bloquear() {
             let inp = document.querySelector('#fecha_salida');
@@ -1823,10 +1827,22 @@
             let inp3 = document.querySelector('#fecha_nac_nino');
             let d = new Date();
             let d2 = new Date();
-            d.setFullYear(d.getFullYear() - 11);
+            d.setFullYear(d.getFullYear() - 12);
             inp3.min = formatISOLocalNinoMin(d);
 
             d2.setFullYear(d2.getFullYear() - 2);
+            inp3.max = formatISOLocal(d2);
+            inp3.defaultValue = inp3.max;
+            console.log(inp3.outerHTML);
+        };
+        function bloquearInf() {
+            let inp3 = document.querySelector('#fecha_nac_inf');
+            let d = new Date();
+            let d2 = new Date();
+            d.setFullYear(d.getFullYear() - 2);
+            inp3.min = formatISOLocalInfMin(d);
+
+            d2.setFullYear(d2.getFullYear() - 0);
             inp3.max = formatISOLocal(d2);
             inp3.defaultValue = inp3.max;
             console.log(inp3.outerHTML);

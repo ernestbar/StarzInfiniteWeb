@@ -212,8 +212,18 @@ namespace StarzInfiniteWeb
         {
             string detalle_txt = "";
             string detalle_value = "";
-            detalle_txt = txtNroTicket.Text + " - " + txtNombrePasajero.Text + " - " + txtApellidoPasajero.Text + " - " + ddlTipoPas.SelectedItem.Text + " - " + txtNroDoc.Text + " - " + hfFechaNac.Value + " - " + txtCosto.Text + " - " + txtMontoSinImp.Text + " - " + txtMontoConImp.Text;
-            detalle_value = txtNroTicket.Text + "," + txtNombrePasajero.Text + "," + txtApellidoPasajero.Text + "," + ddlTipoPas.SelectedValue + "," + txtNroDoc.Text + "," + hfFechaNac.Value + "," + txtCosto.Text + "," + txtMontoSinImp.Text + "," + txtMontoConImp.Text;
+            string costo = "0";
+            string montosin = "0";
+            string montocon = "0";
+            if (txtCosto.Text != "")
+                costo = txtCosto.Text;
+            if (txtMontoConImp.Text != "")
+                montocon = txtMontoConImp.Text;
+            if (txtMontoSinImp.Text != "")
+                montosin = txtMontoSinImp.Text;
+
+            detalle_txt = txtNroTicket.Text + " - " + txtNombrePasajero.Text + " - " + txtApellidoPasajero.Text + " - " + ddlTipoPas.SelectedItem.Text + " - " + txtNroDoc.Text + " - " + hfFechaNac.Value + " - " + costo + " - " + montosin + " - " + montocon;
+            detalle_value = txtNroTicket.Text + "," + txtNombrePasajero.Text + "," + txtApellidoPasajero.Text + "," + ddlTipoPas.SelectedValue + "," + txtNroDoc.Text + "," + hfFechaNac.Value + "," + costo + "," + montosin + "," + montocon;
             ListItem item = new ListItem();
             item.Text = detalle_txt;
             item.Value = detalle_value;
