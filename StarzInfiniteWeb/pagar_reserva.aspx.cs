@@ -222,6 +222,7 @@ namespace StarzInfiniteWeb
                 }
 
                 string[] url_aux = PurlRespuesta.Split('|');
+                string pago2 = ((decimal.Parse(monto_pagar_t.ToString().Replace(",", ".")) * (decimal.Parse(porcentaje) / 100)) + decimal.Parse(monto_pagar_t.ToString().Replace(",", "."))).ToString().Replace(",", ".");
                 SolicitudPago obj_sp = new SolicitudPago
                 {
                     usuario = "web",
@@ -250,6 +251,12 @@ namespace StarzInfiniteWeb
                 resp = JsonConvert.DeserializeObject<RespuestaSP>(respuestaJson);
                 MultiView1.ActiveViewIndex = 3;
                 string url = "https://psp.starzinfinite.com/psp/?IdTransaccion=" + resp.IdTransaccion;
+
+                string nombre_archivo = "monto_pago" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".txt";
+                string directorio2 = Server.MapPath("~/Logs");
+                StreamWriter writer5 = new StreamWriter(directorio2 + "\\" + nombre_archivo, true, Encoding.Unicode);
+                writer5.WriteLine(pago2);
+                writer5.Close();
                 //Response.Redirect(url,false);
                 //Response.Write("<script> window.open('" + url + "','_blank'); </script>");
                 myIframe.ResolveUrl(url);

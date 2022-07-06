@@ -2499,8 +2499,7 @@ namespace StarzInfiniteWeb
                             { panel_vuelta.Visible = true; }
 
 
-
-                            btnComprarReserva.Enabled = true;
+                           
                             ////////////////////////////////SOLICITAR LINK DE PAGO//////////////////////////
                             DataTable dt = LocalBD.PR_GET_DATOSPASARELAPAGO(txtPNR.Text);
 
@@ -2592,12 +2591,19 @@ namespace StarzInfiniteWeb
                             //MultiView1.ActiveViewIndex = 3;
                             string url = "https://psp.starzinfinite.com/psp/?IdTransaccion=" + resp.IdTransaccion;
                             lblLinkPago.Text = url;
+                            btnGuardarReserva.Enabled = true;
+                            btnComprarReserva.Enabled = true;
+                            btnEnviarCorreo.Enabled = true;
+                            btnExportar2.Enabled = true;
                             //lblAviso.Text = json_pago;
                         }
                         else
                         {
                             lblAvisoReserva.Text = "Error: " + respuesta_res.error + ", elija otro vuelo por favor.";
+                            btnGuardarReserva.Enabled = false;
                             btnComprarReserva.Enabled = false;
+                            btnEnviarCorreo.Enabled = false;
+                            btnExportar2.Enabled = false;
 
                         }
                     }
@@ -2734,7 +2740,7 @@ namespace StarzInfiniteWeb
                             { panel_vuelta.Visible = true; }
 
 
-                            btnComprarReserva.Enabled = true;
+                            //btnComprarReserva.Enabled = true;
                             ////////////////////////////////SOLICITAR LINK DE PAGO//////////////////////////
                             DataTable dt = LocalBD.PR_GET_DATOSPASARELAPAGO(txtPNR.Text);
 
@@ -2827,13 +2833,19 @@ namespace StarzInfiniteWeb
                             string url = "https://psp.starzinfinite.com/psp/?IdTransaccion=" + resp.IdTransaccion;
                             lblLinkPago.Text = url;
                             //lblAviso.Text = respuestaJson_pago;
-
-
+                            btnGuardarReserva.Enabled = true;
+                            btnComprarReserva.Enabled = true;
+                            btnEnviarCorreo.Enabled = true;
+                            btnExportar2.Enabled = true;
+                            //lblAviso.Text = json_pago;
                         }
                         else
                         {
-                            txtPNR.Text = "Error: " + respuesta_res.error + ", elija otro vuelo por favor.";
+                            lblAvisoReserva.Text = "Error: " + respuesta_res.error + ", elija otro vuelo por favor.";
+                            btnGuardarReserva.Enabled = false;
                             btnComprarReserva.Enabled = false;
+                            btnEnviarCorreo.Enabled = false;
+                            btnExportar2.Enabled = false;
                         }
                     }
                     

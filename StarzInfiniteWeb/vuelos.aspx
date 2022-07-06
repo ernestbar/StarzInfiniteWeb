@@ -216,7 +216,7 @@
 
                
                 <div class="form-group">
-                    <asp:RadioButtonList ID="rblTipoVenta" RepeatDirection="Horizontal" runat="server">
+                    <asp:RadioButtonList ID="rblTipoVenta" Font-Size="Small" RepeatDirection="Horizontal" runat="server">
 					    <asp:ListItem Text="NORMAL" Value="0"></asp:ListItem>
 					    <asp:ListItem Text="CORPORATIVO" Value="1"></asp:ListItem>
                         <asp:ListItem Text="CUOTAS" Value="2"></asp:ListItem>
