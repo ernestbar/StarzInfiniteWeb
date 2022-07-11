@@ -126,6 +126,7 @@
                     <li><a href="reporte_admin.aspx">Reporte administrativo</a></li>
                     <li><a href="reporte_counter_adm.aspx">Reporte counter</a></li>
                     <li><a href="reporte_broker_adm.aspx">Reporte broker</a></li>
+                    <li><a href="contabilidad_reporte.aspx">Reporte contable</a></li>
                 </ul>
             </li>
            <li>
@@ -159,6 +160,7 @@
                             <a href="reporte_admin.aspx" class="list-group-item">Reporte administrativo<span></span></a>
                             <a href="reporte_counter_adm.aspx" class="list-group-item">Reporte counter<span></span></a>
                             <a href="reporte_broker_adm.aspx" class="list-group-item">Reporte broker<span></span></a>
+                            <a href="contabilidad_reporte.aspx" class="list-group-item">Reporte contable<span></span></a>
                     <!-- end sub-menu -->
                         </div>
             <!-- end list-group -->

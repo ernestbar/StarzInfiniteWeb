@@ -1144,6 +1144,33 @@ namespace StarzInfiniteWeb
 
         }
 
+
+        public static DataTable PR_OBTIENE_REPORTE_CONTADOR(string pv_usuario, string pd_fechadesde, string pd_fechahasta)
+        {
+            try
+            {
+                DbCommand cmd = db1.GetStoredProcCommand("PR_OBTIENE_REPORTE_CONTADOR");
+                db1.AddInParameter(cmd, "pv_usuario", DbType.String, pv_usuario);
+                db1.AddInParameter(cmd, "pv_NRO_PNR", DbType.String, null);
+                if (pd_fechadesde == "")
+                    db1.AddInParameter(cmd, "pd_fechadesde", DbType.DateTime, null);
+                else
+                    db1.AddInParameter(cmd, "pd_fechadesde", DbType.DateTime, pd_fechadesde);
+                if (pd_fechahasta == "")
+                    db1.AddInParameter(cmd, "pd_fechahasta", DbType.DateTime, null);
+                else
+                    db1.AddInParameter(cmd, "pd_fechahasta", DbType.DateTime, pd_fechahasta);
+                cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
+                return db1.ExecuteDataSet(cmd).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                DataTable dt = new DataTable();
+                return dt;
+            }
+
+        }
         public static DataTable PR_OBTIENE_REPORTE_COUNTER(string pv_usuario, string pd_fechadesde, string pd_fechahasta)
         {
             try

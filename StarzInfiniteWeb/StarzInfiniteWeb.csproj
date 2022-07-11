@@ -93,6 +93,7 @@
     <Content Include="chosen.min.css" />
     <Content Include="chosen.proto.js" />
     <Content Include="chosen.proto.min.js" />
+    <Content Include="contabilidad_reporte.aspx" />
     <Content Include="css\atomic.css" />
     <Content Include="css\blue-violet.css" />
     <Content Include="css\bootstrap.min.css" />
@@ -565,6 +566,13 @@
     <Compile Include="Clases\Reservas.cs" />
     <Compile Include="Clases\Reservas_kiu.cs" />
     <Compile Include="Clases\Usuarios.cs" />
+    <Compile Include="contabilidad_reporte.aspx.cs">
+      <DependentUpon>contabilidad_reporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="contabilidad_reporte.aspx.designer.cs">
+      <DependentUpon>contabilidad_reporte.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
