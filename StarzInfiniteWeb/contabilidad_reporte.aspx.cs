@@ -12,18 +12,22 @@ namespace StarzInfiniteWeb
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Session["usuario"] == null)
+            if (!Page.IsPostBack)
             {
-                Response.Redirect("ingreso.aspx");
-            }
-            else
-            {
-                hfFecha1.Value = DateTime.Now.ToShortDateString();
-                hfFecha2.Value = DateTime.Now.ToShortDateString();
+                if (Session["usuario"] == null)
+                {
+                    Response.Redirect("ingreso.aspx");
+                }
+                else
+                {
+                    hfFecha1.Value = DateTime.Now.ToShortDateString();
+                    hfFecha2.Value = DateTime.Now.ToShortDateString();
 
-                lblUsuario.Text = Session["usuario"].ToString();
-                MultiView1.ActiveViewIndex = 0;
+                    lblUsuario.Text = Session["usuario"].ToString();
+                    MultiView1.ActiveViewIndex = 0;
+                }
             }
+            
             
 
         }

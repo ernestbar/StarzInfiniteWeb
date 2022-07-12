@@ -301,9 +301,8 @@
 	 <script type="text/javascript">
 
          function recuperarFechaSalida() {
-
-             document.getElementById('<%=hfFecha1.ClientID%>').value = document.getElementById('fecha_salida1').value;
-            document.getElementById('<%=hfFecha2.ClientID%>').value = document.getElementById('fecha_retorno1').value;
+			 document.getElementById('<%=hfFecha1.ClientID%>').value = document.getElementById('fecha_salida1').value;
+			 document.getElementById('<%=hfFecha2.ClientID%>').value = document.getElementById('fecha_retorno1').value;
          }
 
          function exportTableToExcel(tableID, filename = '') {
