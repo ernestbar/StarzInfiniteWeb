@@ -1854,7 +1854,7 @@
             inp1.min = formatISOLocal2(d1);
             inp1.defaultValue = inp1.min;
             d1.setFullYear(d1.getFullYear() + 1);
-            inp1.max = formatISOLocal2(d1);
+            //inp1.max = formatISOLocal2(d1);
             console.log(inp1.outerHTML);
         };
     </script>
